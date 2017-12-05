@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-global ip user light;# gesetzt für den Aufruf durch ccu_read_hue.tcl
+global ip user light ;# gesetzt für den Aufruf durch ccu_read_hue.tcl
 set script_path [file dirname [info script]]
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]
