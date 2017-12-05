@@ -12,6 +12,10 @@ $dir/setLightState.tcl 1 on false
 sleep 2
 $dir/setLightState.tcl 10 on false
 sleep 2
+$dir/setLightState.tcl 11 on false
+sleep 2
+$dir/setLightState.tcl 12 on false
+sleep 2
 $dir/setLightState.tcl 6 on false
 sleep 2
 $dir/setLightState.tcl 9 on false
