@@ -5,6 +5,7 @@
 * Fehlerbehebung
 
 Da tcl 8.2 im Funktionsumfang deutlich hinterherhinkt, habe ich die fehlenden Funktionen wie regep -all und lset umgeschrieben. Bei tcl >= 8.5 (z. B. macOS high sierra) werden die eingebauten Funktionen genommen, bei der CCU (tcl Version 8.2) habe ich die Funktionen nachgebaut.
+Getestet wurde alles auf einem Mac sowie auf der Raspimatic, da ich keine CCU2 mehr nutze.
 
 ## homematic-hue
 
@@ -14,8 +15,10 @@ Es funktioniert ohne CUXD und curl, sondern einfach per Socket.
 
 ### Installation
 
-Ich habe es kopiert nach /usr/local/scripts/hue, aber der Ordner ist letztendlich egal. Die includes sind nicht hardkodiert, sondern liegen im gleichen Ordner.
+Kopieren des Ordnerinhaltes per ssh auf die CCU/Raspimatic. Ich habe es kopiert nach /usr/local/scripts/hue, aber der Ordner ist letztendlich egal. Die includes sind nicht hardkodiert, sondern liegen im gleichen Ordner.
 
+    > scp -r local_dir/hue ccu:/usr/local/scripts
+    > ssh ccu
     > cd /usr/local/scripts/hue
 
 ### config.tcl
