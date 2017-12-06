@@ -59,7 +59,7 @@ Ohne Parameter lautet die Lampennummer 1 und der prefix hue, die Variablen heiß
 ### hue.inc.tcl
 Helperfunktionen für die Hue lamps (ohne curl, mit socket)
 
-#1. Lights
+# 1. Lights
 
 ### 1.1. getAllLights.tcl
 Liest Info für alle Lampen aus.
