@@ -110,6 +110,7 @@ Jetzt kann mann auch mit
      ./setLightState.tcl LampenNr on|off
      
 die Lampen ein- bzw. ausschalten. on|off funtioniert immer als letzter Parameter.
+
 #2. Groups#
 ### 2.1. getAllGroups.tcl
 Liest Infos für alle Gruppen aus.
