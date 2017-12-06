@@ -145,6 +145,7 @@ Alle Parameter außer der GruppenNr sind optional, das gleiche wie bei setLightS
      > ./setGroupState.tcl GruppenNr [on ... true-false] [bri ... 0 - 255] [hue ... 0 - 65535] [sat ... 0 - 255] [transitiontime ... x * 100 ms] [effect ... none, colorloop] [alert ... none, select, lselect] [ct ... 153 - 500] [xy as list in  CIE color space] [scene scene-ID]
 
 #4. Scenes#
+
 ### 4.1. getAllScenes.tcl
 
      > ./getAllScenes.tcl
@@ -152,6 +153,7 @@ Alle Parameter außer der GruppenNr sind optional, das gleiche wie bei setLightS
 Rückgabe ist ein scenes-array, Index ist die Scene-ID, Inhalt eine Liste mit Namen der Scene, der eingeschlossenen Lampen sowie ob die Scene active ist.
 
 #5. Capabilities
+
 ### 5.1. getCapabilities.tcl
 
      > ./getCapabilities.tcl
