@@ -1,11 +1,9 @@
 #!/usr/bin/env tclsh
-#global ip user ;# gesetzt für den Aufruf durch ccu_read_hue.tcl
 set script_path [file dirname [info script]]
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]
-source [file join $script_path "json/json.tcl"]
-json group [hueGet "groups"]
-set_places group 
+load $script_path/json/libJSON[info sharedlibextension]
+eval [jsonparser group [hueGet "groups"]]
 
 if {$argc > 0 } { ;# Aufruf durch ccu_read_hue.tcl
 	return [array get group]
