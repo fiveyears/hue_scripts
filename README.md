@@ -320,4 +320,3 @@ Rückgabe ist ein scenes-array, Index ist die Scene-ID, Inhalt eine Liste mit Na
      > ./getCapabilities.tcl
      
 © fiveyears 2017
->>>>>>> 22f9e7166fb5a8032494e5ec7deb9210020aa099
