@@ -1,0 +1,560 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"r",
+				"r"
+			],
+			[
+				"TC",
+				"TCL_OK"
+			],
+			[
+				"a",
+				"aListname"
+			],
+			[
+				"new",
+				"newEnd"
+			],
+			[
+				"delete",
+				"deleteNonEmptyDir"
+			],
+			[
+				"da",
+				"databaseConnection"
+			],
+			[
+				"remote",
+				"remoteCommand"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "test.c",
+			"settings":
+			{
+				"buffer_size": 1293,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "color.c",
+			"settings":
+			{
+				"buffer_size": 27564,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "color.h",
+			"settings":
+			{
+				"buffer_size": 557,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "c.sublime-project",
+			"settings":
+			{
+				"buffer_size": 834,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 362,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "gcc",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"gcc",
+					""
+				],
+				[
+					"gcc",
+					"Run"
+				]
+			],
+			[
+				"gcc",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/ivo/Dropbox/web/hue/tcl-lib/vnsprintf"
+	],
+	"file_history":
+	[
+		"/Users/ivo/Dropbox/web/hue/tcl-lib/vnsprintf/c.sublime-project",
+		"/Users/ivo/Desktop/vnsprintf/c.sublime-project",
+		"/Users/ivo/Desktop/vnsprintf/vnsprintf/c.sublime-project",
+		"/Users/ivo/Desktop/vnsprintf/vnsprintf/main.c",
+		"/Users/ivo/Dropbox/web/hue/tcl-lib/hello.c",
+		"/Users/ivo/Dropbox/web/hue/tcl-lib/hello.tcl",
+		"/Users/ivo/Dropbox/web/hue/tcl-lib/Makefile",
+		"/Users/ivo/Dropbox/web/hue/t/hello.c",
+		"/Users/ivo/Dropbox/web/hue/t/hello.tcl",
+		"/Users/ivo/Dropbox/web/hue/t/compile_tcl",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/DeleteLastRezept.txt",
+		"/Users/ivo/Dropbox/web/hue/jsmn/Makefile",
+		"/Users/ivo/Dropbox/web/hue/jsmn/library.json",
+		"/Users/ivo/Desktop/json.txt",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/PerlRE.pl",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/s-storno",
+		"/Users/ivo/Dropbox/web/hue/jsmn/main.c",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/QuartalBriefFehlt.sql",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/hue",
+		"/Users/ivo/Desktop/cross.sh",
+		"/Users/ivo/Dropbox/web/hue/jsmn/example/jsondump.c",
+		"/Users/ivo/Dropbox/web/hue/jsmn/libjsmn/__.SYMDEF SORTED",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/HtmlSql.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/LaborSondertherapie.sql",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/LaborMedikament.sql",
+		"/Users/ivo/Desktop/Belegung.html",
+		"/Users/ivo/Desktop/LaborMedikament.html",
+		"/Users/ivo/Desktop/output.txt.col",
+		"/Users/ivo/Desktop/output.sql",
+		"/Users/ivo/Desktop/output.txt",
+		"/private/var/folders/wc/098rfw110x98_0xgvy94vf2r0000gn/T/LaborMedikament.html",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/perlJpeg.pl",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/Labor1ParameterAll.sql",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/Labor1Parameter.sql",
+		"/Users/ivo/Dropbox/web/hue/README.md",
+		"/Users/ivo/Dropbox/web/hue/lamps.txt",
+		"/Users/ivo/Dropbox/web/hue/test.tcl",
+		"/Users/ivo/Dropbox/web/hue/getGroupAttributes.tcl",
+		"/Users/ivo/Dropbox/web/hue/getCapabilities.tcl",
+		"/Users/ivo/Dropbox/web/hue/getAllGroups.tcl",
+		"/Users/ivo/Dropbox/web/hue/getAllLights.tcl",
+		"/Users/ivo/Dropbox/web/hue/getAllScenes.tcl",
+		"/Users/ivo/Dropbox/web/hue/down.sh",
+		"/Users/ivo/Dropbox/web/hue/test1.tcl",
+		"/Users/ivo/Dropbox/web/hue/setenv.sh",
+		"/Users/ivo/Dropbox/web/hue/lamps1.txt",
+		"/usr/local/bin/_nephro",
+		"/Users/ivo/Desktop/test.tcl",
+		"/Users/ivo/Desktop/cool.sh",
+		"/Users/ivo/Desktop/fade.html",
+		"/Users/ivo/Desktop/ggg/jbcore/juicebox.js",
+		"/Users/ivo/Desktop/ggg/jbcore/classic/theme.css",
+		"/Users/ivo/Desktop/ggg/jbcore/juicebox.php",
+		"/Users/ivo/Desktop/ggg/t.html",
+		"/Users/ivo/Desktop/ggg/config.xml",
+		"/Users/ivo/Desktop/ggg/index.html",
+		"/Users/ivo/Desktop/hide.sh",
+		"/Volumes/graid/web/test/index.html",
+		"/Users/ivo/Desktop/Schülervorspiel am 05.02.2017.fcpxml",
+		"/Volumes/graid/web/wadokai/sites/default/files/private/galleries/g2010/index.html",
+		"/Volumes/graid/web/parallax/index.php",
+		"/Users/ivo/Desktop/Bild.html",
+		"/Users/ivo/Desktop/unzip.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/_sql",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/iiSQL.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/iSQL.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/winisql.sh",
+		"/Volumes/graid/web/wadokai/sites/default/files/private/galleries/g2010/config.xml",
+		"/Volumes/graid/web/wadokai/sites/default/files/osje459djc8450dkfhsha53kdjf/galleries/jbcore/pswd.php",
+		"/Volumes/graid/web/wadokai/sites/default/files/osje459djc8450dkfhsha53kdjf/galleries/jbcore/juicebox.php",
+		"/Volumes/graid/web/wadokai/sites/default/files/osje459djc8450dkfhsha53kdjf/galleries/jbcore/juicebox.js",
+		"/Volumes/graid/web/wadokai/sites/default/files/osje459djc8450dkfhsha53kdjf/galleries/g2010/index.html",
+		"/Volumes/graid/web/wadokai/sites/default/settings.php",
+		"/Volumes/graid/web/wadokai/sites/default/files/osje459djc8450dkfhsha53kdjf/galleries/g2010/config.xml",
+		"/Volumes/graid/web/pull_wado.sh",
+		"/Users/ivo/Downloads/Settings_RT-AC3200.CFG",
+		"/Users/ivo/Dropbox/Shell-Scripts/wado/rename.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/wado/parallax.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/wado/compareTwig.sh",
+		"/Users/ivo/Desktop/differ.sh",
+		"/Users/ivo/Desktop/drupal8_parallax_theme.info.yml",
+		"/Volumes/graid/web/push_wado.sh",
+		"/Users/ivo/Desktop/t.txt",
+		"/Volumes/graid/web/wadokai/themes/drupal8_parallax_theme/includes/owl/owl.carousel.min.js",
+		"/Users/ivo/Desktop/drupal8_parallax_old/includes/owl/owl.carousel.min.js",
+		"/Users/ivo/Desktop/java2.txt",
+		"/Users/ivo/Desktop/java1.txt",
+		"/Users/ivo/Desktop/tt.txt",
+		"/private/var/folders/wc/098rfw110x98_0xgvy94vf2r0000gn/T/08cdbcca-615f-43d3-ac22-5ab32b5f57e2/usr/local/scripts/log.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/_prot",
+		"/Volumes/graid/Dropboxes/Dropbox-Sunrise/Dropbox/2010-06-21/Bea alt/Klaus.mbox/mbox",
+		"/Users/ivo/Downloads/Show-Popup.ps1",
+		"/Users/ivo/Desktop/check.txt",
+		"/Volumes/graid/web/env.sh",
+		"/private/var/folders/wc/098rfw110x98_0xgvy94vf2r0000gn/T/26f43820-39d8-4502-84c4-fa913ee55938/wadokai/.htaccess",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/_win",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/sql",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/crea",
+		"/Users/ivo/Desktop/_sql.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/scanner",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/combine",
+		"/Users/ivo/Library/Application Support/Feral Interactive/LEGO Batman/LEGOBatmanData/Data/MacSpecific/STUFF/TEXT/AMERICAN_CREDITS.TXT",
+		"/Users/ivo/Library/Application Support/Feral Interactive/LEGO Batman/LEGOBatmanData/Data/MacSpecific/STUFF/TEXT/AMERICAN.TXT",
+		"/Users/ivo/Desktop/raspimatic-2.27.8.20170620-2017-11-01-1349/firmware_version",
+		"/Users/ivo/Desktop/raspimatic-2.27.8.20170620-2017-11-01-1349/key_index",
+		"/Users/ivo/Desktop/raspimatic-2.27.8.20170620-2017-11-01-1349/signature",
+		"/Volumes/graid/web/wadokai_restore/sites/default/settings.php",
+		"/private/var/folders/wc/098rfw110x98_0xgvy94vf2r0000gn/T/26f43820-39d8-4502-84c4-fa913ee55938/wadokai/sites/default/services.yml",
+		"/private/var/folders/wc/098rfw110x98_0xgvy94vf2r0000gn/T/26f43820-39d8-4502-84c4-fa913ee55938/wadokai/sites/default/settings.php",
+		"/Users/ivo/Desktop/csql.sh",
+		"/Users/ivo/Desktop/Steuer/readme.txt",
+		"/Users/ivo/Desktop/ttt.sh",
+		"/Users/ivo/Desktop/zip.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/copysono",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/_seek",
+		"/Users/ivo/Dropbox/Shell-Scripts/cmd/_pat",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/nephro.sh",
+		"/Users/ivo/Desktop/sss.sh",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/.env.sh",
+		"/Volumes/[C] Windows 10.hidden/other/command/ex.au3",
+		"/Volumes/[C] Windows 10.hidden/other/command/MakeRtf.cs",
+		"/Users/ivo/Dropbox/Shell-Scripts/sql/1 Scripts/i/env.sh",
+		"/Users/ivo/Desktop/anfang.sh",
+		"/Users/ivo/Desktop/sass/t.sh",
+		"/Users/ivo/Desktop/s.sh",
+		"/Users/ivo/Desktop/copysono",
+		"/Volumes/SONO/CopyScript.app/Contents/Resources/script",
+		"/Users/ivo/Desktop/cronjob.sh"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"x",
+			"float "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "test.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "color.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "color.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 557,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "c.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 834,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								756,
+								756
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 226.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "make (cc)",
+	"project": "c.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

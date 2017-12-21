@@ -1,0 +1,25 @@
+{
+		"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["tcl-header","vnsprintf"],
+			"file_include_patterns": ["*.c","*.h", "*.sh", "*.tcl", "compile_tcl", "dockcross", "*.txt", "*.md"],
+
+		}
+	],
+	"build_systems":
+    [
+        {
+            "name": "compile local",
+			"shell_cmd" : "${file_path}/compile_tcl -l",
+			"working_dir" : "$file_path",
+	    },
+        {
+            "name": "compile",
+			"shell_cmd" : "${file_path}/compile_tcl",
+			"working_dir" : "$file_path",
+	    },
+    ]
+
+}

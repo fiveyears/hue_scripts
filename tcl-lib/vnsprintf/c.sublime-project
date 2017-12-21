@@ -1,0 +1,31 @@
+{
+		"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["tcl-lib","jsmn","json"],
+			"file_include_patterns": ["*.c","*.h", "Makefile", "*.txt", "*.md"],
+
+		}
+	],
+	"build_systems":
+    [
+        {
+            "name": "gcc",
+			"shell_cmd" : "gcc $file_name -o ${file_base_name} && ${file_path}/${file_base_name}",
+			"working_dir" : "$file_path",
+	    },
+        {
+            "name": "cc",
+			"shell_cmd" : "gcc $file_name -o ${file_base_name} && ${file_path}/${file_base_name}",
+			"working_dir" : "$file_path",
+	    },
+        {
+            "name": "make (cc)",
+			"shell_cmd" : "sed -i '' -e \"s/^TARGET.*/TARGET=${file_base_name}/g\" ${file_path}/Makefile && make && ${file_path}/${file_base_name}",
+			"shell_cmd" : " cd ${file_path} && make && ${file_path}/test",
+			"working_dir" : "$file_path",
+	    },
+    ]
+
+}

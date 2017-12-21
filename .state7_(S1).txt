@@ -1,0 +1,1 @@
+7 alert select bri 254 effect none on false sat 254 xy 0.6915,0.3083 
