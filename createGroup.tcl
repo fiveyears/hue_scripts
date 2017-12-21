@@ -9,7 +9,7 @@ if {$::argc > 1} {
 	regsub -all {(\d+)} $l {"\1"} l
 	set body  "{\"lights\": \\\[ $l \\\], \"name\": \"$name\"}"
 	set other [huePost "groups" $body]
-	load $script_path/json/libJSON[info sharedlibextension]
+	load $script_path/json/libTools[info sharedlibextension]
 	eval [jsonparser info [string range $other 1 end-1]]
 	parray info
 } {

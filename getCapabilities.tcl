@@ -2,7 +2,7 @@
 set script_path [file dirname [info script]]
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]
-load $script_path/json/libJSON[info sharedlibextension]
+load $script_path/json/libTools[info sharedlibextension]
 set cap "capabilities"
 foreach aArg $argv {
 	set cap "$cap/$aArg"

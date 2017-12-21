@@ -30,6 +30,7 @@ if { [testRega] } {
     parray light
     exit
 }
+
 setVariable "$pre${lightNr}_alert" "Alarm der Hue-Lampe $pre${lightNr}" "str" 0 0 ""    "" "" "" false "" "" $light(state,alert)
 setVariable "$pre${lightNr}_colormode" "Letzter Colormode der Hue-Lampe $pre${lightNr}" "str" 0 0 ""    "" "" "" false "" "" $light(state,colormode)
 setVariable "$pre${lightNr}_effect" "Effekt der Hue-Lampe $pre${lightNr}" "str" 0 0 ""    "" "" "" false "" "" $light(state,effect)
