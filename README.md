@@ -5,7 +5,7 @@
 * Ergänzung neuer Funktionalität
 * Fehlerbehebung
 
-Da tcl 8.2 im Funktionsumfang deutlich hinterher hinkt, habe ich die fehlenden Funktionen wie regep -all und lset umgeschrieben. Bei tcl \>= 8.5 (z. B. macOS high sierra) werden die eingebauten Funktionen genommen, bei der CCU (tcl Version 8.2) habe ich die Funktionen nachgebaut.
+Da tcl 8.2 im Funktionsumfang deutlich hinterher hinkt, habe ich die fehlenden Funktionen wie regep -all und lset umgeschrieben. Bei tcl \>= 8.5 (z. B. macOS high sierra) werden die eingebauten Funktionen genommen, bei der CCU (tcl Version 8.2)  habe ich die Funktionen nachgebaut.
 Getestet wurde alles auf einem Mac sowie auf der Raspimatic, da ich keine CCU2 mehr nutze.
 
 ## homematic-hue
