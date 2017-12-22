@@ -8,6 +8,11 @@ source [file join $script_path "hue.inc.tcl"]
 #set_places light 
 if {$argc > 0 } {
 	set nr [lindex $argv 0]
+	set nr [exec $script_path/getLightNumberByName.tcl $nr]
+	if { [string first Exit $nr] > 0} { 
+		puts $nr
+		exit 1	
+	}
 	set light(number) $nr
 #	json light [hueGet "lights/$nr"]
 	load $script_path/json/libTools[info sharedlibextension]

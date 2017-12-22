@@ -44,6 +44,7 @@ if {$argc > 0 } {
 		puts "Lamp '$nr' not reachable! Exit."
 		exit 1
 	}
+    set oldL "$nr alert $light(state,alert) bri $light(state,bri) effect $light(state,effect) on $light(state,on) sat $light(state,sat) xy $light(state,xy) "
     if { [testRega] } {
         set l [readFile ".state${nr}_($light(name)).txt"]
     } else {
@@ -54,14 +55,42 @@ if {$argc > 0 } {
 		}
 		set l $info(Variable)
     }
+    if { [join $oldL] == [join $l] } {
+    	exit 0
+    }
     array set info [lrange $l 1 end]
-    if { $info(on) == "false" } {
-    	setLight " $nr on true " $nr
+    array set oldInfo [lrange $oldL 1 end]
+    set oldon $oldInfo(on)
+    set on $info(on)
+    unset oldInfo(on)
+    unset info(on)
+    set l "$nr [array get info]"
+    #if the light to set or the stored settings are on then don't care
+    if { $oldon == "true" || $on == "true"  } {
+    	if { $oldon == "false"  } {
+    		setLight " $nr on true " $nr
+    	}
+    	setLight $l $nr
+    	# switch the light off if the settings are off
+    	if { $on == "false"  } {
+    		setLight " $nr on false " $nr
+    	}
+    	exit
     }
-    setLight $l $nr
-    if { $info(on) == "false" } {
-    	setLight " $nr on false " $nr
-    }
+    #both lamps are off
+    set newL "$nr"
+    foreach {key value} [array get info] {
+	    if { $value != $oldInfo($key) } {
+	    	set newL "$newL $key $value"
+	    }
+	}
+	if { [join $newL] == "$nr"} {
+		exit 0
+		# donothing
+	}
+    setLight "$nr on true " $nr
+    setLight $newL $nr
+    setLight "$nr on false " $nr
 
 } {
 	puts "Usage: [info script] Lightnumber|Name"
