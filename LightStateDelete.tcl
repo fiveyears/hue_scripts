@@ -1,12 +1,12 @@
 #!/usr/bin/env tclsh
-global ip user light ;# gesetzt für den Aufruf durch ccu_read_hue.tcl
+global ip user light lightcount;# gesetzt für den Aufruf durch ccu_read_hue.tcl
 set script_path [file dirname [info script]]
-set lightcount 12
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]
 source [file join $script_path "ccu_helper.tcl"]
-
-
+if { [info exists lightcount] == 0 } {
+	set lightcount 50
+}
 if {$argc > 0 } {
 	set nr [lindex $argv 0]
 	if { $nr == "0" } {

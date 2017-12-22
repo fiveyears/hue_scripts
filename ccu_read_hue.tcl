@@ -1,18 +1,23 @@
 #!/usr/bin/env tclsh
+set script_path [file dirname [info script]]
+source [file join $script_path "config.tcl"]
+source [file join $script_path "ccu_helper.tcl"]
+if { [info exists lightcount] == 0 } {
+    set lightcount 50
+}
 set lightNr 0
 set pre "hue"
-set lampcount 12
 if {$::argc > 0} {set lightNr [lindex $argv 0]};# erstes Argument ist die LightNr ( 1, 2, ...)
 if {$::argc > 1} {set pre [lindex $argv 1]};# zweites Argument ist Vorsilbe wie "pre"
 
-source [file join [file dirname [info script]] "ccu_helper.tcl"]
+
 set script [file join [file dirname [info script]] "getLightAttributesAndState.tcl"]
 if {$lightNr == "0"} {
     if { [testRega] } {
         puts "Rega not loaded! This may not be a ccu or raspimatic."
         exit
     }
-    for {set i 1 } { $i <= $lampcount} { incr i} {
+    for {set i 1 } { $i <= $lightcount} { incr i} {
     	deleteVariablen "${pre}$i"
     }
 	exit

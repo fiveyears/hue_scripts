@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 ## homematic-hue tcl 0.17
 
-* neuer json-scanner
+* neuer json-scanner in C
 * Ergänzung neuer Funktionalität
 * Fehlerbehebung
 
-Da tcl 8.2 im Funktionsumfang deutlich hinterher hinkt, habe ich die fehlenden Funktionen wie regep -all und lset umgeschrieben. Bei tcl \>= 8.5 (z. B. macOS high sierra) werden die eingebauten Funktionen genommen, bei der CCU (tcl Version 8.2)  habe ich die Funktionen nachgebaut.
+Da tcl 8.2 im Funktionsumfang deutlich hinterher hinkt, habe ich die fehlenden Funktionen wie regep -all und lset umgeschrieben. Bei tcl \>= 8.5 (z. B. macOS high sierra) werden die eingebauten Funktionen genommen, bei der CCU (tcl Version 8.2)  habe ich ursprünglich die Funktionen nachgebaut. Da ich aber weitere Funktionen implementieren wollte, habe ich eine Tcl-Library in C geschrieben  und diese dann kompiliert. Es liegen zwei Versionen vor **libTools.dylib** für den Mac und **libTools.so** für den Raspi. 
 Getestet wurde alles auf einem Mac sowie auf der Raspimatic, da ich keine CCU2 mehr nutze.
 
 ## homematic-hue
@@ -14,7 +13,53 @@ Steuern von Philips Hue Lights mit tcl und der Homematic CCU2
 
 Es funktioniert ohne CUXD und curl, sondern einfach per Socket.
 
-### Installation
+## Neue Funktionen
+
+### setLightRgb.tcl
+
+Schaltet die Lampe bei Bedarf an, setzt die Farbe auf den RGB-Wert, optional kann noch die Brillianz und die Sättigung angegeben werden.
+
+    > ./setLightRgb.tcl Lampennummer/Name rgb [bri] [sat]
+    > ./setLightRgb.tcl S1 red
+    > ./setLightRgb.tcl 7 0000FF 254 200
+Die Funktion nimmt sowohl die Lightnumber als auch den Namen. RGB kann als Hex-Zahl (#121212, 121212, 0x121212) oder als Farbname angegeben werden, Brillianz und Sättigung optional 0 ... 254. Es liegt eine Html-Datei [Table of Colors](./Table\ of\ Colors.html) mit den verwendeten Farbnamen bei. Intern habe ich die Color-Umrechnung nachgebaut mit Gamma-Korrektur zu einem x,y-Paar und es werden auch nur die x,y-Werte gesetzt, die im Gamut der Lampe enthalten sind.
+
+### LightState ... tcl
+
+Diese Funktionen speichern einen aktuellen Zustand einer Lampe in einem String auf der Festplatte bei nicht-raspi-Systemen (.state2_(Name).txt, bei der Raspi (und CCU2) in einer Systemvariable "stateNr" also z. B. state1. Wenn z. B. die Haustüre länger als 5 Minuten offen steht, wird bei mir eine Flurlampe rot-geschaltet, geht die Tür wieder zu, dann wird der alte Zustand wieder hergestellt.
+
+#### LightStateSave.tcl
+
+Speichert den Zustand einer Lampe.
+
+	> LightStateSave.tcl S1
+	> LightStateSave.tcl 6
+
+#### LightStateRead.tcl
+
+Liest den Zustand einer Lampe und setzt die Lampe.
+
+	> LightStateRead.tcl S1
+	> LightStateRead.tcl 6
+
+#### LightStateDelete.tcl
+
+Löscht den gespeicherten Zustand einer Lampe (0 löscht alle gespeicherten Zustände)
+
+	> LightStateDelete.tcl S1
+	> LightStateDelete.tcl 6
+	> LightStateDelete.tcl 0
+
+### getLightAttributesAndState.tcl und getAllLights.tcl 
+
+Beide Funktionen haben jetzt eine lange und kurze (standard) Ausgabe. Die lange kann mit dem zusätzlichen Parameter **l** erreicht werden. In der kurzen Version erscheint jetzt auch der RGB-Wert der Lampe hexadezimal, in der langen Version auch das Gamut (A, B oder C). Statt Lampennummer kann auch der Name verwendet werden.
+
+	> getLightAttributesAndState.tcl S1
+	> getLightAttributesAndState.tcl 6 l
+	> getAllLights.tcl
+	> getAllLights.tcl l
+
+## Installation
 
 Kopieren des Ordnerinhaltes per ssh auf die CCU/Raspimatic. Ich habe es kopiert nach /usr/local/scripts/hue, aber der Ordner ist letztendlich egal. Die includes sind nicht hardkodiert, sondern liegen im gleichen Ordner.
 
@@ -24,11 +69,12 @@ Kopieren des Ordnerinhaltes per ssh auf die CCU/Raspimatic. Ich habe es kopiert 
 
 ### config.tcl
 
-In die config.tcl kommt die IP der bridge sowie der angelegte User-Name.
+In die config.tcl kommt die IP der bridge sowie der angelegte User-Name. Neu ist die Anzahl der Lampen!
 Die API der Hue-Lights ist [super dokumentiert][1].
 
 	set ip "192.168.1.17"
 	set user "newdeveloper"
+	set lightcount 12
 
 ### Systemanforderungen
 
@@ -51,6 +97,7 @@ Liest die Lampen aus.
 
 ccu\_read\_hue.tcl 0 löscht die im Script angegebenen Systemvariablen der Lampen (hier 1 bis 12)
 Ohne Parameter lautet die Lampennummer 1 und der prefix hue, die Variablen heißen also **hue1\_** 
+
 	> ./ccu_read_hue.tcl 0 ;# löscht alle hue1_, hue2_ und ... und hue12_Variablen, wer mehr Lampen hat, muss diese noch eintragen
 	> ./ccu_read_hue.tcl 2 ;# liest Lampe 2 aus und kreiert die hue2_Variablen
 
