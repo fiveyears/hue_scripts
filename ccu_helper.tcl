@@ -8,6 +8,59 @@ proc testRega { } {
   return $regafail
 }
 
+proc remoteRegascript { script } {
+  #set script [string map {\" \\\"} $script]
+  set script [string map {\[ \\\[} $script]
+  set script [string map {\] \\\]} $script]
+  #set script [string map {; \\;} $script]
+  set script "load tclrega.so;array set values \[rega_script {$script}];puts \[array get values\];"
+  #puts $script
+  return [exec echo $script | ssh ccu tclsh]
+  #puts [exec echo 'load tclrega.so;array set values \[rega_script {var k = dom.GetObject ("Kueche Schalter Kuehlschrank").State();}\] ;puts \[array get values\]' | ssh ccu tclsh]
+}
+
+proc runP {progName} {
+ set regascript {
+    var o = dom.GetObject('$progName');
+      Name = '$progName';
+      DPInfo = o.DPInfo();
+      ValueSubType = o.ValueSubType();
+      ValueType = o.ValueType();
+      ValueMin = o.ValueMin();
+      ValueMax = o.ValueMax();
+      ValueName0 = o.ValueName0();
+      ValueName1 = o.ValueName1();
+      ValueUnit = o.ValueUnit();
+      Variable = o.Variable();
+      VarType = o.VarType();
+      State = o.State();
+      ValueList = o.ValueList();
+      Protokoll = o.DPArchive();
+      Channel = o.Channel();
+      Variable = o.Variable();
+      State = o.State();
+      ts = o.Timestamp();
+   }
+  array set result [remoteRegascript [subst $regascript]]
+  parray result
+}
+proc runProg {progName} {
+  set regascript {
+    var o = dom.GetObject('$progName');
+    if (o) {
+      o.ProgramExecute();
+    } else {
+      Write('Prog not found!');
+    }
+  }
+  array set result [remoteRegascript [subst $regascript]]
+  unset result(o)
+  unset result(httpUserAgent)
+  unset result(sessionId)
+  # return [array get result]
+  return $result(STDOUT)
+}
+
 proc infoVariable {name } {
   global regafail
   if { $regafail } {

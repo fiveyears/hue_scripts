@@ -1,14 +1,50 @@
 #!/usr/bin/env tclsh
-set script_path [file dirname [info script]]
-source [file join $script_path "config.tcl"]
+if {[package vcompare [package provide Tcl] 8.4] < 0} {
+	set script_path [file dirname $argv0]
+} else {
+	set script_path [file normalize [file dirname $argv0]]
+}
+
+source [file join $env(HOME) ".config.hue.tcl"]
 source [file join $script_path "hue.inc.tcl"]
-load $script_path/json/libTools[info sharedlibextension]
+load $script_path/bin/libTools[info sharedlibextension]
 
 
+set a "s"
+if {$argc > 1} { 
+	set a [lindex $argv 1]
+}
 if {$argc > 0 } {
 	set nr [lindex $argv 0]
+	set nr [getGroupNumberByName $nr]
+	if { [string first Exit $nr] > 0} { 
+		puts $nr
+		exit 1	
+	}
 	set group(number) $nr
-	eval [jsonparser group [hueGet "groups/$nr"]]
+	eval [ jsonMapper [jsonparser group [hueGet "groups/$nr"]] ]
+	set l $group(lights)
+	set l [string map {"\""  ""} $l]
+	set group(lights) $l
+	set l [split $l ,]
+	set lightNames {}
+	foreach lightNr $l {
+		eval [ jsonMapper [jsonparser light [hueGet "lights/$lightNr"]] ]
+		lappend lightNames $light(name)
+	}
+	if { "$a" != "l" } {
+		catch {
+			unset group(action,alert)
+			unset group(action,bri)
+			unset group(action,colormode)
+			unset group(action,ct)
+			unset group(action,effect)
+			unset group(action,hue)
+			unset group(action,sat)
+			unset group(recycle)
+		}
+	}
+	set group(lightNames) [join $lightNames ,]
 	# argc > 1 then long output else short
 	#if {$argc > 1} { 
 	#	unset 

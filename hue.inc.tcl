@@ -1,26 +1,41 @@
+#!/usr/bin/env tclsh
+set isc [info script]
+if { "$isc" == $::argv0 } {
+  global ip user id key
+  set sourced 0
+	if {[package vcompare [package provide Tcl] 8.4] < 0} {
+		set script_path [file dirname $argv0]
+	} else {
+		set script_path [file normalize [file dirname $argv0]]
+	}
+	source [file join $env(HOME) ".config.hue.tcl"]
+} else {
+	set sourced 1
+}
 package require http
+
+proc jsonMapper { s} {
+	return [string map { \[ \{ \] \} } $s]
+}
 
 proc hueGet {{url ""}} {
 	global ip user
 	set url "http://$ip/api/$user/$url"
+	# puts $url
 	set r [http::geturl $url]
 	set ret [http::data $r]
 	::http::cleanup $r
 	regsub -all  {^.*application/json\s*} $ret "" newret
-	return $newret
+	return [encoding convertfrom utf-8 $newret]
 }
 
 proc hueDelete {{url ""}} {
 	global ip user
-	set header {DELETE /api/$user/$url HTTP/1.1
-HOST: $ip}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
+	catch {
+		set ret [exec curl -s --insecure --location --request DELETE https://$ip/api/$user/$url]
+	}
 	regsub -all  {^.*application/json\s*} $ret "" newret
-	return $newret
+	return [encoding convertfrom utf-8 $newret]
 }
 
 proc huePut {url body} {
@@ -40,13 +55,13 @@ $body
 	set ret [read $s]
 	close $s
 	regsub -all  {^.*application/json\s*} $ret "" newret
-	return $newret
-
+	return [encoding convertfrom utf-8 $newret]
 }
 
 proc huePost {url body} {
 	global ip user
 	set body [subst $body]
+	set body "{$body}"
 	if {$url == ""} {
 		set api "/api"  ;# Create Config
 	} else {
@@ -66,8 +81,7 @@ $body
 	set ret [read $s]
 	close $s
 	regsub -all  {^.*application/json\s*} $ret "" newret
-	return $newret
-
+	return [encoding convertfrom utf-8 $newret]
 }
 
 proc getBody {bodyarray} {
@@ -77,6 +91,7 @@ proc getBody {bodyarray} {
 		   set n [lindex $bodyarray $i]
 		   incr i
 		   set v [lindex $bodyarray $i]
+		   # puts "$n $v"
 		   if {$v != ""} {
 		   		switch $n {
 		   			on {
@@ -90,6 +105,36 @@ proc getBody {bodyarray} {
 		   			}
 		   			hue {
 		   				set body "$body,\"hue\":$v"
+		   			}
+		   			name {
+		   				set body "$body,\"name\":\"$v\""
+		   			}
+		   			description {
+		   				set body "$body,\"description\":\"$v\""
+		   			}
+		   			time {
+		   				set body "$body,\"time\":\"$v\""
+		   			}
+		   			lat {
+		   				set body "$body,\"lat\":\"$v\""
+		   			}
+		   			long {
+		   				set body "$body,\"long\":\"$v\""
+		   			}
+		   			localtime {
+		   				set body "$body,\"localtime\":\"$v\""
+		   			}
+		   			status {
+		   				set body "$body,\"status\":\"$v\""
+		   			}
+		   			autodelete {
+		   				set body "$body,\"autodelete\":$v"
+		   			}
+		   			address {
+		   				set body "$body,\"address\":\"$v\""
+		   			}
+		   			method {
+		   				set body "$body,\"method\":\"$v\""
 		   			}
 		   			hue_inc {
 		   				set body "$body,\"hue_inc\":$v"
@@ -124,6 +169,16 @@ proc getBody {bodyarray} {
 		   			xy_inc {
 		   				set body "$body,\"xy_inc\":\\\[$v\\\]"
 		   			}
+		   			command {
+		   				set innerBody [lrange $bodyarray $i end]
+		   				set i [llength $bodyarray]
+		   				set body "$body,\"command\":{[getBody "0 $innerBody"]}"
+		   			}
+		   			body {
+		   				set innerBody [lrange $bodyarray $i end]
+		   				set i [llength $bodyarray]
+		   				set body "$body,\"body\":{[getBody "0 $innerBody"]}"
+		   			}
 		   		}
 		   } else {
 		   		switch $n {
@@ -138,6 +193,9 @@ proc getBody {bodyarray} {
 		}
 
 	}
+	if { $body != "" } {
+		set body [string range $body 1 end]
+	}
 	return $body
 }
 
@@ -145,3 +203,101 @@ proc wsplit {str sep} {
   split [string map [list $sep \0] $str] \0
 }
 
+proc getSensorNumberByName { str } {
+	global script_path
+  if { [string first Tools [info loaded]] < 0 } {
+		load $script_path/bin/libTools[info sharedlibextension]
+	}
+	# set places 2
+	set nr $str
+	if { [string is digit $nr ]} {
+		set nr [string trimleft $nr 0]
+	} else {
+		eval [ jsonMapper [jsonparser t [hueGet "sensors"] 1 ] ]
+		set names [array get t "*,name*"]
+		set pos [lsearch  $names $nr]
+		if { $pos < 0 } 	{
+			puts "Sensor '$nr' not found! Exit"
+			exit 0
+		}
+		incr pos -1
+		set nr [lindex $names $pos]
+		set nr  [lindex [split $nr , ] 0 ]
+	}
+	return $nr
+}
+
+proc getScheduleNumberByName { str } {
+	global script_path
+	if { [string first Tools [info loaded]] < 0 } {
+		load $script_path/bin/libTools[info sharedlibextension]
+	}
+	# set places 2
+	set nr $str
+	if { [string is digit $nr ]} {
+		set nr [string trimleft $nr 0]
+	} else {
+		eval [ jsonMapper [jsonparser t [hueGet "schedules"] 1 ] ]
+		set names [array get t "*,name*"]
+		set pos [lsearch  $names $nr]
+		if { $pos < 0 } 	{
+			puts "Schedule '$nr' not found! Exit"
+			exit 0
+		}
+		incr pos -1
+		set nr [lindex $names $pos]
+		set nr  [lindex [split $nr , ] 0 ]
+	}
+	return $nr
+}
+
+proc getLightNumberByName { str } {
+	global script_path
+	if { [string first Tools [info loaded]] < 0 } {
+		load $script_path/bin/libTools[info sharedlibextension]
+	}
+	# set places 2
+	set nr $str
+	if { [string is digit $nr ]} {
+		set nr [string trimleft $nr 0]
+	} else {
+		eval [ jsonMapper [jsonparser t [hueGet "lights"] 1 ] ]
+		set names [array get t "*,name*"]
+		set pos [lsearch  $names $nr]
+		if { $pos < 0 } 	{
+			puts "Light '$nr' not found! Exit"
+			exit 0
+		}
+		incr pos -1
+		set nr [lindex $names $pos]
+		set nr  [lindex [split $nr , ] 0 ]
+	}
+	return $nr
+}
+
+proc getGroupNumberByName { str } {
+	global script_path
+	if { [string first Tools [info loaded]] < 0 } {
+		load $script_path/bin/libTools[info sharedlibextension]
+	}
+	# set places 2
+	set nr $str
+	if { [string is digit $nr ]} {
+		set nr [string trimleft $nr 0]
+		if { $nr == {} } {
+			set nr 0
+		}
+	} else {
+		eval [ jsonMapper [jsonparser t [hueGet "groups"] 1 ] ]
+		set names [array get t "*,name*"]
+		set pos [lsearch  $names $nr]
+		if { $pos < 0 } 	{
+			puts "Group '$nr' not found! Exit"
+			exit 0
+		}
+		incr pos -1
+		set nr [lindex $names $pos]
+		set nr  [lindex [split $nr , ] 0 ]
+	}
+	return $nr
+}

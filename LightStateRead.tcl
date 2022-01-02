@@ -1,6 +1,11 @@
 #!/usr/bin/env tclsh
-global ip user light ;# gesetzt für den Aufruf durch ccu_read_hue.tcl
-set script_path [file dirname [info script]]
+global ip user light ;# set in config.tcl
+if {[package vcompare [package provide Tcl] 8.4] < 0} {
+	set script_path [file dirname $argv0]
+} else {
+	set script_path [file normalize [file dirname $argv0]]
+}
+
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]
 source [file join $script_path "ccu_helper.tcl"]
@@ -22,15 +27,25 @@ proc readFile {strFile} {
 proc setLight {l light} {
 	set body [getBody $l];# Paare von Bodyarguments in beliebiger Reihenfolge
 	if { $body != ""} {
-		set body [string range $body 1 end]
+		# set body [string range $body 1 end]
 		set url "lights/$light/state"
 		puts [huePut $url "{$body}"]
 	}
 }
 
 if {$argc > 0 } {
+	set echo 0
 	set nr [lindex $argv 0]
-	set nr [exec $script_path/getLightNumberByName.tcl $nr]
+	if { $nr == "-e" } {
+		if {$argc > 1 } {
+			set nr [lindex $argv 1]
+			set echo 1
+		} else {
+			puts "Usage: [info script] \[-e\] Lightnumber|Name"
+			exit
+		}
+	}
+	set nr [getLightNumberByName $nr]
 	if { [string first Exit $nr] > 0} { 
 		puts $nr
 		exit 1	
@@ -38,8 +53,8 @@ if {$argc > 0 } {
 	set light(number) $nr
 
 #	json light [hueGet "lights/$nr"]
-	load $script_path/json/libTools[info sharedlibextension]
-	eval [jsonparser light [hueGet "lights/$nr"]]
+	load $script_path/bin/libTools[info sharedlibextension]
+	eval [ jsonMapper [jsonparser light [hueGet "lights/$nr"]] ]
 	if {$light(state,reachable) == "false" } {
 		puts "Lamp '$nr' not reachable! Exit."
 		exit 1
@@ -54,6 +69,10 @@ if {$argc > 0 } {
 			exit 1
 		}
 		set l $info(Variable)
+    }
+    if {$echo == "1" } {
+		puts $l
+		exit 0
     }
     if { [join $oldL] == [join $l] } {
     	exit 0

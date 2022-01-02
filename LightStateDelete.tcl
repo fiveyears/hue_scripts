@@ -1,7 +1,12 @@
 #!/usr/bin/env tclsh
 global ip user light lightcount;# gesetzt für den Aufruf durch ccu_read_hue.tcl
-set script_path [file dirname [info script]]
-source [file join $script_path "config.tcl"]
+if {[package vcompare [package provide Tcl] 8.4] < 0} {
+	set script_path [file dirname $argv0]
+} else {
+	set script_path [file normalize [file dirname $argv0]]
+}
+
+source [file join $env(HOME) ".config.hue.tcl"]
 source [file join $script_path "hue.inc.tcl"]
 source [file join $script_path "ccu_helper.tcl"]
 if { [info exists lightcount] == 0 } {
@@ -20,13 +25,13 @@ if {$argc > 0 } {
 		}
 		exit 0
 	}
-	set nr [exec $script_path/getLightNumberByName.tcl $nr]
+	set nr [getLightNumberByName $nr]
 	if { [string first Exit $nr] > 0} { 
 		puts $nr
 		exit 1	
 	}
-	load $script_path/json/libTools[info sharedlibextension]
-	eval [jsonparser light [hueGet "lights/$nr"]]
+	load $script_path/bin/libTools[info sharedlibextension]
+	eval [ jsonMapper [jsonparser light [hueGet "lights/$nr"]] ]
     if { [testRega] } {
         exec rm -rf "$script_path/.state${nr}_($light(name)).txt" 
     } else {
