@@ -8,7 +8,12 @@ if { "$isc" == $::argv0 } {
 	} else {
 		set script_path [file normalize [file dirname $argv0]]
 	}
-	source [file join $env(HOME) ".config.hue.tcl"]
+	if { "$env(HOME)" == "/root" } {
+		set config [file join $script_path  "bin/.config.hue.tcl"]
+	} else {
+		set config [file join $env(HOME) ".config.hue.tcl"]
+	}
+	source "$config"
 } else {
 	set sourced 1
 }

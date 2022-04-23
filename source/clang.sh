@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2021-12-23 09:22:29
+# $=variable means word split
 dir=$(cd "$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")" && pwd)
 cd $dir
 export LANG\=en_US.US-ASCII
@@ -86,6 +87,7 @@ else
   tclLinkerOpts_arm64=
 fi
 files=""
+export SDKROOT="`xcrun --show-sdk-path`"
 for var in "$@"
 do
   files=($files $var.o)

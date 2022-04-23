@@ -400,7 +400,7 @@ const char* realRGB (const char *rgb){
 }
 
 const char* calcXY (const char *model, const char *rgb){
-    int x = 0; int y = 0; int z = 0;
+    unsigned int x = 0; unsigned int y = 0; unsigned int z = 0;
     const char *s = rgb;
     const char *t;
     while (strncasecmp(s,"#",1) == 0 || strncasecmp(s,"0x",2) == 0  || strncasecmp(s,"x",1) == 0 ){
@@ -413,7 +413,7 @@ const char* calcXY (const char *model, const char *rgb){
             t=colorsrgb[i];
         }
     }
-    sscanf(t, "%2i%2i%2i", &x,&y,&z);
+    sscanf(t, "%2x%2x%2x", &x,&y,&z);
     Color color;
     color.red = (float) x / 255;
     color.green = (float) y / 255;
@@ -425,13 +425,13 @@ const char* calcXY (const char *model, const char *rgb){
 }
 
 const char* listColors (const char *start) {
-    int l = strlen(start);
+    unsigned long l = strlen(start);
     int i, j;
     j = 0;
     const char *s[colorcount];
     for (i = 0; i < colorcount; i++) {
         if (l == 0 || strncasecmp(colornames[i],start,l) == 0) {
-             int buffersize = strlen(colornames[i]) + 4 + strlen(colorsrgb[i]);
+            unsigned long buffersize = strlen(colornames[i]) + 4 + strlen(colorsrgb[i]);
             char *buffer = malloc(buffersize);
             if (buffer == NULL) {
                 printf("No memory for buffer!\n");

@@ -21,7 +21,11 @@ if {  [regexp {192\.168\.3\.} $ip]} {
 	set user "set user 4w5m2-1-0nf-CmVv8gf6V4zFBawat6haJMxorwGw"
 	set key "set key Dsyc5kb5hQkMTtAT9qipDJNuBoXtHylwyVBDMEej"
 }
-set config [file join $env(HOME) ".config.hue.tcl"]
+if { "$env(HOME)" == "/root" } {
+	set config [file join $script_path  "bin/.config.hue.tcl"]
+} else {
+	set config [file join $env(HOME) ".config.hue.tcl"]
+}
 set url https://discovery.meethue.com
 set again {}
 set dagain { (again)}
@@ -47,15 +51,8 @@ proc Discovery {} {
 	set s ""
 	set baseCount 0
 	set options {}
-	catch {
-		set s [exec curl -s "$url" ] 
-	}
-	set s [ exec echo "$s" | [file dirname [info script]]/bin/jsondump | sed "s/'/\"/g"]
-	regsub -all {\n+} $s "\n" s
-	regsub -all  {^\n} $s "" s
-	regsub -all  {\n$} $s "" s
-	set yaml [split $s "\n"]
-    eval  [readYaml $yaml Base]
+	set s [exec curl -s "$url"  | [file dirname [info script]]/bin/jsondump] 
+    eval  [readYaml $s Base]
     set j 0
     set k 1
     while {[info exists "Base($j)(id)"]} {
@@ -172,7 +169,7 @@ while 1 {
 			puts $fileId "$user"
 		}
 		if { [info exists id] && [info exists ip]} {
-			getLight
+			getLight -1
 			foreach {key value} [array get lightIDarray] {
 				puts $fileId "set \"lightIDarray($key)\" \"$value\""
 			}

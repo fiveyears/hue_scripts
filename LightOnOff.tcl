@@ -17,7 +17,12 @@ proc LightOnOff {args} {
 	}
 	global ip user light ;# set in config.tcl
 	set script_path [file dirname [info script]]
-	source [file join $env(HOME) ".config.hue.tcl"]
+	if { "$env(HOME)" == "/root" } {
+		set config [file join $script_path  "bin/.config.hue.tcl"]
+	} else {
+		set config [file join $env(HOME) ".config.hue.tcl"]
+	}
+	source "$config"
 	source [file join $script_path "hue.inc.tcl"]
 	set nr [getLightNumberByName $nr]
 	if { [string first Exit $nr] > 0} { 

@@ -5,11 +5,13 @@ if {[package vcompare [package provide Tcl] 8.4] < 0} {
 } else {
 	set script_path [file normalize [file dirname $argv0]]
 }
-source [file join $env(HOME) ".config.hue.tcl"]
+if { "$env(HOME)" == "/root" } {
+	set config [file join $script_path  "bin/.config.hue.tcl"]
+} else {
+	set config [file join $env(HOME) ".config.hue.tcl"]
+}
+source "$config"
 source [file join $script_path "hue.inc.tcl"]
-#source [file join $script_path "json/json.tcl"]
-#json light [hueGet "lights"]
-#set_places light 
 set places 2
 load $script_path/bin/libTools[info sharedlibextension]
 eval [ jsonMapper [jsonparser light [hueGet "lights"] $places ] ]
@@ -17,14 +19,9 @@ set a "s"
 if {$argc > 0} { 
 	set a [lindex $argv 0]
 }
-if { "$a" != "l" || "$a" != "h" } {
+if { "$a" != "l" && "$a" != "h" } {
 	set i 1
 	while { [info exists light([format "%0${places}d" $i],swversion) ] } {
-		if {[info exists light([format "%0${places}d" $i],state,xy)] } {
-        	set light([format "%0${places}d" $i],rgb) [calcRGB $light([format "%0${places}d" $i],modelid) $light([format "%0${places}d" $i],state,xy)]	
-        } else {
-        	set light([format "%0${places}d" $i],rgb) "not available"
-        }
 		unset light([format "%0${places}d" $i],swversion)
 		unset light([format "%0${places}d" $i],swupdate,state)
 		unset light([format "%0${places}d" $i],swupdate,lastinstall)
@@ -46,6 +43,11 @@ if { "$a" != "l" || "$a" != "h" } {
 	set i 1
 	while { [info exists light([format "%0${places}d" $i],swversion) ] } {
 		set light([format "%0${places}d" $i],gamut) [gamutForModel $light([format "%0${places}d" $i],modelid)]	
+		if {[info exists light([format "%0${places}d" $i],state,xy)] } {
+        	set light([format "%0${places}d" $i],rgb) [calcRGB $light([format "%0${places}d" $i],modelid) $light([format "%0${places}d" $i],state,xy)]	
+        } else {
+        	set light([format "%0${places}d" $i],rgb) "not available"
+        }
 		incr i
 	}
 }
@@ -62,8 +64,19 @@ if {"$a" == "h"} {
 	set tr_off "<tr style=\"height:30px;background:#A3A3A3; color:white\">"
 	set i 1
 	while { [info exists light([format "%0${places}d" $i],name) ] } {
+	puts $i
 		set sc [format "%0${places}d" $i]
-		set state "on $light($sc,state,on) bri $light($sc,state,bri) effect $light($sc,state,effect) xy $light($sc,state,xy) alert $light($sc,state,alert) sat $light($sc,state,sat)"
+		set bri ""
+		catch { set bri "bri $light($sc,state,bri) "	}
+		set effect ""
+		catch { set effect "effect  $light($sc,state,effect) "	}
+		set xy ""
+		catch { set xy "xy  $light($sc,state,xy) "	}
+		set alert ""
+		catch { set alert "alert  $light($sc,state,alert) "	}
+		set sat ""
+		catch { set sat "sat  $light($sc,state,sat) "	}
+		set state "on $light($sc,state,on) $bri$effect$xy$alert$sat"
 		if {$light($sc,state,on) == "true" } {
 			set ttr $tr
 		} else {
@@ -73,8 +86,11 @@ if {"$a" == "h"} {
 		if { [info exists light($sc,state,ct) ] } {
 			set ct $light($sc,state,ct)
 		}
-		set other "$light($sc,state,colormode) "
-		lappend out "$ttr<td>$sc</td><td>$light($sc,name)</td><td>$light($sc,modelid)</td><td>$state</td><td>$light($sc,rgb)</td><td>$ct</td></td><td>$light($sc,state,hue)</td><td>$other</td></tr>"
+		set other ""
+		catch { set other "$light($sc,state,colormode)"	}
+		set hue ""
+		catch { set hue "$light($sc,state,hue)"	}
+		lappend out "$ttr<td>$sc</td><td>$light($sc,name)</td><td>$light($sc,modelid)</td><td>$state</td><td>$light($sc,rgb)</td><td>$ct</td></td><td>$hue</td><td>$other</td></tr>"
 		incr i
 	}
 	puts $fileId "$tr1<td>ID</td><td>Name</td><td>Model ID</td><td>State</td><td>RGB</td><td>CT</td><td>Hue</td><td>Colormode</td></tr>"

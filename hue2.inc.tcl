@@ -7,7 +7,12 @@ if { "[info script]" == $::argv0 } {
 	} else {
 		set script_path [file normalize [file dirname $argv0]]
 	}
-	source [file join $env(HOME) ".config.hue.tcl"]
+	if { "$env(HOME)" == "/root" } {
+		set config [file join $script_path  "bin/.config.hue.tcl"]
+	} else {
+		set config [file join $env(HOME) ".config.hue.tcl"]
+	}
+	source "$config"
 } else {
 	set sourced 1
 }
@@ -30,26 +35,30 @@ if { "[info script]" == $::argv0 } {
 # proc getRoomZones {}
 # proc getRooms {}
 # proc !# {args}
-# proc readYaml {yaml gLabel {grep {}} {vgrep {}} }
-#    proc i_splitLine {line} {
-#    proc i_rev {gLabel} {
+# proc readYaml {yaml label {grep {}} {vgrep {}} {comma 0}}
 
 proc hue2Get {url } {
-	global id ip key
+	global id ip key places script_path
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	set s [exec curl -s --insecure --location \
 	   --resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
 	   --header "hue-application-key: $key" \
 	   ]
-
-	set s [ exec echo "$s" | [file dirname [info script]]/bin/jsondump | sed "s/'/\"/g"]
-	regsub -all {\n+} $s "\n" s
-	regsub -all  {^\n} $s "" s
-	regsub -all  {\n$} $s "" s
+	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl]
 	return [encoding convertfrom utf-8 "$s"]
 }
 
 proc hue2Put {url header} {
-	global id ip key
+	global id ip key places script_path
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	catch {
 	set s [exec curl -s --insecure --location --request PUT \
 		--resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
@@ -58,28 +67,32 @@ proc hue2Put {url header} {
 		--data-raw "$header" \
 		]
   }
-	set s [ exec echo "$s" | [file dirname [info script]]/bin/jsondump | sed "s/'/\"/g"]
-	regsub -all {\n+} $s "\n" s
-	regsub -all  {^\n} $s "" s
-	regsub -all  {\n$} $s "" s
+	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
 	return [encoding convertfrom utf-8 "$s"]
 }
 proc hue1Get {url } {
-	global user ip
+	global user ip places script_path
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	set s [exec curl -s --location \
 	   "http://$ip/api/$user/$url" \
 	   ]
 
-	set s [ exec echo "$s" | [file dirname [info script]]/bin/jsondump | sed "s/'/\"/g"]
-	regsub -all {\n+} $s "\n" s
-	regsub -all  {^\n} $s "" s
-	regsub -all  {\n$} $s "" s
+	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
 	return [encoding convertfrom utf-8 "$s"]
 }
 
 
 proc hue2Post {url header} {
-	global id ip key
+	global id ip key places script_path
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	catch {
 	set s [exec curl -s --insecure --location --request POST \
 		--resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
@@ -88,15 +101,17 @@ proc hue2Post {url header} {
 		--data-raw "$header" \
 		]
   }
-	set s [ exec echo "$s" | [file dirname [info script]]/bin/jsondump | sed "s/'/\"/g"]
-	regsub -all {\n+} $s "\n" s
-	regsub -all  {^\n} $s "" s
-	regsub -all  {\n$} $s "" s
+	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
 	return [encoding convertfrom utf-8 "$s"]
 }
 
 proc hueDelete {{url ""}} {
-	global ip user
+	global ip user places
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	set header {DELETE /api/$user/$url HTTP/1.1
 HOST: $ip}
 	set s [socket $ip 80]
@@ -109,7 +124,12 @@ HOST: $ip}
 }
 
 proc huePut {url body} {
-	global ip user
+	global ip user places
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	set body [subst $body]
 	set header {PUT /api/$user/$url HTTP/1.1
 HOST: $ip
@@ -129,7 +149,12 @@ $body
 }
 
 proc huePost {url body} {
-	global ip user
+	global ip user places
+	if { [info exists places ]} {
+		set pl $places
+	} else {
+		set pl ""
+	}
 	set body [subst $body]
 	set body "{$body}"
 	if {$url == ""} {
@@ -269,7 +294,7 @@ proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
 	global places
   if { ! [info exists places]} { 	set places 2}
 	global $url 
-	set yaml [split [hue1Get "$url"] "\n"]
+	set yaml [hue1Get "$url"] 
 	if { $arrayname != "" } {
 		set url $arrayname
 	}
@@ -279,20 +304,21 @@ proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
 	}
 }
 
-proc getResources {res {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} } {
-	global places
-  if { ! [info exists places]} { 	set places 2}
+proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} } {
 	if { $res == "" } {
 		set res resource
-		set yaml [split [hue2Get "resource"] "\n"]
+		set yaml [hue2Get "resource"] 
 	} else {
-		set yaml [split [hue2Get "resource/$res"] "\n"]
+		set yaml [hue2Get "resource/$res"] 
 	}
 	if { $ar_name != "" } { 
 		set res $ar_name
 	  global $res 
-	  set s [readYaml  "$yaml" "$res" $grep $vgrep $comma]
-	  set s [ exec echo $s | sed "s/\(data\)\(00\)//g" | sed "s/\(data,00,/\(/g"  ]
+	  set s [ exec echo $yaml | sed "s/\(data\)//g"  ]
+	  if { $deleteZero > "" } {
+	  	set s [ exec echo $s | sed "s/\(0*\)//g"  ]
+	  }
+	  set s [readYaml  "$s" "$res" $grep $vgrep $comma]
 	} else {
 			global $res 
 			set s [readYaml  "$yaml" "$res" $grep $vgrep $comma]
@@ -304,11 +330,29 @@ proc getResources {res {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} } {
 }
 
 proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} } {
-	global lightIDarray
-	if { ! [info exists lightIDarray]} {
+	global lightIDarray env
+	if { ! [info exists lightIDarray] || $id_name == "-1" } {
+		if {$id_name >= "0"} {
+				if { "$env(HOME)" == "/root" } {
+					set config [file join $script_path  "bin/.config.hue.tcl"]
+				} else {
+					set config [file join $env(HOME) ".config.hue.tcl"]
+				}
+			catch {
+				set s [ exec cat $config  | grep -v "lightIDarray"]
+			}
+			set fileId [open $config "w"]
+			puts $fileId $s
+		}
 		getLights lightIDarray
+		if {$id_name >= "0"} {
+			foreach {key value} [array get lightIDarray] {
+				puts $fileId "set \"lightIDarray($key)\" \"$value\""
+			}
+			close $fileId
+		}
 	}
-	if {$id_name == "0" } {
+	if {$id_name <= "0" } {
 		return
 	}
 	if { [catch { set id $lightIDarray($id_name) }] }  {
@@ -320,7 +364,7 @@ proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}
 	}
 	global $ar_name
 	if { $readLight > "" } {
-		getResources "light/$id" $grep $vgrep $p $ar_name $comma
+		getResources "light/$id" $grep $vgrep $p $ar_name $comma 1
 	}
 	return $id
 }
@@ -329,16 +373,20 @@ proc getLights { {ar_name {}} } {
 	if { $ar_name == "" } {
 		set ar_name lights
 	}
-	global places $ar_name ${ar_name}_name lightCount i  
-	set yaml [split [hue2Get "resource/light"] "\n"]
-  if { ! [info exists places]} { 	set places 2}
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1)} "" ] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
-	#parray ret
+	global $ar_name ${ar_name}_name lightCount i  
+	set yaml [hue2Get "resource/light"] 
+	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places} "" ] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	if { ! [info exists ret(places)]} {
+		puts "Error here with places!"
+		exit 1
+	} else {
+		set p $ret(places)
+	}
 	set j 0
-	while { [info exists "ret\(data)\([format %0${places}d $j])\(id)" ]} {
-		set id [ set ret\(data)\([format %0${places}d $j])\(id) ]
-		set id_v1 [string map {"/lights/" {}} [ set ret\(data)\([format %0${places}d $j])\(id_v1) ]]
-		set name [ set ret\(data)\([format %0${places}d $j])\(metadata)(name) ]
+	while { [info exists "ret\([format %0${p}d $j])\(id)" ]} {
+		set id [ set ret\([format %0${p}d $j])\(id) ]
+		set id_v1 [string map {"/lights/" {}} [ set ret\([format %0${p}d $j])\(id_v1) ]]
+		set name [ set ret\([format %0${p}d $j])\(metadata)(name) ]
 		set ${ar_name}($id) $id
 		set ${ar_name}($id_v1) $id
 		set ${ar_name}($name) $id
@@ -370,24 +418,45 @@ proc getRoomZones {} {
 }
 proc getRooms {} {
 	global places rooms lightCount i
-	set yaml [split [hue2Get "resource/room"] "\n"]
-  if { ! [info exists places]} { 	set places 2}
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1)}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
-	set yaml [split [hue2Get "resource/zone"] "\n"]
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1)}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
-	#parray ret
+	set yaml [hue2Get "resource/room"] 
+	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	if { ! [info exists ret(places)]} {
+		puts "Error here with places!"
+		exit 1
+	} else {
+		set p $ret(places)
+	}
 	set j 0
-	while { [info exists "ret\(data)\([format %0${places}d $j])\(id)" ]} {
-		set id [ set ret\(data)\([format %0${places}d $j])\(id) ]
-		set id_v1 [string map {"/groups/" {}} [ set ret\(data)\([format %0${places}d $j])\(id_v1) ]]
-		set name [ set ret\(data)\([format %0${places}d $j])\(metadata)(name) ]
+	while { [info exists "ret\([format %0${p}d $j])\(id)" ]} {
+		set id [ set ret\([format %0${p}d $j])\(id) ]
+		set id_v1 [string map {"/groups/" {}} [ set ret\([format %0${p}d $j])\(id_v1) ]]
+		set name [ set ret\([format %0${p}d $j])\(metadata)(name) ]
 		set rooms($id) $id
 		set rooms($id_v1) $id
 		set rooms($name) $id
 		# puts "$name: $id_v1"
 	  incr j
 	}
-  set roomCount $j
+	set yaml [hue2Get "resource/zone"] 
+	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+  if { ! [info exists ret(places)]} {
+		puts "Error here with places!"
+		exit 1
+	} else {
+		set p $ret(places)
+	}
+	set k 0
+	while { [info exists "ret\([format %0${p}d $k])\(id)" ]} {
+		set id [ set ret\([format %0${p}d $k])\(id) ]
+		set id_v1 [string map {"/groups/" {}} [ set ret\([format %0${p}d $k])\(id_v1) ]]
+		set name [ set ret\([format %0${p}d $k])\(metadata)(name) ]
+		set rooms($id) $id
+		set rooms($id_v1) $id
+		set rooms($name) $id
+		# puts "$name: $id_v1"
+	  incr k
+	}
+  set rooms(roomCount) [expr $j + $k]
 }
 
 
@@ -414,151 +483,15 @@ proc !# {args} {
 	}
 }
 
-proc readYaml {yaml gLabel {grep {}} {vgrep {}} {comma {}} } {
-  global places
-  if { ! [info exists places]} {
-  	set places 1
-  }
+proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
 	set yaml [exec echo $yaml | sed "s/\$ref/_ref/g"]
-	namespace eval rev {
-    variable yaml ""
-		variable i 0
-		variable text ""
-		variable back 0
-		variable firstLine 0
-	}
   if { $yaml == "" } {
-     return "set $gLabel\(data) empty"
+     return "set $label\(data) empty"
   }
-  set ::rev::yaml $yaml
-	proc i_splitLine {line} {
-		set level {}
-		set label {}
-		set value {}
-		if {[string trim $line] == "" } {
-			# empty line
-			return -1  ;# empty line
-		} elseif {[ regexp {(^\s*)-(\s*)(.*):} "$line" m level] } {
-			# array object or list
-			return [list [string length $level] {} {} "ao" ]
-		} elseif {[ regexp {(^\s*)-\s*(.*)} "$line" m level value] } {
-			# simple array
-			return [list [string length $level] - [string trim $value] "a" ]
-		} elseif {	[regexp {(^\s*)(\S.*?):\s*(\S.*)} "$line" m level label value ]} {
-			# list
-	 		return [list [string length $level] $label [string trim $value] "l"]
-		} elseif {	[regexp {(^\s*)(\S.*?):\s*(.*)} "$line" m level label value ]} {
-			# list opject or list null
-	 		return [list [string length $level] $label [string trim $value] "lo"]
-	 	} else {
-			puts "shitty i_splitLine $line"
-			exit
-	 	}
-	}
-
-	proc i_rev {gLabel} {
-		global places
-	  # start 
-		set c 0
-		while {$::rev::i < [llength $::rev::yaml]} {
-			set line [lindex $::rev::yaml $::rev::i]
-			while { [regexp {^\s*$} $line] } { 
-				incr ::rev::i
-				if {$::rev::i < [llength $::rev::yaml]} {
-					set line [lindex $::rev::yaml $::rev::i]
-				} else {
-					return
-				}
-			}
-			# test if first line is array -> wrong indent "  - " instead of "-"
-			if {$::rev::firstLine == 0 } {
-				set ::rev::firstLine 1
-				if {[ regexp {(^\s+)-(\s*)$} "$line" m level] }  {
-					set jj 0
-					while {$jj < [llength $::rev::yaml]} {
-						set tmp_line [lindex $::rev::yaml $jj]
-						if { $tmp_line == $line} {
-							set ::rev::yaml [lreplace $::rev::yaml $jj $jj "-"]
-						}
-						incr jj
-					}
-					set line "-"
-				}
-			}
-			# line not empty
-			set j [expr $::rev::i + 1 ]
-			set nextline [lindex $::rev::yaml $j]
-			while { [regexp {^\s*$} $nextline] } { 
-				incr j
-				if {$j < [llength $::rev::yaml]} {
-					set nextline [lindex $::rev::yaml $j]
-				} else {
-					break
-				}
-			}
-			# nextline not empty or end
-			# test same level
-			set ret [i_splitLine $line]
-			set nextRet [i_splitLine $nextline]
-			set level [lindex  $ret 0]
-			set label [lindex  $ret 1]
-			set value [lindex  $ret 2]
-			set kind [lindex  $ret 3]
-	    # test if ao
-	    if { $kind == "ao"  } {
-	   	  # array object is shit
-	    	regsub {(^\s*)(-)} $line {\1 } nextline
-	    	regexp {(\s*-)} "$line" m line
-	    	set ::rev::yaml [lreplace $::rev::yaml $::rev::i $::rev::i $line] 
-	    	set ::rev::yaml [linsert $::rev::yaml [expr $::rev::i + 1] $nextline] 
-	    }
-		  set nextRet [i_splitLine $nextline]
-			set nextLevel [lindex  $nextRet 0]
-			set nextLabel [lindex  $nextRet 1]
-			set nextValue [lindex  $nextRet 2]
-			set nextKind [lindex  $nextRet 3]
-	    if { $kind == "lo" && $nextLevel <= $level } {
-	      # no value but no object
-	      set value "{}"
-	      set kind l
-	    }
-			#!# line level label value kind array_level nextLevel nextLabel nextValue nextKind 
-	    if {[string index $kind 0] == "a"} {
-	    	# is an array
-	    	set label [format "%0${places}d" $c]
-	    	incr c
-	    }
-	    ## set label
-	    set label [string map {\" {} " " "_"} $label]
-	    # label in places length
-			if { [string is integer -strict $label ]} {
-				set label [format "%0${places}d" $label]
-			}
-			set tLabel "$gLabel\($label)"
-			if { $nextLevel > $level } {
-				# object: ao or lo
-				incr ::rev::i
-				set nextLevel [i_rev "$tLabel"]
-			} 
-			if { $::rev::back == 0 } {
-				set ::rev::text "${::rev::text}set $tLabel $value\n"
-			}
-			set ::rev::back 0
-			if { $nextLevel < $level } {
-				# puts "lower"
-				#puts "Returnkind: $nextKind"
-				set ::rev::back 1
-				#
-			  return $nextLevel
-			}	elseif { $nextLevel == $level } {
-				# puts " - equal"
-			}
-			incr ::rev::i
-		}
-	}
-
-	# main
-	i_rev $gLabel
+  if {$label != "root" } {
+  		set yaml [exec echo "$yaml" | sed "s/root\(data\)/$label/g" ]
+  		set yaml [exec echo "$yaml" | sed "s/root/$label/g" ]
+  }
 	# grep
 	if { [llength $grep] > 0} {
 		# the last time
@@ -570,8 +503,8 @@ proc readYaml {yaml gLabel {grep {}} {vgrep {}} {comma {}} } {
 				set grepStr "$grepStr\\|$g"
 			}
 		}
-	  if {[catch {set ::rev::text [exec echo "$::rev::text" | grep "$grepStr" ]} ]} {
-	  	set ::rev::text "set $gLabel\(grep) \"not found\""
+	  if {[catch {set yaml [exec echo "$yaml" | grep "$grepStr" ]} ]} {
+	  	set yaml "set $label\(grep) \"not found\""
 	  }
 	}
 	#
@@ -586,25 +519,25 @@ proc readYaml {yaml gLabel {grep {}} {vgrep {}} {comma {}} } {
 				set grepStr "$grepStr\\|$g"
 			}
 		}
-		if { $::rev::text > "" } {
-	    if {[catch {set ::rev::text [exec echo "$::rev::text" | grep -v "$grepStr" ]} ]} {
-		  	set ::rev::text "set $gLabel\(grep_v) \"not found\""
-		  	} elseif { $::rev::text == "" } {
-		  	set ::rev::text "set $gLabel\(grep_v) \"not found\""
+		if { $yaml > "" } {
+	    if {[catch {set yaml [exec echo "$yaml" | grep -v "$grepStr" ]} ]} {
+		  	set yaml "set $label\(grep_v) \"not found\""
+		  	} elseif { $yaml == "" } {
+		  	set yaml "set $label\(grep_v) \"not found\""
 		  }
 		}
 	}
-	if { [llength $comma] > 0} {
-		set ::rev::text [ exec echo "$::rev::text" | sed "s/\)\(/,/g" ]
+	if { $comma != 0 } {
+		set yaml [ exec echo "$yaml" | sed "s/\)\(/,/g" ]
 	}
-	return $::rev::text
+	return $yaml
 }
 
 
 
 ####
 if {$sourced == 0} {
-	set yaml [split [hue2Get "resource/light"] "\n"]
+	set yaml [hue2Get "resource/light"] 
 	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1)}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
 	parray ret
 }
