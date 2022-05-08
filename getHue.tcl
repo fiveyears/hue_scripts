@@ -1,26 +1,14 @@
 #!/usr/bin/env tclsh
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2021-11-30 13:11:13
-if {[package vcompare [package provide Tcl] 8.4] < 0} {
-	set script_path [file dirname $argv0]
-} else {
-	set script_path [file normalize [file dirname $argv0]]
-}
-global id ip key
+set script_path [file normalize [file dirname $argv0]]
+global id ip user
+source [file join $script_path "hue.inc.tcl"]
 source [file join $script_path "hue2.inc.tcl"]
 if { [string first Tools [info loaded]] < 0 } {
 	load $script_path/bin/libTools[info sharedlibextension]
 }
 
 set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
-if {  [regexp {192\.168\.3\.} $ip]} {
-	# puts berlin
-	set user "set user wGKZzEOsw7IhkhrYcdyFlKXquCBzpthZPqeySvs5"
-    set key "set key WtgJYMIaRlK1yUEJ8pNLSBWNQzUSkE9D6PinLHp3"
-} else {
-	# puts Dresden
-	set user "set user 4w5m2-1-0nf-CmVv8gf6V4zFBawat6haJMxorwGw"
-	set key "set key Dsyc5kb5hQkMTtAT9qipDJNuBoXtHylwyVBDMEej"
-}
 if { "$env(HOME)" == "/root" } {
 	set config [file join $script_path  "bin/.config.hue.tcl"]
 } else {
@@ -32,16 +20,12 @@ set dagain { (again)}
 #
 # read config
 catch {
-	set ret {}; set ret [exec cat "$config" | grep "set user" | "sed s/set user *//g"]
+	set ret {}; set ret [exec cat "$config" | grep "set user" | grep -vi "# default values" | sed "s/set user *//g"]
 }
 if {[string trim $ret] != ""} {
-	set user "set user $ret"
-}
-catch {
-	set ret {}; set ret [exec cat "$config" | grep "set key"  | "sed s/set key *//g"]
-}
-if {[string trim $ret] != ""} {
-	set key "set key $ret"
+	set user "$ret"
+} else {
+	set user {}
 }
 proc Discovery {} {
 	global url script_path Base
@@ -51,7 +35,16 @@ proc Discovery {} {
 	set s ""
 	set baseCount 0
 	set options {}
-	set s [exec curl -s "$url"  | [file dirname [info script]]/bin/jsondump] 
+	if {[catch {set s [exec curl -s -S "$url"] } erri]} {
+		puts "Discovery without success (no connection)"
+		return
+	}
+	set s [string trim $s ]
+	if {"$s" == ""  || "$s" == "\[\]"} {
+		puts "Discovery without success (no data)"
+		return		
+	}
+	set s [exec echo $s | [file dirname [info script]]/bin/jsondump]
     eval  [readYaml $s Base]
     set j 0
     set k 1
@@ -68,14 +61,19 @@ proc mDNS {} {
 	set again " (again)"
 	set dagain ""
 	set options {}
-	set service [exec ./bin/mdns --discovery | grep _hue | sed "s/.*PTR //" | sed "s/ rclass.*//" | sort | uniq]
-	set services [split $service "\n"]
-	foreach s $services {
-		set res [exec ./bin/mdns --query "$s" | grep { A \|TXT}  | sort | uniq]
+	if { [catch {
+		set service [exec ./bin/mdns --discovery | grep _hue | sed "s/.*PTR //" | sed "s/ rclass.*//" | sort | uniq]
+		set services [split $service "\n"]
+		foreach s $services {
+			set res [exec ./bin/mdns --query "$s" | grep { A \|TXT}  | sort | uniq]
+		}
+		set bridgeIPs [string trim [exec echo "$res" | awk -F ":5353 : additional" {{print $1}}  |  awk {{ sub(/^[ \t]+/, ""); print }} | grep -v {^\s*\[} | sort | uniq]]
+		set bridgeIPs [split $bridgeIPs "\n"]
+		set bridgeCount [llength $bridgeIPs]  } ]
+	} {
+		set bridgeIPs ""
+		puts "mDNS without success"		
 	}
-	set bridgeIPs [string trim [exec echo "$res" | awk -F ":5353 : additional" {{print $1}}  |  awk {{ sub(/^[ \t]+/, ""); print }} | grep -v {^\s*\[} | sort | uniq]]
-	set bridgeIPs [split $bridgeIPs "\n"]
-	set bridgeCount [llength $bridgeIPs]
 	set j 0
 	foreach aBridgeIP $bridgeIPs {
 		set tmpBridgeIP ""
@@ -118,10 +116,11 @@ proc mDNS {} {
 	}
 }
 
-Discovery
+#Discovery
 
 while 1 {
-	lappend options s m d q 
+	lappend options r s m d q 
+	puts "r ... remote access"
 	puts "s ... Show config"
 	puts "m ... Try Multicast-DSN$again"
 	puts "d ... Try Discovery endpoint$dagain"
@@ -144,9 +143,43 @@ while 1 {
 		Discovery
 	} elseif {$c == "m"} {
 		mDNS
+	} elseif {$c == "r" } {
+		set fileId [open $config "w"]
+		puts $fileId {set user 0; set ip "0.0.0.0"; set id 0 ;# default values}
+		if { "$user" != "" } {
+			puts $fileId "set user $user"
+		}
+		set ip "api.meethue.com/route"
+		puts $fileId "set ip \"$ip\""
+		if { [catch {
+			set s [	exec $script_path/remote.sh token 1>/dev/null ]
+		} curl_err]} {
+			puts "Didn't get token for remote access!"
+			puts "Please exec remote.sh getToken first!"
+			exit
+		}
+		set token [	exec $script_path/remote.sh token ]
+		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/api/\$user"
+		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/clip/v2"
+		puts $fileId "set resolveV1 \"$resolveV1\""
+		puts $fileId "set resolveV2 \"$resolveV2\""
+		set resolveV1 "[subst $resolveV1]"
+		set resolveV2 "[subst $resolveV2]"
+		if { [info exists ip] && "$user" != "" } {
+			getLight -1
+			foreach {key value} [array get lightIDarray] {
+				puts $fileId "set \"lightIDarray($key)\" \"$value\""
+			}
+		}
+		close $fileId
+		break
 	} elseif {[lsearch "$options" "$c"] >= 0 } {
 		incr c -1
 		set fileId [open $config "w"]
+		puts $fileId {set user 0; set ip "0.0.0.0"; set id 0 ;# default values}
+		if { "$user" != "" } {
+			puts $fileId "set user $user"
+		}
 		if {[info exists Base(${c})(internalipaddress)]} {
 			puts $fileId "set ip \"[set Base(${c})(internalipaddress)]\""
 			set ip [set Base(${c})(internalipaddress)]
@@ -161,14 +194,13 @@ while 1 {
 		if {[info exists Base(${c})(IPv6)]} {
 			puts $fileId "set ipv6 [set Base(${c})(IPv6)]"
 		}
-		if {[info exists key]} {
-			puts $fileId "$key"
-			eval $key
-		}
-		if {[info exists user]} {
-			puts $fileId "$user"
-		}
-		if { [info exists id] && [info exists ip]} {
+		if { [info exists id] && [info exists ip] && "$user" != "" } {
+			set resolveV1 "--insecure --resolve $id:443:$ip https://$id/api/\$user"
+			set resolveV2 "--insecure --header \\\"hue-application-key: \$user\\\" --resolve $id:443:$ip https://$id/clip/v2"
+			puts $fileId "set resolveV1 \"$resolveV1\""
+			puts $fileId "set resolveV2 \"$resolveV2\""
+			set resolveV1 "[subst $resolveV1]"
+			set resolveV2 "[subst $resolveV2]"
 			getLight -1
 			foreach {key value} [array get lightIDarray] {
 				puts $fileId "set \"lightIDarray($key)\" \"$value\""

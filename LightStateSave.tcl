@@ -1,10 +1,6 @@
 #!/usr/bin/env tclsh
 global ip user light ;# set in config.tcl
-if {[package vcompare [package provide Tcl] 8.4] < 0} {
-	set script_path [file dirname $argv0]
-} else {
-	set script_path [file normalize [file dirname $argv0]]
-}
+set script_path [file normalize [file dirname $argv0]]
 
 source [file join $script_path "config.tcl"]
 source [file join $script_path "hue.inc.tcl"]

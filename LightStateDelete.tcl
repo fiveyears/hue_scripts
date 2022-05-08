@@ -1,10 +1,6 @@
 #!/usr/bin/env tclsh
 global ip user light lightcount;# gesetzt für den Aufruf durch ccu_read_hue.tcl
-if {[package vcompare [package provide Tcl] 8.4] < 0} {
-	set script_path [file dirname $argv0]
-} else {
-	set script_path [file normalize [file dirname $argv0]]
-}
+set script_path [file normalize [file dirname $argv0]]
 if { "$env(HOME)" == "/root" } {
 	set config [file join $script_path  "bin/.config.hue.tcl"]
 } else {

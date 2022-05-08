@@ -1,2 +1,0 @@
-name "Wake up" description "My wake up alarm" time W124/T06:00:00 command address /groups/1/action method PUT body on true
-051.0521N 013.7912E

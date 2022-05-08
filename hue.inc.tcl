@@ -1,13 +1,9 @@
 #!/usr/bin/env tclsh
 set isc [info script]
 if { "$isc" == $::argv0 } {
-  global ip user id key
+  global ip user id
   set sourced 0
-	if {[package vcompare [package provide Tcl] 8.4] < 0} {
-		set script_path [file dirname $argv0]
-	} else {
-		set script_path [file normalize [file dirname $argv0]]
-	}
+	set script_path [file normalize [file dirname $argv0]]
 	if { "$env(HOME)" == "/root" } {
 		set config [file join $script_path  "bin/.config.hue.tcl"]
 	} else {
@@ -17,74 +13,118 @@ if { "$isc" == $::argv0 } {
 } else {
 	set sourced 1
 }
-package require http
+
+proc curlerr {curl_err} {
+	global ip id
+	puts [exec echo $curl_err | head -n 1 ]
+	if {[string first "(49)" $curl_err] != -1} {
+		puts "Maybe wrong ip: $ip"
+	} elseif {[string first "(28)" $curl_err] != -1} {
+		puts "Maybe wrong ip: $ip"
+	} elseif {[string first "(60)" $curl_err] != -1} {
+		puts "Maybe wrong id: $id"
+	}
+	exit
+}
+
+proc curltest {curl url {addition {}} } {
+	global user
+	# puts $curl
+	if {[string first "Oops, there appears to be no lighting here" $curl] != -1} {
+		puts "No lights found!"
+		puts "Maybe wrong user: $user"
+	  exit
+	} elseif {[string first "description\":\"Not Found" $curl] != -1} {
+		puts "Resource not found!"
+		puts "Maybe wrong resource: $url"
+	  exit
+	} elseif {[string first "\"description\":\"JSON parse error" $curl] != -1} {
+		puts "JSON parse error!"
+		puts "Maybe wrong raw data: $addition"
+	  exit
+	} elseif {[string first "\"description\":\"method, GET, not available for resource" $curl] != -1} {
+		puts "Resource (v1) not found!"
+		puts "Maybe wrong url: $url"
+	  exit
+	} elseif {[string first "not available\"\}\}" $curl] != -1} {
+		puts "Resource (v1) not found!"
+		puts "Maybe wrong url: $addition"
+	  exit
+	} elseif {[string first "\"description\":\"unauthorized user\"" $curl] != -1} {
+		puts "Not authorized (v1)!"
+		puts "Maybe wrong user: $user"
+	  exit
+	}
+}
 
 proc jsonMapper { s} {
 	return [string map { \[ \{ \] \} } $s]
 }
 
 proc hueGet {{url ""}} {
-	global ip user
-	set url "http://$ip/api/$user/$url"
-	# puts $url
-	set r [http::geturl $url]
-	set ret [http::data $r]
-	::http::cleanup $r
+	global resolveV1
+	set curl "$resolveV1/$url"
+	if { [catch {
+		set ret [exec curl -s -S -m 2.0 {*}$curl]
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest $ret $curl $url
 	regsub -all  {^.*application/json\s*} $ret "" newret
 	return [encoding convertfrom utf-8 $newret]
 }
 
 proc hueDelete {{url ""}} {
-	global ip user
-	catch {
-		set ret [exec curl -s --insecure --location --request DELETE https://$ip/api/$user/$url]
+	global resolveV1
+	set curl "$resolveV1/$url"
+	if { [catch {
+		set ret [exec curl -s -S -m 2.0  -X DELETE {*}$curl]
+	} curl_err]} {
+		curlerr $curl_err
 	}
+	curltest $ret $curl $url 
 	regsub -all  {^.*application/json\s*} $ret "" newret
 	return [encoding convertfrom utf-8 $newret]
 }
 
 proc huePut {url body} {
-	global ip user
+	global resolveV1
+	set curl "$resolveV1/$url"
 	set body [subst $body]
-	set header {PUT /api/$user/$url HTTP/1.1
-HOST: $ip
-Content-Length: [string length $body]
-Content-Type: text/plain; charset=UTF-8
-Connection: keep-alive
-
-$body
-}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
+	if { [regexp "^{.*}$" $body] == 0} {
+		set body "{$body}"
+	}
+	if { [catch {
+		set ret [exec curl -s -S -m 2.0  -X PUT {*}$curl \
+		--header "Content-Type: application/json" \
+		--header "Content-Length: [string length $body]" \
+    --data-raw "$body" \
+		]
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest $ret $curl $url
 	regsub -all  {^.*application/json\s*} $ret "" newret
 	return [encoding convertfrom utf-8 $newret]
 }
 
 proc huePost {url body} {
-	global ip user
+	global resolveV1
+	set curl "$resolveV1/$url"
 	set body [subst $body]
-	set body "{$body}"
-	if {$url == ""} {
-		set api "/api"  ;# Create Config
-	} else {
-		set api "/api/$user/$url"
+	if { [regexp "^{.*}$" $body] == 0} {
+		set body "{$body}"
 	}
-	set header {POST $api HTTP/1.1
-HOST: $ip
-Content-Length: [string length $body]
-Content-Type: application/json; charset=UTF-8
-Connection: keep-alive
-
-$body
-}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
+	if { [catch {
+		set ret [exec curl -s -S -m 2.0  -X POST {*}$curl \
+		--header "Content-Type: application/json" \
+		--header "Content-Length: [string length $body]" \
+    --data-raw "$body" \
+		]
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest $ret $curl $url 
 	regsub -all  {^.*application/json\s*} $ret "" newret
 	return [encoding convertfrom utf-8 $newret]
 }

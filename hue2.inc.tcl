@@ -1,21 +1,4 @@
 #!/usr/bin/env tclsh
-if { "[info script]" == $::argv0 } {
-  global ip user id key
-  set sourced 0
-	if {[package vcompare [package provide Tcl] 8.4] < 0} {
-		set script_path [file dirname $argv0]
-	} else {
-		set script_path [file normalize [file dirname $argv0]]
-	}
-	if { "$env(HOME)" == "/root" } {
-		set config [file join $script_path  "bin/.config.hue.tcl"]
-	} else {
-		set config [file join $env(HOME) ".config.hue.tcl"]
-	}
-	source "$config"
-} else {
-	set sourced 1
-}
 
 # proc hue2Get {url }
 # proc hue2Put {url header}
@@ -37,146 +20,67 @@ if { "[info script]" == $::argv0 } {
 # proc !# {args}
 # proc readYaml {yaml label {grep {}} {vgrep {}} {comma 0}}
 
+
 proc hue2Get {url } {
-	global id ip key places script_path
+	global resolveV2 places script_path
 	if { [info exists places ]} {
 		set pl $places
 	} else {
 		set pl ""
 	}
-	set s [exec curl -s --insecure --location \
-	   --resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
-	   --header "hue-application-key: $key" \
-	   ]
-	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl]
+	set curl "$resolveV2/$url"
+	if { [catch {
+		set ret [exec curl -s -S -m 2.0 {*}$curl]
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest $ret $curl $url
+	set s [ exec echo "$ret" | "$script_path/bin/jsondump" 0 $pl]
 	return [encoding convertfrom utf-8 "$s"]
 }
 
 proc hue2Put {url header} {
-	global id ip key places script_path
+	global id ip user places script_path
 	if { [info exists places ]} {
 		set pl $places
 	} else {
 		set pl ""
 	}
-	catch {
-	set s [exec curl -s --insecure --location --request PUT \
+	if { [catch {
+	set s [exec curl -s  -S -m 2.0 --location --request PUT \
 		--resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
-		--header "hue-application-key: $key" \
+		--header "hue-application-key: $user" \
 		--header "Content-Type: text/plain" \
 		--data-raw "$header" \
 		]
-  }
-	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
-	return [encoding convertfrom utf-8 "$s"]
-}
-proc hue1Get {url } {
-	global user ip places script_path
-	if { [info exists places ]} {
-		set pl $places
-	} else {
-		set pl ""
+	} curl_err]} {
+		curlerr $curl_err
 	}
-	set s [exec curl -s --location \
-	   "http://$ip/api/$user/$url" \
-	   ]
-
+	curltest $s $url $header
 	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
 	return [encoding convertfrom utf-8 "$s"]
 }
-
 
 proc hue2Post {url header} {
-	global id ip key places script_path
+	global id ip user places script_path
 	if { [info exists places ]} {
 		set pl $places
 	} else {
 		set pl ""
 	}
-	catch {
-	set s [exec curl -s --insecure --location --request POST \
+	if { [catch {
+	set s [exec curl -s  -S -m 2.0 --location --request POST \
 		--resolve "$id:443:$ip" "https://$id/clip/v2/$url" \
-		--header "hue-application-key: $key" \
+		--header "hue-application-key: $user" \
 		--header "Content-Type: text/plain" \
 		--data-raw "$header" \
 		]
-  }
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest $s $url $header
 	set s [ exec echo "$s" | "$script_path/bin/jsondump" 0 $pl ]
 	return [encoding convertfrom utf-8 "$s"]
-}
-
-proc hueDelete {{url ""}} {
-	global ip user places
-	if { [info exists places ]} {
-		set pl $places
-	} else {
-		set pl ""
-	}
-	set header {DELETE /api/$user/$url HTTP/1.1
-HOST: $ip}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
-	regsub -all  {^.*application/json\s*} $ret "" newret
-	return [encoding convertfrom utf-8 $newret]
-}
-
-proc huePut {url body} {
-	global ip user places
-	if { [info exists places ]} {
-		set pl $places
-	} else {
-		set pl ""
-	}
-	set body [subst $body]
-	set header {PUT /api/$user/$url HTTP/1.1
-HOST: $ip
-Content-Length: [string length $body]
-Content-Type: text/plain; charset=UTF-8
-Connection: keep-alive
-
-$body
-}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
-	regsub -all  {^.*application/json\s*} $ret "" newret
-	return [encoding convertfrom utf-8 $newret]
-}
-
-proc huePost {url body} {
-	global ip user places
-	if { [info exists places ]} {
-		set pl $places
-	} else {
-		set pl ""
-	}
-	set body [subst $body]
-	set body "{$body}"
-	if {$url == ""} {
-		set api "/api"  ;# Create Config
-	} else {
-		set api "/api/$user/$url"
-	}
-	set header {POST $api HTTP/1.1
-HOST: $ip
-Content-Length: [string length $body]
-Content-Type: application/json; charset=UTF-8
-Connection: keep-alive
-
-$body
-}
-	set s [socket $ip 80]
-	puts $s [subst $header]
-	flush $s
-	set ret [read $s]
-	close $s
-	regsub -all  {^.*application/json\s*} $ret "" newret
-	return [encoding convertfrom utf-8 $newret]
 }
 
 proc getV2Body {bodyarray} {
@@ -291,10 +195,11 @@ proc getScheduleNumberByName { str } {
 }
 
 proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
-	global places
+	global places script_path places
   if { ! [info exists places]} { 	set places 2}
 	global $url 
-	set yaml [hue1Get "$url"] 
+	set yaml [hueGet "$url"]
+	set yaml [ exec echo "$yaml" | "$script_path/bin/jsondump" 0 $places]
 	if { $arrayname != "" } {
 		set url $arrayname
 	}
@@ -320,6 +225,7 @@ proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {
 	  }
 	  set s [readYaml  "$s" "$res" $grep $vgrep $comma]
 	} else {
+		set res [exec echo $res | sed "s/\\//_/g" ]
 			global $res 
 			set s [readYaml  "$yaml" "$res" $grep $vgrep $comma]
 	}
@@ -360,7 +266,7 @@ proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}
 		exit
 	}
 	if { $ar_name == "" } {
-		set ar_name "light/$id"
+		set ar_name "light"
 	}
 	global $ar_name
 	if { $readLight > "" } {
@@ -484,13 +390,15 @@ proc !# {args} {
 }
 
 proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
+	regsub -all {\/} $label "\\/" newlabel
 	set yaml [exec echo $yaml | sed "s/\$ref/_ref/g"]
   if { $yaml == "" } {
      return "set $label\(data) empty"
   }
+  set yaml [exec echo "$yaml" | sed "s/^set /set \"/g" | sed "s/\) /)\" /g"]
   if {$label != "root" } {
-  		set yaml [exec echo "$yaml" | sed "s/root\(data\)/$label/g" ]
-  		set yaml [exec echo "$yaml" | sed "s/root/$label/g" ]
+  		set yaml [exec echo "$yaml" | sed "s/root\(data\)/$newlabel/g" ]
+  		set yaml [exec echo "$yaml" | sed "s/root/$newlabel/g" ]
   }
 	# grep
 	if { [llength $grep] > 0} {
