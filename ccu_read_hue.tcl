@@ -2,9 +2,9 @@
 set script_path [file normalize [file dirname $argv0]]
 
 if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.config.hue.tcl"]
+	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
 } else {
-	set config [file join $env(HOME) ".config.hue.tcl"]
+	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
 }
 source "$config"
 source [file join $script_path "ccu_helper.tcl"]

@@ -2,16 +2,13 @@
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2022-05-01 08:23:57
 dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 if [ "$HOME" = "/root" ]; then
-	config="$dir/bin/.config.hue.tcl"
-	env="$dir/bin/.hue_remote_env"
+	config="$dir/bin/.hue/0/config.hue.tcl"
+	env="$dir/bin/.hue/0/hue_remote_env"
 else
-	config="$HOME/.config.hue.tcl"
-	env="$HOME/.hue_remote_env"
+	config="$HOME/.hue/0/config.hue.tcl"
+	env="$HOME/.hue/0/hue_remote_env"
 fi
-ClientId=fv8jJ0lr3BrqyAuu9Vmxpvte7qNyqDn0
-ClientSecret=HuvOrVmAEnQfJ9nk
 Host="https://api.meethue.com"
-appid=plug-switcher
 script="remote.sh"
 
 encode() {
@@ -24,6 +21,18 @@ testToken () {
 	else
 	  echo "Please restart with '$script newToken', $env not found!"
 	  exit 1
+	fi
+	if [ -z "$ClientId" ]; then 
+		echo "ClientId not found!"
+		err=1
+	fi
+	if [ -z "$ClientSecret" ]; then 
+		echo "ClientSecret not found!"
+		err=1
+	fi
+	if [ -z "$appid" ]; then 
+		echo "appid not found!"
+		err=1
 	fi
 	if [ -z "$code_verifier" ]; then 
 		echo "code_verifier not found!"

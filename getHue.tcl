@@ -10,9 +10,9 @@ if { [string first Tools [info loaded]] < 0 } {
 
 set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
 if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.config.hue.tcl"]
+	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
 } else {
-	set config [file join $env(HOME) ".config.hue.tcl"]
+	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
 }
 set url https://discovery.meethue.com
 set again {}
@@ -116,7 +116,7 @@ proc mDNS {} {
 	}
 }
 
-#Discovery
+Discovery
 
 while 1 {
 	lappend options r s m d q 

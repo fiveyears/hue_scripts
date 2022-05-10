@@ -240,9 +240,9 @@ proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}
 	if { ! [info exists lightIDarray] || $id_name == "-1" } {
 		if {$id_name >= "0"} {
 				if { "$env(HOME)" == "/root" } {
-					set config [file join $script_path  "bin/.config.hue.tcl"]
+					set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
 				} else {
-					set config [file join $env(HOME) ".config.hue.tcl"]
+					set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
 				}
 			catch {
 				set s [ exec cat $config  | grep -v "lightIDarray"]
