@@ -11,8 +11,10 @@ if { [string first Tools [info loaded]] < 0 } {
 set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
 if { "$env(HOME)" == "/root" } {
 	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
+	set info [file join $script_path  "bin/.hue/0/info.txt"]
 } else {
 	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
+	set info [file join $env(HOME) ".hue/0/info.txt"]
 }
 set url https://discovery.meethue.com
 set again {}
@@ -116,6 +118,7 @@ proc mDNS {} {
 	}
 }
 
+puts [exec cat $info ]
 Discovery
 
 while 1 {
@@ -183,6 +186,11 @@ while 1 {
 		if {[info exists Base(${c})(internalipaddress)]} {
 			puts $fileId "set ip \"[set Base(${c})(internalipaddress)]\""
 			set ip [set Base(${c})(internalipaddress)]
+			set theName [exec cat $info | grep -v last]
+			set fileId1 [open $info "w"]
+			puts $fileId1 "$theName"
+			puts $fileId1 "Last used local ip: $ip"
+			close $fileId1
 		}
 		if {[info exists Base(${c})(id)]} {
 			puts $fileId "set id \"[set Base(${c})(id)]\""

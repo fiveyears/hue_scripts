@@ -5,6 +5,7 @@ proc helper {} {
 	puts "Usage: "
 	puts "   configUser.tcl -s | --store  <User or application-key> ... stores user"
 	puts "   configUser.tcl -d | --delete                           ... remove user"
+	puts "   configUser.tcl -s | --show                             ... show user"
 	puts "" 
 	exit
 }
@@ -13,8 +14,10 @@ set script_path [file normalize [file dirname $argv0]]
 global user
 if { "$env(HOME)" == "/root" } {
 	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
+	set info [file join $script_path  "bin/.hue/0/info.txt"]
 } else {
 	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
+	set info [file join $env(HOME) ".hue/0/info.txt"]
 }
 #
 # read config
@@ -45,6 +48,9 @@ if {$argc == 2 } {
 		puts $fileId {set user 0; set ip "0.0.0.0"; set id 0 ;# default values}
 		puts $fileId $conf
 		close $fileId
+	} elseif { $what == "-s" || $what == "--show" } {
+		puts "Current user: [ exec $script_path/remote.sh user ]"
+		puts "Current bridge: [exec cat $info | sed "s/Last/   Last/"]"
 	} else {
 		helper
 	}

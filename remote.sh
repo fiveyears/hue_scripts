@@ -8,6 +8,9 @@ else
 	config="$HOME/.hue/0/config.hue.tcl"
 	env="$HOME/.hue/0/hue_remote_env"
 fi
+ClientId=fv8jJ0lr3BrqyAuu9Vmxpvte7qNyqDn0
+ClientSecret=HuvOrVmAEnQfJ9nk
+appid=plug-switcher
 Host="https://api.meethue.com"
 script="remote.sh"
 
@@ -21,18 +24,6 @@ testToken () {
 	else
 	  echo "Please restart with '$script newToken', $env not found!"
 	  exit 1
-	fi
-	if [ -z "$ClientId" ]; then 
-		echo "ClientId not found!"
-		err=1
-	fi
-	if [ -z "$ClientSecret" ]; then 
-		echo "ClientSecret not found!"
-		err=1
-	fi
-	if [ -z "$appid" ]; then 
-		echo "appid not found!"
-		err=1
 	fi
 	if [ -z "$code_verifier" ]; then 
 		echo "code_verifier not found!"
@@ -73,19 +64,19 @@ if [ "$what" = "gettoken" ]; then
 	if [ -n "$2" ]; then
 		devicename="$@"
 	fi
-	deviceid=$(echo ${(L)devicename} | tr " " "_")
+	deviceid=$(echo $devicename | tr " " "_" | tr '[:upper:]' '[:lower:]')
 	response_type=code
 	state=$(date -v-1H -u +fiveyears%Y%m%d%H | tr -d '\n' | md5)
 	deviceid=$(encode $deviceid)
 	devicename=$(encode $devicename)
 	code_verifier=$(openssl rand -base64 66 | tr -d '\n' | sed 's/+/_/g' | sed 's/\//_/g' | sed 's/=//g')
-	code_challenge=$(echo -n "$code_verifier" | openssl sha256 -binary | base64 | tr '/+' '_-' | tr -d '=')
+	code_challenge=$(echo "$code_verifier\c" | openssl sha256 -binary | base64 | tr '/+' '_-' | tr -d '=')
 	code_challenge_method=S256
 	filename="hue_${state}.txt"
 	uri="/v2/oauth2/authorize"
 	rm -f "$HOME/Downloads/"hue_*.txt 2>/dev/null
 	open "$Host$uri?client_id=$ClientId&response_type=$response_type&state=$state&appid=$appid&deviceid=$deviceid&devicename=$devicename&code_challenge_method=$code_challenge_method&code_challenge=$code_challenge"
-	echo -n "Wait 10 seconds for '$filename' "
+	echo "Wait 10 seconds for '$filename' \c"
 	i=0
 	while [[ ! -e "$HOME/Downloads/$filename" ]] ; do
 		((i++))
@@ -95,7 +86,7 @@ if [ "$what" = "gettoken" ]; then
 			echo "Please start over!"
 			exit 1
 		fi
-		echo -n .
+		echo ".\c"
 	    sleep 1
 	done
 	echo -e "\033[2K"
@@ -119,9 +110,9 @@ if [ "$what" = "gettoken" ]; then
 		echo "Please start over!"
 		exit 1
 	fi
-	HASH1=$(echo -n "$ClientId:$realm:$ClientSecret" | md5)
-	HASH2=$(echo -n "POST:$uri" | md5)
-	response=$(echo -n "$HASH1:$nonce:$HASH2" | md5)
+	HASH1=$(echo "$ClientId:$realm:$ClientSecret\c" | md5)
+	HASH2=$(echo "POST:$uri\c" | md5)
+	response=$(echo "$HASH1:$nonce:$HASH2\c" | md5)
 	ret=$(curl -s --request POST "$Host$uri" -d "grant_type=authorization_code&code=$code&code_verifier=$code_verifier" \
 		-H "Authorization: Digest username=\"$ClientId\", realm=\"$realm\", nonce=\"$nonce\", uri=\"$uri\", response=\"$response\"" \
 		-H 'Content-Type: application/x-www-form-urlencoded'  2>&1 )
@@ -136,7 +127,7 @@ if [ "$what" = "gettoken" ]; then
 	echo "access_token=$access_token" >> "$env"
 	echo "refresh_token=$refresh_token" >> "$env"
 	expires_at=$(($expires_in + $(date +%s)))
-	echo -n "expires_at=$expires_at" >> "$env"
+	echo "expires_at=$expires_at\c" >> "$env"
 	echo "   # ($(date -j -f "%s" $expires_at "+%Y-%m-%d %H:%M:%S"))" >> "$env"
 elif [ "$what" = "user" ]; then
 	user=$(cat $config | grep "set user" | grep -v default | tr -s ' ' | cut -d " " -f 3)
@@ -180,7 +171,7 @@ elif [ "$what" = "newtoken" ]; then
 	exit 0
 elif [ "$what" = "token" ]; then
 	testToken
-	if [ $(($expires_at - $(date +%s) ))  -lt 60 ]; then
+	if [ $(($expires_at - $(date +%s) ))  -lt 3660 ]; then
 		"$0" refreshToken 1
 		exit 0
 	fi
@@ -190,8 +181,8 @@ elif [ "$what" = "checktoken" ]; then
 	echo "Access_token : $access_token"
 	echo "  expires at : $(date -j -f "%s" $expires_at "+%Y-%m-%d %H:%M:%S")"
 	echo "Refresh_token: $refresh_token"
-	if [ $(($expires_at - $(date +%s) ))  -lt 60 ]; then
-		echo "Access_token is expired!"
+	if [ $(($expires_at - $(date +%s) ))  -lt 3660 ]; then
+		echo "Access_token is almost expired!"
 		echo "Please $0 refresh"
 	fi
 	echo "code_verifier: $code_verifier"
@@ -218,7 +209,7 @@ elif [ "$what" = "refreshtoken" ]; then
 	echo "access_token=$access_token" >> "$env"
 	echo "refresh_token=$refresh_token" >> "$env"
 	expires_at=$(($expires_in + $(date +%s)))
-	echo -n "expires_at=$expires_at" >> "$env"
+	echo "expires_at=$expires_at\c" >> "$env"
 	echo "   # ($(date -j -f "%s" $expires_at "+%Y-%m-%d %H:%M:%S"))" >> "$env"
 	if [ -n "$2" ]; then
 		echo $access_token
