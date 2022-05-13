@@ -1,11 +1,6 @@
 #!/usr/bin/env tclsh
 set script_path [file normalize [file dirname $argv0]]
-if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
-} else {
-	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
-}
-source "$config"
+source [file join $script_path "preferences.tcl"]
 source [file join $script_path "hue.inc.tcl"]
 load $script_path/bin/libTools[info sharedlibextension]
 set a "s"
@@ -13,7 +8,7 @@ if {$argc > 0} {
 	set a [lindex $argv 0]
 }
 eval [ jsonMapper [jsonparser scene [hueGet "scenes"]] ]
-eval [ jsonMapper [jsonparser config [hueGet "config"]] ]
+eval [ jsonMapper [jsonparser conf [hueGet "config"]] ]
 array set  so [array get scene *owner ]
 set ll [array names  so]
 set scenes {}
@@ -44,8 +39,8 @@ foreach sceneowner $ll {
 		}
 	}
 	set o_n $scene($s,owner)
-	if { [info exists config(whitelist,$o_n,name)] } {
-		set scene($s,ownerName) $config(whitelist,$o_n,name)
+	if { [info exists conf(whitelist,$o_n,name)] } {
+		set scene($s,ownerName) $conf(whitelist,$o_n,name)
 	}
 	set l $scene($s,lights)
 	set l [string map {"\""  ""} $l]

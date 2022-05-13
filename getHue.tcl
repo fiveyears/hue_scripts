@@ -8,13 +8,21 @@ if { [string first Tools [info loaded]] < 0 } {
 	load $script_path/bin/libTools[info sharedlibextension]
 }
 
-set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
+# set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
+set bridgeNr 0
+if { $argc > 0 && [string length "$argv"] == 1 } {
+	set bridgeNr  "$argv"
+}
 if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
-	set info [file join $script_path  "bin/.hue/0/info.txt"]
+	set config [file join $script_path  "bin/.hue/$bridgeNr/config.hue.tcl"]
+	set info [file join $script_path  "bin/.hue/$bridgeNr/info.txt"]
 } else {
-	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
-	set info [file join $env(HOME) ".hue/0/info.txt"]
+	set config [file join $env(HOME) ".hue/$bridgeNr/config.hue.tcl"]
+	set info [file join $env(HOME) ".hue/$bridgeNr/info.txt"]
+}
+if { ! [file exist $config] } {
+	puts "Bridge $bridgeNr does not exists!"
+	exit 1
 }
 set url https://discovery.meethue.com
 set again {}
@@ -118,7 +126,7 @@ proc mDNS {} {
 	}
 }
 
-puts [exec cat $info ]
+puts "Bridge: [exec cat $info ]"
 Discovery
 
 while 1 {
@@ -155,15 +163,15 @@ while 1 {
 		set ip "api.meethue.com/route"
 		puts $fileId "set ip \"$ip\""
 		if { [catch {
-			set s [	exec $script_path/remote.sh token 1>/dev/null ]
+			set s [	exec $script_path/remote.sh $bridgeNr token 1>/dev/null ]
 		} curl_err]} {
 			puts "Didn't get token for remote access!"
-			puts "Please exec remote.sh getToken first!"
+			puts "Please exec remote.sh $bridgeNr getToken first!"
 			exit
 		}
-		set token [	exec $script_path/remote.sh token ]
-		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/api/\$user"
-		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/clip/v2"
+		set token [	exec $script_path/remote.sh $bridgeNr token ]
+		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/api/\$user"
+		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/clip/v2"
 		puts $fileId "set resolveV1 \"$resolveV1\""
 		puts $fileId "set resolveV2 \"$resolveV2\""
 		set resolveV1 "[subst $resolveV1]"
@@ -186,10 +194,10 @@ while 1 {
 		if {[info exists Base(${c})(internalipaddress)]} {
 			puts $fileId "set ip \"[set Base(${c})(internalipaddress)]\""
 			set ip [set Base(${c})(internalipaddress)]
-			set theName [exec cat $info | grep -v last]
+			set theName [exec cat $info | grep -vi last]
 			set fileId1 [open $info "w"]
 			puts $fileId1 "$theName"
-			puts $fileId1 "Last used local ip: $ip"
+			puts $fileId1 "   Last used local ip: $ip"
 			close $fileId1
 		}
 		if {[info exists Base(${c})(id)]} {

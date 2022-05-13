@@ -1,13 +1,23 @@
 #!/bin/sh
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2022-05-01 08:23:57
 dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-if [ "$HOME" = "/root" ]; then
-	config="$dir/bin/.hue/0/config.hue.tcl"
-	env="$dir/bin/.hue/0/hue_remote_env"
-else
-	config="$HOME/.hue/0/config.hue.tcl"
-	env="$HOME/.hue/0/hue_remote_env"
+bridge=0
+if [[  "$1" =~ ^[0-9]{1} ]]; then
+	bridge="$1"
+	shift
 fi
+if [ "$HOME" = "/root" ]; then
+	config="$dir/bin/.hue/$bridge/config.hue.tcl"
+	env="$dir/bin/.hue/$bridge/hue_remote_env"
+else
+	config="$HOME/.hue/$bridge/config.hue.tcl"
+	env="$HOME/.hue/$bridge/hue_remote_env"
+fi
+if [ ! -f "$config" ]; then
+	echo "The bridge '$bridge' is not available"!
+	exit 1
+fi
+
 ClientId=fv8jJ0lr3BrqyAuu9Vmxpvte7qNyqDn0
 ClientSecret=HuvOrVmAEnQfJ9nk
 appid=plug-switcher
@@ -15,9 +25,8 @@ Host="https://api.meethue.com"
 script="remote.sh"
 
 encode() {
-	echo $( php -r "echo urlencode(\"$1\");"; )
+	echo "$1\c" | curl -Gso /dev/null -w %{url_effective} --data-urlencode @- "" | cut -c 3-
 }
-
 testToken () {
 	if [ -f "$env" ]; then
 	  export $(cat "$env" | sed 's/#.*//g' | xargs)
@@ -58,6 +67,7 @@ testToken () {
 		exit 1
 	fi
 }
+
 what=$(echo "$1"  | tr '[:upper:]' '[:lower:]')
 if [ "$what" = "gettoken" ]; then
 	devicename="$(hostname | cut -f 1 -d '.' )"
@@ -136,6 +146,14 @@ elif [ "$what" = "user" ]; then
 		user=$(cat $config | grep "set user" | grep -v default | tr -s ' ' | cut -d " " -f 3)
 	fi
 	echo $user
+elif [ "$what" = "bluebutton" ]; then
+	token=$("$0" token)
+	uri=/route/api/0/config 
+	curl -s -S --request PUT "$Host$uri" \
+		 --header "Authorization: Bearer $token" \
+		 --header 'Content-Type: application/json' \
+		 --data-raw '{ "linkbutton":true }' 
+	echo
 elif [ "$what" = "newuser" ]; then
 	token=$("$0" token)
 	uri=/route/api/0/config 
@@ -219,6 +237,8 @@ else
 	echo "   $(basename $0) token | newToken | getToken | refreshToken | checkToken"
 	echo "User commands"
 	echo "   $(basename $0) user | newUser | deleteUser"
+	echo "Config commands"
+	echo "   $(basename $0) bluebutton"
 	exit 
 fi	
 
