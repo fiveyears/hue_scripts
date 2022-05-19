@@ -219,7 +219,6 @@ elif [ "$what" = "refreshtoken" ]; then
 	ret=$(echo "$ret" | cut -f 4,7,10 -d "\"" | tr -d ': ,')
 	access_token=$(echo "$ret" | cut -f 1 -d "\"" )
 	expires_in=$(echo "$ret" | cut -f 2 -d "\"" )
-	refresh_token=$(echo "$ret" | cut -f 3 -d "\"" )
 	echo "code_verifier=$code_verifier" >| "$env"
 	echo "nonce=$nonce" >> "$env"
 	echo "realm=$realm" >> "$env"

@@ -58,7 +58,7 @@ proc curltest {curl url {addition {}} } {
 }
 
 proc jsonMapper { s} {
-	return [string map { \[ \{ \] \} } $s]
+	return [string map { \[ \{ \] \} $ \\$} $s]
 }
 
 proc hueGet {{url ""}} {

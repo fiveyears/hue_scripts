@@ -55,7 +55,6 @@ if {"$a" == "h"} {
 	set tr_off "<tr style=\"height:30px;background:#A3A3A3; color:white\">"
 	set i 1
 	while { [info exists light([format "%0${places}d" $i],name) ] } {
-	puts $i
 		set sc [format "%0${places}d" $i]
 		set bri ""
 		catch { set bri "bri $light($sc,state,bri) "	}

@@ -2,52 +2,39 @@
 set script_path [file normalize [file dirname $argv0]]
 source [file join $script_path "preferences.tcl"]
 source [file join $script_path "hue.inc.tcl"]
+source [file join $script_path "hue2.inc.tcl"]
 load $script_path/bin/libTools[info sharedlibextension]
 set places 2
-eval [ jsonMapper [jsonparser group [hueGet "groups"] $places] ]
+# eval [ jsonMapper [jsonparser group [hueGet "groups"] $places] ]
+# parray group
+# unset group
 set a "s"
 if {$argc > 0} { 
 	set a [lindex $argv 0]
 }
+if { "$a" != "l" } {
+	getV1 "groups" "" "action sensors state recycle" 0 group
+} else {
+	getV1 "groups" "" "" 0 group
+}
+
+
 set i 1
 while { [info exists group([format "%0${places}d" $i],name) ] } {
+	set m "([format "%0${places}d" $i],lights,"
+	joinItems "group" "$m"
 	set l $group([format "%0${places}d" $i],lights)
-	set l [string map {"\""  ""} $l]
 	set j [format "%0${places}d" $i]
-	set group($j,lights) $l
 	set l [split $l ,]
 	set lightNames {}
-	foreach lightNr $l {
-		eval [ jsonMapper [jsonparser light [hueGet "lights/$lightNr"]] ]
-		lappend lightNames $light(name)
+	getResources light "name) id_v1" "" 0 lightnames
+	set k 0
+	while { [info exists lightnames([format "%0${places}d" $k],metadata,name) ] } {
+		set kk [format "%0${places}d" $k]
+		lappend lightNames $lightnames($kk,metadata,name) 
+		incr k
 	}
 	set group($j,lightNames) [join $lightNames ,]
-	if { "$a" != "l" } {
-		if { [info exists group($j,action,alert)] } {
-			unset group($j,action,alert)
-		}
-		if { [info exists group($j,action,bri)] } {
-			unset group($j,action,bri)
-		}
-		if { [info exists group($j,action,colormode)] } {
-			unset group($j,action,colormode)
-		}
-		if { [info exists group($j,action,ct)] } {
-			unset group($j,action,ct)
-		}
-		if { [info exists group($j,action,effect)] } {
-			unset group($j,action,effect)
-		}
-		if { [info exists group($j,action,hue)] } {
-			unset group($j,action,hue)
-		}
-		if { [info exists group($j,action,sat)] } {
-			unset group($j,action,sat)
-		}
-		if { [info exists group($j,recycle)] } {
-			unset group($j,recycle)
-		}
-	}
 	incr i
 }
 if {"$a" == "h"} {
@@ -61,6 +48,7 @@ if {"$a" == "h"} {
 	set tr1 "<tr style=\"height:40px;background:#00688B; color:white\">"
 	set tr "<tr style=\"height:30px;background:#A3A3A3; color:white\">"
 	set i 1
+	set out {}
 	while { [info exists group([format "%0${places}d" $i],name) ] } {
 		set sc [format "%0${places}d" $i]
 		set class ""

@@ -21,6 +21,42 @@
 # proc readYaml {yaml label {grep {}} {vgrep {}} {comma 0}}
 
 
+proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
+	global places script_path
+  if { ! [info exists places]} { 	set places 2}
+	set yaml [hueGet "$url"]
+	set yaml [ exec echo "$yaml" | "$script_path/bin/jsondump" 0 $places]
+	if { $arrayname != "" } {
+		set url $arrayname
+	}
+	global $url
+	eval [readYaml  "$yaml" "$url" $grep $vgrep 1]
+	if { $p == 1} {
+		parray $url
+	}
+}
+
+proc joinItems {arrName items} {
+	global $arrName places
+	set m "$arrName$items"
+	set j 0
+	set all {}
+	while { [info exists "$m[format "%0${places}d" $j])" ] } {
+		set single [set "$m[format "%0${places}d" $j])"]
+		lappend all $single
+		incr j
+	}
+	regsub {,$} $m "" mm
+	eval "set \"${mm})\" \"[join $all ","]\""
+	eval "set \"${m}count)\" $j"
+	
+}
+
+proc put2Get {url } {
+	global resolveV2  
+	puts "$resolveV2/$url"
+}
+
 proc hue2Get {url } {
 	global resolveV2 places script_path
 	if { [info exists places ]} {
@@ -194,22 +230,7 @@ proc getScheduleNumberByName { str } {
 	return $nr
 }
 
-proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
-	global places script_path places
-  if { ! [info exists places]} { 	set places 2}
-	global $url 
-	set yaml [hueGet "$url"]
-	set yaml [ exec echo "$yaml" | "$script_path/bin/jsondump" 0 $places]
-	if { $arrayname != "" } {
-		set url $arrayname
-	}
-	eval [readYaml  "$yaml" "$url" $grep $vgrep 1]
-	if { $p == 1} {
-		parray $url
-	}
-}
-
-proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} } {
+proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} {bridge {}}} {
 	if { $res == "" } {
 		set res resource
 		set yaml [hue2Get "resource"] 
@@ -219,12 +240,19 @@ proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {
 	if { $ar_name != "" } { 
 		set res $ar_name
 	  global $res 
-	  set s [ exec echo $yaml | sed "s/\(data\)//g"  ]
+	  if { $bridge != "" } {
+	  	set s [ exec echo $yaml | sed "s/\(data\)/\($bridge\)/g" | sed "s/\(errors\)/($bridge)(errors)/g"  ]
+	  } else {
+	  	set s [ exec echo $yaml | sed "s/\(data\)//g"  ]
+	  }
 	  if { $deleteZero > "" } {
 	  	set s [ exec echo $s | sed "s/\(0*\)//g"  ]
 	  }
 	  set s [readYaml  "$s" "$res" $grep $vgrep $comma]
 	} else {
+	  if { $bridge != "" } {
+	  	set yaml [ exec echo $yaml | sed "s/\(data\)/(data)($bridge)/g"   | sed "s/\(errors\)/($bridge)(errors)/g" ]
+	  } 
 		set res [exec echo $res | sed "s/\\//_/g" ]
 			global $res 
 			set s [readYaml  "$yaml" "$res" $grep $vgrep $comma]
@@ -236,7 +264,7 @@ proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {
 }
 
 proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} } {
-	global lightIDarray env
+	global lightIDarray env bridge
 	if { ! [info exists lightIDarray] || $id_name == "-1" } {
 		if {$id_name >= "0"} {
 				if { "$env(HOME)" == "/root" } {
@@ -391,15 +419,14 @@ proc !# {args} {
 
 proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
 	regsub -all {\/} $label "\\/" newlabel
-	set yaml [exec echo $yaml | sed "s/\$ref/_ref/g"]
   if { $yaml == "" } {
      return "set $label\(data) empty"
   }
-  set yaml [exec echo "$yaml" | sed "s/^set /set \"/g" | sed "s/\) /)\" /g"]
   if {$label != "root" } {
   		set yaml [exec echo "$yaml" | sed "s/root\(data\)/$newlabel/g" ]
   		set yaml [exec echo "$yaml" | sed "s/root/$newlabel/g" ]
   }
+  set yaml [exec echo "$yaml" | sed "s/^set /set \"/g" | sed "s/\) /)\" /g" | sed "s/\$lights/\\\\\$lights/g" | sed "s/\$ref/\\\\\$ref/g" ]
 	# grep
 	if { [llength $grep] > 0} {
 		# the last time
@@ -411,6 +438,7 @@ proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
 				set grepStr "$grepStr\\|$g"
 			}
 		}
+		regsub -all {,} $grepStr "(" grepStr
 	  if {[catch {set yaml [exec echo "$yaml" | grep "$grepStr" ]} ]} {
 	  	set yaml "set $label\(grep) \"not found\""
 	  }

@@ -4,11 +4,36 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 
 char objectName[300];
 char arrayName[300];
 int places;
 // int max_places = 1;
+
+int isNumber(char *text)
+{
+    unsigned long j;
+    j = strlen(text);
+    while(j--)
+    {
+//        if(text[j] >= '0' && text[j] <= '9')
+        if( isdigit(text[j]))
+            continue;
+        return 0;
+    }
+    return 1;
+}
+const char* stringOrNumber (char* text, int places) {
+    static char str[300] = "\0";
+    if (isNumber(text)) {
+        sprintf(str, "%0*i", places, atoi(text) );
+    } else {
+        sprintf(str, "%s", text );
+    }
+    return str;
+}
+
 
 static inline void *realloc_it(void *ptrmem, size_t size) {
   void *p = realloc(ptrmem, size);
@@ -103,7 +128,7 @@ static int dump(const char *js, jsmntok_t *t, size_t count, int indent) {
 
 static int dump_tcl(const char *js, jsmntok_t *t, size_t count, int indent, const char *root, int afterColon) {
 #define doppelpunkt ""
-    objectName[0] = '\0'; //  maybe there ist a object name
+    objectName[0] = '\0'; //  maybe there is a object name
     char newRoot[2048];
     int i, j;
     //int k;
@@ -117,7 +142,8 @@ static int dump_tcl(const char *js, jsmntok_t *t, size_t count, int indent, cons
         return 1;
     } else if (t->type == JSMN_STRING) {
         if (afterColon == 0 ) {
-            sprintf(objectName, "(%.*s)", t->end - t->start, js + t->start);
+            sprintf(objectName, "%.*s", t->end - t->start, js + t->start);
+            sprintf(objectName, "(%s)", stringOrNumber (objectName, places));
         } else {
             printf("%s \"%.*s\"\n", root, t->end - t->start, js + t->start);
         }
@@ -154,7 +180,7 @@ static int dump_tcl(const char *js, jsmntok_t *t, size_t count, int indent, cons
             strcpy (newRoot, root);
             sprintf(objectName, "(%0*i)", places, index++);
             strcat(newRoot, objectName);
-            j += dump_tcl(js, t + 1 + j, count - j, indent + 1, newRoot, 0);
+            j += dump_tcl(js, t + 1 + j, count - j, indent + 1, newRoot, 1);
             //printf("\n");
         }
         return j + 1;
@@ -164,7 +190,7 @@ static int dump_tcl(const char *js, jsmntok_t *t, size_t count, int indent, cons
 
 int main(int argc, char* argv[]) {
 #ifdef DEBUG
-    freopen( "/Users/ivo/Dropbox/web/hue/source/json.txt", "r", stdin );
+    freopen( "/Users/ivo/Dropbox/web/hue/source/jsondump/jsondump/t.txt", "r", stdin );
 #endif
     long r;
     int eof_expected = 0;
@@ -174,8 +200,9 @@ int main(int argc, char* argv[]) {
     
     jsmn_parser p;
     jsmntok_t *tok;
-    size_t tokcount = 12800;
-    
+//    size_t tokcount = 12800;
+    unsigned int tokcount = 12800;
+
     /* Prepare parser */
     jsmn_init(&p);
     

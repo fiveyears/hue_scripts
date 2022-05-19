@@ -29,6 +29,7 @@ if {[package vcompare [package provide Tcl] 8.4] < 0} {
 	set script_path [file normalize [file dirname \$argv0]]
 }
 load \$script_path/../bin/libTools[info sharedlibextension]
+${v2}source [file join \$script_path/.. "hue.inc.tcl"]
 ${v2}source [file join \$script_path/.. "hue2.inc.tcl"]
 ${v1}source [file join \$script_path/.. "hue.inc.tcl"]
 set s "\$script_path/json$nr.txt"
