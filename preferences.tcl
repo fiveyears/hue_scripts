@@ -14,10 +14,15 @@ if {$argc > 1} {
 	}
 }
 if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.hue/$bridge/config.hue.tcl"]
+	set configPath [file join $script_path  "bin/.hue"]
 } else {
-	set config [file join $env(HOME) ".hue/$bridge/config.hue.tcl"]
+	set configPath [file join $env(HOME) ".hue"]
 }
+set config [file join $configPath  "$bridge/config.hue.tcl"]
+if { ! [info exists bridgeNr ]} {
+	set bridgeNr 0
+}
+set tempFile .tmp ;#[exec mktemp]
 if { ! [file exists "$config" ]  } {
 	puts "The bridge $bridge doesn't exist!"
 	exit 1

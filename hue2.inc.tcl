@@ -22,17 +22,30 @@
 
 
 proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
-	global places script_path
-  if { ! [info exists places]} { 	set places 2}
-	set yaml [hueGet "$url"]
-	set yaml [ exec echo "$yaml" | "$script_path/bin/jsondump" 0 $places]
+	global places script_path resolveV1 tempFile bridgeNr
+  if { ! [info exists places]} { 	set places 2} 
+  set curl "$resolveV1/$url"
+	if { [catch {
+		exec curl -s -S -m 2.0 {*}$curl > $tempFile
+	} curl_err]} {
+		curlerr $curl_err
+	}
+	curltest "$tempFile" $curl $url
+	exec cat "$tempFile" | "$script_path/bin/jsondump" 0 $places > "$tempFile.bak" 
+	exec mv "$tempFile.bak" "$tempFile"
+	exec sed -i.bak -e "s/root/root($bridgeNr)/g" -e "s/\(errors\)/\($bridgeNr\)\(errors\)/g"  $tempFile
+	# regsub -all  {^.*application/json\s*} $ret "" newret
+	# return [encoding convertfrom utf-8 $newret]
 	if { $arrayname != "" } {
 		set url $arrayname
 	}
-	global $url
-	eval [readYaml  "$yaml" "$url" $grep $vgrep 1]
-	if { $p == 1} {
-		parray $url
+	readYaml  "$tempFile" "$url" $grep $vgrep 1
+	if { $p > 0 } {
+	  global $url
+		source $tempFile
+		if { $p == 1} {
+			parray $url
+		}
 	}
 }
 
@@ -48,8 +61,7 @@ proc joinItems {arrName items} {
 	}
 	regsub {,$} $m "" mm
 	eval "set \"${mm})\" \"[join $all ","]\""
-	eval "set \"${m}count)\" $j"
-	
+	eval "set \"${m}count)\" $j"	
 }
 
 proc put2Get {url } {
@@ -58,7 +70,7 @@ proc put2Get {url } {
 }
 
 proc hue2Get {url } {
-	global resolveV2 places script_path
+	global resolveV2 places script_path tempFile
 	if { [info exists places ]} {
 		set pl $places
 	} else {
@@ -66,13 +78,14 @@ proc hue2Get {url } {
 	}
 	set curl "$resolveV2/$url"
 	if { [catch {
-		set ret [exec curl -s -S -m 2.0 {*}$curl]
+		exec curl -s -S -m 2.0 {*}$curl > $tempFile
 	} curl_err]} {
 		curlerr $curl_err
 	}
-	curltest $ret $curl $url
-	set s [ exec echo "$ret" | "$script_path/bin/jsondump" 0 $pl]
-	return [encoding convertfrom utf-8 "$s"]
+	curltest "$tempFile" $curl $url
+	exec cat "$tempFile" | "$script_path/bin/jsondump" 0 $pl > "$tempFile.bak" 
+	exec mv "$tempFile.bak" "$tempFile"
+	# return [encoding convertfrom utf-8 "$s"]
 }
 
 proc hue2Put {url header} {
@@ -157,7 +170,7 @@ proc getV2Body {bodyarray} {
 		   				set body "$body,\"dynamics\": {\"speed\": 1, \"duration\": $v}"
 		   			}
 		   			mir* {
-		   				set body "$body,\"color_temperature\": {\"mirek\": $v}"
+		   				set body "$body,\"color_tempFileerature\": {\"mirek\": $v}"
 		   			}
 		   			name {
 		   				set body "$body,\"metadata\": {\"name\":\"$v\"}"
@@ -231,35 +244,39 @@ proc getScheduleNumberByName { str } {
 }
 
 proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} {bridge {}}} {
+	global tempFile
 	if { $res == "" } {
 		set res resource
-		set yaml [hue2Get "resource"] 
+		hue2Get "resource"
 	} else {
-		set yaml [hue2Get "resource/$res"] 
+		hue2Get "resource/$res"
 	}
-	if { $ar_name != "" } { 
-		set res $ar_name
+	if { "$ar_name" != "" } { 
+		set res "$ar_name"
 	  global $res 
 	  if { $bridge != "" } {
-	  	set s [ exec echo $yaml | sed "s/\(data\)/\($bridge\)/g" | sed "s/\(errors\)/($bridge)(errors)/g"  ]
+	  	exec sed -i.bak -e "s/\(data\)/\($bridge\)/g" -e "s/\(errors\)/($bridge)(errors)/g"  $tempFile
 	  } else {
-	  	set s [ exec echo $yaml | sed "s/\(data\)//g"  ]
+	  	exec sed -i.bak "s/\(data\)//g"  $tempFile
 	  }
 	  if { $deleteZero > "" } {
-	  	set s [ exec echo $s | sed "s/\(0*\)//g"  ]
+	  	exec sed  -i.bak -e "s/\(0*\)//g"  $tempFile
 	  }
-	  set s [readYaml  "$s" "$res" $grep $vgrep $comma]
 	} else {
 	  if { $bridge != "" } {
-	  	set yaml [ exec echo $yaml | sed "s/\(data\)/(data)($bridge)/g"   | sed "s/\(errors\)/($bridge)(errors)/g" ]
+	  	 exec  sed -i.bak -e "s/\(data\)/(data)($bridge)/g"   -e "s/\(errors\)/($bridge)(errors)/g" $tempFile
 	  } 
-		set res [exec echo $res | sed "s/\\//_/g" ]
-			global $res 
-			set s [readYaml  "$yaml" "$res" $grep $vgrep $comma]
+		# exec sed -i.bak "s/\\//_/g" $tempFile
+		global $res 
 	}
-	eval $s
-	if { $p == 1} {
-		parray $res
+	readYaml  $tempFile "$res" $grep $vgrep $comma
+	if { $p > 0} {
+		if { [file exists $tempFile ]  } {
+			source $tempFile
+		}
+		if { $p == 1} {
+			parray $res
+		}
 	}
 }
 
@@ -304,12 +321,14 @@ proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}
 }
 
 proc getLights { {ar_name {}} } {
+	global tempFile
 	if { $ar_name == "" } {
 		set ar_name lights
 	}
 	global $ar_name ${ar_name}_name lightCount i  
-	set yaml [hue2Get "resource/light"] 
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places} "" ] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	hue2Get "resource/light"
+	readYaml "$tempFile" "ret" {metadata)(name (id) (id_v1) places} "";#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	source $tempFile
 	if { ! [info exists ret(places)]} {
 		puts "Error here with places!"
 		exit 1
@@ -353,7 +372,7 @@ proc getRoomZones {} {
 proc getRooms {} {
 	global places rooms lightCount i
 	set yaml [hue2Get "resource/room"] 
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	source [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
 	if { ! [info exists ret(places)]} {
 		puts "Error here with places!"
 		exit 1
@@ -372,7 +391,7 @@ proc getRooms {} {
 	  incr j
 	}
 	set yaml [hue2Get "resource/zone"] 
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
+	source [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1) places}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
   if { ! [info exists ret(places)]} {
 		puts "Error here with places!"
 		exit 1
@@ -418,16 +437,23 @@ proc !# {args} {
 }
 
 proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
+	global tempFile
 	regsub -all {\/} $label "\\/" newlabel
-  if { $yaml == "" } {
+	if { ! [file exists "$yaml" ]  } {
+	  set out [open "$tempFile" w]
+		puts $out $yaml
+		close $out	
+	}
+  if { [ file size $tempFile] < 5}  {
+  	 puts $tempFile "set $label\(data) empty"
      return "set $label\(data) empty"
   }
-  if {$label != "root" } {
-  		set yaml [exec echo "$yaml" | sed "s/root\(data\)/$newlabel/g" ]
-  		set yaml [exec echo "$yaml" | sed "s/root/$newlabel/g" ]
+	if {$label != "root" } {
+  		exec sed -i.bak "s/root\(data\)/$newlabel/g" "$tempFile"
+  		exec sed -i.bak "s/root/$newlabel/g" "$tempFile"
   }
-  set yaml [exec echo "$yaml" | sed "s/^set /set \"/g" | sed "s/\) /)\" /g" | sed "s/\$lights/\\\\\$lights/g" | sed "s/\$ref/\\\\\$ref/g" ]
-	# grep
+  exec sed -i.bak -e "s/^set /set \"/g" -e "s/\) /)\" /g" -e "s/\$lights/\\\\\$lights/g" -e "s/\$ref/\\\\\$ref/g" "$tempFile"
+ 	# grep
 	if { [llength $grep] > 0} {
 		# the last time
 		set grepStr ""
@@ -439,9 +465,10 @@ proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
 			}
 		}
 		regsub -all {,} $grepStr "(" grepStr
-	  if {[catch {set yaml [exec echo "$yaml" | grep "$grepStr" ]} ]} {
-	  	set yaml "set $label\(grep) \"not found\""
+	  if {[catch {exec grep "$grepStr" "$tempFile" > "$tempFile.bak"} ]} {
+	  	exec echo "set $label\(grep) \"not found\""  > "$tempFile.bak"
 	  }
+	  exec mv "$tempFile.bak" "$tempFile"
 	}
 	#
 	# vgrep
@@ -456,24 +483,159 @@ proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} } {
 			}
 		}
 		if { $yaml > "" } {
-	    if {[catch {set yaml [exec echo "$yaml" | grep -v "$grepStr" ]} ]} {
+	    if {[catch {exec grep -v "$grepStr" "$tempFile" > "$tempFile.bak"} ]} {
 		  	set yaml "set $label\(grep_v) \"not found\""
 		  	} elseif { $yaml == "" } {
-		  	set yaml "set $label\(grep_v) \"not found\""
+		  	exec echo "set $label\(grep) \"not found\"" > "$tempFile.bak"
 		  }
 		}
+	  exec mv "$tempFile.bak" "$tempFile"
 	}
 	if { $comma != 0 } {
-		set yaml [ exec echo "$yaml" | sed "s/\)\(/,/g" ]
+		exec sed -i.bak "s/\)\(/,/g" "$tempFile"
 	}
-	return $yaml
+	exec rm -f "$tempFile.bak"
+	return "$tempFile"
 }
 
-
-
-####
-if {$sourced == 0} {
-	set yaml [hue2Get "resource/light"] 
-	eval [readYaml "$yaml" "ret" {metadata)(name (id) (id_v1)}] ;#{(on)} ;##{ (id) (id_v1) metadata)(name)}
-	parray ret
+proc pparray {a {channel stdout} {pattern *}} {
+    upvar 1 $a array
+    if {![array exists array]} {
+        return -code error "\"$a\" isn't an array"
+    }
+    set maxl 0
+    set names [lsort [array names array $pattern]]
+    foreach name $names {
+        if {[string length $name] > $maxl} {
+            set maxl [string length $name]
+        }
+    }
+    set maxl [expr {$maxl + [string length $a] + 4}]
+    set r ""
+    foreach name $names {
+        set nameString [format %s(%s) $a $name]
+        if { [string first " " $nameString] >= 0 } {
+        	set nameString "\"$nameString\""
+        }
+        set arrayName "$array($name)"
+        if { [string first " " $array($name)] >= 0 } {
+        	set arrayName "\"$array($name)\"" 
+        } elseif {[string length $array($name)] == 0} {
+        	set arrayName "\"\"" 
+        }
+        set line "set [format "%-*s %s" $maxl $nameString $arrayName]"
+        if { $channel == "return" } {
+        	set r "$r$line\n"
+        } else {
+        	if { [regexp {\$} $line] } {
+        		regsub {\$} $line {\\$} line
+        	}
+        	puts $channel "$line"
+        }
+    }
+    return [string trim "$r"]
 }
+proc readIt {what {pattern *} {reset 0} {p 0} {bridge -1} } {
+	global script_path $what bridgeList$what bridgeListN$what configPath
+	set bridgeList$what {}
+  set bridgeListN$what {}
+	if { [info exists $what ] && $reset != 0} {
+		unset $what
+	} 
+	if {$pattern == "*" || $pattern == "" } {
+		source "[file join $script_path ".$what"]"
+	} else {
+			if {[catch {eval [exec cat "[file join $script_path ".$what"]" | grep {*}$pattern ] } err]} {
+				# puts $err
+				set ${what}(grep) "not found"
+			}
+	}
+	if { $bridge == -1 } {
+		set i 0 
+		while {$i < 10} { ;# all bridges
+			if { [llength [array names $what "$i,places"]] > 0 } {
+				lappend bridgeList$what $i
+				lappend bridgeListN$what [exec cat [file join $configPath "$i/info.txt"]   | head -n 1 ]
+			}
+			incr i
+		}
+	} else { ; # special bridge
+			if { [llength [array names $what "$bridge,places"]] > 0 } {
+				lappend bridgeList$what $bridge
+				lappend bridgeListN$what [exec cat [file join $configPath "$bridge/info.txt"]   | head -n 1 ]
+			}
+
+	}
+	if { $p } {
+		parray $what
+	}
+}
+
+proc testIt {what {write 0}} {
+	global script_path $what
+	set ret 1
+	set file [file join $script_path ".$what"]
+	if { $write == 2 } {
+		set ret 0
+	} elseif { ! [ file exists $file]} {
+		set ret 0
+	} elseif { [ file size $file] < 1000} {
+		set ret 0
+	} else {
+		set t [file mtime $file]
+		set t [expr ([clock seconds]-$t)]
+		if { $t > 86400 } {
+			set ret 0
+		}
+	}
+	if { $write == 0 || $ret == 1} {
+		return $ret
+	}
+	writeIt $what
+	if { [info exists $what ]} {
+		unset $what
+	} 
+	return 1
+}
+
+proc writeIt {what {bri -1}} {
+	global script_path $what configPath bridge resolveV2 resolveV1 bridgeNr places tempFile 
+	set destination "[file join $script_path ".$what"]"
+	if { [info exists places ]} {
+		set oldPlaces $places
+	} 
+	set i 0
+	if {$bri >= 0} {
+		set i $bri
+		exec grep -v "($bri," .lightsV1 > "$destination.bak"
+		exec mv "$destination.bak" "$destination"
+	} else {
+		exec rm -f "$destination"
+	}
+	while { [file exists [file join $configPath "$i/config.hue.tcl"]]} {
+		source [file join $configPath "$i/config.hue.tcl"]
+		set places  2
+		if { [regexp {^(.*?)V1$} $what -> newWhat]} {
+			getV1 "$newWhat" "" "" "" $what
+		}	elseif {$what == "resource"} {
+			set places 3
+			getResources "" "" "" "" "" "" "" $i
+		} else {
+			getResources $what "" "" "" "" "" "" $i
+		}
+		incr i
+		exec cat "$tempFile" >> "$destination"
+		if {$bri >= 0} {
+			break
+		}
+	}
+	exec rm -f "$tempFile"
+	if { [info exists oldPlaces ]} {
+		set places $oldPlaces
+	} else {
+		unset places
+	}
+	# reset config
+	source [file join $configPath "$bridge/config.hue.tcl"]
+}
+

@@ -1,6 +1,7 @@
 #!/usr/bin/env tclsh
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2021-11-30 13:11:13
 set script_path [file normalize [file dirname $argv0]]
+set tempFile [exec mktemp]
 global id ip user
 source [file join $script_path "hue.inc.tcl"]
 source [file join $script_path "hue2.inc.tcl"]
@@ -55,7 +56,7 @@ proc Discovery {} {
 		return		
 	}
 	set s [exec echo $s | [file dirname [info script]]/bin/jsondump]
-    eval  [readYaml $s Base]
+    source  [readYaml $s Base]
     set j 0
     set k 1
     while {[info exists "Base($j)(id)"]} {
@@ -172,6 +173,7 @@ while 1 {
 		set token [	exec $script_path/remote.sh $bridgeNr token ]
 		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/api/\$user"
 		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/clip/v2"
+		puts $fileId "set bridgeNr $bridgeNr"
 		puts $fileId "set resolveV1 \"$resolveV1\""
 		puts $fileId "set resolveV2 \"$resolveV2\""
 		set resolveV1 "[subst $resolveV1]"
@@ -210,6 +212,7 @@ while 1 {
 		if {[info exists Base(${c})(IPv6)]} {
 			puts $fileId "set ipv6 [set Base(${c})(IPv6)]"
 		}
+		puts $fileId "set bridgeNr $bridgeNr"
 		if { [info exists id] && [info exists ip] && "$user" != "" } {
 			set resolveV1 "--insecure --resolve $id:443:$ip https://$id/api/\$user"
 			set resolveV2 "--insecure --header \\\"hue-application-key: \$user\\\" --resolve $id:443:$ip https://$id/clip/v2"
@@ -221,6 +224,7 @@ while 1 {
 			foreach {key value} [array get lightIDarray] {
 				puts $fileId "set \"lightIDarray($key)\" \"$value\""
 			}
+			exec rm -f $tempFile
 		}
 		close $fileId
 		break

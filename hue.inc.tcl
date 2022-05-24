@@ -28,29 +28,38 @@ proc curlerr {curl_err} {
 }
 
 proc curltest {curl url {addition {}} } {
-	global user
-	# puts $curl
-	if {[string first "Oops, there appears to be no lighting here" $curl] != -1} {
+	global user bridgeNr
+	if { [file exists "$curl"] } {
+		set curly [exec cat "$curl" ]
+	} else {
+		set curly $curl
+	}
+	# puts $curly;exit
+	if {[string first "Oops, there appears to be no lighting here" $curly] != -1} {
 		puts "No lights found!"
 		puts "Maybe wrong user: $user"
 	  exit
-	} elseif {[string first "description\":\"Not Found" $curl] != -1} {
+	} elseif {[string first "faultstring\":\"Invalid Access Token" $curly] != -1} {
+		puts "Invalid access token!"
+		puts "Please do > ./remote.sh $bridgeNr refreshToken"
+	  exit
+	} elseif {[string first "description\":\"Not Found" $curly] != -1} {
 		puts "Resource not found!"
 		puts "Maybe wrong resource: $url"
 	  exit
-	} elseif {[string first "\"description\":\"JSON parse error" $curl] != -1} {
+	} elseif {[string first "\"description\":\"JSON parse error" $curly] != -1} {
 		puts "JSON parse error!"
 		puts "Maybe wrong raw data: $addition"
 	  exit
-	} elseif {[string first "\"description\":\"method, GET, not available for resource" $curl] != -1} {
+	} elseif {[string first "\"description\":\"method, GET, not available for resource" $curly] != -1} {
 		puts "Resource (v1) not found!"
 		puts "Maybe wrong url: $url"
 	  exit
-	} elseif {[string first "not available\"\}\}" $curl] != -1} {
+	} elseif {[string first "not available\"\}\}" $curly] != -1} {
 		puts "Resource (v1) not found!"
 		puts "Maybe wrong url: $addition"
 	  exit
-	} elseif {[string first "\"description\":\"unauthorized user\"" $curl] != -1} {
+	} elseif {[string first "\"description\":\"unauthorized user\"" $curly] != -1} {
 		puts "Not authorized (v1)!"
 		puts "Maybe wrong user: $user"
 	  exit

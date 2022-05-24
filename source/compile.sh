@@ -38,7 +38,7 @@ ${v1}eval [string map { \[ \{ \] \} } [jsonparser light \$s]]
 ${v1}parray light
 ${v2}puts "\nv2 ...\n"
 ${v2}set s [ exec cat \$s | ../bin/jsondump ]
-${v2}eval [ readYaml \$s  light "" "" 1]
+${v2}source [ readYaml \$s  light "" "" 1]
 ${v2}parray light
 puts "RealRGB red"
 puts [realRGB red]
