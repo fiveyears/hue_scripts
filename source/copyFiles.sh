@@ -37,7 +37,6 @@ fi
 	getScheduleAttributes.tcl \
 	getSensor.tcl \
 	hue.inc.tcl \
-	hue2.inc.tcl \
 	LightOnOff.tcl \
 	LightStateDelete.tcl \
 	LightStateDeleteCCU.sh \

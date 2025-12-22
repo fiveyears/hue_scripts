@@ -3,7 +3,7 @@ set script_path [file normalize [file dirname $argv0]]
 
 source [file join $script_path "preferences.tcl"]
 source [file join $script_path "ccu_helper.tcl"]
-if { [info exists lightcount] == 0 } {
+if { ! [info exists lightcount] } {
     set lightcount 50
 }
 set lightNr 0
@@ -24,8 +24,7 @@ if {$lightNr == "0"} {
 	exit
 }
 proc srcfile { filename args } {
-    global argv
-    global argc
+    global argv argc script_path
     set argc [llength $args]
     set argv $args
     source $filename

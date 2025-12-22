@@ -5,6 +5,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <time.h>
 
 char objectName[300];
 char arrayName[300];
@@ -264,6 +265,7 @@ int main(int argc, char* argv[]) {
             } else {
                 dump_tcl(js, tok, p.toknext, 0, "set root", 0);
                 printf("set root(places) %i\n",places);
+                printf("set root(timestamp) %d\n",(int)time(NULL));
             }
             eof_expected = 1;
         }

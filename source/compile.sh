@@ -29,10 +29,9 @@ if {[package vcompare [package provide Tcl] 8.4] < 0} {
 	set script_path [file normalize [file dirname \$argv0]]
 }
 load \$script_path/../bin/libTools[info sharedlibextension]
-${v2}source [file join \$script_path/.. "hue.inc.tcl"]
-${v2}source [file join \$script_path/.. "hue2.inc.tcl"]
-${v1}source [file join \$script_path/.. "hue.inc.tcl"]
+source [file join \$script_path/.. "hue.inc.tcl"]
 set s "\$script_path/json$nr.txt"
+set tempFile [exec mktemp]
 ${v1}puts "v1 ...\n"
 ${v1}eval [string map { \[ \{ \] \} } [jsonparser light \$s]]
 ${v1}parray light
@@ -50,6 +49,8 @@ EOF
 	unset -f i_writeTcl
 }
 
+
+# start
 dir=$(cd "$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")" && pwd) && cd $dir 
 test -d "/Volumes/SSD/Develop/web"  && webdir="$_/docker"
 test -x "$HOME/opt/bin/docker.sh"  && webdir="$HOME/opt/bin"
@@ -78,9 +79,9 @@ if [ "$para" == "-h"  -o -z "$para" ]; then
 	echo "          -l              compile local"
 	echo "          -r              compile for remote per dockcross"
 	echo "          -u              compile for remote per ubuntu"
-	echo "              -t          compile and test too"
-	echo "              -o          only testing and no compiling"
-	echo "              -m          only testing including mdns, no compiling"
+	echo "          -t              compile and test too"
+	echo "          -o              only testing and no compiling"
+	echo "          -m              only testing including mdns, no compiling"
 	exit 0
 fi
 if [ -z "$webdir" ]; then
@@ -97,7 +98,6 @@ elif [[ ! ${para:1:1} =~ l|t|a|r|u ]]; then	echo
 	echo
 	exit
 fi
-M1=$(uname -m) # arm64
 writeTcl
 #
 #local compilation 

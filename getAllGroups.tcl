@@ -1,48 +1,53 @@
 #!/usr/bin/env tclsh
-global bridgeNr resolveV1 groupsV1 bridgeListgroupsV1 bridgeListNgroupsV1 
-set script_path [file normalize [file dirname $argv0]]
-source [file join $script_path "preferences.tcl"]
-source [file join $script_path "hue.inc.tcl"]
-source [file join $script_path "hue2.inc.tcl"]
-set places 2
-# if all bridges
-set all 0
-set reset 0
-if {$argc > 1 && "[lindex $argv 0]" == "bridge" } { 
-	if { "[lindex $argv 1]" == "--all" || "[lindex $argv 1]" == "-all" } {
-		set all 1
-		set argv [lrange $argv 2 end]
-		set argc [expr $argc - 2]
+global resolveV1 groupsV1 
+if { "[info script]" == "$::argv0" } {
+	set script_path [file normalize [file dirname $argv0]]
+	source [file join $script_path "preferences.tcl"]
+	source [file join $script_path "hue.inc.tcl"]
+	load $script_path/bin/v2/libTools[info sharedlibextension]
+	set places 2
+	if { "$reset" == 1 } {
+		writeIt group
+		writeIt device
+		writeIt groupsV1
+		set bridges [i_getBridgeList]
+	} elseif  { "$all" == 1 } {
+		testIt group 1
+		testIt device 1
+		testIt groupsV1 1	
+		set bridges [i_getBridgeList]
+	} else {
+		testIt group 1 "" $bridge 
+		testIt device 1 "" $bridge
+		testIt groupsV1 1 "" $bridge	
+		set bridges $bridge
 	}
-} elseif {$argc > 0 } { 
-	if { "[lindex $argv 0]" == "--all" || "[lindex $argv 0]" == "-all" } {
-		set all 1
-		set argv [lrange $argv 1 end]
-		set argc [expr $argc - 1]
-	} elseif { "[lindex $argv 0]" == "--reset" || "[lindex $argv 0]" == "-reset" } {
-		set reset 1
-		set argv [lrange $argv 1 end]
-		set argc [expr $argc - 1]
+} else {
+	global all bridge places bridges reset group light device script_path
+	if { "$reset" == 1 } {
+		writeIt groupsV1
+		set bridges [i_getBridgeList]
+	} elseif  { "$all" == 1 } {
+		testIt groupsV1 1	
+		set bridges [i_getBridgeList]
+	} else {
+		testIt groupsV1 1 "" $bridge	
 	}
 }
+readIt groupsV1 "" 1 0 "" $bridges
 set a "s"
 if {$argc > 0} { 
 	set a [lindex $argv 0]
 }
-if {[testIt groupsV1 0] != 1 || $reset != 0 } {
-	# all bridges
-	testIt light 1
-	testIt device 1
-	writeIt groupsV1
-	readIt groupsV1 
-	foreach br $bridgeListgroupsV1 {
-		set i 1
-		while { [info exists groupsV1($br,[format "%0${places}d" $i],name) ] } {
+source_with_args [file join [file dirname [info script]] "getAllLights.tcl" ] 
+foreach br $bridges {
+	foreach li [lsort [array names groupsV1  -regexp "$br,\[0-9\]*,name"]] {
+		set i [scan [lindex [split $li , ] 1] %d]
 			set m "($br,[format "%0${places}d" $i],lights,"
 			joinItems "groupsV1" "$m"
 			set j [format "%0${places}d" $i]
 			set l $groupsV1($br,$j,lights)
-			set l [split $l ,]
+			set l [split $l " "]
 			set lightNames {}
 			set k 0
 			foreach ll $l {
@@ -79,49 +84,58 @@ if {[testIt groupsV1 0] != 1 || $reset != 0 } {
 	set out [open "[file join $script_path ".groupsV1"]" w]
 	pparray groupsV1 $out
 	close $out	
-} else {
-	if { $all == 1 } {
-		readIt groupsV1 
-	} else {
-		readIt groupsV1 "groupsV1($bridgeNr,*"
-	}
-}
+
 if {"$a" == "h"} {
-	set filename "Groups.html"
+	if { "$product" == "raspmatic_rpi3" } {
+		set filename "/usr/local/etc/config/addons/www/hue/Groups.html"
+	} else {
+		set filename "Groups.html"
+	}
 	set fileId [open $filename "w"]
 	puts $fileId  "<html><meta charset=\"utf-8\" />"
-	puts $fileId "<head><style>"
-	puts $fileId "th, td {padding: 10px;}"
-	puts $fileId "</style></head>"
-	puts $fileId "<table  width=100%>"
-	set tr1 "<tr style=\"height:40px;background:#00688B; color:white\">"
-	set tr2 "<tr style=\"height:35px;background:#A3A3A3; color:red\">"
-	set tr "<tr style=\"height:30px;background:#A3A3A3; color:white\">"
+	puts $fileId "<head><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">"
+	puts $fileId "</head><body onload=\"doIt();\"><table class='table'>"
+	set tr_bridge "<tr class='table-info'>"
 	set out {}
-	set dummy 0
-	foreach j $bridgeListgroupsV1 {
-		set strBridge [lindex $bridgeListNgroupsV1 $j]
-		lappend out "<span dummy=\"$dummy\">$tr2<td colspan=\"6\">Bridge $strBridge</td></tr>"
-		incr dummy
-		set i 1
-		while { [info exists groupsV1($j,[format "%0${places}d" $i],name) ] } {
+	foreach j $groupsV1(bridgeList) {
+		set strBridge $groupsV1($j,bridgeName)
+		lappend out "$tr_bridge<td colspan=\"7\">Bridge $strBridge</td></tr>"
+		foreach li [lsort [array names groupsV1  -regexp "$j,\[0-9\]*,name"]] {
+			set i [scan [lindex [split $li , ] 1] %d]
+			set sc [format "%0${places}d" $i]
+			if {$groupsV1($j,$sc,state,any_on) == "true" } {
+				# set buttontext on
+				set ttr "<tr id='tr${j}_$i' class='table-light'>"
+				set opacity 1
+				set buttontext on
+			} else {
+				set ttr "<tr id='tr${j}_$i' class='table-active'>"
+				set buttontext off
+				set opacity 0.5
+			}
+			set button "<button id='b${j}_$i' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:$opacity'>$buttontext</button>"
+			set i [scan [lindex [split $li , ] 1] %d]
 			set sc [format "%0${places}d" $i]
 			set class ""
 			if {[info exists groupsV1($j,$sc,class)]} {
 				set class $groupsV1($j,$sc,class)
 			}
-			lappend out "<span dummy=\"$dummy\">$tr<td>$sc</td><td>$groupsV1($j,$sc,name)</td><td>$groupsV1($j,$sc,type)</td><td>$class</td><td>$groupsV1($j,$sc,lightNames)</td><td>$groupsV1($j,$sc,lights)</td></tr>"
-			incr i
-			incr dummy
+			lappend out "$ttr<td>$sc</td><td>$groupsV1($j,$sc,name)</td><td>$button</td><td>$groupsV1($j,$sc,type)</td><td>$class</td><td>$groupsV1($j,$sc,lightNames)</td><td>$groupsV1($j,$sc,lights)</td></tr>"
+
 		}
 	}
-	puts $fileId "$tr1<td>ID</td><td>Name</td><td>Type</td><td>Class</td><td>Lightnames</td><td>Lights</td></tr>"
-	puts $fileId [join [lsort -dictionary $out] "\n"]
-	puts $fileId "</table></html>"
+	puts $fileId "<thead class='thead-dark'><tr><th class='text-left'>ID</th><th class='text-left'>Name</th><th style=\"width: 33px\">Switch</th><th class='text-left'>Type</th><th class='text-left'>Class</th><th class='text-left'>Lightnames</th><th class='text-left'>Lights</th></tr></thead><tbody>"
+	puts $fileId [join  $out "\n"]
+	puts $fileId "</tbody></table></html>"
 	close $fileId
-	exec sed -i "" "s/,/, /g" $filename
-	exec open $filename
-	exit
+	if {[catch {exec sed -i "" "s/,/, /g" $filename}]} {
+		exec sed -i "s/,/, /g" $filename
+	}
+	if { "$product" == "raspmatic_rpi3" } {
+		puts "https://192.168.2.30/addons/hue/Groups.html"
+	} else {
+		exec open $filename
+	}
 } elseif {"$a" == "l"} { ;# Aufruf nicht durch ccu_read_hue.tcl
 	parray groupsV1
 }

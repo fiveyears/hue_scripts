@@ -3,7 +3,7 @@
 # nr Nummer/Name der Lampe
 # sw ... on, off, read, toogle
 proc LightOnOff {args} {
-	set args [join $args] ;# for not sourced
+	# for not sourced
 	set argsLength  [llength $args]
 	if {$argsLength < 1} {
 		puts "Usage: [info script] LighNr \[read|on|off|toggle\]"
@@ -15,15 +15,6 @@ proc LightOnOff {args} {
 		set nr [lindex $args 0]
 		set sw [string tolower [lindex $args 1]]
 	}
-	global ip user light ;# set in config.tcl
-	set script_path [file dirname [info script]]
-	if { "$env(HOME)" == "/root" } {
-		set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
-	} else {
-		set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
-	}
-	source "$config"
-	source [file join $script_path "hue.inc.tcl"]
 	set nr [getLightNumberByName $nr]
 	if { [string first Exit $nr] > 0} { 
 		return $nr
@@ -42,6 +33,10 @@ proc LightOnOff {args} {
 		exit 1
 	}
 	set l "$nr on " ;# erstes Argument ist das Light ( 1, 2, ...)
+	if { [string first Tools [info loaded]] < 0 } {
+		global script_path
+		load $script_path/bin/libTools[info sharedlibextension]
+	}
 	eval [ jsonMapper [jsonparser light [hueGet "lights/$nr"] places ] ]
 	set onOff $light(state,on)
 	if { "$sw" == "read" } {
@@ -67,7 +62,9 @@ proc LightOnOff {args} {
 		puts [huePut $url "{$body}"]
 	}
 }
-
 if { [info script] eq $::argv0 } {
-	puts [LightOnOff $argv]
+	set script_path [file normalize [file dirname $argv0]]
+	source [file join $script_path "preferences.tcl"]
+	source [file join $script_path "hue.inc.tcl"]
+	puts [LightOnOff {*}$argv]
 } 

@@ -1,36 +1,177 @@
 <html><meta charset="utf-8" />
-<head><style>
-.box {
-  float: none;
-  height: 30px;
-  width: 30px;
-  border: 1px solid black;
-  clear: both;
-}
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src='color.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
+<script>  var ret;
+function b0 (method,  url){
+			return {"url": "https://192.168.2.50/api/aFP5jbliw4WE8aWfO-Vlbk6unO8E2r2h5LiwiaHr/" + url,  "method": method, "headers": {"Content-Type": "application/json"}, "timeout": 0};
+		}
+		function lights_b0 () {
+		var settings = b0 ('GET',  'lights');
+		$.ajax(settings).done(function (response) {
+			ret = response;
+			let j = 0;
+			for (const property in ret) {
+				let i = parseInt(property);
+				let state = ret[property].state;
+				var rgb = '';
+				var s;
+				if (typeof ret[property].capabilities.control.colorgamut != "undefined") {
+					let p2 = ret[property].capabilities.control.colorgamut[0][0];
+					let p3 = ret[property].capabilities.control.colorgamut[0][1];
+					let p4 = ret[property].capabilities.control.colorgamut[1][0];
+					let p5 = ret[property].capabilities.control.colorgamut[1][1];
+					let p6 = ret[property].capabilities.control.colorgamut[2][0];
+					let p7 = ret[property].capabilities.control.colorgamut[2][1];
+					let p0 = state.xy[0];
+					let p1 = state.xy[1];
+					rgb = calcRGB(p0, p1, p2, p3, p4, p5, p6, p7);
+					iRgb = invertColor(rgb, 1);
+					s = `bri ${state.bri} effect ${state.effect} alert ${state.alert}`
+					s = `${s} sat ${state.sat} RGB: ${rgb}`
+					s = `${s} ct ${state.ct} hue ${state.hue} colormode ${state.colormode}`
+				} else {
+					s = `alert ${state.alert}`
+				}
+				let id = `${j}_${i}`;
+				let button_id = `#b${id}`;
+				let tr_id = `#tr${id}`;
+				if ( rgb !== '' ) {
+					$(button_id).css("background-color",  `#${rgb}`);
+					$(button_id).css("color",  `#${iRgb}`);
+					$(button_id).css("border",  '1px solid black');
+					$(`#rgb${id}`).html(rgb);
+					$(`#hue${id}`).html(state.hue);
+					$(`#ct${id}`).html(state.ct);
+					$(`#colormode${id}`).html(state.colormode);
+					$(`#bri${id}`).html(state.bri);
+					$(`#sat${id}`).html(state.sat);
+					$(`#effect${id}`).html(state.effect);
+					if (state.ct == undefined) {
+						state.ct = '';
+					}
+					$(`#ct${id}`).html(state.ct);
+				}
+				$(`#reachable${id}`).html(state.reachable);
+				if (state.reachable == false ) {
+					$(button_id).html('x');
+					$(button_id).prop( "disabled",  true );
+					$(tr_id).removeClass('table-light');
+					$(tr_id).removeClass('table-active');
+					$(tr_id).addClass('table-warning');
+					$(button_id).css("opacity",  '1.0');
+				} else if (state.on ) {
+					$(button_id).prop( "disabled",  false );
+					$(button_id).html('on');
+					$(tr_id).removeClass('table-active');
+					$(tr_id).removeClass('table-warning');
+					$(tr_id).addClass('table-light');
+					$(button_id).css("opacity",  '1.0');
+				} else {
+					$(button_id).prop( "disabled",  false );
+					$(button_id).css("opacity",  '0.5');
+					$(button_id).html('off');
+					$(tr_id).removeClass('table-warning');
+					$(tr_id).addClass('table-active');
+					$(tr_id).removeClass('table-light');
+				}
+				//console.log(id,  state);
 
-th,  td {padding: 10px;}
-</style></head>
-<table  width=100%>
-<span dummy="21"><tr style="height:40px;background:#00688B; color:white"><td>ID</td><td>Name</td><td>Model ID</td><td>State</td><td>RGB</td><td style="width: 33px"> </td><td>CT</td><td>Hue</td><td>Colormode</td></tr>
-<span dummy="0"><tr style="height:35px;background:#A3A3A3; color:red"><td colspan="9">Bridge Dresden</td></tr>
-<span dummy="1"><tr style="height:30px;background:#A3A3A3; color:white"><td>01</td><td>Hue TV</td><td>LCT001</td><td>on false bri 254 effect  none alert  none sat  101 </td><td>F9D489</td><td><div class="box" style="background:#F9D489;opacity:0.5"></div></td><td>326</td></td><td>15727</td><td>ct</td></tr>
-<span dummy="2"><tr style="height:30px;background:#F0F0F0"><td>02</td><td>D2</td><td>LCT001</td><td>on true bri 254 effect  none alert  select sat  175 </td><td>F9F9E5</td><td><div class="box" style="background:#F9F9E5;opacity:1"></div></td><td>188</td></td><td>33755</td><td>ct</td></tr>
-<span dummy="3"><tr style="height:30px;background:#F0F0F0"><td>03</td><td>D3</td><td>LCT001</td><td>on true bri 254 effect  none alert  none sat  38 </td><td>F9E1A7</td><td><div class="box" style="background:#F9E1A7;opacity:1"></div></td><td>275</td></td><td>17165</td><td>ct</td></tr>
-<span dummy="4"><tr style="height:30px;background:#A3A3A3; color:white"><td>04</td><td>S3</td><td>LCT010</td><td>on false bri 254 effect  none alert  select sat  75 </td><td>F9D995</td><td><div class="box" style="background:#F9D995;opacity:0.5"></div></td><td>305</td></td><td>9031</td><td>ct</td></tr>
-<span dummy="5"><tr style="height:30px;background:#A3A3A3; color:white"><td>05</td><td>Hue go</td><td>LLC020</td><td>on false bri 254 effect  none alert  none sat  75 </td><td>F9D995</td><td><div class="box" style="background:#F9D995;opacity:0.5"></div></td><td>305</td></td><td>9031</td><td>ct</td></tr>
-<span dummy="6"><tr style="height:30px;background:#A3A3A3; color:white"><td>06</td><td>Hue iris</td><td>LLC010</td><td>on false bri 254 effect  none alert  select sat  112 </td><td>EEF9F9</td><td><div class="box" style="background:#EEF9F9;opacity:0.5"></div></td><td>none</td></td><td>39649</td><td>xy</td></tr>
-<span dummy="7"><tr style="height:30px;background:#A3A3A3; color:white"><td>07</td><td>S1</td><td>LCT010</td><td>on false bri 254 effect  none alert  none sat  75 </td><td>F9D995</td><td><div class="box" style="background:#F9D995;opacity:0.5"></div></td><td>305</td></td><td>9031</td><td>ct</td></tr>
-<span dummy="8"><tr style="height:30px;background:#A3A3A3; color:white"><td>08</td><td>S2</td><td>LCT010</td><td>on false bri 254 effect  none alert  none sat  75 </td><td>F9D995</td><td><div class="box" style="background:#F9D995;opacity:0.5"></div></td><td>305</td></td><td>9031</td><td>ct</td></tr>
-<span dummy="9"><tr style="height:30px;background:#A3A3A3; color:white"><td>09</td><td>D1</td><td>LCT010</td><td>on false bri 254 effect  none alert  select sat  63 </td><td>F9DC9C</td><td><div class="box" style="background:#F9DC9C;opacity:0.5"></div></td><td>292</td></td><td>9159</td><td>ct</td></tr>
-<span dummy="10"><tr style="height:30px;background:#A3A3A3; color:white"><td>10</td><td>TV 3</td><td>LCT010</td><td>on false bri 254 effect  none alert  none sat  94 </td><td>F9D58C</td><td><div class="box" style="background:#F9D58C;opacity:0.5"></div></td><td>320</td></td><td>8853</td><td>ct</td></tr>
-<span dummy="11"><tr style="height:30px;background:#F0F0F0"><td>11</td><td>E 1</td><td>LCT010</td><td>on true bri 254 effect  none alert  none sat  254 </td><td>F92600</td><td><div class="box" style="background:#F92600;opacity:1"></div></td><td>500</td></td><td>25600</td><td>xy</td></tr>
-<span dummy="12"><tr style="height:30px;background:#A3A3A3; color:white"><td>12</td><td>B 1</td><td>LCT010</td><td>on false bri 254 effect  none alert  select sat  106 </td><td>F9D286</td><td><div class="box" style="background:#F9D286;opacity:0.5"></div></td><td>333</td></td><td>8730</td><td>ct</td></tr>
-<span dummy="13"><tr style="height:30px;background:#A3A3A3; color:white"><td>13</td><td>Lightstrip</td><td>LST002</td><td>on false bri 254 effect  none alert  none sat  87 </td><td>F9D790</td><td><div class="box" style="background:#F9D790;opacity:0.5"></div></td><td>314</td></td><td>8915</td><td>ct</td></tr>
-<span dummy="14"><tr style="height:30px;background:#A3A3A3; color:white"><td>14</td><td>Piano light</td><td>LOM001</td><td>on false alert  select </td><td>not available</td><td><div class="box" style="background:white;opacity:0.5"></div></td><td>none</td></td><td></td><td></td></tr>
-<span dummy="15"><tr style="height:30px;background:#A3A3A3; color:white"><td>15</td><td>Christmas Lights</td><td>LOM001</td><td>on false alert  select </td><td>not available</td><td><div class="box" style="background:white;opacity:0.5"></div></td><td>none</td></td><td></td><td></td></tr>
-<span dummy="16"><tr style="height:35px;background:#A3A3A3; color:red"><td colspan="9">Bridge Berlin</td></tr>
-<span dummy="17"><tr style="height:30px;background:#A3A3A3; color:white"><td>01</td><td>Torchière</td><td>LCA001</td><td>on false bri 254 effect  none alert  select sat  154 </td><td>F9C76D</td><td><div class="box" style="background:#F9C76D;opacity:0.5"></div></td><td>383</td></td><td>8276</td><td>ct</td></tr>
-<span dummy="18"><tr style="height:30px;background:#A3A3A3; color:white"><td>02</td><td>Front</td><td>LCA001</td><td>on false bri 157 effect  none alert  select sat  183 </td><td>F9BB5C</td><td><div class="box" style="background:#F9BB5C;opacity:0.5"></div></td><td>428</td></td><td>7630</td><td>xy</td></tr>
-<span dummy="19"><tr style="height:30px;background:#A3A3A3; color:white"><td>03</td><td>Window</td><td>LCA001</td><td>on false bri 254 effect  none alert  select sat  75 </td><td>F2F9F9</td><td><div class="box" style="background:#F2F9F9;opacity:0.5"></div></td><td>156</td></td><td>41440</td><td>xy</td></tr>
-<span dummy="20"><tr style="height:30px;background:#F0F0F0"><td>04</td><td>MacPro</td><td>LOM001</td><td>on true alert  select </td><td>not available</td><td><div class="box" style="background:white;opacity:1"></div></td><td>none</td></td><td></td><td></td></tr>
-</table></html>
+			}
+		});
+	}
+  function doIt() {
+  	
+	
+	lights_b0();
+	// passing argument to setInterval
+	setInterval(lights_b0,  5000);  
+
+	}
+	function toggle(t) {
+		var on = $('#' + t).text();
+		if (on == 'on') {
+			on = 'false';
+		} else {
+			on = 'true';
+		}
+		const myArray = t.split("_");
+		const light = myArray[1];
+		const bridge = myArray[0];
+		var settings = this[bridge]('PUT',  'lights/' + light + '/state');
+		settings.data = "{\"on\": " + on + " }";
+		// console.log(settings);
+		$.ajax(settings).done(function (response) {window['lights_' + bridge]();	});
+	}
+	function padZero(str,  len) {
+	    len = len || 2;
+	    var zeros = new Array(len).join('0');
+	    return (zeros + str).slice(-len);
+	}
+	function invertColor(hex,  bw) {
+	    if (hex.indexOf('#') === 0) {
+	        hex = hex.slice(1);
+	    }
+	    // convert 3-digit hex to 6-digits.
+	    if (hex.length === 3) {
+	        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+	    }
+	    if (hex.length !== 6) {
+	        throw new Error('Invalid HEX color.');
+	    }
+	    var r = parseInt(hex.slice(0,  2),  16), 
+	        g = parseInt(hex.slice(2,  4),  16), 
+	        b = parseInt(hex.slice(4,  6),  16);
+	    if (bw) {
+	        // https://stackoverflow.com/a/3943023/112731
+	        return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+	            ? '000000'
+	            : 'FFFFFF';
+	    }
+	    // invert color components
+	    r = (255 - r).toString(16);
+	    g = (255 - g).toString(16);
+	    b = (255 - b).toString(16);
+	    // pad each with zeros and return
+	    return padZero(r) + padZero(g) + padZero(b);
+	}
+</script>
+
+</head><body onload="doIt();">
+<table  class='table'>
+<thead class='thead-dark'><tr><th class='text-left'>ID</th><th class='text-left'>Name</th><th class='text-left'>Model ID</th><th style="width: 33px">Switch</th><th class='text-left'>RGB</th><th class='text-left'>CT</th><th class='text-left'>Hue</th><th class='text-left'>Colormode</th><th class='text-left'>Brilliance</th><th class='text-left'>Saturation</th><th class='text-left'>Effect</th><th class='text-left'>reachable</th><th class='text-left'>Alert</th></tr></thead><tbody>
+<tr class='table-info'><td class='text-center'>0</td><td colspan="12">Bridge Dresden</td></tr>
+<tr id='tr0_1' class='table-active'><td class='text-center'>01</td><td>Hue TV</td><td>LCT001</td><td><button  id='b0_1' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D995;opacity:0.5'>off</button></td><td id='rgb0_1' >F9D995</td><td id='ct0_1' >206</td></td><td id='hue0_1'>16138</td><td id='colormode0_1' >xy</td><td id='bri0_1' >254</td><td id='sat0_1' >75</td><td id='effect0_1' >none</td><td id='reachable0_1' >true</td><td id='alert0_1' >select</td></tr>
+<tr id='tr0_2' class='table-light'><td class='text-center'>02</td><td>D2</td><td>LCT001</td><td><button  id='b0_2' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D995;opacity:1'>on</button></td><td id='rgb0_2' >F9D995</td><td id='ct0_2' >366</td></td><td id='hue0_2'>16138</td><td id='colormode0_2' >xy</td><td id='bri0_2' >254</td><td id='sat0_2' >75</td><td id='effect0_2' >none</td><td id='reachable0_2' >true</td><td id='alert0_2' >select</td></tr>
+<tr id='tr0_3' class='table-light'><td class='text-center'>03</td><td>D3</td><td>LCT001</td><td><button  id='b0_3' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D995;opacity:1'>on</button></td><td id='rgb0_3' >F9D995</td><td id='ct0_3' >376</td></td><td id='hue0_3'>16138</td><td id='colormode0_3' >xy</td><td id='bri0_3' >254</td><td id='sat0_3' >75</td><td id='effect0_3' >none</td><td id='reachable0_3' >true</td><td id='alert0_3' >none</td></tr>
+<tr id='tr0_4' class='table-active'><td class='text-center'>04</td><td>S3</td><td>LCT010</td><td><button  id='b0_4' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9EFCB;opacity:0.5'>off</button></td><td id='rgb0_4' >F9EFCB</td><td id='ct0_4' >222</td></td><td id='hue0_4'>40010</td><td id='colormode0_4' >ct</td><td id='bri0_4' >254</td><td id='sat0_4' >22</td><td id='effect0_4' >none</td><td id='reachable0_4' >true</td><td id='alert0_4' >select</td></tr>
+<tr id='tr0_5' class='table-active'><td class='text-center'>05</td><td>Hue go</td><td>LLC020</td><td><button  id='b0_5' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9EFCB;opacity:0.5'>off</button></td><td id='rgb0_5' >F9EFCB</td><td id='ct0_5' >222</td></td><td id='hue0_5'>40010</td><td id='colormode0_5' >ct</td><td id='bri0_5' >254</td><td id='sat0_5' >22</td><td id='effect0_5' >none</td><td id='reachable0_5' >true</td><td id='alert0_5' >none</td></tr>
+<tr id='tr0_6' class='table-active'><td class='text-center'>06</td><td>Hue iris</td><td>LLC010</td><td><button  id='b0_6' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9B301;opacity:0.5'>off</button></td><td id='rgb0_6' >F9B301</td><td id='ct0_6' >206</td></td><td id='hue0_6'>13333</td><td id='colormode0_6' >xy</td><td id='bri0_6' >254</td><td id='sat0_6' >254</td><td id='effect0_6' >none</td><td id='reachable0_6' >true</td><td id='alert0_6' >select</td></tr>
+<tr id='tr0_7' class='table-active'><td class='text-center'>07</td><td>S1</td><td>LCT010</td><td><button  id='b0_7' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F97892;opacity:0.5'>off</button></td><td id='rgb0_7' >F97892</td><td id='ct0_7' >373</td></td><td id='hue0_7'>61091</td><td id='colormode0_7' >xy</td><td id='bri0_7' >254</td><td id='sat0_7' >169</td><td id='effect0_7' >none</td><td id='reachable0_7' >true</td><td id='alert0_7' >none</td></tr>
+<tr id='tr0_8' class='table-active'><td class='text-center'>08</td><td>S2</td><td>LCT010</td><td><button  id='b0_8' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9EFCB;opacity:0.5'>off</button></td><td id='rgb0_8' >F9EFCB</td><td id='ct0_8' >222</td></td><td id='hue0_8'>40010</td><td id='colormode0_8' >ct</td><td id='bri0_8' >254</td><td id='sat0_8' >22</td><td id='effect0_8' >none</td><td id='reachable0_8' >true</td><td id='alert0_8' >none</td></tr>
+<tr id='tr0_9' class='table-light'><td class='text-center'>09</td><td>D1</td><td>LCT010</td><td><button  id='b0_9' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D995;opacity:1'>on</button></td><td id='rgb0_9' >F9D995</td><td id='ct0_9' >376</td></td><td id='hue0_9'>8998</td><td id='colormode0_9' >xy</td><td id='bri0_9' >254</td><td id='sat0_9' >75</td><td id='effect0_9' >none</td><td id='reachable0_9' >true</td><td id='alert0_9' >select</td></tr>
+<tr id='tr0_10' class='table-active'><td class='text-center'>10</td><td>TV 3</td><td>LCT010</td><td><button  id='b0_10' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F0F9F9;opacity:0.5'>off</button></td><td id='rgb0_10' >F0F9F9</td><td id='ct0_10' >206</td></td><td id='hue0_10'>41436</td><td id='colormode0_10' >xy</td><td id='bri0_10' >254</td><td id='sat0_10' >77</td><td id='effect0_10' >none</td><td id='reachable0_10' >true</td><td id='alert0_10' >select</td></tr>
+<tr id='tr0_11' class='table-light'><td class='text-center'>11</td><td>E 1</td><td>LCT010</td><td><button  id='b0_11' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9F1D1;opacity:1'>on</button></td><td id='rgb0_11' >F9F1D1</td><td id='ct0_11' >213</td></td><td id='hue0_11'>40363</td><td id='colormode0_11' >ct</td><td id='bri0_11' >254</td><td id='sat0_11' >30</td><td id='effect0_11' >none</td><td id='reachable0_11' >true</td><td id='alert0_11' >select</td></tr>
+<tr id='tr0_12' class='table-active'><td class='text-center'>12</td><td>B 1</td><td>LCT010</td><td><button  id='b0_12' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D5CC;opacity:0.5'>off</button></td><td id='rgb0_12' >F9D5CC</td><td id='ct0_12' >365</td></td><td id='hue0_12'>53977</td><td id='colormode0_12' >xy</td><td id='bri0_12' >254</td><td id='sat0_12' >46</td><td id='effect0_12' >none</td><td id='reachable0_12' >true</td><td id='alert0_12' >select</td></tr>
+<tr id='tr0_13' class='table-light'><td class='text-center'>13</td><td>Lightstrip</td><td>LST002</td><td><button  id='b0_13' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#5BF93F;opacity:1'>on</button></td><td id='rgb0_13' >5BF93F</td><td id='ct0_13' >153</td></td><td id='hue0_13'>23045</td><td id='colormode0_13' >xy</td><td id='bri0_13' >254</td><td id='sat0_13' >254</td><td id='effect0_13' >none</td><td id='reachable0_13' >true</td><td id='alert0_13' >select</td></tr>
+<tr id='tr0_14' class='table-active'><td class='text-center'>14</td><td>Piano light</td><td>LOM001</td><td><button  id='b0_14' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:0.5'>off</button></td><td id='rgb0_14' ></td><td id='ct0_14' ></td></td><td id='hue0_14'></td><td id='colormode0_14' ></td><td id='bri0_14' ></td><td id='sat0_14' ></td><td id='effect0_14' ></td><td id='reachable0_14' >true</td><td id='alert0_14' >select</td></tr>
+<tr id='tr0_15' class='table-light'><td class='text-center'>15</td><td>Desktop</td><td>LOM001</td><td><button  id='b0_15' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:1'>on</button></td><td id='rgb0_15' ></td><td id='ct0_15' ></td></td><td id='hue0_15'></td><td id='colormode0_15' ></td><td id='bri0_15' ></td><td id='sat0_15' ></td><td id='effect0_15' ></td><td id='reachable0_15' >true</td><td id='alert0_15' >select</td></tr>
+<tr id='tr0_18' class='table-light'><td class='text-center'>18</td><td>Winhome</td><td>LOM001</td><td><button  id='b0_18' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:1'>on</button></td><td id='rgb0_18' ></td><td id='ct0_18' ></td></td><td id='hue0_18'></td><td id='colormode0_18' ></td><td id='bri0_18' ></td><td id='sat0_18' ></td><td id='effect0_18' ></td><td id='reachable0_18' >true</td><td id='alert0_18' >select</td></tr>
+<tr id='tr0_19' class='table-light'><td class='text-center'>19</td><td>Balcony Light</td><td>LOM001</td><td><button  id='b0_19' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:1'>on</button></td><td id='rgb0_19' ></td><td id='ct0_19' ></td></td><td id='hue0_19'></td><td id='colormode0_19' ></td><td id='bri0_19' ></td><td id='sat0_19' ></td><td id='effect0_19' ></td><td id='reachable0_19' >true</td><td id='alert0_19' >select</td></tr>
+<tr id='tr0_20' class='table-active'><td class='text-center'>20</td><td>Guestbath spot 2</td><td>929004611301_03</td><td><button  id='b0_20' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_20' >F2F9F8</td><td id='ct0_20' >366</td></td><td id='hue0_20'>41436</td><td id='colormode0_20' >xy</td><td id='bri0_20' >254</td><td id='sat0_20' >74</td><td id='effect0_20' >none</td><td id='reachable0_20' >true</td><td id='alert0_20' >select</td></tr>
+<tr id='tr0_21' class='table-active'><td class='text-center'>21</td><td>Guestbath spot 5</td><td>929004611301_01</td><td><button  id='b0_21' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_21' >F2F9F8</td><td id='ct0_21' >366</td></td><td id='hue0_21'>41436</td><td id='colormode0_21' >xy</td><td id='bri0_21' >254</td><td id='sat0_21' >74</td><td id='effect0_21' >none</td><td id='reachable0_21' >true</td><td id='alert0_21' >select</td></tr>
+<tr id='tr0_22' class='table-active'><td class='text-center'>22</td><td>Guestbath spot 3</td><td>929004611301_02</td><td><button  id='b0_22' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_22' >F2F9F8</td><td id='ct0_22' >366</td></td><td id='hue0_22'>41436</td><td id='colormode0_22' >xy</td><td id='bri0_22' >254</td><td id='sat0_22' >74</td><td id='effect0_22' >none</td><td id='reachable0_22' >true</td><td id='alert0_22' >select</td></tr>
+<tr id='tr0_23' class='table-active'><td class='text-center'>23</td><td>Guestbath flux strip left</td><td>929004610602</td><td><button  id='b0_23' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9CF7F;opacity:0.5'>off</button></td><td id='rgb0_23' >F9CF7F</td><td id='ct0_23' >346</td></td><td id='hue0_23'>8596</td><td id='colormode0_23' >ct</td><td id='bri0_23' >254</td><td id='sat0_23' >121</td><td id='effect0_23' >none</td><td id='reachable0_23' >true</td><td id='alert0_23' >select</td></tr>
+<tr id='tr0_24' class='table-active'><td class='text-center'>24</td><td>Guestbath flux strip right</td><td>929004610602</td><td><button  id='b0_24' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F9D995;opacity:0.5'>off</button></td><td id='rgb0_24' >F9D995</td><td id='ct0_24' >346</td></td><td id='hue0_24'>8998</td><td id='colormode0_24' >xy</td><td id='bri0_24' >254</td><td id='sat0_24' >75</td><td id='effect0_24' >none</td><td id='reachable0_24' >true</td><td id='alert0_24' >select</td></tr>
+<tr id='tr0_25' class='table-active'><td class='text-center'>25</td><td>Guestbath spot 7</td><td>929004611201</td><td><button  id='b0_25' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_25' >F2F9F8</td><td id='ct0_25' >366</td></td><td id='hue0_25'>41436</td><td id='colormode0_25' >xy</td><td id='bri0_25' >254</td><td id='sat0_25' >74</td><td id='effect0_25' >none</td><td id='reachable0_25' >true</td><td id='alert0_25' >select</td></tr>
+<tr id='tr0_26' class='table-active'><td class='text-center'>26</td><td>Guestbath spot 6</td><td>929004611301_02</td><td><button  id='b0_26' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_26' >F2F9F8</td><td id='ct0_26' >366</td></td><td id='hue0_26'>41436</td><td id='colormode0_26' >xy</td><td id='bri0_26' >254</td><td id='sat0_26' >74</td><td id='effect0_26' >none</td><td id='reachable0_26' >true</td><td id='alert0_26' >select</td></tr>
+<tr id='tr0_27' class='table-active'><td class='text-center'>27</td><td>Guestbath spot 1</td><td>929004611301_01</td><td><button  id='b0_27' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_27' >F2F9F8</td><td id='ct0_27' >366</td></td><td id='hue0_27'>41436</td><td id='colormode0_27' >xy</td><td id='bri0_27' >254</td><td id='sat0_27' >74</td><td id='effect0_27' >none</td><td id='reachable0_27' >true</td><td id='alert0_27' >select</td></tr>
+<tr id='tr0_28' class='table-active'><td class='text-center'>28</td><td>Guestbath spot 4</td><td>929004611301_03</td><td><button  id='b0_28' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:#F2F9F8;opacity:0.5'>off</button></td><td id='rgb0_28' >F2F9F8</td><td id='ct0_28' >366</td></td><td id='hue0_28'>41436</td><td id='colormode0_28' >xy</td><td id='bri0_28' >254</td><td id='sat0_28' >74</td><td id='effect0_28' >none</td><td id='reachable0_28' >true</td><td id='alert0_28' >select</td></tr>
+<tr id='tr0_29' class='table-light'><td class='text-center'>29</td><td>floor</td><td>LOM007</td><td><button  id='b0_29' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:1'>on</button></td><td id='rgb0_29' ></td><td id='ct0_29' ></td></td><td id='hue0_29'></td><td id='colormode0_29' ></td><td id='bri0_29' ></td><td id='sat0_29' ></td><td id='effect0_29' ></td><td id='reachable0_29' >true</td><td id='alert0_29' >select</td></tr>
+<tr id='tr0_30' class='table-warning'><td class='text-center'>30</td><td>plug 1</td><td>LOM007</td><td><button disabled id='b0_30' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:0.5'>x</button></td><td id='rgb0_30' ></td><td id='ct0_30' ></td></td><td id='hue0_30'></td><td id='colormode0_30' ></td><td id='bri0_30' ></td><td id='sat0_30' ></td><td id='effect0_30' ></td><td id='reachable0_30' >false</td><td id='alert0_30' >select</td></tr>
+<tr id='tr0_31' class='table-warning'><td class='text-center'>31</td><td>plug 2</td><td>LOM007</td><td><button disabled id='b0_31' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:0.5'>x</button></td><td id='rgb0_31' ></td><td id='ct0_31' ></td></td><td id='hue0_31'></td><td id='colormode0_31' ></td><td id='bri0_31' ></td><td id='sat0_31' ></td><td id='effect0_31' ></td><td id='reachable0_31' >false</td><td id='alert0_31' >select</td></tr>
+<tr id='tr0_32' class='table-active'><td class='text-center'>32</td><td>sink</td><td>929003812501</td><td><button  id='b0_32' onClick='toggle(this.id)' class=' btn-sm' role='button' style='width: 35px; border: 1px solid black;background-color:white;opacity:0.5'>off</button></td><td id='rgb0_32' ></td><td id='ct0_32' >400</td></td><td id='hue0_32'></td><td id='colormode0_32' >ct</td><td id='bri0_32' >254</td><td id='sat0_32' ></td><td id='effect0_32' ></td><td id='reachable0_32' >true</td><td id='alert0_32' >select</td></tr>
+</tbody></table></body></html>

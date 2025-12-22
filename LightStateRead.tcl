@@ -1,9 +1,10 @@
 #!/usr/bin/env tclsh
-global ip user light ;# set in config.tcl
 set script_path [file normalize [file dirname $argv0]]
-
 source [file join $script_path "preferences.tcl"]
 source [file join $script_path "hue.inc.tcl"]
+if { [string first Tools [info loaded]] < 0 } {
+	load $script_path/bin/libTools[info sharedlibextension]
+}
 source [file join $script_path "ccu_helper.tcl"]
 
 proc readFile {strFile} {

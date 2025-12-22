@@ -4,27 +4,12 @@ set script_path [file normalize [file dirname $argv0]]
 set tempFile [exec mktemp]
 global id ip user
 source [file join $script_path "hue.inc.tcl"]
-source [file join $script_path "hue2.inc.tcl"]
+source [file join $script_path "preferences.tcl"]
 if { [string first Tools [info loaded]] < 0 } {
 	load $script_path/bin/libTools[info sharedlibextension]
 }
-
+set info [file join $configPath  $bridgeNr "info.txt"]
 # set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
-set bridgeNr 0
-if { $argc > 0 && [string length "$argv"] == 1 } {
-	set bridgeNr  "$argv"
-}
-if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.hue/$bridgeNr/config.hue.tcl"]
-	set info [file join $script_path  "bin/.hue/$bridgeNr/info.txt"]
-} else {
-	set config [file join $env(HOME) ".hue/$bridgeNr/config.hue.tcl"]
-	set info [file join $env(HOME) ".hue/$bridgeNr/info.txt"]
-}
-if { ! [file exist $config] } {
-	puts "Bridge $bridgeNr does not exists!"
-	exit 1
-}
 set url https://discovery.meethue.com
 set again {}
 set dagain { (again)}
@@ -36,7 +21,7 @@ catch {
 if {[string trim $ret] != ""} {
 	set user "$ret"
 } else {
-	set user {}
+	set user {4SbrDhtZykvpsOxfQB5En3riq0WPdWWbSr7qafAp}
 }
 proc Discovery {} {
 	global url script_path Base
@@ -178,12 +163,6 @@ while 1 {
 		puts $fileId "set resolveV2 \"$resolveV2\""
 		set resolveV1 "[subst $resolveV1]"
 		set resolveV2 "[subst $resolveV2]"
-		if { [info exists ip] && "$user" != "" } {
-			getLight -1
-			foreach {key value} [array get lightIDarray] {
-				puts $fileId "set \"lightIDarray($key)\" \"$value\""
-			}
-		}
 		close $fileId
 		break
 	} elseif {[lsearch "$options" "$c"] >= 0 } {
@@ -213,6 +192,7 @@ while 1 {
 			puts $fileId "set ipv6 [set Base(${c})(IPv6)]"
 		}
 		puts $fileId "set bridgeNr $bridgeNr"
+		puts "$id $ip $user"s
 		if { [info exists id] && [info exists ip] && "$user" != "" } {
 			set resolveV1 "--insecure --resolve $id:443:$ip https://$id/api/\$user"
 			set resolveV2 "--insecure --header \\\"hue-application-key: \$user\\\" --resolve $id:443:$ip https://$id/clip/v2"
@@ -220,10 +200,6 @@ while 1 {
 			puts $fileId "set resolveV2 \"$resolveV2\""
 			set resolveV1 "[subst $resolveV1]"
 			set resolveV2 "[subst $resolveV2]"
-			getLight -1
-			foreach {key value} [array get lightIDarray] {
-				puts $fileId "set \"lightIDarray($key)\" \"$value\""
-			}
 			exec rm -f $tempFile
 		}
 		close $fileId

@@ -5,7 +5,7 @@ source [file join $script_path "hue.inc.tcl"]
 load $script_path/bin/libTools[info sharedlibextension]
 eval [ jsonMapper [jsonparser all [hueGet ]] ]
 if {$argc > 0 } { ;# Aufruf durch ccu_read_hue.tcl
-	return [array get all]
+	return [array get all body]
 } {
 	parray all
 }
