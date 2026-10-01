@@ -63,9 +63,6 @@ foreach li [lsort [array names groupsV1 -regexp {^[0-9]+,name$}]] {
 	}
 	set groupsV1($j,lightNames) [join $lightNames ,]
 }
-set out [open "[file join $script_path ".groupsV1"]" w]
-pparray groupsV1 $out
-close $out
 
 if {"$a" == "h"} {
 	if { "$PRODUCT" == "raspmatic_rpi3" } {
