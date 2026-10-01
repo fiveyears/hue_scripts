@@ -261,6 +261,13 @@ namespace eval hue::env {
                 spit [file join $HUE_DIR ".appid"] $APPID
             }
         }
+
+        # ---- saved bridge without config (e.g. removed bridge): use bridge 0 ----
+        if {!$foundBridge && $bridge != 0 &&
+            ![file exists [file join $HUE_DIR $APPID $bridge "config.hue.tcl"]]} {
+            set bridge 0
+            spit [file join $HUE_DIR ".bridge"] $bridge
+        }
         return $rest
     }
 
