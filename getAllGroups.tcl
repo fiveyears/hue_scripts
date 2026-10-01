@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-global resolveV1 groupsV1 
+global resolveV1 groupsV1 PRODUCT
 if { "[info script]" == "$::argv0" } {
 	set script_path [file normalize [file dirname $argv0]]
 	source [file join $script_path "preferences.tcl"]
@@ -7,17 +7,14 @@ if { "[info script]" == "$::argv0" } {
 	load $script_path/bin/v2/libTools[info sharedlibextension]
 	set places 2
 	if { "$reset" == 1 } {
-		writeIt group
 		writeIt device
 		writeIt groupsV1
 		set bridges [i_getBridgeList]
 	} elseif  { "$all" == 1 } {
-		testIt group 1
 		testIt device 1
 		testIt groupsV1 1	
 		set bridges [i_getBridgeList]
 	} else {
-		testIt group 1 "" $bridge 
 		testIt device 1 "" $bridge
 		testIt groupsV1 1 "" $bridge	
 		set bridges $bridge
@@ -86,7 +83,7 @@ foreach br $bridges {
 	close $out	
 
 if {"$a" == "h"} {
-	if { "$product" == "raspmatic_rpi3" } {
+	if { "$PRODUCT" == "raspmatic_rpi3" } {
 		set filename "/usr/local/etc/config/addons/www/hue/Groups.html"
 	} else {
 		set filename "Groups.html"
@@ -131,7 +128,7 @@ if {"$a" == "h"} {
 	if {[catch {exec sed -i "" "s/,/, /g" $filename}]} {
 		exec sed -i "s/,/, /g" $filename
 	}
-	if { "$product" == "raspmatic_rpi3" } {
+	if { "$PRODUCT" == "raspmatic_rpi3" } {
 		puts "https://192.168.2.30/addons/hue/Groups.html"
 	} else {
 		exec open $filename

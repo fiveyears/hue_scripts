@@ -70,34 +70,11 @@ foreach br $bridges {
 			set rid [set $rid]
 			set "$m,metadata,name)" $name
 			set "$m,deviceId)" $rid
-			if {[info exists "$m,state,xy,00)"] && [info exists "$m,state,xy,01)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,00,00)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,00,01)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,01,00)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,01,01)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,02,00)"] \
-				&& [info exists "$m,capabilities,control,colorgamut,02,01)"] \
-				} {
-				set "$m,rgb)" "[calcRGB  [set "$m,state,xy,00)"] [set "$m,state,xy,01)"] \
-				[set "$m,capabilities,control,colorgamut,00,00)"] \
-				[set "$m,capabilities,control,colorgamut,00,01)"] \
-				[set "$m,capabilities,control,colorgamut,01,00)"] \
-				[set "$m,capabilities,control,colorgamut,01,01)"] \
-				[set "$m,capabilities,control,colorgamut,02,00)"] \
-				[set "$m,capabilities,control,colorgamut,02,01)"] \
-				]"
-				# puts "$br $i [set "$m,rgb)"]"
-			} else {
-				set "$m,rgb)" "not available"
-			}
 
 			
 		}
 	}
 }
-set out [open "[file join $script_path ".lightsV1"]" w]
-pparray lightsV1 $out
-close $out	
 
 if {"$a" == "h"} {
 	if { "$PRODUCT" == "raspmatic_rpi3" } {

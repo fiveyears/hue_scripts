@@ -39,9 +39,11 @@ if { "[info script]" == "$::argv0" } {
 # proc i_getBridgeList {args }
 # proc i_puts {args}
 # proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""} args}
+# proc lightIdsChanged {bridge}
 # proc testIt {what {write 0} {arrayName ""} args}
 # proc writeIt {what {arrayName ""} args}
 # proc allV1 {what {pattern ""}  {reset 0} {p 0} args}
+# proc addRGB {arrayName file}
 # proc iRGB {rgb {bw 0}}
 # -------------------------------------------
 # for curl
@@ -1005,6 +1007,35 @@ proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""} args} {
 	}
 }
 
+# true if the v1 light ids in .lightsV1 and the id_v1 of .light differ for a bridge
+proc lightIdsChanged {bridge} {
+	global script_path
+	set ids {}
+	foreach what {lightsV1 light} {
+		set file [file join $script_path .resources ".$what"]
+		set l {}
+		if { [file exists $file] } {
+			set fh [open $file]
+			set data [read $fh]
+			close $fh
+			if { $what == "lightsV1" } {
+				set re "lightsV1\\($bridge,0*(\\d+),name\\)"
+			} else {
+				set re "light\\($bridge,\\d+,id_v1\\)\" \"/lights/(\\d+)\""
+			}
+			foreach {- n} [regexp -all -inline $re $data] {
+				lappend l $n
+			}
+		}
+		# nothing cached for this bridge: the timestamp check handles it
+		if { [llength $l] == 0 } {
+			return 0
+		}
+		lappend ids [lsort -integer -unique $l]
+	}
+	return [expr {[lindex $ids 0] ne [lindex $ids 1]}]
+}
+
 proc testIt {what {write 0} {arrayName ""} args} {
 	global script_path $what
 	set bridges [i_getBridgeList {*}$args]
@@ -1045,6 +1076,23 @@ proc testIt {what {write 0} {arrayName ""} args} {
 			}
 		}
 	}
+	# lights re-paired on the bridge get new v1 ids: refresh all light caches
+	if { $arrayName == "lightsV1" } {
+		foreach i $bridges {
+			if { $i ni $ret && [lightIdsChanged $i] } {
+				lappend ret $i
+				set reason "$reason\nlight ids of $i changed" ;# debug
+			}
+		}
+		if { $write != 0 } {
+			foreach i $ret {
+				if { [lightIdsChanged $i] } {
+					writeIt light "" $i
+					writeIt device "" $i
+				}
+			}
+		}
+	}
 	# puts $reason
 	if { $write == 0 || [llength $ret] == 0} {
 		return $ret
@@ -1070,17 +1118,27 @@ proc writeIt {what {arrayName ""} args} {
 	if { [info exists places ]} {
 		set oldPlaces $places
 	} 
-	if {[llength $args] == 0 } {
-		exec rm -f "$destination"
+	set old "$destination.old"
+	exec rm -f "$old"
+	if {[llength $args] == 0 && [file exists $destination]} {
+		file rename -force "$destination" "$old"
 	}
     set bridges [i_getBridgeList {*}$args]
 	foreach i $bridges {
 		catch {exec grep -v "($i," "$destination" > "$destination.bak"}
 		catch {exec mv "$destination.bak" "$destination"}
-		source [file join $configPath "$i/config.hue.tcl"]
+		# a bridge whose config fails (e.g. no remote token) is skipped and keeps its old data
+		if {[catch {source [file join $configPath "$i/config.hue.tcl"]} err]} {
+			puts "Bridge $i skipped: [lindex [split $err "\n"] 0]"
+			catch {exec grep "($i," "$old" >> "$destination"}
+			continue
+		}
 		set places  2
 		if { $V1 == true } {
 			getV1 "$newWhat" "" "" "" $arrayName
+			if { $newWhat == "lights" } {
+				addRGB $arrayName $tempFile
+			}
 		}	elseif {$what == "resource"} {
 			set places 3
 			getResources "" "" "" "" "$arrayName" "" "" $i
@@ -1089,7 +1147,7 @@ proc writeIt {what {arrayName ""} args} {
 		}
 		exec cat "$tempFile" >> "$destination"
 	}
-	exec rm -f "$tempFile"
+	exec rm -f "$tempFile" "$old"
 	if { [info exists oldPlaces ]} {
 		set places $oldPlaces
 	} else {
@@ -1107,6 +1165,37 @@ proc allV1 {what {pattern ""}  {reset 0} {p 0} args} {
   	testIt $w 1
 		readIt $w "$pattern" $reset $p $i
 	}
+}
+
+# append the rgb value of every V1 light to the given cache file
+proc addRGB {arrayName file} {
+	global script_path
+	if { [info commands calcRGB] == "" } {
+		load $script_path/bin/v2/libTools[info sharedlibextension]
+	}
+	source $file
+	set out [open $file a]
+	foreach li [lsort [array names $arrayName -regexp {^[0-9]+,[0-9]+,name$}]] {
+		regsub {,name$} $li "" m
+		set rgb "not available"
+		set keys {state,xy,00 state,xy,01}
+		foreach c {00 01 02} {
+			lappend keys capabilities,control,colorgamut,$c,00 capabilities,control,colorgamut,$c,01
+		}
+		set values {}
+		foreach k $keys {
+			if { ! [info exists ${arrayName}($m,$k)] } {
+				set values {}
+				break
+			}
+			lappend values [set ${arrayName}($m,$k)]
+		}
+		if { [llength $values] == 8 } {
+			set rgb [calcRGB {*}$values]
+		}
+		puts $out "set \"${arrayName}($m,rgb)\" \"$rgb\""
+	}
+	close $out
 }
 
 proc iRGB {rgb {bw 0}} {

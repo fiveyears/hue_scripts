@@ -81,7 +81,11 @@ namespace eval hue::env {
     proc detectRaspMatic {} {
         if {[file exists "/VERSION"]} {
             set data [hue::env::slurp "/VERSION"]
-            if {[regexp {PRODUCT=(.*)} $data -> val]} {
+            if {[regexp {PRODUCT=(\S*)} $data -> val]} {
+                # newer RaspberryMatic versions write e.g. "rpi3" instead of "raspmatic_rpi3"
+                if {![string match "raspmatic_*" $val]} {
+                    set val "raspmatic_$val"
+                }
                 return $val
             }
         }
@@ -185,6 +189,7 @@ namespace eval hue::env {
         set reset 0
         set foundBridge 0
         set foundApp    0
+        set rest {}
 
         foreach arg $argv {
 
@@ -224,6 +229,7 @@ namespace eval hue::env {
             }
 
             # puts "Unknown parameter '$arg' ignored"
+            lappend rest $arg
         }
 
         # ---- finalize bridge ----
@@ -255,6 +261,7 @@ namespace eval hue::env {
                 spit [file join $HUE_DIR ".appid"] $APPID
             }
         }
+        return $rest
     }
 
     # ------------------------------------------------------------------
@@ -310,7 +317,7 @@ namespace eval hue::env {
         }
 
         # Parse arguments
-        parseArgs $args
+        set rest [parseArgs $args]
 
         # ------------------- Load app_env -------------------
         set APP_ENV [file join $HUE_DIR $APPID app_env]
@@ -453,9 +460,16 @@ namespace eval hue::env {
                 set ::$var [set ::hue::env::$var]
             }
         }
+        return $rest
     }
-    # Call init automatically when this file is sourced
-    init
+    # Call init automatically when this file is sourced, with the command line
+    # options; the remaining (positional) arguments stay in argv
+    if {[info exists ::argv]} {
+        set ::argv [init {*}$::argv]
+        set ::argc [llength $::argv]
+    } else {
+        init
+    }
     # ------------------------------------------------------------------
     # reset
     # ------------------------------------------------------------------
