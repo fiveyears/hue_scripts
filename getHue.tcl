@@ -8,7 +8,7 @@ source [file join $script_path "preferences.tcl"]
 if { [string first Tools [info loaded]] < 0 } {
 	load $script_path/bin/libTools[info sharedlibextension]
 }
-set info [file join $configPath  $bridgeNr "info.txt"]
+set info [file join $configPath "info.txt"]
 # set ip [ exec  ifconfig | grep "inet " | grep "broadcast\\\|Bcast" | awk "{print \$2}" ]
 set url https://discovery.meethue.com
 set again {}
@@ -149,16 +149,15 @@ while 1 {
 		set ip "api.meethue.com/route"
 		puts $fileId "set ip \"$ip\""
 		if { [catch {
-			set s [	exec $script_path/remote.sh $bridgeNr token 1>/dev/null ]
+			set s [	exec $script_path/remote.sh token 1>/dev/null ]
 		} curl_err]} {
 			puts "Didn't get token for remote access!"
-			puts "Please exec remote.sh $bridgeNr getToken first!"
+			puts "Please exec remote.sh getToken first!"
 			exit
 		}
-		set token [	exec $script_path/remote.sh $bridgeNr token ]
-		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/api/\$user"
-		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh $bridgeNr token\]\\\" https://$ip/clip/v2"
-		puts $fileId "set bridgeNr $bridgeNr"
+		set token [	exec $script_path/remote.sh token ]
+		set resolveV1 "--header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/api/\$user"
+		set resolveV2 "--header \\\"hue-application-key: \$user\\\" --header \\\"Authorization: Bearer \[exec $script_path/remote.sh token\]\\\" https://$ip/clip/v2"
 		puts $fileId "set resolveV1 \"$resolveV1\""
 		puts $fileId "set resolveV2 \"$resolveV2\""
 		set resolveV1 "[subst $resolveV1]"
@@ -191,7 +190,6 @@ while 1 {
 		if {[info exists Base(${c})(IPv6)]} {
 			puts $fileId "set ipv6 [set Base(${c})(IPv6)]"
 		}
-		puts $fileId "set bridgeNr $bridgeNr"
 		puts "$id $ip $user"s
 		if { [info exists id] && [info exists ip] && "$user" != "" } {
 			set resolveV1 "--insecure --resolve $id:443:$ip https://$id/api/\$user"

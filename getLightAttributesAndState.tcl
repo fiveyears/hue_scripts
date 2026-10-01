@@ -54,29 +54,29 @@ if {$argc > 0 } {
 # 	puts "Usage: [info script] Lightnumber"
 }
 # unset light
-global light bridge
+global light
 getV1 lights/$nr "" "swversion streaming certified config modelid uniqueid productid swconfigid mode (type swupdate swversion manufacturername" 0 light
-set m "light($bridge"
+set m "light("
 	load $script_path/bin/v2/libTools[info sharedlibextension]
-if {[info exists "$m,state,xy,00)"] && [info exists "$m,state,xy,01)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,00,00)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,00,01)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,01,00)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,01,01)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,02,00)"] \
-	&& [info exists "$m,capabilities,control,colorgamut,02,01)"] \
+if {[info exists "${m}state,xy,00)"] && [info exists "${m}state,xy,01)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,00,00)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,00,01)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,01,00)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,01,01)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,02,00)"] \
+	&& [info exists "${m}capabilities,control,colorgamut,02,01)"] \
 	} {
-	set "$m,rgb)" "[calcRGB  [set "$m,state,xy,00)"] [set "$m,state,xy,01)"] \
-	[set "$m,capabilities,control,colorgamut,00,00)"] \
-	[set "$m,capabilities,control,colorgamut,00,01)"] \
-	[set "$m,capabilities,control,colorgamut,01,00)"] \
-	[set "$m,capabilities,control,colorgamut,01,01)"] \
-	[set "$m,capabilities,control,colorgamut,02,00)"] \
-	[set "$m,capabilities,control,colorgamut,02,01)"] \
+	set "${m}rgb)" "[calcRGB  [set "${m}state,xy,00)"] [set "${m}state,xy,01)"] \
+	[set "${m}capabilities,control,colorgamut,00,00)"] \
+	[set "${m}capabilities,control,colorgamut,00,01)"] \
+	[set "${m}capabilities,control,colorgamut,01,00)"] \
+	[set "${m}capabilities,control,colorgamut,01,01)"] \
+	[set "${m}capabilities,control,colorgamut,02,00)"] \
+	[set "${m}capabilities,control,colorgamut,02,01)"] \
 	]"
-	# puts "$br $i [set "$m,rgb)"]"
+	# puts "$br $i [set "${m}rgb)"]"
 } else {
-	set "$m,rgb)" "not available"
+	set "${m}rgb)" "not available"
 }
 if {$argc == 1 } {
 	parray light

@@ -2,7 +2,7 @@
 # Created with /Users/ivo/Dropbox/Shell-Scripts/cmd/crea at 2022-05-01 08:23:57
 DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 HUE_DIR="$DIR/env"
-# set HUE_DIR PRODUCT DEVICENAME BUSYBOX BRIDGE APPID APP_ENV CLIENTID CLIENTSECRET CLIENTBASE64 CONFIG ENVIRONMENT HOST
+# set HUE_DIR PRODUCT DEVICENAME BUSYBOX APPID APP_ENV CLIENTID CLIENTSECRET CLIENTBASE64 CONFIG ENVIRONMENT HOST
 source "$HUE_DIR/setenv.sh"
 # 
 # 
@@ -56,7 +56,6 @@ if [ "$what" = "-s" ]; then
 	echo "Product:      $PRODUCT"
 	echo "Devicename:   $DEVICENAME"
 	echo "Busybox:      ${BUSYBOX:-not set}"
-	echo "Bridge:       $BRIDGE (written into $iHueDir/.bridge)"
 	echo "Appid:        $APPID (written into $iHueDir/.addid)"
 	echo "App_Env:      $APP_ENV" | sed "s#$DIR#.#g"
 	echo "Clientid:     $CLIENTID"

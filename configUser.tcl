@@ -12,13 +12,8 @@ proc helper {} {
 
 set script_path [file normalize [file dirname $argv0]]
 global user
-if { "$env(HOME)" == "/root" } {
-	set config [file join $script_path  "bin/.hue/0/config.hue.tcl"]
-	set info [file join $script_path  "bin/.hue/0/info.txt"]
-} else {
-	set config [file join $env(HOME) ".hue/0/config.hue.tcl"]
-	set info [file join $env(HOME) ".hue/0/info.txt"]
-}
+source [file join $script_path "preferences.tcl"]
+set info [file join $configPath "info.txt"]
 #
 # read config
 catch {

@@ -18,7 +18,7 @@ if { "[info script]" == "$::argv0" } {
 # proc getScheduleNumberByName { str }
 # proc getLightNumberByName { str }
 # proc getNumberByName { what str }
-# proc ajaxV1 {url bri}
+# proc ajaxV1 {url}
 # proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} }
 # proc source_with_args {filename args}
 # proc joinItems {arrName items}
@@ -26,7 +26,7 @@ if { "[info script]" == "$::argv0" } {
 # proc hue2Put {url header}
 # proc hue2Post {url header}
 # proc getV2Body {bodyarray}
-# proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} {bridge {}}}
+# proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}}}
 # proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} }
 # proc getLights { {ar_name {}} }
 # proc getRoom {id_name}
@@ -36,13 +36,12 @@ if { "[info script]" == "$::argv0" } {
 # proc readYaml {yaml {label root} {grep {}} {vgrep {}} {comma 0} }
 # proc grepArray {a {channel stdout} {pattern *} {keyValues {}}}
 # proc pparray {a {channel stdout} {pattern *}}
-# proc i_getBridgeList {args }
 # proc i_puts {args}
-# proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""} args}
-# proc lightIdsChanged {bridge}
-# proc testIt {what {write 0} {arrayName ""} args}
-# proc writeIt {what {arrayName ""} args}
-# proc allV1 {what {pattern ""}  {reset 0} {p 0} args}
+# proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""}}
+# proc lightIdsChanged {}
+# proc testIt {what {write 0} {arrayName ""}}
+# proc writeIt {what {arrayName ""}}
+# proc allV1 {what {pattern ""}  {reset 0} {p 0}}
 # proc addRGB {arrayName file}
 # proc iRGB {rgb {bw 0}}
 # -------------------------------------------
@@ -64,7 +63,7 @@ proc curlerr {curl_err} {
 }
 
 proc curltest {curl url {addition {}} } {
-	global user bridgeNr
+	global user
 	if { [file exists "$curl"] } {
 		set curly [exec cat "$curl" ]
 	} else {
@@ -77,7 +76,7 @@ proc curltest {curl url {addition {}} } {
 	  exit
 	} elseif {[string first "faultstring\":\"Invalid Access Token" $curly] != -1} {
 		puts "Invalid access token!"
-		puts "Please do > ./remote.sh $bridgeNr refreshToken"
+		puts "Please do > ./remote.sh refreshToken"
 	  exit
 	} elseif {[string first "description\":\"Not Found" $curly] != -1} {
 		puts "Resource not found!"
@@ -329,25 +328,25 @@ proc getLightNumberByName { str } {
 }
 
 proc getNumberByName { what str } {
-	global script_path bridge $what
+	global script_path $what
 	# read again
-	if { ([testIt $what ] == 0) || $str == "-1" } {
+	if { [testIt $what] || $str == "-1" } {
 		writeIt $what
 	}
 	if {[catch {set nr [format "%02d" $str]} err] } {
 		# Resource name
-		readIt $what "$what\($bridge,.*,name).*$str" 1 0 
+		readIt $what "$what\(\[0-9\]*,name).*$str" 1 0 
 		set key [grepArray $what return "" keys]
 		if { $key == "$what\(grep)" }  {
 			puts "$what: Resource '$str' is not available!"
 			exit
 		}
-		return [scan [lindex [split $key ",("] 2] %d]
+		return [scan [lindex [split $key ",("] 1] %d]
 	}
 	# do nothing
 	if {$str <= "0" } { return}
 	#Resource number
-	readIt $what "$what\($bridge,$nr" 1 0 
+	readIt $what "$what\($nr," 1 0 
 	set key [grepArray $what return "" keys]
 	if { $key == "$what\(grep)" }  {
 			puts "$what: Resource '$str' is not available!"
@@ -382,13 +381,12 @@ proc getNumberByName { what str } {
 # proc testIt:
 # proc writeIt:
 
-proc ajaxV1 {url bri} {
-	global script_path configPath
-	source [file join $configPath "$bri/config.hue.tcl"]
+proc ajaxV1 {url} {
+	global script_path ip user
 	set headers "\"headers\": {\"Content-Type\": \"application/json\""
 	if [string match api.meethue.com/route $ip] {
 		# exec [file join $script_path remote.sh] refreshtoken
-		set bearer [exec [file join $script_path remote.sh] $bri token]
+		set bearer [exec [file join $script_path remote.sh] token]
 		set headers "\"crossDomain\": true, \"xhrFields\": {\"withCredentials\": true,},$headers,\"Authorization\": \"Bearer $bearer\", \"Access-Control-Allow-Origin\":\"Content-Type, Accept, X-Requested-With, Session\""
   }
   set headers "$headers},"
@@ -397,7 +395,7 @@ proc ajaxV1 {url bri} {
 }
 
 proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
-	global places script_path resolveV1 tempFile bridgeNr
+	global places script_path resolveV1 tempFile
   if { ! [info exists places]} { 	set places 2} 
   set curl "$resolveV1/$url"
 	if { [catch {
@@ -409,7 +407,6 @@ proc getV1 {url {grep {}} {vgrep {}} {p 0} {arrayname {}} } {
 	curltest "$tempFile" $curl $url
 	exec cat "$tempFile" | "$script_path/bin/jsondump" 0 $places > "$tempFile.bak" 
 	exec mv "$tempFile.bak" "$tempFile"
-	exec sed -i.bak -e "s/root/root($bridgeNr)/g" -e "s/\(errors\)/\($bridgeNr\)\(errors\)/g"  $tempFile
 	# regsub -all  {^.*application/json\s*} $ret "" newret
 	# return [encoding convertfrom utf-8 $newret]
 	if { $arrayname != "" } {
@@ -600,7 +597,7 @@ proc getV2Body {bodyarray} {
 }
 
 
-proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}} {bridge {}}} {
+proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {deleteZero {}}} {
 	global tempFile
 	if { $res == "" } {
 		set res resource
@@ -611,18 +608,11 @@ proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {
 	if { "$ar_name" != "" } { 
 	  set res "$ar_name"
 	  global $res 
-	  if { $bridge != "" } {
-	  	exec sed -i.bak -e "s/\(data\)/\($bridge\)/g" -e "s/\(errors\)/($bridge)(errors)/g" -e "s/\(places\)/($bridge)(places)/g" -e "s/\(timestamp\)/($bridge)(timestamp)/g"  $tempFile
-	  } else {
-	  	exec sed -i.bak "s/\(data\)//g"  $tempFile
-	  }
+	  exec sed -i.bak "s/\(data\)//g"  $tempFile
 	  if { $deleteZero > "" } {
 	  	exec sed  -i.bak -e "s/\(0*\)//g"  $tempFile
 	  }
 	} else {
-	  if { $bridge != "" } {
-	  	 exec  sed -i.bak -e "s/\(data\)/(data)($bridge)/g"   -e "s/\(errors\)/($bridge)(errors)/g" -e "s/\(places\)/($bridge)(places)/g" -e "s/\(timestamp\)/($bridge)(timestamp)/g" $tempFile
-	  } 
 	  # exec sed -i.bak "s/\\//_/g" $tempFile
 	  set res "[regsub "/" $res "_"]"
 	  global $res 
@@ -639,27 +629,25 @@ proc getResources {{res ""} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} {
 }
 
 proc getLight {{id_name 0} {readLight {}} {grep {}} {vgrep {}} {p 0} {ar_name {}} {comma {}} } {
-	global  bridge light
-	if { ([testIt light ] == 0) || $id_name == "-1" } {
+	global light
+	if { [testIt light] || $id_name == "-1" } {
 		writeIt light	}
 	if {$id_name <= "0" } {
 		return
 	}
-	readIt light "light($bridge,.*,id_v1.*/lights/$id_name\"" 1 0 "" -2
+	readIt light "light(\[0-9\]*,id_v1.*/lights/$id_name\"" 1 0
 	set key [grepArray light return "" keys]
 	if { $key == "light(grep)" }  {
-		readIt light "light($bridge,.*,metadata,name.*$id_name" 1 0 "" -2
+		readIt light "light(\[0-9\]*,metadata,name.*$id_name" 1 0
 		set key [grepArray light return "" keys]
 		if { $key == "light(grep)" }  {
 			puts "Light '$id_name' is not available!"
 			exit
 		}
 	}
-	set kk [split $key ",("]
-	set br [lindex $kk 1]
-	set index [lindex $kk 2]
-	readIt light "$br,$index,id)" 1 0 "" -2
-	set id $light($br,$index,id)
+	set index [lindex [split $key ",("] 1]
+	readIt light "($index,id)" 1 0
+	set id $light($index,id)
 	unset light
 	if { $ar_name == "" } {
 		set ar_name "light"
@@ -933,32 +921,6 @@ proc pparray {a {channel stdout} {pattern *}} {
     return [string trim "$r"]
 }
 
-# get list of bridges
-proc i_getBridgeList {args } {
-	global configPath
-	# set l [regsub -all "\[a-zA-Z\]" $args ""]
-	set l [regsub -all "\{|\}" $args ""]
-	set l [regsub -all {\s+} $l " "]
-	set l [lsort -unique -real -increasing $l]
-  set i 0
-	set bridgeList {}
-	while { [file exists [file join $configPath "$i/config.hue.tcl"]]} {
-		lappend bridgeList $i
-		incr i
-	}
-	if { [llength $l] == 0  } {
- 	 	return $bridgeList
-  } else {
-  	set ll {}
-  	foreach item $l {
-	    if {$item in $bridgeList} {
-	        lappend ll $item
-	    }
-	  }
-  	return $ll
-  }
-}
-
 proc i_puts {args} {
 	foreach var $args {
 		upvar 1 $var varname
@@ -971,44 +933,36 @@ proc i_puts {args} {
 	exit
 }
 
-proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""} args} {
-	global script_path $what configPath
-    set bridges [i_getBridgeList $args]
+proc readIt {what {pattern ""} {reset 0} {p 0} {arrayName ""}} {
+	global script_path $what
 	if { $arrayName == "" } {
 		set arrayName "[regsub "/" $what "_"]"
 	}
  	if { [info exists $arrayName ] && $reset != 0} {
 		unset $arrayName
 	} 
+	set file [file join $script_path .resources ".$arrayName"]
 	if {$pattern == "" } {
-		catch {eval [exec cat "[file join $script_path .resources ".$arrayName"]" ] }
+		catch {eval [exec cat $file] }
 	} else {
 		if {[lindex $pattern 0] == "*" } {
 			set pattern [lreplace $pattern 0 0 ]  
-			if {[catch {eval [exec cat "[file join $script_path .resources ".$arrayName"]" | grep {*}$pattern ] } err]} {
+			if {[catch {eval [exec cat $file | grep {*}$pattern ] } err]} {
 				set ${arrayName}(grep) "not found"
 			}				
 		} else {
-			if {[catch {eval [exec cat "[file join $script_path .resources ".$arrayName"]" | grep $pattern ] } err]} {
+			if {[catch {eval [exec cat $file | grep $pattern ] } err]} {
 				set ${arrayName}(grep) "not found"
 			}
 		}
-	}
-	set bridgeList {}
-	foreach i $bridges {
-		if { [llength [array names $arrayName "$i,places"]] > 0 } {
-			lappend bridgeList $i
-			set ${arrayName}($i,bridgeName) "[exec cat [file join $configPath "$i/info.txt"]   | head -n 1 ]"
-		}
-		if [llength $bridgeList] {set ${arrayName}(bridgeList) $bridgeList}
 	}
 	if { $p } {
 		parray $arrayName
 	}
 }
 
-# true if the v1 light ids in .lightsV1 and the id_v1 of .light differ for a bridge
-proc lightIdsChanged {bridge} {
+# true if the v1 light ids in .lightsV1 and the id_v1 of .light differ
+proc lightIdsChanged {} {
 	global script_path
 	set ids {}
 	foreach what {lightsV1 light} {
@@ -1019,15 +973,15 @@ proc lightIdsChanged {bridge} {
 			set data [read $fh]
 			close $fh
 			if { $what == "lightsV1" } {
-				set re "lightsV1\\($bridge,0*(\\d+),name\\)"
+				set re {lightsV1\(0*(\d+),name\)}
 			} else {
-				set re "light\\($bridge,\\d+,id_v1\\)\" \"/lights/(\\d+)\""
+				set re {light\(\d+,id_v1\)" "/lights/(\d+)"}
 			}
 			foreach {- n} [regexp -all -inline $re $data] {
 				lappend l $n
 			}
 		}
-		# nothing cached for this bridge: the timestamp check handles it
+		# nothing cached yet: the timestamp check handles it
 		if { [llength $l] == 0 } {
 			return 0
 		}
@@ -1036,76 +990,50 @@ proc lightIdsChanged {bridge} {
 	return [expr {[lindex $ids 0] ne [lindex $ids 1]}]
 }
 
-proc testIt {what {write 0} {arrayName ""} args} {
+# returns 1 if the cache file of $what is missing or older than a day;
+# with write != 0 a stale cache is refreshed (and 0 returned)
+proc testIt {what {write 0} {arrayName ""}} {
 	global script_path $what
-	set bridges [i_getBridgeList {*}$args]
 	if { $arrayName == "" } {
 		set arrayName "[regsub "/" $what "_"]"
 	}
-    set ret {}
 	set file [file join $script_path .resources ".$arrayName"]
+	set stale 1
 	if { $write == 2 } {
-		set ret $bridges
 		set reason "Parameter 2" ;# debug
 	} elseif { ! [ file exists $file]} {
-		set ret $bridges
 		set reason "no file" ;# debug
 	} elseif { [ file size $file] < 1000} {
-		set ret $bridges
 		set reason "file too small" ;# debug
+	} elseif { [clock seconds] - [file mtime $file] > 86400 } {
+		set reason "file too old" ;# debug
+	} elseif {[catch {eval [exec cat "$file" | grep "$arrayName\(timestamp\)" ] } err]} {
+		set reason "timestamp is missing" ;# debug
+	} elseif { [clock seconds] - [set ${arrayName}(timestamp)] > 86400 } {
+		set reason "timestamp too old" ;# debug
+	} elseif { $arrayName == "lightsV1" && [lightIdsChanged] } {
+		# lights re-paired on the bridge get new v1 ids: refresh all light caches
+		set reason "light ids changed" ;# debug
 	} else {
-		set t [file mtime $file]
-		set t [expr ([clock seconds]-$t)]
-		if  { $t > 86400 } {
-			set ret $bridges
-		  set reason "file too old" ;# debug
-		} else {
-			set reason ""
-		  foreach i $bridges {
-				if {[catch {eval [exec cat "$file"  | grep "$arrayName\($i,timestamp\)" ] } err]} {
-					lappend ret $i
-		      set reason "$reason\ntimestamp $i is missing" ;# debug
-				}	else {
-					set t [set ${arrayName}($i,timestamp)]
-					set t [expr ([clock seconds]-$t)]
-					if  { $t > 86400 } {
-		      	set reason "$reason\ntimestamp $i too old" ;# debug
-						lappend ret $i
-		      }
-				}
-			}
-		}
+		set stale 0
 	}
-	# lights re-paired on the bridge get new v1 ids: refresh all light caches
-	if { $arrayName == "lightsV1" } {
-		foreach i $bridges {
-			if { $i ni $ret && [lightIdsChanged $i] } {
-				lappend ret $i
-				set reason "$reason\nlight ids of $i changed" ;# debug
-			}
-		}
-		if { $write != 0 } {
-			foreach i $ret {
-				if { [lightIdsChanged $i] } {
-					writeIt light "" $i
-					writeIt device "" $i
-				}
-			}
-		}
+	# if {$stale} {puts $reason}
+	if { $write == 0 || ! $stale } {
+		return $stale
 	}
-	# puts $reason
-	if { $write == 0 || [llength $ret] == 0} {
-		return $ret
+	if { $arrayName == "lightsV1" && [lightIdsChanged] } {
+		writeIt light
+		writeIt device
 	}
-	writeIt $what $arrayName {*}$ret
+	writeIt $what $arrayName
 	if { [info exists $what ]} {
 		unset $what
 	} 
-	return {}
+	return 0
 }
 
-proc writeIt {what {arrayName ""} args} {
-	global script_path $what configPath bridge resolveV2 resolveV1 bridgeNr places tempFile 
+proc writeIt {what {arrayName ""}} {
+	global script_path $what places tempFile 
 	set newWhat $what
 	set V1 false
 	if { $arrayName == "" } {
@@ -1118,53 +1046,32 @@ proc writeIt {what {arrayName ""} args} {
 	if { [info exists places ]} {
 		set oldPlaces $places
 	} 
-	set old "$destination.old"
-	exec rm -f "$old"
-	if {[llength $args] == 0 && [file exists $destination]} {
-		file rename -force "$destination" "$old"
-	}
-    set bridges [i_getBridgeList {*}$args]
-	foreach i $bridges {
-		catch {exec grep -v "($i," "$destination" > "$destination.bak"}
-		catch {exec mv "$destination.bak" "$destination"}
-		# a bridge whose config fails (e.g. no remote token) is skipped and keeps its old data
-		if {[catch {source [file join $configPath "$i/config.hue.tcl"]} err]} {
-			puts "Bridge $i skipped: [lindex [split $err "\n"] 0]"
-			catch {exec grep "($i," "$old" >> "$destination"}
-			continue
+	set places  2
+	if { $V1 == true } {
+		getV1 "$newWhat" "" "" "" $arrayName
+		if { $newWhat == "lights" } {
+			addRGB $arrayName $tempFile
 		}
-		set places  2
-		if { $V1 == true } {
-			getV1 "$newWhat" "" "" "" $arrayName
-			if { $newWhat == "lights" } {
-				addRGB $arrayName $tempFile
-			}
-		}	elseif {$what == "resource"} {
-			set places 3
-			getResources "" "" "" "" "$arrayName" "" "" $i
-		} else {
-			getResources $what "" "" "" "$arrayName" "" "" $i
-		}
-		exec cat "$tempFile" >> "$destination"
+	}	elseif {$what == "resource"} {
+		set places 3
+		getResources "" "" "" "" "$arrayName"
+	} else {
+		getResources $what "" "" "" "$arrayName"
 	}
-	exec rm -f "$tempFile" "$old"
+	file copy -force "$tempFile" "$destination"
+	exec rm -f "$tempFile"
 	if { [info exists oldPlaces ]} {
 		set places $oldPlaces
 	} else {
 		unset places
 	}
-	# reset config
-	source [file join $configPath "$bridge/config.hue.tcl"]
 }
 
-proc allV1 {what {pattern ""}  {reset 0} {p 0} args} {
+proc allV1 {what {pattern ""}  {reset 0} {p 0}} {
 	set w "${what}V1"
 	global $w
-  set bridges [i_getBridgeList {*}$args]
-	foreach i $bridges {
-  	testIt $w 1
-		readIt $w "$pattern" $reset $p $i
-	}
+	testIt $w 1
+	readIt $w "$pattern" $reset $p
 }
 
 # append the rgb value of every V1 light to the given cache file
@@ -1175,7 +1082,7 @@ proc addRGB {arrayName file} {
 	}
 	source $file
 	set out [open $file a]
-	foreach li [lsort [array names $arrayName -regexp {^[0-9]+,[0-9]+,name$}]] {
+	foreach li [lsort [array names $arrayName -regexp {^[0-9]+,name$}]] {
 		regsub {,name$} $li "" m
 		set rgb "not available"
 		set keys {state,xy,00 state,xy,01}

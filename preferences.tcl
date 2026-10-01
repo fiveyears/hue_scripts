@@ -5,7 +5,6 @@ namespace eval hue::env {
     # ------------------------------------------------------------------
     # Configuration
     # ------------------------------------------------------------------
-    variable MAX_BRIDGES 2
     variable DEFAULT_APPID "plug-switcher"
     variable scriptDir [file dirname [file normalize [info script]]]
     # ------------------------------------------------------------------
@@ -15,7 +14,6 @@ namespace eval hue::env {
     variable PRODUCT
     variable DEVICENAME
     variable BUSYBOX ""
-    variable bridge
     variable APPID
     variable CLIENTID
     variable CLIENTSECRET
@@ -25,7 +23,6 @@ namespace eval hue::env {
     variable tempFile
     variable ENVIRONMENT
     variable HOST
-    variable all 0
     variable reset 0
 
     # config.hue.tcl
@@ -34,7 +31,6 @@ namespace eval hue::env {
     variable id
     variable resolveV1
     variable resolveV2
-    variable bridgeNr
 
     # hue_remote_env
     variable ACCESS_TOKEN
@@ -155,8 +151,6 @@ namespace eval hue::env {
     # Help
     # ------------------------------------------------------------------
     proc help {} {
-        variable MAX_BRIDGES
-
         puts ""
         puts "Hue environment helper (subcommands):"
         puts "  hue::env init  ?options?"
@@ -165,10 +159,8 @@ namespace eval hue::env {
         puts "  hue::env help"
         puts ""
         puts "Options:"
-        puts "  -a, --all            Set all=1"
         puts "  -r, --reset          Set reset=1"
         puts "  -h, --help           Show help"
-        puts "  --bridge=N           Select bridge index"
         puts "  --appid=NAME         Select app directory under ./env"
         puts ""
     }
@@ -177,18 +169,13 @@ namespace eval hue::env {
     # Argument parser
     # ------------------------------------------------------------------
     proc parseArgs {argv} {
-        variable MAX_BRIDGES
         variable DEFAULT_APPID
         variable HUE_DIR
-        variable all
         variable reset
-        variable bridge
         variable APPID
 
-        set all 0
         set reset 0
-        set foundBridge 0
-        set foundApp    0
+        set foundApp 0
         set rest {}
 
         foreach arg $argv {
@@ -196,16 +183,6 @@ namespace eval hue::env {
             if {$arg in {"-h" "--help"}} {
                 help
                 exit 0
-            }
-
-            if {[regexp {^--bridge=([0-9]+)$} $arg -> N]} {
-                if {$N >= 0 && $N < $MAX_BRIDGES} {
-                    set bridge $N
-                    set foundBridge 1
-                } else {
-                    puts "Invalid --bridge index: $N"
-                }
-                continue
             }
 
             if {[regexp {^--appid=(.+)$} $arg -> name]} {
@@ -218,11 +195,6 @@ namespace eval hue::env {
                 continue
             }
 
-            if {$arg in {"-a" "--all"}} {
-                set all 1
-                continue
-            }
-
             if {$arg in {"-r" "--reset"}} {
                 set reset 1
                 continue
@@ -230,23 +202,6 @@ namespace eval hue::env {
 
             # puts "Unknown parameter '$arg' ignored"
             lappend rest $arg
-        }
-
-        # ---- finalize bridge ----
-        if {$foundBridge} {
-            spit [file join $HUE_DIR ".bridge"] $bridge
-        } else {
-            set fbridge [slurp [file join $HUE_DIR ".bridge"]]
-            if {
-                $fbridge ne "" &&
-                [string is integer -strict $fbridge] &&
-                $fbridge >= 0 && $fbridge < $MAX_BRIDGES
-            } then {
-                set bridge $fbridge
-            } else {
-                set bridge 0
-                spit [file join $HUE_DIR ".bridge"] $bridge
-            }
         }
 
         # ---- finalize APPID ----
@@ -261,13 +216,6 @@ namespace eval hue::env {
                 spit [file join $HUE_DIR ".appid"] $APPID
             }
         }
-
-        # ---- saved bridge without config (e.g. removed bridge): use bridge 0 ----
-        if {!$foundBridge && $bridge != 0 &&
-            ![file exists [file join $HUE_DIR $APPID $bridge "config.hue.tcl"]]} {
-            set bridge 0
-            spit [file join $HUE_DIR ".bridge"] $bridge
-        }
         return $rest
     }
 
@@ -279,7 +227,6 @@ namespace eval hue::env {
         variable PRODUCT
         variable DEVICENAME
         variable BUSYBOX
-        variable bridge
         variable APPID
         variable CLIENTID
         variable CLIENTSECRET
@@ -295,7 +242,6 @@ namespace eval hue::env {
         variable id
         variable resolveV1
         variable resolveV2
-        variable bridgeNr
 
         variable ACCESS_TOKEN
         variable REFRESH_TOKEN
@@ -335,17 +281,16 @@ namespace eval hue::env {
         } else {
             puts "Please fill in file '$APP_ENV'!"
             spit $APP_ENV "CLIENTID=\nCLIENTSECRET=\n"
-            ensureDir [file join $HUE_DIR $APPID $bridge]
+            ensureDir [file join $HUE_DIR $APPID]
             exit 1
         }
 
         # ------------------- Load config.hue.tcl -------------------
-        set config [file join $HUE_DIR $APPID $bridge "config.hue.tcl"]
+        set config [file join $HUE_DIR $APPID "config.hue.tcl"]
         set configPath [file join $HUE_DIR $APPID]
         set tempFile [exec mktemp]
 
         ensureDir $configPath
-        ensureDir [file join $configPath $bridge]
 
         if {![file exists $config]} {
             # Create default config
@@ -356,7 +301,6 @@ namespace eval hue::env {
             set user 0
             set ip "0.0.0.0"
             set id 0
-            set bridgeNr $bridge
             set resolveV1 ""
             set resolveV2 ""
         } else {
@@ -366,7 +310,7 @@ namespace eval hue::env {
                 source [list $config]
             "
 
-            foreach var {user ip id resolveV1 resolveV2 bridgeNr} {
+            foreach var {user ip id resolveV1 resolveV2} {
                 if {[info exists ::hue::env::conf::$var]} {
                     set $var [set ::hue::env::conf::$var]
                 } else {
@@ -376,14 +320,13 @@ namespace eval hue::env {
                         id        { set id 0 }
                         resolveV1 { set resolveV1 "" }
                         resolveV2 { set resolveV2 "" }
-                        bridgeNr  { set bridgeNr $bridge }
                     }
                 }
             }
         }
 
         # ------------------- Load hue_remote_env -------------------
-        set REMOTE_ENV [file join $HUE_DIR $APPID $bridge "hue_remote_env"]
+        set REMOTE_ENV [file join $HUE_DIR $APPID "hue_remote_env"]
 
         set ACCESS_TOKEN ""
         set REFRESH_TOKEN ""
@@ -441,12 +384,9 @@ namespace eval hue::env {
             user
             ip
             id
-            bridge
-            all
             reset
             resolveV1
             resolveV2
-            bridgeNr
             config
             configPath
             tempFile
@@ -488,14 +428,14 @@ namespace eval hue::env {
             set HUE_DIR   [file join $scriptDir env]
         }
 
-        foreach f {".bridge" ".appid"} {
+        foreach f {".appid"} {
             set p [file join $HUE_DIR $f]
             if {[file exists $p]} {
                 file delete $p
             }
         }
 
-        puts "hue::env reset: removed .bridge and .appid"
+        puts "hue::env reset: removed .appid"
     }
 
     # ------------------------------------------------------------------
@@ -506,7 +446,6 @@ namespace eval hue::env {
         variable PRODUCT
         variable DEVICENAME
         variable BUSYBOX
-        variable bridge
         variable APPID
         variable CLIENTID
         variable CLIENTSECRET
@@ -516,7 +455,6 @@ namespace eval hue::env {
         variable tempFile
         variable ENVIRONMENT
         variable HOST
-        variable all
         variable reset
 
         variable user
@@ -524,7 +462,6 @@ namespace eval hue::env {
         variable id
         variable resolveV1
         variable resolveV2
-        variable bridgeNr
 
         variable ACCESS_TOKEN
         variable REFRESH_TOKEN
@@ -536,7 +473,6 @@ namespace eval hue::env {
             PRODUCT         $PRODUCT \
             DEVICENAME      $DEVICENAME \
             BUSYBOX         $BUSYBOX \
-            bridge          $bridge \
             APPID           $APPID \
             CLIENTID        $CLIENTID \
             CLIENTSECRET    $CLIENTSECRET \
@@ -546,14 +482,12 @@ namespace eval hue::env {
             tempFile        $tempFile \
             ENVIRONMENT     $ENVIRONMENT \
             HOST            $HOST \
-            all             $all \
             reset           $reset \
             user            $user \
             ip              $ip \
             id              $id \
             resolveV1       $resolveV1 \
             resolveV2       $resolveV2 \
-            bridgeNr        $bridgeNr \
             ACCESS_TOKEN    $ACCESS_TOKEN \
             REFRESH_TOKEN   $REFRESH_TOKEN \
             EXPIRES_AT      $EXPIRES_AT \
