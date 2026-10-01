@@ -1,0 +1,27 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "br",
+  "mapping": {
+    "short": { "press": 18, "release": 22 },
+    "long":  { "press": 18, "release": 22, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "BR short - start animation99",
+    "actions": [
+      { "address": "/sensors/99/state", "method": "PUT", "body": { "status": 1 } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "BR long - stop animation99",
+      "actions": [
+        { "address": "/sensors/99/state", "method": "PUT", "body": { "status": 0 } }
+      ]
+    },
+    "end": {
+      "name": "BR long end - (noop)",
+      "actions": []
+    }
+  }
+}

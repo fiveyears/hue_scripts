@@ -1,0 +1,22 @@
+{
+  "sensor": 24,
+  "rocker": 30,
+  "button": "trl",
+  "resourcelink": 65035,
+  "resourcelink_name": "Friends of Hue Switch Elia",
+  "short": {
+    "name": "trl short",
+    "actions": []
+  },
+  "long": {
+    "threshold_ms": 700,
+    "start": {
+      "name": "trl long start",
+      "actions": []
+    },
+    "end": {
+      "name": "trl long end",
+      "actions": []
+    }
+  }
+}

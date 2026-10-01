@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "tl",
+  "mapping": {
+    "short": { "press": 16, "release": 20 },
+    "long":  { "press": 16, "release": 20, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "TL short - group2 on",
+    "actions": [
+      { "address": "/groups/2/action", "method": "PUT", "body": { "on": true } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "TL long - dim up",
+      "actions": [
+        { "address": "/groups/2/action", "method": "PUT", "body": { "bri_inc": 254, "transitiontime": 30 } }
+      ]
+    },
+    "end": {
+      "name": "TL long end - stop dim",
+      "actions": [
+        { "address": "/groups/2/action", "method": "PUT", "body": { "bri_inc": 0, "transitiontime": 0 } }
+      ]
+    }
+  }
+}

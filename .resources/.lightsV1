@@ -1,0 +1,1972 @@
+set "lightsV1(02,state,on)" true
+set "lightsV1(02,state,bri)" 254
+set "lightsV1(02,state,hue)" 16138
+set "lightsV1(02,state,sat)" 75
+set "lightsV1(02,state,effect)" "none"
+set "lightsV1(02,state,xy,00)" 0.4179
+set "lightsV1(02,state,xy,01)" 0.3971
+set "lightsV1(02,state,ct)" 303
+set "lightsV1(02,state,alert)" "select"
+set "lightsV1(02,state,colormode)" "xy"
+set "lightsV1(02,state,mode)" "homeautomation"
+set "lightsV1(02,state,reachable)" true
+set "lightsV1(02,swupdate,state)" "noupdates"
+set "lightsV1(02,swupdate,lastinstall)" "2025-07-16T12:05:23"
+set "lightsV1(02,type)" "Extended color light"
+set "lightsV1(02,name)" "D2"
+set "lightsV1(02,modelid)" "LCT001"
+set "lightsV1(02,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(02,productname)" "Hue color lamp"
+set "lightsV1(02,capabilities,certified)" true
+set "lightsV1(02,capabilities,control,mindimlevel)" 5000
+set "lightsV1(02,capabilities,control,maxlumen)" 600
+set "lightsV1(02,capabilities,control,colorgamuttype)" "B"
+set "lightsV1(02,capabilities,control,colorgamut,00,00)" 0.6750
+set "lightsV1(02,capabilities,control,colorgamut,00,01)" 0.3220
+set "lightsV1(02,capabilities,control,colorgamut,01,00)" 0.4090
+set "lightsV1(02,capabilities,control,colorgamut,01,01)" 0.5180
+set "lightsV1(02,capabilities,control,colorgamut,02,00)" 0.1670
+set "lightsV1(02,capabilities,control,colorgamut,02,01)" 0.0400
+set "lightsV1(02,capabilities,control,ct,min)" 153
+set "lightsV1(02,capabilities,control,ct,max)" 500
+set "lightsV1(02,capabilities,streaming,renderer)" true
+set "lightsV1(02,capabilities,streaming,proxy)" false
+set "lightsV1(02,config,archetype)" "sultanbulb"
+set "lightsV1(02,config,function)" "mixed"
+set "lightsV1(02,config,direction)" "omnidirectional"
+set "lightsV1(02,config,startup,mode)" "safety"
+set "lightsV1(02,config,startup,configured)" true
+set "lightsV1(02,uniqueid)" "00:17:88:01:00:f9:66:65-0b"
+set "lightsV1(02,swversion)" "67.116.10"
+set "lightsV1(03,state,on)" false
+set "lightsV1(03,state,bri)" 254
+set "lightsV1(03,state,hue)" 14100
+set "lightsV1(03,state,sat)" 181
+set "lightsV1(03,state,effect)" "none"
+set "lightsV1(03,state,xy,00)" 0.4862
+set "lightsV1(03,state,xy,01)" 0.4146
+set "lightsV1(03,state,ct)" 417
+set "lightsV1(03,state,alert)" "none"
+set "lightsV1(03,state,colormode)" "ct"
+set "lightsV1(03,state,mode)" "homeautomation"
+set "lightsV1(03,state,reachable)" true
+set "lightsV1(03,swupdate,state)" "noupdates"
+set "lightsV1(03,swupdate,lastinstall)" "2025-07-16T12:05:17"
+set "lightsV1(03,type)" "Extended color light"
+set "lightsV1(03,name)" "D3"
+set "lightsV1(03,modelid)" "LCT001"
+set "lightsV1(03,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(03,productname)" "Hue color lamp"
+set "lightsV1(03,capabilities,certified)" true
+set "lightsV1(03,capabilities,control,mindimlevel)" 5000
+set "lightsV1(03,capabilities,control,maxlumen)" 600
+set "lightsV1(03,capabilities,control,colorgamuttype)" "B"
+set "lightsV1(03,capabilities,control,colorgamut,00,00)" 0.6750
+set "lightsV1(03,capabilities,control,colorgamut,00,01)" 0.3220
+set "lightsV1(03,capabilities,control,colorgamut,01,00)" 0.4090
+set "lightsV1(03,capabilities,control,colorgamut,01,01)" 0.5180
+set "lightsV1(03,capabilities,control,colorgamut,02,00)" 0.1670
+set "lightsV1(03,capabilities,control,colorgamut,02,01)" 0.0400
+set "lightsV1(03,capabilities,control,ct,min)" 153
+set "lightsV1(03,capabilities,control,ct,max)" 500
+set "lightsV1(03,capabilities,streaming,renderer)" true
+set "lightsV1(03,capabilities,streaming,proxy)" false
+set "lightsV1(03,config,archetype)" "sultanbulb"
+set "lightsV1(03,config,function)" "mixed"
+set "lightsV1(03,config,direction)" "omnidirectional"
+set "lightsV1(03,config,startup,mode)" "safety"
+set "lightsV1(03,config,startup,configured)" true
+set "lightsV1(03,uniqueid)" "00:17:88:01:00:fc:1a:5e-0b"
+set "lightsV1(03,swversion)" "67.116.10"
+set "lightsV1(04,state,on)" false
+set "lightsV1(04,state,bri)" 254
+set "lightsV1(04,state,hue)" 8347
+set "lightsV1(04,state,sat)" 147
+set "lightsV1(04,state,effect)" "none"
+set "lightsV1(04,state,xy,00)" 0.4620
+set "lightsV1(04,state,xy,01)" 0.4111
+set "lightsV1(04,state,ct)" 374
+set "lightsV1(04,state,alert)" "none"
+set "lightsV1(04,state,colormode)" "ct"
+set "lightsV1(04,state,mode)" "homeautomation"
+set "lightsV1(04,state,reachable)" true
+set "lightsV1(04,swupdate,state)" "noupdates"
+set "lightsV1(04,swupdate,lastinstall)" "2026-04-09T12:21:09"
+set "lightsV1(04,type)" "Extended color light"
+set "lightsV1(04,name)" "S3"
+set "lightsV1(04,modelid)" "LCT010"
+set "lightsV1(04,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(04,productname)" "Hue color lamp"
+set "lightsV1(04,capabilities,certified)" true
+set "lightsV1(04,capabilities,control,mindimlevel)" 1000
+set "lightsV1(04,capabilities,control,maxlumen)" 806
+set "lightsV1(04,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(04,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(04,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(04,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(04,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(04,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(04,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(04,capabilities,control,ct,min)" 153
+set "lightsV1(04,capabilities,control,ct,max)" 500
+set "lightsV1(04,capabilities,streaming,renderer)" true
+set "lightsV1(04,capabilities,streaming,proxy)" true
+set "lightsV1(04,config,archetype)" "sultanbulb"
+set "lightsV1(04,config,function)" "mixed"
+set "lightsV1(04,config,direction)" "omnidirectional"
+set "lightsV1(04,config,startup,mode)" "safety"
+set "lightsV1(04,config,startup,configured)" true
+set "lightsV1(04,uniqueid)" "00:17:88:01:02:46:7b:08-0b"
+set "lightsV1(04,swversion)" "1.116.12"
+set "lightsV1(04,swconfigid)" "DDE4D5E9"
+set "lightsV1(04,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(05,state,on)" false
+set "lightsV1(05,state,bri)" 254
+set "lightsV1(05,state,hue)" 8364
+set "lightsV1(05,state,sat)" 145
+set "lightsV1(05,state,effect)" "none"
+set "lightsV1(05,state,xy,00)" 0.4614
+set "lightsV1(05,state,xy,01)" 0.4109
+set "lightsV1(05,state,ct)" 373
+set "lightsV1(05,state,alert)" "none"
+set "lightsV1(05,state,colormode)" "ct"
+set "lightsV1(05,state,mode)" "homeautomation"
+set "lightsV1(05,state,reachable)" true
+set "lightsV1(05,swupdate,state)" "noupdates"
+set "lightsV1(05,swupdate,lastinstall)" "2026-04-09T12:21:01"
+set "lightsV1(05,type)" "Extended color light"
+set "lightsV1(05,name)" "Hue go"
+set "lightsV1(05,modelid)" "LLC020"
+set "lightsV1(05,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(05,productname)" "Hue go"
+set "lightsV1(05,capabilities,certified)" true
+set "lightsV1(05,capabilities,control,mindimlevel)" 40
+set "lightsV1(05,capabilities,control,maxlumen)" 300
+set "lightsV1(05,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(05,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(05,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(05,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(05,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(05,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(05,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(05,capabilities,control,ct,min)" 153
+set "lightsV1(05,capabilities,control,ct,max)" 500
+set "lightsV1(05,capabilities,streaming,renderer)" true
+set "lightsV1(05,capabilities,streaming,proxy)" true
+set "lightsV1(05,config,archetype)" "huego"
+set "lightsV1(05,config,function)" "decorative"
+set "lightsV1(05,config,direction)" "omnidirectional"
+set "lightsV1(05,config,startup,mode)" "safety"
+set "lightsV1(05,config,startup,configured)" true
+set "lightsV1(05,uniqueid)" "00:17:88:01:01:19:95:04-0b"
+set "lightsV1(05,swversion)" "67.116.12"
+set "lightsV1(06,state,on)" false
+set "lightsV1(06,state,bri)" 254
+set "lightsV1(06,state,hue)" 39649
+set "lightsV1(06,state,sat)" 112
+set "lightsV1(06,state,effect)" "none"
+set "lightsV1(06,state,xy,00)" 0.3104
+set "lightsV1(06,state,xy,01)" 0.3301
+set "lightsV1(06,state,ct)" 153
+set "lightsV1(06,state,alert)" "none"
+set "lightsV1(06,state,colormode)" "xy"
+set "lightsV1(06,state,mode)" "homeautomation"
+set "lightsV1(06,state,reachable)" true
+set "lightsV1(06,swupdate,state)" "noupdates"
+set "lightsV1(06,swupdate,lastinstall)" "2025-07-16T12:05:19"
+set "lightsV1(06,type)" "Extended color light"
+set "lightsV1(06,name)" "Hue iris"
+set "lightsV1(06,modelid)" "LLC010"
+set "lightsV1(06,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(06,productname)" "Hue iris"
+set "lightsV1(06,capabilities,certified)" true
+set "lightsV1(06,capabilities,control,mindimlevel)" 10000
+set "lightsV1(06,capabilities,control,maxlumen)" 210
+set "lightsV1(06,capabilities,control,colorgamuttype)" "A"
+set "lightsV1(06,capabilities,control,colorgamut,00,00)" 0.7040
+set "lightsV1(06,capabilities,control,colorgamut,00,01)" 0.2960
+set "lightsV1(06,capabilities,control,colorgamut,01,00)" 0.2151
+set "lightsV1(06,capabilities,control,colorgamut,01,01)" 0.7106
+set "lightsV1(06,capabilities,control,colorgamut,02,00)" 0.1380
+set "lightsV1(06,capabilities,control,colorgamut,02,01)" 0.0800
+set "lightsV1(06,capabilities,control,ct,min)" 153
+set "lightsV1(06,capabilities,control,ct,max)" 500
+set "lightsV1(06,capabilities,streaming,renderer)" true
+set "lightsV1(06,capabilities,streaming,proxy)" false
+set "lightsV1(06,config,archetype)" "hueiris"
+set "lightsV1(06,config,function)" "decorative"
+set "lightsV1(06,config,direction)" "upwards"
+set "lightsV1(06,config,startup,mode)" "safety"
+set "lightsV1(06,config,startup,configured)" true
+set "lightsV1(06,uniqueid)" "00:17:88:01:00:0c:ca:cb-0b"
+set "lightsV1(06,swversion)" "67.116.10"
+set "lightsV1(07,state,on)" false
+set "lightsV1(07,state,bri)" 254
+set "lightsV1(07,state,hue)" 8347
+set "lightsV1(07,state,sat)" 147
+set "lightsV1(07,state,effect)" "none"
+set "lightsV1(07,state,xy,00)" 0.4620
+set "lightsV1(07,state,xy,01)" 0.4111
+set "lightsV1(07,state,ct)" 374
+set "lightsV1(07,state,alert)" "none"
+set "lightsV1(07,state,colormode)" "ct"
+set "lightsV1(07,state,mode)" "homeautomation"
+set "lightsV1(07,state,reachable)" true
+set "lightsV1(07,swupdate,state)" "noupdates"
+set "lightsV1(07,swupdate,lastinstall)" "2026-04-09T12:24:13"
+set "lightsV1(07,type)" "Extended color light"
+set "lightsV1(07,name)" "S1"
+set "lightsV1(07,modelid)" "LCT010"
+set "lightsV1(07,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(07,productname)" "Hue color lamp"
+set "lightsV1(07,capabilities,certified)" true
+set "lightsV1(07,capabilities,control,mindimlevel)" 1000
+set "lightsV1(07,capabilities,control,maxlumen)" 806
+set "lightsV1(07,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(07,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(07,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(07,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(07,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(07,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(07,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(07,capabilities,control,ct,min)" 153
+set "lightsV1(07,capabilities,control,ct,max)" 500
+set "lightsV1(07,capabilities,streaming,renderer)" true
+set "lightsV1(07,capabilities,streaming,proxy)" true
+set "lightsV1(07,config,archetype)" "sultanbulb"
+set "lightsV1(07,config,function)" "mixed"
+set "lightsV1(07,config,direction)" "omnidirectional"
+set "lightsV1(07,config,startup,mode)" "safety"
+set "lightsV1(07,config,startup,configured)" true
+set "lightsV1(07,uniqueid)" "00:17:88:01:02:3c:b2:9c-0b"
+set "lightsV1(07,swversion)" "1.116.12"
+set "lightsV1(07,swconfigid)" "DDE4D5E9"
+set "lightsV1(07,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(08,state,on)" false
+set "lightsV1(08,state,bri)" 254
+set "lightsV1(08,state,hue)" 8347
+set "lightsV1(08,state,sat)" 147
+set "lightsV1(08,state,effect)" "none"
+set "lightsV1(08,state,xy,00)" 0.4620
+set "lightsV1(08,state,xy,01)" 0.4111
+set "lightsV1(08,state,ct)" 374
+set "lightsV1(08,state,alert)" "none"
+set "lightsV1(08,state,colormode)" "ct"
+set "lightsV1(08,state,mode)" "homeautomation"
+set "lightsV1(08,state,reachable)" true
+set "lightsV1(08,swupdate,state)" "noupdates"
+set "lightsV1(08,swupdate,lastinstall)" "2026-04-09T12:21:15"
+set "lightsV1(08,type)" "Extended color light"
+set "lightsV1(08,name)" "S2"
+set "lightsV1(08,modelid)" "LCT010"
+set "lightsV1(08,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(08,productname)" "Hue color lamp"
+set "lightsV1(08,capabilities,certified)" true
+set "lightsV1(08,capabilities,control,mindimlevel)" 1000
+set "lightsV1(08,capabilities,control,maxlumen)" 806
+set "lightsV1(08,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(08,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(08,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(08,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(08,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(08,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(08,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(08,capabilities,control,ct,min)" 153
+set "lightsV1(08,capabilities,control,ct,max)" 500
+set "lightsV1(08,capabilities,streaming,renderer)" true
+set "lightsV1(08,capabilities,streaming,proxy)" true
+set "lightsV1(08,config,archetype)" "sultanbulb"
+set "lightsV1(08,config,function)" "mixed"
+set "lightsV1(08,config,direction)" "omnidirectional"
+set "lightsV1(08,config,startup,mode)" "safety"
+set "lightsV1(08,config,startup,configured)" true
+set "lightsV1(08,uniqueid)" "00:17:88:01:02:34:85:8d-0b"
+set "lightsV1(08,swversion)" "1.116.12"
+set "lightsV1(08,swconfigid)" "DDE4D5E9"
+set "lightsV1(08,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(09,state,on)" false
+set "lightsV1(09,state,bri)" 254
+set "lightsV1(09,state,hue)" 8347
+set "lightsV1(09,state,sat)" 147
+set "lightsV1(09,state,effect)" "none"
+set "lightsV1(09,state,xy,00)" 0.4620
+set "lightsV1(09,state,xy,01)" 0.4111
+set "lightsV1(09,state,ct)" 374
+set "lightsV1(09,state,alert)" "none"
+set "lightsV1(09,state,colormode)" "ct"
+set "lightsV1(09,state,mode)" "homeautomation"
+set "lightsV1(09,state,reachable)" true
+set "lightsV1(09,swupdate,state)" "noupdates"
+set "lightsV1(09,swupdate,lastinstall)" "2026-04-09T12:24:39"
+set "lightsV1(09,type)" "Extended color light"
+set "lightsV1(09,name)" "D1"
+set "lightsV1(09,modelid)" "LCT010"
+set "lightsV1(09,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(09,productname)" "Hue color lamp"
+set "lightsV1(09,capabilities,certified)" true
+set "lightsV1(09,capabilities,control,mindimlevel)" 1000
+set "lightsV1(09,capabilities,control,maxlumen)" 806
+set "lightsV1(09,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(09,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(09,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(09,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(09,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(09,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(09,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(09,capabilities,control,ct,min)" 153
+set "lightsV1(09,capabilities,control,ct,max)" 500
+set "lightsV1(09,capabilities,streaming,renderer)" true
+set "lightsV1(09,capabilities,streaming,proxy)" true
+set "lightsV1(09,config,archetype)" "sultanbulb"
+set "lightsV1(09,config,function)" "mixed"
+set "lightsV1(09,config,direction)" "omnidirectional"
+set "lightsV1(09,config,startup,mode)" "lastonstate"
+set "lightsV1(09,config,startup,configured)" true
+set "lightsV1(09,uniqueid)" "00:17:88:01:02:32:e1:d7-0b"
+set "lightsV1(09,swversion)" "1.116.12"
+set "lightsV1(09,swconfigid)" "DDE4D5E9"
+set "lightsV1(09,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(10,state,on)" false
+set "lightsV1(10,state,bri)" 254
+set "lightsV1(10,state,hue)" 41440
+set "lightsV1(10,state,sat)" 75
+set "lightsV1(10,state,effect)" "none"
+set "lightsV1(10,state,xy,00)" 0.3146
+set "lightsV1(10,state,xy,01)" 0.3303
+set "lightsV1(10,state,ct)" 156
+set "lightsV1(10,state,alert)" "none"
+set "lightsV1(10,state,colormode)" "xy"
+set "lightsV1(10,state,mode)" "homeautomation"
+set "lightsV1(10,state,reachable)" true
+set "lightsV1(10,swupdate,state)" "noupdates"
+set "lightsV1(10,swupdate,lastinstall)" "2026-04-09T12:20:40"
+set "lightsV1(10,type)" "Extended color light"
+set "lightsV1(10,name)" "TV 3"
+set "lightsV1(10,modelid)" "LCT010"
+set "lightsV1(10,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(10,productname)" "Hue color lamp"
+set "lightsV1(10,capabilities,certified)" true
+set "lightsV1(10,capabilities,control,mindimlevel)" 1000
+set "lightsV1(10,capabilities,control,maxlumen)" 806
+set "lightsV1(10,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(10,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(10,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(10,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(10,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(10,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(10,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(10,capabilities,control,ct,min)" 153
+set "lightsV1(10,capabilities,control,ct,max)" 500
+set "lightsV1(10,capabilities,streaming,renderer)" true
+set "lightsV1(10,capabilities,streaming,proxy)" true
+set "lightsV1(10,config,archetype)" "sultanbulb"
+set "lightsV1(10,config,function)" "mixed"
+set "lightsV1(10,config,direction)" "omnidirectional"
+set "lightsV1(10,config,startup,mode)" "safety"
+set "lightsV1(10,config,startup,configured)" true
+set "lightsV1(10,uniqueid)" "00:17:88:01:02:3c:92:3d-0b"
+set "lightsV1(10,swversion)" "1.116.12"
+set "lightsV1(10,swconfigid)" "DDE4D5E9"
+set "lightsV1(10,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(11,state,on)" false
+set "lightsV1(11,state,bri)" 254
+set "lightsV1(11,state,hue)" 41432
+set "lightsV1(11,state,sat)" 75
+set "lightsV1(11,state,effect)" "none"
+set "lightsV1(11,state,xy,00)" 0.3143
+set "lightsV1(11,state,xy,01)" 0.3301
+set "lightsV1(11,state,ct)" 156
+set "lightsV1(11,state,alert)" "none"
+set "lightsV1(11,state,colormode)" "ct"
+set "lightsV1(11,state,mode)" "homeautomation"
+set "lightsV1(11,state,reachable)" true
+set "lightsV1(11,swupdate,state)" "noupdates"
+set "lightsV1(11,swupdate,lastinstall)" "2026-04-09T12:21:03"
+set "lightsV1(11,type)" "Extended color light"
+set "lightsV1(11,name)" "E 1"
+set "lightsV1(11,modelid)" "LCT010"
+set "lightsV1(11,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(11,productname)" "Hue color lamp"
+set "lightsV1(11,capabilities,certified)" true
+set "lightsV1(11,capabilities,control,mindimlevel)" 1000
+set "lightsV1(11,capabilities,control,maxlumen)" 806
+set "lightsV1(11,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(11,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(11,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(11,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(11,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(11,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(11,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(11,capabilities,control,ct,min)" 153
+set "lightsV1(11,capabilities,control,ct,max)" 500
+set "lightsV1(11,capabilities,streaming,renderer)" true
+set "lightsV1(11,capabilities,streaming,proxy)" true
+set "lightsV1(11,config,archetype)" "sultanbulb"
+set "lightsV1(11,config,function)" "mixed"
+set "lightsV1(11,config,direction)" "omnidirectional"
+set "lightsV1(11,config,startup,mode)" "safety"
+set "lightsV1(11,config,startup,configured)" true
+set "lightsV1(11,uniqueid)" "00:17:88:01:02:32:e6:ad-0b"
+set "lightsV1(11,swversion)" "1.116.12"
+set "lightsV1(11,swconfigid)" "DDE4D5E9"
+set "lightsV1(11,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(13,state,on)" true
+set "lightsV1(13,state,bri)" 254
+set "lightsV1(13,state,hue)" 41432
+set "lightsV1(13,state,sat)" 75
+set "lightsV1(13,state,effect)" "none"
+set "lightsV1(13,state,xy,00)" 0.3143
+set "lightsV1(13,state,xy,01)" 0.3301
+set "lightsV1(13,state,ct)" 156
+set "lightsV1(13,state,alert)" "none"
+set "lightsV1(13,state,colormode)" "ct"
+set "lightsV1(13,state,mode)" "homeautomation"
+set "lightsV1(13,state,reachable)" true
+set "lightsV1(13,swupdate,state)" "noupdates"
+set "lightsV1(13,swupdate,lastinstall)" "2026-04-09T12:24:19"
+set "lightsV1(13,type)" "Extended color light"
+set "lightsV1(13,name)" "Lightstrip"
+set "lightsV1(13,modelid)" "LST002"
+set "lightsV1(13,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(13,productname)" "Hue lightstrip plus"
+set "lightsV1(13,capabilities,certified)" true
+set "lightsV1(13,capabilities,control,mindimlevel)" 25
+set "lightsV1(13,capabilities,control,maxlumen)" 1600
+set "lightsV1(13,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(13,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(13,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(13,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(13,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(13,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(13,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(13,capabilities,control,ct,min)" 153
+set "lightsV1(13,capabilities,control,ct,max)" 500
+set "lightsV1(13,capabilities,streaming,renderer)" true
+set "lightsV1(13,capabilities,streaming,proxy)" true
+set "lightsV1(13,config,archetype)" "huelightstrip"
+set "lightsV1(13,config,function)" "decorative"
+set "lightsV1(13,config,direction)" "omnidirectional"
+set "lightsV1(13,config,startup,mode)" "safety"
+set "lightsV1(13,config,startup,configured)" true
+set "lightsV1(13,uniqueid)" "00:17:88:01:02:ae:c3:b3-0b"
+set "lightsV1(13,swversion)" "67.116.12"
+set "lightsV1(14,state,on)" false
+set "lightsV1(14,state,alert)" "none"
+set "lightsV1(14,state,mode)" "homeautomation"
+set "lightsV1(14,state,reachable)" true
+set "lightsV1(14,swupdate,state)" "noupdates"
+set "lightsV1(14,swupdate,lastinstall)" "2026-07-10T12:31:57"
+set "lightsV1(14,type)" "On/Off plug-in unit"
+set "lightsV1(14,name)" "Piano light"
+set "lightsV1(14,modelid)" "LOM001"
+set "lightsV1(14,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(14,productname)" "Hue smart plug"
+set "lightsV1(14,capabilities,certified)" true
+set "lightsV1(14,capabilities,streaming,renderer)" false
+set "lightsV1(14,capabilities,streaming,proxy)" false
+set "lightsV1(14,config,archetype)" "flexiblelamp"
+set "lightsV1(14,config,function)" "functional"
+set "lightsV1(14,config,direction)" "omnidirectional"
+set "lightsV1(14,config,startup,mode)" "safety"
+set "lightsV1(14,config,startup,configured)" true
+set "lightsV1(14,uniqueid)" "00:17:88:01:08:60:52:48-0b"
+set "lightsV1(14,swversion)" "1.163.1"
+set "lightsV1(14,swconfigid)" "0CF38B30"
+set "lightsV1(14,productid)" "SmartPlug_OnOff_v01-00_01"
+set "lightsV1(15,state,on)" true
+set "lightsV1(15,state,alert)" "none"
+set "lightsV1(15,state,mode)" "homeautomation"
+set "lightsV1(15,state,reachable)" true
+set "lightsV1(15,swupdate,state)" "noupdates"
+set "lightsV1(15,swupdate,lastinstall)" "2026-07-10T12:31:53"
+set "lightsV1(15,type)" "On/Off plug-in unit"
+set "lightsV1(15,name)" "Desktop"
+set "lightsV1(15,modelid)" "LOM001"
+set "lightsV1(15,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(15,productname)" "Hue smart plug"
+set "lightsV1(15,capabilities,certified)" true
+set "lightsV1(15,capabilities,streaming,renderer)" false
+set "lightsV1(15,capabilities,streaming,proxy)" false
+set "lightsV1(15,config,archetype)" "flexiblelamp"
+set "lightsV1(15,config,function)" "functional"
+set "lightsV1(15,config,direction)" "omnidirectional"
+set "lightsV1(15,config,startup,mode)" "safety"
+set "lightsV1(15,config,startup,configured)" true
+set "lightsV1(15,uniqueid)" "00:17:88:01:08:d8:a7:6f-0b"
+set "lightsV1(15,swversion)" "1.163.1"
+set "lightsV1(15,swconfigid)" "0CF38B30"
+set "lightsV1(15,productid)" "SmartPlug_OnOff_v01-00_01"
+set "lightsV1(18,state,on)" false
+set "lightsV1(18,state,alert)" "none"
+set "lightsV1(18,state,mode)" "homeautomation"
+set "lightsV1(18,state,reachable)" true
+set "lightsV1(18,swupdate,state)" "noupdates"
+set "lightsV1(18,swupdate,lastinstall)" "2026-07-10T12:32:00"
+set "lightsV1(18,type)" "On/Off plug-in unit"
+set "lightsV1(18,name)" "Living Room Floor lamp"
+set "lightsV1(18,modelid)" "LOM001"
+set "lightsV1(18,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(18,productname)" "Hue smart plug"
+set "lightsV1(18,capabilities,certified)" true
+set "lightsV1(18,capabilities,streaming,renderer)" false
+set "lightsV1(18,capabilities,streaming,proxy)" false
+set "lightsV1(18,config,archetype)" "floorshade"
+set "lightsV1(18,config,function)" "functional"
+set "lightsV1(18,config,direction)" "omnidirectional"
+set "lightsV1(18,config,startup,mode)" "safety"
+set "lightsV1(18,config,startup,configured)" true
+set "lightsV1(18,uniqueid)" "00:17:88:01:08:d8:cf:46-0b"
+set "lightsV1(18,swversion)" "1.163.1"
+set "lightsV1(18,swconfigid)" "0CF38B30"
+set "lightsV1(18,productid)" "SmartPlug_OnOff_v01-00_01"
+set "lightsV1(19,state,on)" false
+set "lightsV1(19,state,alert)" "none"
+set "lightsV1(19,state,mode)" "homeautomation"
+set "lightsV1(19,state,reachable)" true
+set "lightsV1(19,swupdate,state)" "noupdates"
+set "lightsV1(19,swupdate,lastinstall)" "2026-07-11T12:18:55"
+set "lightsV1(19,type)" "On/Off plug-in unit"
+set "lightsV1(19,name)" "Balcony Light"
+set "lightsV1(19,modelid)" "LOM001"
+set "lightsV1(19,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(19,productname)" "Hue smart plug"
+set "lightsV1(19,capabilities,certified)" true
+set "lightsV1(19,capabilities,streaming,renderer)" false
+set "lightsV1(19,capabilities,streaming,proxy)" false
+set "lightsV1(19,config,archetype)" "ceilinground"
+set "lightsV1(19,config,function)" "functional"
+set "lightsV1(19,config,direction)" "omnidirectional"
+set "lightsV1(19,config,startup,mode)" "safety"
+set "lightsV1(19,config,startup,configured)" true
+set "lightsV1(19,uniqueid)" "00:17:88:01:08:d8:98:06-0b"
+set "lightsV1(19,swversion)" "1.163.1"
+set "lightsV1(19,swconfigid)" "0CF38B30"
+set "lightsV1(19,productid)" "SmartPlug_OnOff_v01-00_01"
+set "lightsV1(20,state,on)" true
+set "lightsV1(20,state,bri)" 143
+set "lightsV1(20,state,hue)" 7730
+set "lightsV1(20,state,sat)" 196
+set "lightsV1(20,state,effect)" "none"
+set "lightsV1(20,state,xy,00)" 0.4988
+set "lightsV1(20,state,xy,01)" 0.4152
+set "lightsV1(20,state,ct)" 441
+set "lightsV1(20,state,alert)" "none"
+set "lightsV1(20,state,colormode)" "ct"
+set "lightsV1(20,state,mode)" "homeautomation"
+set "lightsV1(20,state,reachable)" true
+set "lightsV1(20,swupdate,state)" "noupdates"
+set "lightsV1(20,swupdate,lastinstall)" "2026-07-10T12:31:44"
+set "lightsV1(20,type)" "Extended color light"
+set "lightsV1(20,name)" "Guestbath spot 2"
+set "lightsV1(20,modelid)" "929004611301_03"
+set "lightsV1(20,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(20,productname)" "Hue Xamento spot"
+set "lightsV1(20,capabilities,certified)" true
+set "lightsV1(20,capabilities,control,mindimlevel)" 200
+set "lightsV1(20,capabilities,control,maxlumen)" 400
+set "lightsV1(20,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(20,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(20,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(20,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(20,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(20,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(20,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(20,capabilities,control,ct,min)" 153
+set "lightsV1(20,capabilities,control,ct,max)" 500
+set "lightsV1(20,capabilities,streaming,renderer)" true
+set "lightsV1(20,capabilities,streaming,proxy)" true
+set "lightsV1(20,config,archetype)" "recessedceiling"
+set "lightsV1(20,config,function)" "mixed"
+set "lightsV1(20,config,direction)" "downwards"
+set "lightsV1(20,config,startup,mode)" "safety"
+set "lightsV1(20,config,startup,configured)" true
+set "lightsV1(20,uniqueid)" "00:17:88:01:0e:ee:e6:c8-0b"
+set "lightsV1(20,swversion)" "1.163.1"
+set "lightsV1(20,swconfigid)" "DA6BEA05"
+set "lightsV1(20,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(21,state,on)" true
+set "lightsV1(21,state,bri)" 143
+set "lightsV1(21,state,hue)" 7730
+set "lightsV1(21,state,sat)" 196
+set "lightsV1(21,state,effect)" "none"
+set "lightsV1(21,state,xy,00)" 0.4988
+set "lightsV1(21,state,xy,01)" 0.4152
+set "lightsV1(21,state,ct)" 441
+set "lightsV1(21,state,alert)" "none"
+set "lightsV1(21,state,colormode)" "ct"
+set "lightsV1(21,state,mode)" "homeautomation"
+set "lightsV1(21,state,reachable)" true
+set "lightsV1(21,swupdate,state)" "noupdates"
+set "lightsV1(21,swupdate,lastinstall)" "2026-07-10T12:32:14"
+set "lightsV1(21,type)" "Extended color light"
+set "lightsV1(21,name)" "Guestbath spot 5"
+set "lightsV1(21,modelid)" "929004611301_01"
+set "lightsV1(21,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(21,productname)" "Hue Xamento spot"
+set "lightsV1(21,capabilities,certified)" true
+set "lightsV1(21,capabilities,control,mindimlevel)" 200
+set "lightsV1(21,capabilities,control,maxlumen)" 400
+set "lightsV1(21,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(21,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(21,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(21,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(21,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(21,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(21,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(21,capabilities,control,ct,min)" 153
+set "lightsV1(21,capabilities,control,ct,max)" 500
+set "lightsV1(21,capabilities,streaming,renderer)" true
+set "lightsV1(21,capabilities,streaming,proxy)" true
+set "lightsV1(21,config,archetype)" "recessedceiling"
+set "lightsV1(21,config,function)" "mixed"
+set "lightsV1(21,config,direction)" "downwards"
+set "lightsV1(21,config,startup,mode)" "safety"
+set "lightsV1(21,config,startup,configured)" true
+set "lightsV1(21,uniqueid)" "00:17:88:01:0e:e7:29:80-0b"
+set "lightsV1(21,swversion)" "1.163.1"
+set "lightsV1(21,swconfigid)" "DA6BEA05"
+set "lightsV1(21,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(22,state,on)" true
+set "lightsV1(22,state,bri)" 143
+set "lightsV1(22,state,hue)" 7748
+set "lightsV1(22,state,sat)" 195
+set "lightsV1(22,state,effect)" "none"
+set "lightsV1(22,state,xy,00)" 0.4978
+set "lightsV1(22,state,xy,01)" 0.4151
+set "lightsV1(22,state,ct)" 439
+set "lightsV1(22,state,alert)" "none"
+set "lightsV1(22,state,colormode)" "ct"
+set "lightsV1(22,state,mode)" "homeautomation"
+set "lightsV1(22,state,reachable)" true
+set "lightsV1(22,swupdate,state)" "noupdates"
+set "lightsV1(22,swupdate,lastinstall)" "2026-07-10T12:32:19"
+set "lightsV1(22,type)" "Extended color light"
+set "lightsV1(22,name)" "Guestbath spot 3"
+set "lightsV1(22,modelid)" "929004611301_02"
+set "lightsV1(22,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(22,productname)" "Hue Xamento spot"
+set "lightsV1(22,capabilities,certified)" true
+set "lightsV1(22,capabilities,control,mindimlevel)" 200
+set "lightsV1(22,capabilities,control,maxlumen)" 400
+set "lightsV1(22,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(22,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(22,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(22,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(22,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(22,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(22,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(22,capabilities,control,ct,min)" 153
+set "lightsV1(22,capabilities,control,ct,max)" 500
+set "lightsV1(22,capabilities,streaming,renderer)" true
+set "lightsV1(22,capabilities,streaming,proxy)" true
+set "lightsV1(22,config,archetype)" "recessedceiling"
+set "lightsV1(22,config,function)" "mixed"
+set "lightsV1(22,config,direction)" "downwards"
+set "lightsV1(22,config,startup,mode)" "safety"
+set "lightsV1(22,config,startup,configured)" true
+set "lightsV1(22,uniqueid)" "00:17:88:01:0e:ee:de:b1-0b"
+set "lightsV1(22,swversion)" "1.163.1"
+set "lightsV1(22,swconfigid)" "DA6BEA05"
+set "lightsV1(22,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(23,state,on)" true
+set "lightsV1(23,state,bri)" 143
+set "lightsV1(23,state,hue)" 27124
+set "lightsV1(23,state,sat)" 167
+set "lightsV1(23,state,effect)" "none"
+set "lightsV1(23,state,xy,00)" 0.2413
+set "lightsV1(23,state,xy,01)" 0.5589
+set "lightsV1(23,state,ct)" 50
+set "lightsV1(23,state,alert)" "none"
+set "lightsV1(23,state,colormode)" "xy"
+set "lightsV1(23,state,mode)" "homeautomation"
+set "lightsV1(23,state,reachable)" true
+set "lightsV1(23,swupdate,state)" "noupdates"
+set "lightsV1(23,swupdate,lastinstall)" "2026-09-16T12:35:41"
+set "lightsV1(23,type)" "Extended color light"
+set "lightsV1(23,name)" "Guestbath flux strip left"
+set "lightsV1(23,modelid)" "929004610602"
+set "lightsV1(23,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(23,productname)" "Hue Flux strip light"
+set "lightsV1(23,capabilities,certified)" true
+set "lightsV1(23,capabilities,control,mindimlevel)" 200
+set "lightsV1(23,capabilities,control,maxlumen)" 2000
+set "lightsV1(23,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(23,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(23,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(23,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(23,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(23,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(23,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(23,capabilities,control,ct,min)" 50
+set "lightsV1(23,capabilities,control,ct,max)" 1000
+set "lightsV1(23,capabilities,streaming,renderer)" true
+set "lightsV1(23,capabilities,streaming,proxy)" true
+set "lightsV1(23,config,archetype)" "huelightstrip"
+set "lightsV1(23,config,function)" "mixed"
+set "lightsV1(23,config,direction)" "omnidirectional"
+set "lightsV1(23,config,startup,mode)" "custom"
+set "lightsV1(23,config,startup,configured)" true
+set "lightsV1(23,config,startup,customsettings,bri)" 254
+set "lightsV1(23,config,startup,customsettings,ct)" 367
+set "lightsV1(23,uniqueid)" "00:17:88:01:0f:bb:63:fb-0b"
+set "lightsV1(23,swversion)" "1.163.5"
+set "lightsV1(23,swconfigid)" "662BE184"
+set "lightsV1(23,productid)" "4422-9668-9501_HG02_PSU32"
+set "lightsV1(24,state,on)" true
+set "lightsV1(24,state,bri)" 143
+set "lightsV1(24,state,hue)" 46334
+set "lightsV1(24,state,sat)" 202
+set "lightsV1(24,state,effect)" "none"
+set "lightsV1(24,state,xy,00)" 0.2002
+set "lightsV1(24,state,xy,01)" 0.1335
+set "lightsV1(24,state,ct)" 50
+set "lightsV1(24,state,alert)" "none"
+set "lightsV1(24,state,colormode)" "xy"
+set "lightsV1(24,state,mode)" "homeautomation"
+set "lightsV1(24,state,reachable)" true
+set "lightsV1(24,swupdate,state)" "noupdates"
+set "lightsV1(24,swupdate,lastinstall)" "2026-09-16T12:35:44"
+set "lightsV1(24,type)" "Extended color light"
+set "lightsV1(24,name)" "Guestbath flux strip right"
+set "lightsV1(24,modelid)" "929004610602"
+set "lightsV1(24,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(24,productname)" "Hue Flux strip light"
+set "lightsV1(24,capabilities,certified)" true
+set "lightsV1(24,capabilities,control,mindimlevel)" 200
+set "lightsV1(24,capabilities,control,maxlumen)" 2000
+set "lightsV1(24,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(24,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(24,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(24,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(24,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(24,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(24,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(24,capabilities,control,ct,min)" 50
+set "lightsV1(24,capabilities,control,ct,max)" 1000
+set "lightsV1(24,capabilities,streaming,renderer)" true
+set "lightsV1(24,capabilities,streaming,proxy)" true
+set "lightsV1(24,config,archetype)" "huelightstrip"
+set "lightsV1(24,config,function)" "mixed"
+set "lightsV1(24,config,direction)" "omnidirectional"
+set "lightsV1(24,config,startup,mode)" "custom"
+set "lightsV1(24,config,startup,configured)" true
+set "lightsV1(24,config,startup,customsettings,bri)" 254
+set "lightsV1(24,config,startup,customsettings,ct)" 367
+set "lightsV1(24,uniqueid)" "00:17:88:01:0f:cc:04:8d-0b"
+set "lightsV1(24,swversion)" "1.163.5"
+set "lightsV1(24,swconfigid)" "662BE184"
+set "lightsV1(24,productid)" "4422-9668-9501_HG02_PSU32"
+set "lightsV1(25,state,on)" true
+set "lightsV1(25,state,bri)" 143
+set "lightsV1(25,state,hue)" 7730
+set "lightsV1(25,state,sat)" 196
+set "lightsV1(25,state,effect)" "none"
+set "lightsV1(25,state,xy,00)" 0.4988
+set "lightsV1(25,state,xy,01)" 0.4152
+set "lightsV1(25,state,ct)" 441
+set "lightsV1(25,state,alert)" "none"
+set "lightsV1(25,state,colormode)" "ct"
+set "lightsV1(25,state,mode)" "homeautomation"
+set "lightsV1(25,state,reachable)" true
+set "lightsV1(25,swupdate,state)" "noupdates"
+set "lightsV1(25,swupdate,lastinstall)" "2026-07-10T12:31:50"
+set "lightsV1(25,type)" "Extended color light"
+set "lightsV1(25,name)" "Guestbath spot 7"
+set "lightsV1(25,modelid)" "929004611201"
+set "lightsV1(25,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(25,productname)" "Hue Xamento spot"
+set "lightsV1(25,capabilities,certified)" true
+set "lightsV1(25,capabilities,control,mindimlevel)" 200
+set "lightsV1(25,capabilities,control,maxlumen)" 400
+set "lightsV1(25,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(25,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(25,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(25,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(25,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(25,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(25,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(25,capabilities,control,ct,min)" 153
+set "lightsV1(25,capabilities,control,ct,max)" 500
+set "lightsV1(25,capabilities,streaming,renderer)" true
+set "lightsV1(25,capabilities,streaming,proxy)" true
+set "lightsV1(25,config,archetype)" "recessedceiling"
+set "lightsV1(25,config,function)" "mixed"
+set "lightsV1(25,config,direction)" "downwards"
+set "lightsV1(25,config,startup,mode)" "safety"
+set "lightsV1(25,config,startup,configured)" true
+set "lightsV1(25,uniqueid)" "00:17:88:01:0e:ed:e1:96-0b"
+set "lightsV1(25,swversion)" "1.163.1"
+set "lightsV1(25,swconfigid)" "DA6BEA05"
+set "lightsV1(25,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(26,state,on)" true
+set "lightsV1(26,state,bri)" 143
+set "lightsV1(26,state,hue)" 7730
+set "lightsV1(26,state,sat)" 196
+set "lightsV1(26,state,effect)" "none"
+set "lightsV1(26,state,xy,00)" 0.4988
+set "lightsV1(26,state,xy,01)" 0.4152
+set "lightsV1(26,state,ct)" 441
+set "lightsV1(26,state,alert)" "none"
+set "lightsV1(26,state,colormode)" "ct"
+set "lightsV1(26,state,mode)" "homeautomation"
+set "lightsV1(26,state,reachable)" true
+set "lightsV1(26,swupdate,state)" "noupdates"
+set "lightsV1(26,swupdate,lastinstall)" "2026-07-11T12:19:04"
+set "lightsV1(26,type)" "Extended color light"
+set "lightsV1(26,name)" "Guestbath spot 6"
+set "lightsV1(26,modelid)" "929004611301_02"
+set "lightsV1(26,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(26,productname)" "Hue Xamento spot"
+set "lightsV1(26,capabilities,certified)" true
+set "lightsV1(26,capabilities,control,mindimlevel)" 200
+set "lightsV1(26,capabilities,control,maxlumen)" 400
+set "lightsV1(26,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(26,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(26,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(26,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(26,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(26,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(26,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(26,capabilities,control,ct,min)" 153
+set "lightsV1(26,capabilities,control,ct,max)" 500
+set "lightsV1(26,capabilities,streaming,renderer)" true
+set "lightsV1(26,capabilities,streaming,proxy)" true
+set "lightsV1(26,config,archetype)" "recessedceiling"
+set "lightsV1(26,config,function)" "mixed"
+set "lightsV1(26,config,direction)" "downwards"
+set "lightsV1(26,config,startup,mode)" "safety"
+set "lightsV1(26,config,startup,configured)" true
+set "lightsV1(26,uniqueid)" "00:17:88:01:0e:ee:1e:77-0b"
+set "lightsV1(26,swversion)" "1.163.1"
+set "lightsV1(26,swconfigid)" "DA6BEA05"
+set "lightsV1(26,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(27,state,on)" true
+set "lightsV1(27,state,bri)" 143
+set "lightsV1(27,state,hue)" 7730
+set "lightsV1(27,state,sat)" 196
+set "lightsV1(27,state,effect)" "none"
+set "lightsV1(27,state,xy,00)" 0.4988
+set "lightsV1(27,state,xy,01)" 0.4152
+set "lightsV1(27,state,ct)" 441
+set "lightsV1(27,state,alert)" "none"
+set "lightsV1(27,state,colormode)" "ct"
+set "lightsV1(27,state,mode)" "homeautomation"
+set "lightsV1(27,state,reachable)" true
+set "lightsV1(27,swupdate,state)" "noupdates"
+set "lightsV1(27,swupdate,lastinstall)" "2026-07-11T12:19:00"
+set "lightsV1(27,type)" "Extended color light"
+set "lightsV1(27,name)" "Guestbath spot 1"
+set "lightsV1(27,modelid)" "929004611301_01"
+set "lightsV1(27,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(27,productname)" "Hue Xamento spot"
+set "lightsV1(27,capabilities,certified)" true
+set "lightsV1(27,capabilities,control,mindimlevel)" 200
+set "lightsV1(27,capabilities,control,maxlumen)" 400
+set "lightsV1(27,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(27,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(27,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(27,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(27,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(27,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(27,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(27,capabilities,control,ct,min)" 153
+set "lightsV1(27,capabilities,control,ct,max)" 500
+set "lightsV1(27,capabilities,streaming,renderer)" true
+set "lightsV1(27,capabilities,streaming,proxy)" true
+set "lightsV1(27,config,archetype)" "recessedceiling"
+set "lightsV1(27,config,function)" "mixed"
+set "lightsV1(27,config,direction)" "downwards"
+set "lightsV1(27,config,startup,mode)" "safety"
+set "lightsV1(27,config,startup,configured)" true
+set "lightsV1(27,uniqueid)" "00:17:88:01:0e:ee:30:cf-0b"
+set "lightsV1(27,swversion)" "1.163.1"
+set "lightsV1(27,swconfigid)" "DA6BEA05"
+set "lightsV1(27,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(28,state,on)" true
+set "lightsV1(28,state,bri)" 143
+set "lightsV1(28,state,hue)" 7684
+set "lightsV1(28,state,sat)" 199
+set "lightsV1(28,state,effect)" "none"
+set "lightsV1(28,state,xy,00)" 0.5013
+set "lightsV1(28,state,xy,01)" 0.4152
+set "lightsV1(28,state,ct)" 446
+set "lightsV1(28,state,alert)" "none"
+set "lightsV1(28,state,colormode)" "ct"
+set "lightsV1(28,state,mode)" "homeautomation"
+set "lightsV1(28,state,reachable)" true
+set "lightsV1(28,swupdate,state)" "noupdates"
+set "lightsV1(28,swupdate,lastinstall)" "2026-07-11T12:19:09"
+set "lightsV1(28,type)" "Extended color light"
+set "lightsV1(28,name)" "Guestbath spot 4"
+set "lightsV1(28,modelid)" "929004611301_03"
+set "lightsV1(28,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(28,productname)" "Hue Xamento spot"
+set "lightsV1(28,capabilities,certified)" true
+set "lightsV1(28,capabilities,control,mindimlevel)" 200
+set "lightsV1(28,capabilities,control,maxlumen)" 400
+set "lightsV1(28,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(28,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(28,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(28,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(28,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(28,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(28,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(28,capabilities,control,ct,min)" 153
+set "lightsV1(28,capabilities,control,ct,max)" 500
+set "lightsV1(28,capabilities,streaming,renderer)" true
+set "lightsV1(28,capabilities,streaming,proxy)" true
+set "lightsV1(28,config,archetype)" "recessedceiling"
+set "lightsV1(28,config,function)" "mixed"
+set "lightsV1(28,config,direction)" "downwards"
+set "lightsV1(28,config,startup,mode)" "safety"
+set "lightsV1(28,config,startup,configured)" true
+set "lightsV1(28,uniqueid)" "00:17:88:01:0e:e6:35:22-0b"
+set "lightsV1(28,swversion)" "1.163.1"
+set "lightsV1(28,swconfigid)" "DA6BEA05"
+set "lightsV1(28,productid)" "Philips-LCG006-1-GU10ECLv3"
+set "lightsV1(29,state,on)" false
+set "lightsV1(29,state,alert)" "none"
+set "lightsV1(29,state,mode)" "homeautomation"
+set "lightsV1(29,state,reachable)" true
+set "lightsV1(29,swupdate,state)" "noupdates"
+set "lightsV1(29,swupdate,lastinstall)" "2026-07-10T12:31:40"
+set "lightsV1(29,type)" "On/Off plug-in unit"
+set "lightsV1(29,name)" "outer floor"
+set "lightsV1(29,modelid)" "LOM007"
+set "lightsV1(29,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(29,productname)" "Hue smart plug"
+set "lightsV1(29,capabilities,certified)" true
+set "lightsV1(29,capabilities,streaming,renderer)" false
+set "lightsV1(29,capabilities,streaming,proxy)" false
+set "lightsV1(29,config,archetype)" "recessedfloor"
+set "lightsV1(29,config,function)" "functional"
+set "lightsV1(29,config,direction)" "omnidirectional"
+set "lightsV1(29,config,startup,mode)" "powerfail"
+set "lightsV1(29,config,startup,configured)" true
+set "lightsV1(29,uniqueid)" "00:17:88:01:0f:04:ed:f3-0b"
+set "lightsV1(29,swversion)" "1.163.1"
+set "lightsV1(29,swconfigid)" "9D6B28BF"
+set "lightsV1(29,productid)" "Philips-LOM007-1-SPPIUv2"
+set "lightsV1(30,state,on)" true
+set "lightsV1(30,state,alert)" "none"
+set "lightsV1(30,state,mode)" "homeautomation"
+set "lightsV1(30,state,reachable)" true
+set "lightsV1(30,swupdate,state)" "noupdates"
+set "lightsV1(30,swupdate,lastinstall)" "2026-07-11T12:19:13"
+set "lightsV1(30,type)" "On/Off plug-in unit"
+set "lightsV1(30,name)" "plug 1"
+set "lightsV1(30,modelid)" "LOM007"
+set "lightsV1(30,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(30,productname)" "Hue smart plug"
+set "lightsV1(30,capabilities,certified)" true
+set "lightsV1(30,capabilities,streaming,renderer)" false
+set "lightsV1(30,capabilities,streaming,proxy)" false
+set "lightsV1(30,config,archetype)" "plug"
+set "lightsV1(30,config,function)" "functional"
+set "lightsV1(30,config,direction)" "omnidirectional"
+set "lightsV1(30,config,startup,mode)" "powerfail"
+set "lightsV1(30,config,startup,configured)" true
+set "lightsV1(30,uniqueid)" "00:17:88:01:0f:04:f3:fa-0b"
+set "lightsV1(30,swversion)" "1.163.1"
+set "lightsV1(30,swconfigid)" "9D6B28BF"
+set "lightsV1(30,productid)" "Philips-LOM007-1-SPPIUv2"
+set "lightsV1(31,state,on)" true
+set "lightsV1(31,state,alert)" "none"
+set "lightsV1(31,state,mode)" "homeautomation"
+set "lightsV1(31,state,reachable)" true
+set "lightsV1(31,swupdate,state)" "noupdates"
+set "lightsV1(31,swupdate,lastinstall)" "2026-07-11T12:18:42"
+set "lightsV1(31,type)" "On/Off plug-in unit"
+set "lightsV1(31,name)" "plug 2"
+set "lightsV1(31,modelid)" "LOM007"
+set "lightsV1(31,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(31,productname)" "Hue smart plug"
+set "lightsV1(31,capabilities,certified)" true
+set "lightsV1(31,capabilities,streaming,renderer)" false
+set "lightsV1(31,capabilities,streaming,proxy)" false
+set "lightsV1(31,config,archetype)" "plug"
+set "lightsV1(31,config,function)" "functional"
+set "lightsV1(31,config,direction)" "omnidirectional"
+set "lightsV1(31,config,startup,mode)" "powerfail"
+set "lightsV1(31,config,startup,configured)" true
+set "lightsV1(31,uniqueid)" "00:17:88:01:0f:05:19:4d-0b"
+set "lightsV1(31,swversion)" "1.163.1"
+set "lightsV1(31,swconfigid)" "9D6B28BF"
+set "lightsV1(31,productid)" "Philips-LOM007-1-SPPIUv2"
+set "lightsV1(32,state,on)" true
+set "lightsV1(32,state,bri)" 143
+set "lightsV1(32,state,ct)" 446
+set "lightsV1(32,state,alert)" "none"
+set "lightsV1(32,state,colormode)" "ct"
+set "lightsV1(32,state,mode)" "homeautomation"
+set "lightsV1(32,state,reachable)" true
+set "lightsV1(32,swupdate,state)" "noupdates"
+set "lightsV1(32,swupdate,lastinstall)" "2026-07-11T12:18:47"
+set "lightsV1(32,type)" "Color temperature light"
+set "lightsV1(32,name)" "sink"
+set "lightsV1(32,modelid)" "929003812501"
+set "lightsV1(32,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(32,productname)" "Hue Runner spot"
+set "lightsV1(32,capabilities,certified)" true
+set "lightsV1(32,capabilities,control,mindimlevel)" 200
+set "lightsV1(32,capabilities,control,maxlumen)" 400
+set "lightsV1(32,capabilities,control,ct,min)" 153
+set "lightsV1(32,capabilities,control,ct,max)" 454
+set "lightsV1(32,capabilities,streaming,renderer)" false
+set "lightsV1(32,capabilities,streaming,proxy)" false
+set "lightsV1(32,config,archetype)" "groundspot"
+set "lightsV1(32,config,function)" "functional"
+set "lightsV1(32,config,direction)" "omnidirectional"
+set "lightsV1(32,config,startup,mode)" "safety"
+set "lightsV1(32,config,startup,configured)" true
+set "lightsV1(32,uniqueid)" "00:17:88:01:0e:43:19:14-0b"
+set "lightsV1(32,swversion)" "1.163.1"
+set "lightsV1(32,swconfigid)" "770E02FA"
+set "lightsV1(32,productid)" "Philips-LTG005-1-GU10CTv3"
+set "lightsV1(33,state,on)" true
+set "lightsV1(33,state,alert)" "select"
+set "lightsV1(33,state,mode)" "homeautomation"
+set "lightsV1(33,state,reachable)" true
+set "lightsV1(33,swupdate,state)" "noupdates"
+set "lightsV1(33,swupdate,lastinstall)" "2026-02-05T16:46:24"
+set "lightsV1(33,type)" "On/Off light"
+set "lightsV1(33,name)" "Wall"
+set "lightsV1(33,modelid)" "ZG302-BOX-RELAY"
+set "lightsV1(33,manufacturername)" "ENVILAR"
+set "lightsV1(33,productname)" "Hue light"
+set "lightsV1(33,capabilities,certified)" true
+set "lightsV1(33,capabilities,streaming,renderer)" false
+set "lightsV1(33,capabilities,streaming,proxy)" false
+set "lightsV1(33,config,archetype)" "classicbulb"
+set "lightsV1(33,config,function)" "functional"
+set "lightsV1(33,config,direction)" "omnidirectional"
+set "lightsV1(33,config,startup,mode)" "powerfail"
+set "lightsV1(33,config,startup,configured)" true
+set "lightsV1(33,uniqueid)" "78:1c:9d:ff:fe:28:9c:e9-01"
+set "lightsV1(33,swversion)" "2.9.2_r55"
+set "lightsV1(35,state,on)" false
+set "lightsV1(35,state,bri)" 254
+set "lightsV1(35,state,alert)" "none"
+set "lightsV1(35,state,mode)" "homeautomation"
+set "lightsV1(35,state,reachable)" false
+set "lightsV1(35,swupdate,state)" "noupdates"
+set "lightsV1(35,swupdate,lastinstall)" "2026-02-06T08:40:08"
+set "lightsV1(35,type)" "Dimmable light"
+set "lightsV1(35,name)" "Living Room Sea mine"
+set "lightsV1(35,modelid)" "ZG102-BOX-UNIDIM"
+set "lightsV1(35,manufacturername)" "ENVILAR"
+set "lightsV1(35,productname)" "Hue white light"
+set "lightsV1(35,capabilities,certified)" true
+set "lightsV1(35,capabilities,streaming,renderer)" false
+set "lightsV1(35,capabilities,streaming,proxy)" false
+set "lightsV1(35,config,archetype)" "classicbulb"
+set "lightsV1(35,config,function)" "functional"
+set "lightsV1(35,config,direction)" "omnidirectional"
+set "lightsV1(35,config,startup,mode)" "powerfail"
+set "lightsV1(35,config,startup,configured)" true
+set "lightsV1(35,uniqueid)" "78:1c:9d:ff:fe:55:c2:a6-01"
+set "lightsV1(35,swversion)" "2.9.2_r64"
+set "lightsV1(36,state,on)" false
+set "lightsV1(36,state,bri)" 254
+set "lightsV1(36,state,hue)" 14988
+set "lightsV1(36,state,sat)" 141
+set "lightsV1(36,state,effect)" "none"
+set "lightsV1(36,state,xy,00)" 0.4578
+set "lightsV1(36,state,xy,01)" 0.4101
+set "lightsV1(36,state,ct)" 367
+set "lightsV1(36,state,alert)" "none"
+set "lightsV1(36,state,colormode)" "xy"
+set "lightsV1(36,state,mode)" "homeautomation"
+set "lightsV1(36,state,reachable)" false
+set "lightsV1(36,swupdate,state)" "notupdatable"
+set "lightsV1(36,swupdate,lastinstall)" "2026-02-09T08:24:04"
+set "lightsV1(36,type)" "Extended color light"
+set "lightsV1(36,name)" "ShowerLEDyuop"
+set "lightsV1(36,modelid)" "GL-C-008P"
+set "lightsV1(36,manufacturername)" "GLEDOPTO"
+set "lightsV1(36,productname)" "Extended color light"
+set "lightsV1(36,capabilities,certified)" false
+set "lightsV1(36,capabilities,control,colorgamuttype)" "other"
+set "lightsV1(36,capabilities,control,ct,min)" 158
+set "lightsV1(36,capabilities,control,ct,max)" 500
+set "lightsV1(36,capabilities,streaming,renderer)" false
+set "lightsV1(36,capabilities,streaming,proxy)" false
+set "lightsV1(36,config,archetype)" "classicbulb"
+set "lightsV1(36,config,function)" "mixed"
+set "lightsV1(36,config,direction)" "omnidirectional"
+set "lightsV1(36,uniqueid)" "a4:c1:38:8a:7a:51:30:d6-0b"
+set "lightsV1(36,swversion)" "20951203"
+set "lightsV1(37,state,on)" true
+set "lightsV1(37,state,bri)" 125
+set "lightsV1(37,state,hue)" 4605
+set "lightsV1(37,state,sat)" 104
+set "lightsV1(37,state,effect)" "none"
+set "lightsV1(37,state,xy,00)" 0.4692
+set "lightsV1(37,state,xy,01)" 0.3776
+set "lightsV1(37,state,ct)" 386
+set "lightsV1(37,state,alert)" "select"
+set "lightsV1(37,state,colormode)" "xy"
+set "lightsV1(37,state,mode)" "homeautomation"
+set "lightsV1(37,state,reachable)" true
+set "lightsV1(37,swupdate,state)" "noupdates"
+set "lightsV1(37,swupdate,lastinstall)" "2026-07-24T12:13:48"
+set "lightsV1(37,type)" "Extended color light"
+set "lightsV1(37,name)" "Bathroom mirror r"
+set "lightsV1(37,modelid)" "LCG003"
+set "lightsV1(37,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(37,productname)" "Hue color spot"
+set "lightsV1(37,capabilities,certified)" true
+set "lightsV1(37,capabilities,control,mindimlevel)" 200
+set "lightsV1(37,capabilities,control,maxlumen)" 460
+set "lightsV1(37,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(37,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(37,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(37,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(37,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(37,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(37,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(37,capabilities,control,ct,min)" 153
+set "lightsV1(37,capabilities,control,ct,max)" 500
+set "lightsV1(37,capabilities,streaming,renderer)" true
+set "lightsV1(37,capabilities,streaming,proxy)" true
+set "lightsV1(37,config,archetype)" "spotbulb"
+set "lightsV1(37,config,function)" "mixed"
+set "lightsV1(37,config,direction)" "downwards"
+set "lightsV1(37,config,startup,mode)" "safety"
+set "lightsV1(37,config,startup,configured)" true
+set "lightsV1(37,uniqueid)" "00:17:88:01:0e:bf:8d:cb-0b"
+set "lightsV1(37,swversion)" "1.163.1"
+set "lightsV1(37,swconfigid)" "082C43A6"
+set "lightsV1(37,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(38,state,on)" true
+set "lightsV1(38,state,bri)" 125
+set "lightsV1(38,state,hue)" 4605
+set "lightsV1(38,state,sat)" 104
+set "lightsV1(38,state,effect)" "none"
+set "lightsV1(38,state,xy,00)" 0.4692
+set "lightsV1(38,state,xy,01)" 0.3776
+set "lightsV1(38,state,ct)" 386
+set "lightsV1(38,state,alert)" "select"
+set "lightsV1(38,state,colormode)" "xy"
+set "lightsV1(38,state,mode)" "homeautomation"
+set "lightsV1(38,state,reachable)" true
+set "lightsV1(38,swupdate,state)" "noupdates"
+set "lightsV1(38,swupdate,lastinstall)" "2026-07-31T12:15:39"
+set "lightsV1(38,type)" "Extended color light"
+set "lightsV1(38,name)" "Bathroom mirror l"
+set "lightsV1(38,modelid)" "LCG003"
+set "lightsV1(38,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(38,productname)" "Hue color spot"
+set "lightsV1(38,capabilities,certified)" true
+set "lightsV1(38,capabilities,control,mindimlevel)" 200
+set "lightsV1(38,capabilities,control,maxlumen)" 460
+set "lightsV1(38,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(38,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(38,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(38,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(38,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(38,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(38,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(38,capabilities,control,ct,min)" 153
+set "lightsV1(38,capabilities,control,ct,max)" 500
+set "lightsV1(38,capabilities,streaming,renderer)" true
+set "lightsV1(38,capabilities,streaming,proxy)" true
+set "lightsV1(38,config,archetype)" "spotbulb"
+set "lightsV1(38,config,function)" "mixed"
+set "lightsV1(38,config,direction)" "downwards"
+set "lightsV1(38,config,startup,mode)" "safety"
+set "lightsV1(38,config,startup,configured)" true
+set "lightsV1(38,uniqueid)" "00:17:88:01:0e:bf:8d:b7-0b"
+set "lightsV1(38,swversion)" "1.163.1"
+set "lightsV1(38,swconfigid)" "082C43A6"
+set "lightsV1(38,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(39,state,on)" true
+set "lightsV1(39,state,bri)" 122
+set "lightsV1(39,state,hue)" 4461
+set "lightsV1(39,state,sat)" 99
+set "lightsV1(39,state,effect)" "none"
+set "lightsV1(39,state,xy,00)" 0.4662
+set "lightsV1(39,state,xy,01)" 0.3767
+set "lightsV1(39,state,ct)" 381
+set "lightsV1(39,state,alert)" "select"
+set "lightsV1(39,state,colormode)" "xy"
+set "lightsV1(39,state,mode)" "homeautomation"
+set "lightsV1(39,state,reachable)" true
+set "lightsV1(39,swupdate,state)" "noupdates"
+set "lightsV1(39,swupdate,lastinstall)" "2026-07-31T12:12:50"
+set "lightsV1(39,type)" "Extended color light"
+set "lightsV1(39,name)" "Bathroom shower rb"
+set "lightsV1(39,modelid)" "LCG003"
+set "lightsV1(39,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(39,productname)" "Hue color spot"
+set "lightsV1(39,capabilities,certified)" true
+set "lightsV1(39,capabilities,control,mindimlevel)" 200
+set "lightsV1(39,capabilities,control,maxlumen)" 460
+set "lightsV1(39,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(39,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(39,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(39,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(39,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(39,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(39,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(39,capabilities,control,ct,min)" 153
+set "lightsV1(39,capabilities,control,ct,max)" 500
+set "lightsV1(39,capabilities,streaming,renderer)" true
+set "lightsV1(39,capabilities,streaming,proxy)" true
+set "lightsV1(39,config,archetype)" "spotbulb"
+set "lightsV1(39,config,function)" "mixed"
+set "lightsV1(39,config,direction)" "downwards"
+set "lightsV1(39,config,startup,mode)" "safety"
+set "lightsV1(39,config,startup,configured)" true
+set "lightsV1(39,uniqueid)" "00:17:88:01:0d:87:9a:f5-0b"
+set "lightsV1(39,swversion)" "1.163.1"
+set "lightsV1(39,swconfigid)" "082C43A6"
+set "lightsV1(39,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(40,state,on)" true
+set "lightsV1(40,state,bri)" 125
+set "lightsV1(40,state,hue)" 4461
+set "lightsV1(40,state,sat)" 99
+set "lightsV1(40,state,effect)" "none"
+set "lightsV1(40,state,xy,00)" 0.4662
+set "lightsV1(40,state,xy,01)" 0.3767
+set "lightsV1(40,state,ct)" 381
+set "lightsV1(40,state,alert)" "select"
+set "lightsV1(40,state,colormode)" "xy"
+set "lightsV1(40,state,mode)" "homeautomation"
+set "lightsV1(40,state,reachable)" true
+set "lightsV1(40,swupdate,state)" "noupdates"
+set "lightsV1(40,swupdate,lastinstall)" "2026-07-30T12:45:58"
+set "lightsV1(40,type)" "Extended color light"
+set "lightsV1(40,name)" "Bathroom shower lb"
+set "lightsV1(40,modelid)" "LCG003"
+set "lightsV1(40,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(40,productname)" "Hue color spot"
+set "lightsV1(40,capabilities,certified)" true
+set "lightsV1(40,capabilities,control,mindimlevel)" 200
+set "lightsV1(40,capabilities,control,maxlumen)" 460
+set "lightsV1(40,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(40,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(40,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(40,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(40,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(40,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(40,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(40,capabilities,control,ct,min)" 153
+set "lightsV1(40,capabilities,control,ct,max)" 500
+set "lightsV1(40,capabilities,streaming,renderer)" true
+set "lightsV1(40,capabilities,streaming,proxy)" true
+set "lightsV1(40,config,archetype)" "spotbulb"
+set "lightsV1(40,config,function)" "mixed"
+set "lightsV1(40,config,direction)" "downwards"
+set "lightsV1(40,config,startup,mode)" "safety"
+set "lightsV1(40,config,startup,configured)" true
+set "lightsV1(40,uniqueid)" "00:17:88:01:0d:87:95:e7-0b"
+set "lightsV1(40,swversion)" "1.163.1"
+set "lightsV1(40,swconfigid)" "082C43A6"
+set "lightsV1(40,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(41,state,on)" true
+set "lightsV1(41,state,bri)" 128
+set "lightsV1(41,state,hue)" 4605
+set "lightsV1(41,state,sat)" 104
+set "lightsV1(41,state,effect)" "none"
+set "lightsV1(41,state,xy,00)" 0.4692
+set "lightsV1(41,state,xy,01)" 0.3776
+set "lightsV1(41,state,ct)" 386
+set "lightsV1(41,state,alert)" "select"
+set "lightsV1(41,state,colormode)" "xy"
+set "lightsV1(41,state,mode)" "homeautomation"
+set "lightsV1(41,state,reachable)" true
+set "lightsV1(41,swupdate,state)" "noupdates"
+set "lightsV1(41,swupdate,lastinstall)" "2026-07-30T12:46:08"
+set "lightsV1(41,type)" "Extended color light"
+set "lightsV1(41,name)" "Bathroom toilet r"
+set "lightsV1(41,modelid)" "LCG003"
+set "lightsV1(41,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(41,productname)" "Hue color spot"
+set "lightsV1(41,capabilities,certified)" true
+set "lightsV1(41,capabilities,control,mindimlevel)" 200
+set "lightsV1(41,capabilities,control,maxlumen)" 460
+set "lightsV1(41,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(41,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(41,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(41,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(41,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(41,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(41,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(41,capabilities,control,ct,min)" 153
+set "lightsV1(41,capabilities,control,ct,max)" 500
+set "lightsV1(41,capabilities,streaming,renderer)" true
+set "lightsV1(41,capabilities,streaming,proxy)" true
+set "lightsV1(41,config,archetype)" "spotbulb"
+set "lightsV1(41,config,function)" "mixed"
+set "lightsV1(41,config,direction)" "downwards"
+set "lightsV1(41,config,startup,mode)" "safety"
+set "lightsV1(41,config,startup,configured)" true
+set "lightsV1(41,uniqueid)" "00:17:88:01:0d:87:85:5f-0b"
+set "lightsV1(41,swversion)" "1.163.1"
+set "lightsV1(41,swconfigid)" "082C43A6"
+set "lightsV1(41,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(42,state,on)" true
+set "lightsV1(42,state,bri)" 120
+set "lightsV1(42,state,hue)" 4724
+set "lightsV1(42,state,sat)" 94
+set "lightsV1(42,state,effect)" "none"
+set "lightsV1(42,state,xy,00)" 0.4601
+set "lightsV1(42,state,xy,01)" 0.3782
+set "lightsV1(42,state,ct)" 370
+set "lightsV1(42,state,alert)" "select"
+set "lightsV1(42,state,colormode)" "xy"
+set "lightsV1(42,state,mode)" "homeautomation"
+set "lightsV1(42,state,reachable)" true
+set "lightsV1(42,swupdate,state)" "noupdates"
+set "lightsV1(42,swupdate,lastinstall)" "2026-07-24T12:13:55"
+set "lightsV1(42,type)" "Extended color light"
+set "lightsV1(42,name)" "Bathroom ceiling r"
+set "lightsV1(42,modelid)" "LCG003"
+set "lightsV1(42,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(42,productname)" "Hue color spot"
+set "lightsV1(42,capabilities,certified)" true
+set "lightsV1(42,capabilities,control,mindimlevel)" 200
+set "lightsV1(42,capabilities,control,maxlumen)" 460
+set "lightsV1(42,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(42,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(42,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(42,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(42,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(42,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(42,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(42,capabilities,control,ct,min)" 153
+set "lightsV1(42,capabilities,control,ct,max)" 500
+set "lightsV1(42,capabilities,streaming,renderer)" true
+set "lightsV1(42,capabilities,streaming,proxy)" true
+set "lightsV1(42,config,archetype)" "spotbulb"
+set "lightsV1(42,config,function)" "mixed"
+set "lightsV1(42,config,direction)" "downwards"
+set "lightsV1(42,config,startup,mode)" "safety"
+set "lightsV1(42,config,startup,configured)" true
+set "lightsV1(42,uniqueid)" "00:17:88:01:0e:bf:68:e4-0b"
+set "lightsV1(42,swversion)" "1.163.1"
+set "lightsV1(42,swconfigid)" "082C43A6"
+set "lightsV1(42,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(43,state,on)" true
+set "lightsV1(43,state,bri)" 125
+set "lightsV1(43,state,hue)" 4605
+set "lightsV1(43,state,sat)" 104
+set "lightsV1(43,state,effect)" "none"
+set "lightsV1(43,state,xy,00)" 0.4692
+set "lightsV1(43,state,xy,01)" 0.3776
+set "lightsV1(43,state,ct)" 386
+set "lightsV1(43,state,alert)" "select"
+set "lightsV1(43,state,colormode)" "xy"
+set "lightsV1(43,state,mode)" "homeautomation"
+set "lightsV1(43,state,reachable)" true
+set "lightsV1(43,swupdate,state)" "noupdates"
+set "lightsV1(43,swupdate,lastinstall)" "2026-07-27T12:20:46"
+set "lightsV1(43,type)" "Extended color light"
+set "lightsV1(43,name)" "Bathroom door m"
+set "lightsV1(43,modelid)" "LCG003"
+set "lightsV1(43,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(43,productname)" "Hue color spot"
+set "lightsV1(43,capabilities,certified)" true
+set "lightsV1(43,capabilities,control,mindimlevel)" 200
+set "lightsV1(43,capabilities,control,maxlumen)" 460
+set "lightsV1(43,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(43,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(43,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(43,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(43,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(43,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(43,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(43,capabilities,control,ct,min)" 153
+set "lightsV1(43,capabilities,control,ct,max)" 500
+set "lightsV1(43,capabilities,streaming,renderer)" true
+set "lightsV1(43,capabilities,streaming,proxy)" true
+set "lightsV1(43,config,archetype)" "spotbulb"
+set "lightsV1(43,config,function)" "mixed"
+set "lightsV1(43,config,direction)" "downwards"
+set "lightsV1(43,config,startup,mode)" "safety"
+set "lightsV1(43,config,startup,configured)" true
+set "lightsV1(43,uniqueid)" "00:17:88:01:0e:bf:71:c8-0b"
+set "lightsV1(43,swversion)" "1.163.1"
+set "lightsV1(43,swconfigid)" "082C43A6"
+set "lightsV1(43,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(44,state,on)" true
+set "lightsV1(44,state,bri)" 125
+set "lightsV1(44,state,hue)" 4605
+set "lightsV1(44,state,sat)" 104
+set "lightsV1(44,state,effect)" "none"
+set "lightsV1(44,state,xy,00)" 0.4692
+set "lightsV1(44,state,xy,01)" 0.3776
+set "lightsV1(44,state,ct)" 386
+set "lightsV1(44,state,alert)" "select"
+set "lightsV1(44,state,colormode)" "xy"
+set "lightsV1(44,state,mode)" "homeautomation"
+set "lightsV1(44,state,reachable)" true
+set "lightsV1(44,swupdate,state)" "noupdates"
+set "lightsV1(44,swupdate,lastinstall)" "2026-07-23T12:45:58"
+set "lightsV1(44,type)" "Extended color light"
+set "lightsV1(44,name)" "Bathroom toilet l"
+set "lightsV1(44,modelid)" "LCG003"
+set "lightsV1(44,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(44,productname)" "Hue color spot"
+set "lightsV1(44,capabilities,certified)" true
+set "lightsV1(44,capabilities,control,mindimlevel)" 200
+set "lightsV1(44,capabilities,control,maxlumen)" 460
+set "lightsV1(44,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(44,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(44,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(44,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(44,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(44,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(44,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(44,capabilities,control,ct,min)" 153
+set "lightsV1(44,capabilities,control,ct,max)" 500
+set "lightsV1(44,capabilities,streaming,renderer)" true
+set "lightsV1(44,capabilities,streaming,proxy)" true
+set "lightsV1(44,config,archetype)" "spotbulb"
+set "lightsV1(44,config,function)" "mixed"
+set "lightsV1(44,config,direction)" "downwards"
+set "lightsV1(44,config,startup,mode)" "safety"
+set "lightsV1(44,config,startup,configured)" true
+set "lightsV1(44,uniqueid)" "00:17:88:01:0e:bf:72:b5-0b"
+set "lightsV1(44,swversion)" "1.163.1"
+set "lightsV1(44,swconfigid)" "082C43A6"
+set "lightsV1(44,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(45,state,on)" true
+set "lightsV1(45,state,bri)" 125
+set "lightsV1(45,state,hue)" 4605
+set "lightsV1(45,state,sat)" 104
+set "lightsV1(45,state,effect)" "none"
+set "lightsV1(45,state,xy,00)" 0.4692
+set "lightsV1(45,state,xy,01)" 0.3776
+set "lightsV1(45,state,ct)" 386
+set "lightsV1(45,state,alert)" "select"
+set "lightsV1(45,state,colormode)" "xy"
+set "lightsV1(45,state,mode)" "homeautomation"
+set "lightsV1(45,state,reachable)" true
+set "lightsV1(45,swupdate,state)" "noupdates"
+set "lightsV1(45,swupdate,lastinstall)" "2026-07-30T12:45:51"
+set "lightsV1(45,type)" "Extended color light"
+set "lightsV1(45,name)" "Bathroom mirror lm"
+set "lightsV1(45,modelid)" "LCG003"
+set "lightsV1(45,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(45,productname)" "Hue color spot"
+set "lightsV1(45,capabilities,certified)" true
+set "lightsV1(45,capabilities,control,mindimlevel)" 200
+set "lightsV1(45,capabilities,control,maxlumen)" 460
+set "lightsV1(45,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(45,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(45,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(45,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(45,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(45,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(45,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(45,capabilities,control,ct,min)" 153
+set "lightsV1(45,capabilities,control,ct,max)" 500
+set "lightsV1(45,capabilities,streaming,renderer)" true
+set "lightsV1(45,capabilities,streaming,proxy)" true
+set "lightsV1(45,config,archetype)" "spotbulb"
+set "lightsV1(45,config,function)" "mixed"
+set "lightsV1(45,config,direction)" "downwards"
+set "lightsV1(45,config,startup,mode)" "safety"
+set "lightsV1(45,config,startup,configured)" true
+set "lightsV1(45,uniqueid)" "00:17:88:01:0e:bf:68:f3-0b"
+set "lightsV1(45,swversion)" "1.163.1"
+set "lightsV1(45,swconfigid)" "082C43A6"
+set "lightsV1(45,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(46,state,on)" true
+set "lightsV1(46,state,bri)" 125
+set "lightsV1(46,state,hue)" 4605
+set "lightsV1(46,state,sat)" 104
+set "lightsV1(46,state,effect)" "none"
+set "lightsV1(46,state,xy,00)" 0.4692
+set "lightsV1(46,state,xy,01)" 0.3776
+set "lightsV1(46,state,ct)" 386
+set "lightsV1(46,state,alert)" "select"
+set "lightsV1(46,state,colormode)" "xy"
+set "lightsV1(46,state,mode)" "homeautomation"
+set "lightsV1(46,state,reachable)" true
+set "lightsV1(46,swupdate,state)" "noupdates"
+set "lightsV1(46,swupdate,lastinstall)" "2026-07-23T12:45:54"
+set "lightsV1(46,type)" "Extended color light"
+set "lightsV1(46,name)" "Bathroom mirror rm"
+set "lightsV1(46,modelid)" "LCG003"
+set "lightsV1(46,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(46,productname)" "Hue color spot"
+set "lightsV1(46,capabilities,certified)" true
+set "lightsV1(46,capabilities,control,mindimlevel)" 200
+set "lightsV1(46,capabilities,control,maxlumen)" 460
+set "lightsV1(46,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(46,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(46,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(46,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(46,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(46,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(46,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(46,capabilities,control,ct,min)" 153
+set "lightsV1(46,capabilities,control,ct,max)" 500
+set "lightsV1(46,capabilities,streaming,renderer)" true
+set "lightsV1(46,capabilities,streaming,proxy)" true
+set "lightsV1(46,config,archetype)" "spotbulb"
+set "lightsV1(46,config,function)" "mixed"
+set "lightsV1(46,config,direction)" "downwards"
+set "lightsV1(46,config,startup,mode)" "safety"
+set "lightsV1(46,config,startup,configured)" true
+set "lightsV1(46,uniqueid)" "00:17:88:01:0e:bf:6e:84-0b"
+set "lightsV1(46,swversion)" "1.163.1"
+set "lightsV1(46,swconfigid)" "082C43A6"
+set "lightsV1(46,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(47,state,on)" true
+set "lightsV1(47,state,bri)" 125
+set "lightsV1(47,state,hue)" 4605
+set "lightsV1(47,state,sat)" 104
+set "lightsV1(47,state,effect)" "none"
+set "lightsV1(47,state,xy,00)" 0.4692
+set "lightsV1(47,state,xy,01)" 0.3776
+set "lightsV1(47,state,ct)" 386
+set "lightsV1(47,state,alert)" "select"
+set "lightsV1(47,state,colormode)" "xy"
+set "lightsV1(47,state,mode)" "homeautomation"
+set "lightsV1(47,state,reachable)" true
+set "lightsV1(47,swupdate,state)" "noupdates"
+set "lightsV1(47,swupdate,lastinstall)" "2026-07-31T12:10:50"
+set "lightsV1(47,type)" "Extended color light"
+set "lightsV1(47,name)" "Bathroom door r"
+set "lightsV1(47,modelid)" "LCG003"
+set "lightsV1(47,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(47,productname)" "Hue color spot"
+set "lightsV1(47,capabilities,certified)" true
+set "lightsV1(47,capabilities,control,mindimlevel)" 200
+set "lightsV1(47,capabilities,control,maxlumen)" 460
+set "lightsV1(47,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(47,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(47,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(47,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(47,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(47,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(47,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(47,capabilities,control,ct,min)" 153
+set "lightsV1(47,capabilities,control,ct,max)" 500
+set "lightsV1(47,capabilities,streaming,renderer)" true
+set "lightsV1(47,capabilities,streaming,proxy)" true
+set "lightsV1(47,config,archetype)" "spotbulb"
+set "lightsV1(47,config,function)" "mixed"
+set "lightsV1(47,config,direction)" "downwards"
+set "lightsV1(47,config,startup,mode)" "safety"
+set "lightsV1(47,config,startup,configured)" true
+set "lightsV1(47,uniqueid)" "00:17:88:01:0e:bf:72:c3-0b"
+set "lightsV1(47,swversion)" "1.163.1"
+set "lightsV1(47,swconfigid)" "082C43A6"
+set "lightsV1(47,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(48,state,on)" true
+set "lightsV1(48,state,bri)" 122
+set "lightsV1(48,state,hue)" 4461
+set "lightsV1(48,state,sat)" 99
+set "lightsV1(48,state,effect)" "none"
+set "lightsV1(48,state,xy,00)" 0.4662
+set "lightsV1(48,state,xy,01)" 0.3767
+set "lightsV1(48,state,ct)" 381
+set "lightsV1(48,state,alert)" "select"
+set "lightsV1(48,state,colormode)" "xy"
+set "lightsV1(48,state,mode)" "homeautomation"
+set "lightsV1(48,state,reachable)" true
+set "lightsV1(48,swupdate,state)" "noupdates"
+set "lightsV1(48,swupdate,lastinstall)" "2026-07-23T12:51:20"
+set "lightsV1(48,type)" "Extended color light"
+set "lightsV1(48,name)" "Bathroom shower rf"
+set "lightsV1(48,modelid)" "LCG003"
+set "lightsV1(48,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(48,productname)" "Hue color spot"
+set "lightsV1(48,capabilities,certified)" true
+set "lightsV1(48,capabilities,control,mindimlevel)" 200
+set "lightsV1(48,capabilities,control,maxlumen)" 460
+set "lightsV1(48,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(48,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(48,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(48,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(48,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(48,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(48,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(48,capabilities,control,ct,min)" 153
+set "lightsV1(48,capabilities,control,ct,max)" 500
+set "lightsV1(48,capabilities,streaming,renderer)" true
+set "lightsV1(48,capabilities,streaming,proxy)" true
+set "lightsV1(48,config,archetype)" "spotbulb"
+set "lightsV1(48,config,function)" "mixed"
+set "lightsV1(48,config,direction)" "downwards"
+set "lightsV1(48,config,startup,mode)" "safety"
+set "lightsV1(48,config,startup,configured)" true
+set "lightsV1(48,uniqueid)" "00:17:88:01:0e:bf:73:5e-0b"
+set "lightsV1(48,swversion)" "1.163.1"
+set "lightsV1(48,swconfigid)" "082C43A6"
+set "lightsV1(48,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(49,state,on)" true
+set "lightsV1(49,state,bri)" 128
+set "lightsV1(49,state,hue)" 4605
+set "lightsV1(49,state,sat)" 104
+set "lightsV1(49,state,effect)" "none"
+set "lightsV1(49,state,xy,00)" 0.4692
+set "lightsV1(49,state,xy,01)" 0.3776
+set "lightsV1(49,state,ct)" 386
+set "lightsV1(49,state,alert)" "select"
+set "lightsV1(49,state,colormode)" "xy"
+set "lightsV1(49,state,mode)" "homeautomation"
+set "lightsV1(49,state,reachable)" true
+set "lightsV1(49,swupdate,state)" "noupdates"
+set "lightsV1(49,swupdate,lastinstall)" "2026-07-23T12:50:00"
+set "lightsV1(49,type)" "Extended color light"
+set "lightsV1(49,name)" "Bathroom door l"
+set "lightsV1(49,modelid)" "LCG003"
+set "lightsV1(49,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(49,productname)" "Hue color spot"
+set "lightsV1(49,capabilities,certified)" true
+set "lightsV1(49,capabilities,control,mindimlevel)" 200
+set "lightsV1(49,capabilities,control,maxlumen)" 460
+set "lightsV1(49,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(49,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(49,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(49,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(49,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(49,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(49,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(49,capabilities,control,ct,min)" 153
+set "lightsV1(49,capabilities,control,ct,max)" 500
+set "lightsV1(49,capabilities,streaming,renderer)" true
+set "lightsV1(49,capabilities,streaming,proxy)" true
+set "lightsV1(49,config,archetype)" "spotbulb"
+set "lightsV1(49,config,function)" "mixed"
+set "lightsV1(49,config,direction)" "downwards"
+set "lightsV1(49,config,startup,mode)" "safety"
+set "lightsV1(49,config,startup,configured)" true
+set "lightsV1(49,uniqueid)" "00:17:88:01:0e:bf:6e:b2-0b"
+set "lightsV1(49,swversion)" "1.163.1"
+set "lightsV1(49,swconfigid)" "082C43A6"
+set "lightsV1(49,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(50,state,on)" true
+set "lightsV1(50,state,bri)" 120
+set "lightsV1(50,state,hue)" 4724
+set "lightsV1(50,state,sat)" 94
+set "lightsV1(50,state,effect)" "none"
+set "lightsV1(50,state,xy,00)" 0.4601
+set "lightsV1(50,state,xy,01)" 0.3782
+set "lightsV1(50,state,ct)" 370
+set "lightsV1(50,state,alert)" "select"
+set "lightsV1(50,state,colormode)" "xy"
+set "lightsV1(50,state,mode)" "homeautomation"
+set "lightsV1(50,state,reachable)" true
+set "lightsV1(50,swupdate,state)" "noupdates"
+set "lightsV1(50,swupdate,lastinstall)" "2026-07-23T12:46:05"
+set "lightsV1(50,type)" "Extended color light"
+set "lightsV1(50,name)" "Bathroom ceiling l"
+set "lightsV1(50,modelid)" "LCG003"
+set "lightsV1(50,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(50,productname)" "Hue color spot"
+set "lightsV1(50,capabilities,certified)" true
+set "lightsV1(50,capabilities,control,mindimlevel)" 200
+set "lightsV1(50,capabilities,control,maxlumen)" 460
+set "lightsV1(50,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(50,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(50,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(50,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(50,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(50,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(50,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(50,capabilities,control,ct,min)" 153
+set "lightsV1(50,capabilities,control,ct,max)" 500
+set "lightsV1(50,capabilities,streaming,renderer)" true
+set "lightsV1(50,capabilities,streaming,proxy)" true
+set "lightsV1(50,config,archetype)" "spotbulb"
+set "lightsV1(50,config,function)" "mixed"
+set "lightsV1(50,config,direction)" "downwards"
+set "lightsV1(50,config,startup,mode)" "safety"
+set "lightsV1(50,config,startup,configured)" true
+set "lightsV1(50,uniqueid)" "00:17:88:01:0e:bf:68:d9-0b"
+set "lightsV1(50,swversion)" "1.163.1"
+set "lightsV1(50,swconfigid)" "082C43A6"
+set "lightsV1(50,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(51,state,on)" true
+set "lightsV1(51,state,bri)" 145
+set "lightsV1(51,state,hue)" 4829
+set "lightsV1(51,state,sat)" 128
+set "lightsV1(51,state,effect)" "none"
+set "lightsV1(51,state,xy,00)" 0.4874
+set "lightsV1(51,state,xy,01)" 0.3795
+set "lightsV1(51,state,ct)" 419
+set "lightsV1(51,state,alert)" "select"
+set "lightsV1(51,state,colormode)" "xy"
+set "lightsV1(51,state,mode)" "homeautomation"
+set "lightsV1(51,state,reachable)" true
+set "lightsV1(51,swupdate,state)" "noupdates"
+set "lightsV1(51,swupdate,lastinstall)" "2026-07-23T12:50:21"
+set "lightsV1(51,type)" "Extended color light"
+set "lightsV1(51,name)" "Bathroom shower lf"
+set "lightsV1(51,modelid)" "LCG003"
+set "lightsV1(51,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(51,productname)" "Hue color spot"
+set "lightsV1(51,capabilities,certified)" true
+set "lightsV1(51,capabilities,control,mindimlevel)" 200
+set "lightsV1(51,capabilities,control,maxlumen)" 460
+set "lightsV1(51,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(51,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(51,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(51,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(51,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(51,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(51,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(51,capabilities,control,ct,min)" 153
+set "lightsV1(51,capabilities,control,ct,max)" 500
+set "lightsV1(51,capabilities,streaming,renderer)" true
+set "lightsV1(51,capabilities,streaming,proxy)" true
+set "lightsV1(51,config,archetype)" "spotbulb"
+set "lightsV1(51,config,function)" "mixed"
+set "lightsV1(51,config,direction)" "downwards"
+set "lightsV1(51,config,startup,mode)" "safety"
+set "lightsV1(51,config,startup,configured)" true
+set "lightsV1(51,uniqueid)" "00:17:88:01:0e:bf:73:4f-0b"
+set "lightsV1(51,swversion)" "1.163.1"
+set "lightsV1(51,swconfigid)" "082C43A6"
+set "lightsV1(51,productid)" "Philips-LCG003-1-MR16ECLv1"
+set "lightsV1(53,state,on)" false
+set "lightsV1(53,state,alert)" "none"
+set "lightsV1(53,state,mode)" "homeautomation"
+set "lightsV1(53,state,reachable)" true
+set "lightsV1(53,swupdate,state)" "noupdates"
+set "lightsV1(53,swupdate,lastinstall)" "2026-07-11T12:18:51"
+set "lightsV1(53,type)" "On/Off plug-in unit"
+set "lightsV1(53,name)" "inner floor"
+set "lightsV1(53,modelid)" "LOM001"
+set "lightsV1(53,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(53,productname)" "Hue smart plug"
+set "lightsV1(53,capabilities,certified)" true
+set "lightsV1(53,capabilities,streaming,renderer)" false
+set "lightsV1(53,capabilities,streaming,proxy)" false
+set "lightsV1(53,config,archetype)" "recessedfloor"
+set "lightsV1(53,config,function)" "functional"
+set "lightsV1(53,config,direction)" "omnidirectional"
+set "lightsV1(53,config,startup,mode)" "powerfail"
+set "lightsV1(53,config,startup,configured)" true
+set "lightsV1(53,uniqueid)" "00:17:88:01:08:d8:ba:d0-0b"
+set "lightsV1(53,swversion)" "1.163.1"
+set "lightsV1(53,swconfigid)" "0CF38B30"
+set "lightsV1(53,productid)" "SmartPlug_OnOff_v01-00_01"
+set "lightsV1(54,state,on)" false
+set "lightsV1(54,state,bri)" 143
+set "lightsV1(54,state,hue)" 7675
+set "lightsV1(54,state,sat)" 199
+set "lightsV1(54,state,effect)" "none"
+set "lightsV1(54,state,xy,00)" 0.5019
+set "lightsV1(54,state,xy,01)" 0.4152
+set "lightsV1(54,state,ct)" 447
+set "lightsV1(54,state,alert)" "select"
+set "lightsV1(54,state,colormode)" "ct"
+set "lightsV1(54,state,mode)" "homeautomation"
+set "lightsV1(54,state,reachable)" true
+set "lightsV1(54,swupdate,state)" "noupdates"
+set "lightsV1(54,swupdate,lastinstall)" "2026-10-01T12:12:25"
+set "lightsV1(54,type)" "Extended color light"
+set "lightsV1(54,name)" "Torchiere"
+set "lightsV1(54,modelid)" "LCA001"
+set "lightsV1(54,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(54,productname)" "Hue color lamp"
+set "lightsV1(54,capabilities,certified)" true
+set "lightsV1(54,capabilities,control,mindimlevel)" 200
+set "lightsV1(54,capabilities,control,maxlumen)" 800
+set "lightsV1(54,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(54,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(54,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(54,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(54,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(54,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(54,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(54,capabilities,control,ct,min)" 153
+set "lightsV1(54,capabilities,control,ct,max)" 500
+set "lightsV1(54,capabilities,streaming,renderer)" true
+set "lightsV1(54,capabilities,streaming,proxy)" true
+set "lightsV1(54,config,archetype)" "floorshade"
+set "lightsV1(54,config,function)" "mixed"
+set "lightsV1(54,config,direction)" "omnidirectional"
+set "lightsV1(54,config,startup,mode)" "safety"
+set "lightsV1(54,config,startup,configured)" true
+set "lightsV1(54,uniqueid)" "00:17:88:01:06:a1:70:e8-0b"
+set "lightsV1(54,swversion)" "1.163.1"
+set "lightsV1(54,swconfigid)" "65A786EA"
+set "lightsV1(54,productid)" "Philips-LCA001-5-A19ECLv6"
+set "lightsV1(55,state,on)" true
+set "lightsV1(55,state,bri)" 143
+set "lightsV1(55,state,hue)" 7675
+set "lightsV1(55,state,sat)" 199
+set "lightsV1(55,state,effect)" "none"
+set "lightsV1(55,state,xy,00)" 0.5019
+set "lightsV1(55,state,xy,01)" 0.4152
+set "lightsV1(55,state,ct)" 447
+set "lightsV1(55,state,alert)" "select"
+set "lightsV1(55,state,colormode)" "ct"
+set "lightsV1(55,state,mode)" "homeautomation"
+set "lightsV1(55,state,reachable)" true
+set "lightsV1(55,swupdate,state)" "noupdates"
+set "lightsV1(55,swupdate,lastinstall)" "2026-10-01T12:12:28"
+set "lightsV1(55,type)" "Extended color light"
+set "lightsV1(55,name)" "Ceiling"
+set "lightsV1(55,modelid)" "LCA001"
+set "lightsV1(55,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(55,productname)" "Hue color lamp"
+set "lightsV1(55,capabilities,certified)" true
+set "lightsV1(55,capabilities,control,mindimlevel)" 200
+set "lightsV1(55,capabilities,control,maxlumen)" 800
+set "lightsV1(55,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(55,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(55,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(55,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(55,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(55,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(55,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(55,capabilities,control,ct,min)" 153
+set "lightsV1(55,capabilities,control,ct,max)" 500
+set "lightsV1(55,capabilities,streaming,renderer)" true
+set "lightsV1(55,capabilities,streaming,proxy)" true
+set "lightsV1(55,config,archetype)" "pendantround"
+set "lightsV1(55,config,function)" "mixed"
+set "lightsV1(55,config,direction)" "omnidirectional"
+set "lightsV1(55,config,startup,mode)" "safety"
+set "lightsV1(55,config,startup,configured)" true
+set "lightsV1(55,uniqueid)" "00:17:88:01:06:a1:85:e3-0b"
+set "lightsV1(55,swversion)" "1.163.1"
+set "lightsV1(55,swconfigid)" "65A786EA"
+set "lightsV1(55,productid)" "Philips-LCA001-5-A19ECLv6"
+set "lightsV1(56,state,on)" false
+set "lightsV1(56,state,bri)" 254
+set "lightsV1(56,state,hue)" 41447
+set "lightsV1(56,state,sat)" 75
+set "lightsV1(56,state,effect)" "none"
+set "lightsV1(56,state,xy,00)" 0.3146
+set "lightsV1(56,state,xy,01)" 0.3303
+set "lightsV1(56,state,ct)" 156
+set "lightsV1(56,state,alert)" "select"
+set "lightsV1(56,state,colormode)" "xy"
+set "lightsV1(56,state,mode)" "homeautomation"
+set "lightsV1(56,state,reachable)" true
+set "lightsV1(56,swupdate,state)" "noupdates"
+set "lightsV1(56,swupdate,lastinstall)" "2026-10-01T13:59:36"
+set "lightsV1(56,type)" "Extended color light"
+set "lightsV1(56,name)" "Hue TV"
+set "lightsV1(56,modelid)" "LCT010"
+set "lightsV1(56,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(56,productname)" "Hue color lamp"
+set "lightsV1(56,capabilities,certified)" true
+set "lightsV1(56,capabilities,control,mindimlevel)" 1000
+set "lightsV1(56,capabilities,control,maxlumen)" 806
+set "lightsV1(56,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(56,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(56,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(56,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(56,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(56,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(56,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(56,capabilities,control,ct,min)" 153
+set "lightsV1(56,capabilities,control,ct,max)" 500
+set "lightsV1(56,capabilities,streaming,renderer)" true
+set "lightsV1(56,capabilities,streaming,proxy)" true
+set "lightsV1(56,config,archetype)" "tableshade"
+set "lightsV1(56,config,function)" "mixed"
+set "lightsV1(56,config,direction)" "omnidirectional"
+set "lightsV1(56,config,startup,mode)" "safety"
+set "lightsV1(56,config,startup,configured)" true
+set "lightsV1(56,uniqueid)" "00:17:88:01:02:34:da:4c-0b"
+set "lightsV1(56,swversion)" "1.116.12"
+set "lightsV1(56,swconfigid)" "DDE4D5E9"
+set "lightsV1(56,productid)" "Philips-LCT010-1-A19ECLv4"
+set "lightsV1(57,state,on)" false
+set "lightsV1(57,state,bri)" 143
+set "lightsV1(57,state,hue)" 7675
+set "lightsV1(57,state,sat)" 199
+set "lightsV1(57,state,effect)" "none"
+set "lightsV1(57,state,xy,00)" 0.5019
+set "lightsV1(57,state,xy,01)" 0.4152
+set "lightsV1(57,state,ct)" 447
+set "lightsV1(57,state,alert)" "select"
+set "lightsV1(57,state,colormode)" "ct"
+set "lightsV1(57,state,mode)" "homeautomation"
+set "lightsV1(57,state,reachable)" true
+set "lightsV1(57,swupdate,state)" "readytoinstall"
+set "lightsV1(57,swupdate,lastinstall)" "2026-10-01T14:05:12"
+set "lightsV1(57,type)" "Extended color light"
+set "lightsV1(57,name)" "B 1"
+set "lightsV1(57,modelid)" "LCA001"
+set "lightsV1(57,manufacturername)" "Signify Netherlands B.V."
+set "lightsV1(57,productname)" "Hue color lamp"
+set "lightsV1(57,capabilities,certified)" true
+set "lightsV1(57,capabilities,control,mindimlevel)" 200
+set "lightsV1(57,capabilities,control,maxlumen)" 800
+set "lightsV1(57,capabilities,control,colorgamuttype)" "C"
+set "lightsV1(57,capabilities,control,colorgamut,00,00)" 0.6915
+set "lightsV1(57,capabilities,control,colorgamut,00,01)" 0.3083
+set "lightsV1(57,capabilities,control,colorgamut,01,00)" 0.1700
+set "lightsV1(57,capabilities,control,colorgamut,01,01)" 0.7000
+set "lightsV1(57,capabilities,control,colorgamut,02,00)" 0.1532
+set "lightsV1(57,capabilities,control,colorgamut,02,01)" 0.0475
+set "lightsV1(57,capabilities,control,ct,min)" 153
+set "lightsV1(57,capabilities,control,ct,max)" 500
+set "lightsV1(57,capabilities,streaming,renderer)" true
+set "lightsV1(57,capabilities,streaming,proxy)" true
+set "lightsV1(57,config,archetype)" "pendantround"
+set "lightsV1(57,config,function)" "mixed"
+set "lightsV1(57,config,direction)" "omnidirectional"
+set "lightsV1(57,config,startup,mode)" "safety"
+set "lightsV1(57,config,startup,configured)" true
+set "lightsV1(57,uniqueid)" "00:17:88:01:06:1c:ca:d6-0b"
+set "lightsV1(57,swversion)" "1.145.2"
+set "lightsV1(57,swconfigid)" "65A786EA"
+set "lightsV1(57,productid)" "Philips-LCA001-5-A19ECLv6"
+set "lightsV1(places)" 2
+set "lightsV1(timestamp)" 1790877997
+set "lightsV1(02,rgb)" "F9D995"
+set "lightsV1(03,rgb)" "F9BF5E"
+set "lightsV1(04,rgb)" "F9C871"
+set "lightsV1(05,rgb)" "F9C972"
+set "lightsV1(06,rgb)" "EEF9F9"
+set "lightsV1(07,rgb)" "F9C871"
+set "lightsV1(08,rgb)" "F9C871"
+set "lightsV1(09,rgb)" "F9C871"
+set "lightsV1(10,rgb)" "F2F9F9"
+set "lightsV1(11,rgb)" "F1F9F9"
+set "lightsV1(13,rgb)" "F1F9F9"
+set "lightsV1(14,rgb)" "not available"
+set "lightsV1(15,rgb)" "not available"
+set "lightsV1(18,rgb)" "not available"
+set "lightsV1(19,rgb)" "not available"
+set "lightsV1(20,rgb)" "F9BA55"
+set "lightsV1(21,rgb)" "F9BA55"
+set "lightsV1(22,rgb)" "F9BA55"
+set "lightsV1(23,rgb)" "78F977"
+set "lightsV1(24,rgb)" "706BF9"
+set "lightsV1(25,rgb)" "F9BA55"
+set "lightsV1(26,rgb)" "F9BA55"
+set "lightsV1(27,rgb)" "F9BA55"
+set "lightsV1(28,rgb)" "F9B953"
+set "lightsV1(29,rgb)" "not available"
+set "lightsV1(30,rgb)" "not available"
+set "lightsV1(31,rgb)" "not available"
+set "lightsV1(32,rgb)" "not available"
+set "lightsV1(33,rgb)" "not available"
+set "lightsV1(35,rgb)" "not available"
+set "lightsV1(36,rgb)" "not available"
+set "lightsV1(37,rgb)" "F9B67E"
+set "lightsV1(38,rgb)" "F9B67E"
+set "lightsV1(39,rgb)" "F9B781"
+set "lightsV1(40,rgb)" "F9B781"
+set "lightsV1(41,rgb)" "F9B67E"
+set "lightsV1(42,rgb)" "F9BB84"
+set "lightsV1(43,rgb)" "F9B67E"
+set "lightsV1(44,rgb)" "F9B67E"
+set "lightsV1(45,rgb)" "F9B67E"
+set "lightsV1(46,rgb)" "F9B67E"
+set "lightsV1(47,rgb)" "F9B67E"
+set "lightsV1(48,rgb)" "F9B781"
+set "lightsV1(49,rgb)" "F9B67E"
+set "lightsV1(50,rgb)" "F9BB84"
+set "lightsV1(51,rgb)" "F9AF72"
+set "lightsV1(53,rgb)" "not available"
+set "lightsV1(54,rgb)" "F9B852"
+set "lightsV1(55,rgb)" "F9B852"
+set "lightsV1(56,rgb)" "F2F9F9"
+set "lightsV1(57,rgb)" "F9B852"

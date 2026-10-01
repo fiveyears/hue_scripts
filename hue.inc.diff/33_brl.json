@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "brl",
+  "mapping": {
+    "short": { "press": 98, "release": 99 },
+    "long":  { "press": 98, "release": 99, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "BRL short - light99 off",
+    "actions": [
+      { "address": "/lights/99/state", "method": "PUT", "body": { "on": false } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "BRL long - cooler",
+      "actions": [
+        { "address": "/lights/99/state", "method": "PUT", "body": { "ct_inc": -254, "transitiontime": 30 } }
+      ]
+    },
+    "end": {
+      "name": "BRL long end - stop ct",
+      "actions": [
+        { "address": "/lights/99/state", "method": "PUT", "body": { "ct_inc": 0, "transitiontime": 0 } }
+      ]
+    }
+  }
+}

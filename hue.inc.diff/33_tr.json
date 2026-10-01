@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "tr",
+  "mapping": {
+    "short": { "press": 19, "release": 23 },
+    "long":  { "press": 19, "release": 23, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "TR short - scene99 + light99 off",
+    "actions": [
+      { "address": "/groups/2/action", "method": "PUT", "body": { "scene": "99" } },
+      { "address": "/lights/99/state", "method": "PUT", "body": { "on": false } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "TR long - scene99 + light99 off",
+      "actions": [
+        { "address": "/groups/2/action", "method": "PUT", "body": { "scene": "99" } },
+        { "address": "/lights/99/state", "method": "PUT", "body": { "on": false } }
+      ]
+    },
+    "end": {
+      "name": "TR long end - (noop)",
+      "actions": []
+    }
+  }
+}

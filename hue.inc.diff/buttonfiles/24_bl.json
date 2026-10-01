@@ -1,0 +1,71 @@
+{
+  "sensor": 24,
+  "rocker": 30,
+  "button": "bl",
+  "resourcelink": 65035,
+  "resourcelink_name": "Friends of Hue Switch Elia",
+  "short": {
+    "name": "XFDFoH24 bottom left rl",
+    "actions": [
+      {
+        "address": "/groups/0/action",
+        "method": "PUT",
+        "body": {
+          "scene": "9Xhd5DDpVISuxGl"
+        }
+      },
+      {
+        "address": "/groups/81/action",
+        "method": "PUT",
+        "body": {
+          "on": false
+        }
+      }
+    ]
+  },
+  "long": {
+    "threshold_ms": 1000,
+    "start": {
+      "name": "XFDFoH24 bottom left",
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "method": "PUT",
+          "body": {
+            "bri_inc": -254,
+            "transitiontime": 30
+          }
+        },
+        {
+          "address": "/lights/32/state",
+          "method": "PUT",
+          "body": {
+            "bri_inc": -254,
+            "transitiontime": 30
+          }
+        }
+      ]
+    },
+    "end": {
+      "name": "Long press finish bottom left",
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          }
+        },
+        {
+          "address": "/lights/32/state",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          }
+        }
+      ]
+    }
+  }
+}

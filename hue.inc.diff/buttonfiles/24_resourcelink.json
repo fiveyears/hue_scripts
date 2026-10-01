@@ -1,0 +1,25 @@
+{
+  "name": "Friends of Hue Switch Elia",
+  "description": "Resources of Friends of Hue Switch Elia",
+  "type": "Link",
+  "classid": 10050,
+  "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+  "recycle": false,
+  "links": [
+    "/sensors/24",
+    "/sensors/30",
+    "/rules/4",
+    "/rules/3",
+    "/rules/9",
+    "/rules/2",
+    "/rules/8",
+    "/rules/1",
+    "/rules/7",
+    "/rules/10",
+    "/rules/6",
+    "/rules/5",
+    "/scenes/9Xhd5DDpVISuxGl",
+    "/scenes/bWVyM6JJ1DjppeZ"
+  ],
+  "id": 65035
+}

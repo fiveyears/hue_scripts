@@ -1,0 +1,90 @@
+{
+  "sensor": 33,
+  "button": "tl",
+  "short": {
+    "name": "XFDFoH24 top left rl",
+    "actions": [
+      {
+        "address": "/groups/81/action",
+        "method": "PUT",
+        "body": {
+          "on": true
+        }
+      },
+      {
+        "address": "/groups/2/action",
+        "method": "PUT",
+        "body": {
+          "bri": 254,
+          "ct": 156,
+          "on": true
+        }
+      },
+      {
+        "address": "/lights/32/state",
+        "method": "PUT",
+        "body": {
+          "bri": 254,
+          "ct": 388,
+          "on": true
+        }
+      }
+    ]
+  },
+  "long": {
+    "threshold_ms": 1000,
+    "start": {
+      "name": "XFDFoH24 top left",
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 254,
+            "transitiontime": 30
+          }
+        },
+        {
+          "address": "/lights/32/state",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 254,
+            "transitiontime": 30
+          }
+        }
+      ]
+    },
+    "end": {
+      "name": "Long press finish top left",
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          }
+        },
+        {
+          "address": "/lights/32/state",
+          "method": "PUT",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          }
+        }
+      ]
+    }
+  },
+  "mapping": {
+    "short": {
+      "press": 16,
+      "release": 20
+    },
+    "long": {
+      "press": 16,
+      "release": 20
+    }
+  },
+  "rocker": 35
+}

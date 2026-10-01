@@ -1,0 +1,608 @@
+  "rules": {
+    "1": {
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "on": true
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri": 254,
+            "ct": 156,
+            "on": true
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/lights/32/state",
+          "body": {
+            "bri": 254,
+            "ct": 388,
+            "on": true
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "20"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "1"
+        }
+      ],
+      "created": "2025-12-21T16:20:50",
+      "lasttriggered": "2025-12-26T10:22:02",
+      "name": "XFDFoH24 top left rl",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 14
+    },
+    "10": {
+      "actions": [
+        {
+          "address": "/groups/0/action",
+          "body": {
+            "scene": "bWVyM6JJ1DjppeZ"
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri": 254,
+            "on": true,
+            "xy": [
+              0.1621,
+              0.0805
+            ]
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "22"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        }
+      ],
+      "created": "2025-12-21T16:52:10",
+      "lasttriggered": "2025-12-26T16:01:08",
+      "name": "XFDFoH24 bottom right rl",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 28
+    },
+    "11": {
+      "actions": [
+        {
+          "address": "/groups/0/action",
+          "body": {
+            "scene": "ppbPpSPlkVqDAUj"
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri": 254,
+            "on": true,
+            "xy": [
+              0.1586,
+              0.0641
+            ]
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/34/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/33/state/buttonevent",
+          "operator": "eq",
+          "value": "20"
+        },
+        {
+          "address": "/sensors/33/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/34/state/status",
+          "operator": "eq",
+          "value": "1"
+        }
+      ],
+      "created": "2025-12-27T10:48:45",
+      "lasttriggered": "2025-12-27T10:49:48",
+      "name": "XFDFoH33 top left rl",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 1
+    },
+    "12": {
+      "actions": [
+        {
+          "address": "/sensors/34/state",
+          "body": {
+            "status": 1
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/33/state/buttonevent",
+          "operator": "eq",
+          "value": "16"
+        },
+        {
+          "address": "/sensors/33/state/lastupdated",
+          "operator": "dx"
+        }
+      ],
+      "created": "2025-12-26T10:10:47",
+      "lasttriggered": "2025-12-27T10:50:03",
+      "name": "Rocker support press Top",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 4
+    },
+    "14": {
+      "actions": [
+        {
+          "address": "/sensors/34/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/33/state/buttonevent",
+          "operator": "eq",
+          "value": "20"
+        },
+        {
+          "address": "/sensors/33/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/34/state/status",
+          "operator": "eq",
+          "value": "2"
+        }
+      ],
+      "created": "2025-12-26T10:10:47",
+      "lasttriggered": "2025-12-27T10:50:07",
+      "name": "Long press finish top left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 2
+    },
+    "16": {
+      "actions": [
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri_inc": 254,
+            "transitiontime": 30
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/34/state",
+          "body": {
+            "status": 2
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/33/state/buttonevent",
+          "operator": "eq",
+          "value": "16"
+        },
+        {
+          "address": "/sensors/33/state/lastupdated",
+          "operator": "ddx",
+          "value": "PT00:00:01"
+        },
+        {
+          "address": "/sensors/34/state/status",
+          "operator": "eq",
+          "value": "1"
+        }
+      ],
+      "created": "2025-12-26T10:10:47",
+      "lasttriggered": "2025-12-27T10:50:04",
+      "name": "XFDFoH33 top left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 1
+    },
+    "2": {
+      "actions": [
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 1
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "16"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        }
+      ],
+      "created": "2025-12-21T16:20:50",
+      "lasttriggered": "2025-12-26T10:22:02",
+      "name": "Rocker support press Top",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 24
+    },
+    "3": {
+      "actions": [
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 3
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "17"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-27T10:49:59",
+      "name": "Rocker support press Bottom",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 36
+    },
+    "4": {
+      "actions": [
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/lights/32/state",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "20"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "2"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-25T13:56:50",
+      "name": "Long press finish top left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 6
+    },
+    "5": {
+      "actions": [
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/lights/32/state",
+          "body": {
+            "bri_inc": 0,
+            "transitiontime": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "21"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "4"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-27T10:50:02",
+      "name": "Long press finish bottom left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 8
+    },
+    "6": {
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "bri_inc": 254,
+            "transitiontime": 30
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/lights/32/state",
+          "body": {
+            "bri_inc": 254,
+            "transitiontime": 30
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 2
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "16"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "ddx",
+          "value": "PT00:00:01"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "1"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-25T13:56:48",
+      "name": "XFDFoH24 top left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 5
+    },
+    "7": {
+      "actions": [
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "bri_inc": -254,
+            "transitiontime": 30
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/lights/32/state",
+          "body": {
+            "bri_inc": -254,
+            "transitiontime": 30
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 4
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "17"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "ddx",
+          "value": "PT00:00:01"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "3"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-27T10:50:00",
+      "name": "XFDFoH24 bottom left",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 7
+    },
+    "8": {
+      "actions": [
+        {
+          "address": "/groups/0/action",
+          "body": {
+            "scene": "9Xhd5DDpVISuxGl"
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/groups/81/action",
+          "body": {
+            "on": false
+          },
+          "method": "PUT"
+        },
+        {
+          "address": "/sensors/30/state",
+          "body": {
+            "status": 0
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "21"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        },
+        {
+          "address": "/sensors/30/state/status",
+          "operator": "eq",
+          "value": "3"
+        }
+      ],
+      "created": "2025-12-21T16:20:51",
+      "lasttriggered": "2025-12-26T23:06:59",
+      "name": "XFDFoH24 bottom left rl",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 24
+    },
+    "9": {
+      "actions": [
+        {
+          "address": "/groups/2/action",
+          "body": {
+            "bri": 254,
+            "ct": 492,
+            "on": true
+          },
+          "method": "PUT"
+        }
+      ],
+      "conditions": [
+        {
+          "address": "/sensors/24/state/buttonevent",
+          "operator": "eq",
+          "value": "23"
+        },
+        {
+          "address": "/sensors/24/state/lastupdated",
+          "operator": "dx"
+        }
+      ],
+      "created": "2025-12-21T16:24:58",
+      "lasttriggered": "2025-12-26T16:01:27",
+      "name": "XFDFoH24 top right rl",
+      "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+      "recycle": false,
+      "status": "enabled",
+      "timestriggered": 11
+    }
+  },

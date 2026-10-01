@@ -1,0 +1,22 @@
+{
+  "sensor": 33,
+  "rocker": null,
+  "button": "tr",
+  "resourcelink": null,
+  "resourcelink_name": null,
+  "short": {
+    "name": "tr short",
+    "actions": []
+  },
+  "long": {
+    "threshold_ms": 700,
+    "start": {
+      "name": "tr long start",
+      "actions": []
+    },
+    "end": {
+      "name": "tr long end",
+      "actions": []
+    }
+  }
+}

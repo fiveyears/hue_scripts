@@ -1,0 +1,99 @@
+{
+	"folders": [
+		{ "path": "." }
+	],
+	"settings": {
+		"files.exclude": {
+			"bin": true,
+			"bin_*": true,
+			"**/.gitignore": true,
+			"*.sublime-workspace": true
+		},
+		"files.associations": {
+			"*.tcl": "tcl",
+			"*.tclsh": "tcl"
+		},
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": true
+	},
+	"extensions": {
+		"recommendations": ["bitwisecook.tcl", "timonwong.shellcheck"]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "active file",
+				"type": "shell",
+				"command": "${file}",
+				"options": { "cwd": "${workspaceFolder}", "env": { "SUBLIME": "1" } },
+				"group": { "kind": "build", "isDefault": true },
+				"problemMatcher": []
+			},
+			{
+				"label": "newTcl",
+				"type": "shell",
+				"command": "${workspaceFolder}/newTcl.tcl",
+				"options": { "cwd": "${workspaceFolder}", "env": { "SUBLIME": "1" } },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "jsontcl",
+				"type": "shell",
+				"command": "${workspaceFolder}/source/clang.sh json2tcl && cat ${workspaceFolder}/source/json.txt | ${workspaceFolder}/source/json2tcl",
+				"options": { "cwd": "${workspaceFolder}/source" },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "jsontcl & test",
+				"type": "shell",
+				"command": "${workspaceFolder}/source/clang.sh json2tcl && cat ${workspaceFolder}/source/json.txt | ${workspaceFolder}/bin/jsondump && cat ${workspaceFolder}/source/json.txt | ${workspaceFolder}/source/json2tcl",
+				"options": { "cwd": "${workspaceFolder}/source" },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "compile.sh -u -t",
+				"type": "shell",
+				"command": "${workspaceFolder}/source/compile.sh -u -t",
+				"options": { "cwd": "${workspaceFolder}/source" },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "getHue.tcl",
+				"type": "shell",
+				"command": "${workspaceFolder}/getHue.tcl",
+				"options": { "cwd": "${workspaceFolder}" },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "test.tcl",
+				"type": "shell",
+				"command": "${workspaceFolder}/test.tcl",
+				"options": { "cwd": "${workspaceFolder}", "env": { "SUBLIME": "1" } },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "remote",
+				"type": "shell",
+				"command": "${workspaceFolder}/remote.sh",
+				"options": { "cwd": "${workspaceFolder}" },
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "example (sync to Pi)",
+				"type": "shell",
+				"command": "${workspaceFolder}/example.sh",
+				"options": { "cwd": "${workspaceFolder}" },
+				"group": "build",
+				"problemMatcher": []
+			}
+		]
+	}
+}

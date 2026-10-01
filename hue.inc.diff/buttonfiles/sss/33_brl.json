@@ -1,0 +1,19 @@
+{
+  "sensor": 33,
+  "button": "brl",
+  "short": {
+    "name": "brl short",
+    "actions": []
+  },
+  "long": {
+    "threshold_ms": 700,
+    "start": {
+      "name": "brl long start",
+      "actions": []
+    },
+    "end": {
+      "name": "brl long end",
+      "actions": []
+    }
+  }
+}

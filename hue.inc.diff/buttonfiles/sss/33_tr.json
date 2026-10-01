@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "button": "tr",
+  "short": {
+    "name": "XFDFoH24 top right rl",
+    "actions": [
+      {
+        "address": "/groups/2/action",
+        "method": "PUT",
+        "body": {
+          "bri": 254,
+          "ct": 492,
+          "on": true
+        }
+      }
+    ]
+  },
+  "long": {
+    "threshold_ms": 700,
+    "start": {
+      "name": "tr long start",
+      "actions": []
+    },
+    "end": {
+      "name": "tr long end",
+      "actions": []
+    }
+  }
+}

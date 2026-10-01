@@ -1,0 +1,229 @@
+[
+  {
+    "key": "12",
+    "value": {
+      "after": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:03",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 4
+      },
+      "before": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-26T10:22:15",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 2
+      }
+    }
+  },
+  {
+    "key": "14",
+    "value": {
+      "after": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:07",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 2
+      },
+      "before": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-26T10:22:12",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 1
+      }
+    }
+  },
+  {
+    "key": "16",
+    "value": {
+      "after": {
+        "actions": [
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:04",
+        "name": "XFDFoH33 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 1
+      },
+      "before": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "none",
+        "name": "XFDFoH33 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 0
+      }
+    }
+  }
+]

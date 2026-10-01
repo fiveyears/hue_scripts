@@ -1,0 +1,1 @@
+{"1":{"name":"Berlin Living Room","ightsg":["2","3","4","St"],"action":{"xy":[0.3146,0.3303],"ct":156}},"2":{"lights":["Hans","Peter","3"],"sensors":[],"type":"LightGroup","action":{"effect":"none","xy":[0.3146,0.3303]}}}

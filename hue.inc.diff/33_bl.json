@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "bl",
+  "mapping": {
+    "short": { "press": 17, "release": 21 },
+    "long":  { "press": 17, "release": 21, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "BL short - group2 off",
+    "actions": [
+      { "address": "/groups/2/action", "method": "PUT", "body": { "on": false } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "BL long - dim down",
+      "actions": [
+        { "address": "/groups/2/action", "method": "PUT", "body": { "bri_inc": -254, "transitiontime": 30 } }
+      ]
+    },
+    "end": {
+      "name": "BL long end - stop dim",
+      "actions": [
+        { "address": "/groups/2/action", "method": "PUT", "body": { "bri_inc": 0, "transitiontime": 0 } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4196 @@
+{
+  "after": {
+    "config": {
+      "UTC": "2025-12-27T10:55:45",
+      "analyticsconsent": true,
+      "apiversion": "1.74.0",
+      "backup": {
+        "errorcode": 0,
+        "status": "idle"
+      },
+      "bridgeid": "001788FFFE4A2F81",
+      "datastoreversion": "180",
+      "dhcp": true,
+      "factorynew": false,
+      "gateway": "192.168.2.1",
+      "internetservices": {
+        "internet": "connected",
+        "remoteaccess": "connected",
+        "swupdate": "connected",
+        "time": "connected"
+      },
+      "ipaddress": "192.168.2.50",
+      "linkbutton": false,
+      "localtime": "2025-12-27T11:55:45",
+      "mac": "00:17:88:4a:2f:81",
+      "modelid": "BSB002",
+      "name": "Philips hue",
+      "netmask": "255.255.255.0",
+      "portalconnection": "disconnected",
+      "portalservices": true,
+      "portalstate": {
+        "communication": "disconnected",
+        "incoming": false,
+        "outgoing": false,
+        "signedon": false
+      },
+      "proxyaddress": "none",
+      "proxyport": 0,
+      "replacesbridgeid": "001788FFFE1592EB",
+      "starterkitid": "",
+      "swupdate2": {
+        "autoinstall": {
+          "on": true,
+          "updatetime": "T14:00:00"
+        },
+        "bridge": {
+          "lastinstall": "2025-12-12T13:16:02",
+          "state": "noupdates"
+        },
+        "checkforupdate": false,
+        "lastchange": "2025-12-13T13:50:50",
+        "state": "transferring"
+      },
+      "swversion": "1974142030",
+      "timezone": "Europe/Berlin",
+      "whitelist": {
+        "-QDCpNFF325668OPaDCg4Pj1iugKIZ0K2tZ1VUc7": {
+          "create date": "2025-12-25T10:04:43",
+          "last use date": "2025-12-25T13:01:35",
+          "name": "super-tester#23452345"
+        },
+        "7OrkuLAnZBf2uhKM1VpQ5U1Y8N-nA4HIWy2IOTlj": {
+          "create date": "2025-11-16T16:08:49",
+          "last use date": "2025-12-25T13:01:31",
+          "name": "my-entertainment-app#mac"
+        },
+        "9488bi-Yz78HLg9HuEWOoQjTAqM8iWmG90VixLpk": {
+          "create date": "2025-11-24T17:27:21",
+          "last use date": "2025-12-25T13:01:31",
+          "name": "my-ent-app#pc"
+        },
+        "DM4MP20qNk6Obh7QfN-NGslfNPNAjLdVnxM7w5QE": {
+          "create date": "2025-12-21T15:00:35",
+          "last use date": "2025-12-25T13:01:32",
+          "name": "tcl-test#macbookpro.fritz.box"
+        },
+        "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB": {
+          "create date": "2025-10-09T20:22:52",
+          "last use date": "2025-12-27T10:50:21",
+          "name": "Philips hue"
+        },
+        "OEXrr3YNd-LGQr65G6ygktBxFzqRfiTRvWCpSh-Y": {
+          "create date": "2025-11-24T15:04:47",
+          "last use date": "2025-12-25T13:01:32",
+          "name": "guestbath#hue"
+        },
+        "aFP5jbliw4WE8aWfO-Vlbk6unO8E2r2h5LiwiaHr": {
+          "create date": "2022-05-06T07:22:48",
+          "last use date": "2025-12-26T10:12:44",
+          "name": "plug-switcher#MacBookPro"
+        },
+        "dCP8nsTWpBTcv936PIJUhLjRPyG2wqyPqpGQ5ExA": {
+          "create date": "2025-12-18T22:40:59",
+          "last use date": "2025-12-27T10:53:47",
+          "name": "tcl#remote-admin"
+        },
+        "dT78X893rEvqvArk6BDUeEdL2ikBtJj7BiZb4r6w": {
+          "create date": "2024-11-11T19:04:22",
+          "last use date": "2025-12-25T14:49:22",
+          "name": "Hue#iPhone"
+        },
+        "pZX8l9YarDHAmOLceotPB5ZMtIdUOZMoAcH3EMY-": {
+          "create date": "2025-11-24T15:09:34",
+          "last use date": "2025-12-25T13:01:34",
+          "name": "guestbath#hue"
+        },
+        "r8esxgQuJ7Fkoy1N2EjhuMBdRcK1EKLOWvP7zU31": {
+          "create date": "2025-12-21T15:01:05",
+          "last use date": "2025-12-25T13:01:34",
+          "name": "tcl-test#macbookpro.fritz.box"
+        },
+        "vYC6DJuteSFBdtnvZ5xFM9qPtO3bfAuWRD0phk9w": {
+          "create date": "2025-11-24T17:18:38",
+          "last use date": "2025-12-25T13:01:35",
+          "name": "guestbath#hue"
+        }
+      },
+      "zigbeechannel": 11
+    },
+    "groups": {
+      "1": {
+        "action": {
+          "alert": "none",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 444,
+          "effect": "none",
+          "hue": 7706,
+          "on": false,
+          "sat": 198,
+          "xy": [
+            0.5003,
+            0.4152
+          ]
+        },
+        "class": "Bedroom",
+        "lights": [
+          "7",
+          "5",
+          "4",
+          "8"
+        ],
+        "name": "Sleep",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "10": {
+        "action": {
+          "alert": "select",
+          "bri": 1,
+          "colormode": "xy",
+          "ct": 304,
+          "effect": "none",
+          "hue": 8998,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.4181,
+            0.3972
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "12"
+        ],
+        "name": "Béla",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "12": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Bathroom",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "13": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Kitchen",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "17": {
+        "action": {
+          "alert": "select",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [
+          "29",
+          "19"
+        ],
+        "name": "Balcony",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "18": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Garden",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "19": {
+        "action": {
+          "alert": "select",
+          "bri": 244,
+          "colormode": "ct",
+          "ct": 153,
+          "effect": "none",
+          "hue": 8998,
+          "on": true,
+          "sat": 75,
+          "xy": [
+            0.3127,
+            0.329
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "23",
+          "24",
+          "30",
+          "31",
+          "32"
+        ],
+        "name": "Guestbath",
+        "recycle": false,
+        "sensors": [
+          "33",
+          "29",
+          "24"
+        ],
+        "state": {
+          "all_on": false,
+          "any_on": true
+        },
+        "type": "Room"
+      },
+      "2": {
+        "action": {
+          "alert": "select",
+          "bri": 244,
+          "colormode": "ct",
+          "ct": 153,
+          "effect": "none",
+          "hue": 46798,
+          "on": true,
+          "sat": 248,
+          "xy": [
+            0.1588,
+            0.0644
+          ]
+        },
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "32"
+        ],
+        "name": "spots",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": true,
+          "any_on": true
+        },
+        "type": "LightGroup"
+      },
+      "200": {
+        "action": {
+          "alert": "select",
+          "bri": 244,
+          "colormode": "xy",
+          "ct": 153,
+          "effect": "none",
+          "hue": 46798,
+          "on": true,
+          "sat": 248,
+          "xy": [
+            0.1588,
+            0.0644
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "27"
+        ],
+        "locations": {
+          "20": [
+            -0.32,
+            -0.66,
+            0
+          ],
+          "21": [
+            0.11,
+            -0.78,
+            0
+          ],
+          "22": [
+            0.36,
+            -0.68,
+            0
+          ],
+          "25": [
+            0.7,
+            -0.67,
+            0
+          ],
+          "26": [
+            1,
+            -0.62,
+            0
+          ],
+          "27": [
+            1,
+            -0.27,
+            0
+          ],
+          "28": [
+            -0.44,
+            -0.65,
+            0
+          ]
+        },
+        "name": "Guestbath TV",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": true,
+          "any_on": true
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "201": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 167,
+          "effect": "none",
+          "hue": 42354,
+          "on": false,
+          "sat": 66,
+          "xy": [
+            0.3223,
+            0.3287
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "11",
+          "13"
+        ],
+        "locations": {
+          "11": [
+            0.08,
+            -0.3,
+            0
+          ],
+          "13": [
+            0.1,
+            0.48,
+            0
+          ]
+        },
+        "name": "Elia",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "202": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 156,
+          "effect": "none",
+          "hue": 41440,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.3146,
+            0.3303
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "6",
+          "1",
+          "10"
+        ],
+        "locations": {
+          "1": [
+            -0.76,
+            0.73,
+            -0.66
+          ],
+          "10": [
+            -1,
+            1,
+            0.72
+          ],
+          "6": [
+            -0.38,
+            -1,
+            0.59
+          ]
+        },
+        "name": "TV room",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "3": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 153,
+          "effect": "none",
+          "hue": 39649,
+          "on": false,
+          "sat": 112,
+          "xy": [
+            0.3104,
+            0.3301
+          ]
+        },
+        "class": "Living room",
+        "lights": [
+          "10",
+          "18",
+          "1",
+          "6"
+        ],
+        "name": "TV",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": true
+        },
+        "type": "Room"
+      },
+      "4": {
+        "action": {
+          "alert": "select",
+          "bri": 191,
+          "colormode": "xy",
+          "ct": 233,
+          "effect": "none",
+          "hue": 8998,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.3127,
+            0.329
+          ]
+        },
+        "lights": [
+          "23",
+          "24"
+        ],
+        "name": "newstrips",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "LightGroup"
+      },
+      "6": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 477,
+          "effect": "none",
+          "hue": 8401,
+          "on": false,
+          "sat": 247,
+          "xy": [
+            0.5165,
+            0.4352
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "2",
+          "3",
+          "9"
+        ],
+        "name": "Hall",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": true
+        },
+        "type": "Room"
+      },
+      "7": {
+        "action": {
+          "alert": "select",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [
+          "14"
+        ],
+        "name": "Living Room",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "8": {
+        "action": {
+          "alert": "select",
+          "on": true
+        },
+        "class": "Computer",
+        "lights": [
+          "18"
+        ],
+        "name": "PC-Switches",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": true,
+          "any_on": true
+        },
+        "type": "Zone"
+      },
+      "81": {
+        "action": {
+          "alert": "select",
+          "bri": 243,
+          "colormode": "xy",
+          "ct": 153,
+          "effect": "none",
+          "hue": 46798,
+          "on": true,
+          "sat": 248,
+          "xy": [
+            0.1588,
+            0.0644
+          ]
+        },
+        "class": "Living room",
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25"
+        ],
+        "name": "spots",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": true,
+          "any_on": true
+        },
+        "type": "Zone"
+      },
+      "9": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 442,
+          "effect": "none",
+          "hue": 7726,
+          "on": false,
+          "sat": 197,
+          "xy": [
+            0.4993,
+            0.4152
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "13",
+          "15",
+          "11"
+        ],
+        "name": "Elia",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      }
+    },
+    "meta": {
+      "mode": "remote",
+      "time_iso": "2025-12-27T11:55:45"
+    },
+    "resourcelinks": {
+      "65035": {
+        "classid": 10050,
+        "description": "Resources of Friends of Hue Switch Elia",
+        "links": [
+          "/sensors/24",
+          "/sensors/30",
+          "/rules/4",
+          "/rules/3",
+          "/rules/9",
+          "/rules/2",
+          "/rules/8",
+          "/rules/1",
+          "/rules/7",
+          "/rules/10",
+          "/rules/6",
+          "/rules/5",
+          "/scenes/9Xhd5DDpVISuxGl",
+          "/scenes/bWVyM6JJ1DjppeZ"
+        ],
+        "name": "Friends of Hue Switch Elia",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "type": "Link"
+      },
+      "9298": {
+        "classid": 10050,
+        "description": "Resources of Guestbath FoH bottom",
+        "links": [
+          "/sensors/33",
+          "/sensors/34",
+          "/rules/16",
+          "/rules/12",
+          "/rules/11",
+          "/rules/14",
+          "/scenes/ppbPpSPlkVqDAUj"
+        ],
+        "name": "Guestbath FoH bottom",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "type": "Link"
+      }
+    },
+    "rules": {
+      "1": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "ct": 156,
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri": 254,
+              "ct": 388,
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-21T16:20:50",
+        "lasttriggered": "2025-12-26T10:22:02",
+        "name": "XFDFoH24 top left rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 14
+      },
+      "10": {
+        "actions": [
+          {
+            "address": "/groups/0/action",
+            "body": {
+              "scene": "bWVyM6JJ1DjppeZ"
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "on": true,
+              "xy": [
+                0.1621,
+                0.0805
+              ]
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "22"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:52:10",
+        "lasttriggered": "2025-12-26T16:01:08",
+        "name": "XFDFoH24 bottom right rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 28
+      },
+      "11": {
+        "actions": [
+          {
+            "address": "/groups/0/action",
+            "body": {
+              "scene": "ppbPpSPlkVqDAUj"
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "on": true,
+              "xy": [
+                0.1586,
+                0.0641
+              ]
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-27T10:48:45",
+        "lasttriggered": "2025-12-27T10:49:48",
+        "name": "XFDFoH33 top left rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 1
+      },
+      "12": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:03",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 4
+      },
+      "14": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:07",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 2
+      },
+      "16": {
+        "actions": [
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-27T10:50:04",
+        "name": "XFDFoH33 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 1
+      },
+      "2": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:20:50",
+        "lasttriggered": "2025-12-26T10:22:02",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 24
+      },
+      "3": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 3
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "17"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-27T10:49:59",
+        "name": "Rocker support press Bottom",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 36
+      },
+      "4": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-25T13:56:50",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 6
+      },
+      "5": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "21"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "4"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-27T10:50:02",
+        "name": "Long press finish bottom left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 8
+      },
+      "6": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-25T13:56:48",
+        "name": "XFDFoH24 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 5
+      },
+      "7": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": -254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": -254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 4
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "17"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "3"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-27T10:50:00",
+        "name": "XFDFoH24 bottom left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 7
+      },
+      "8": {
+        "actions": [
+          {
+            "address": "/groups/0/action",
+            "body": {
+              "scene": "9Xhd5DDpVISuxGl"
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "on": false
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "21"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "3"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-26T23:06:59",
+        "name": "XFDFoH24 bottom left rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 24
+      },
+      "9": {
+        "actions": [
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "ct": 492,
+              "on": true
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "23"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:24:58",
+        "lasttriggered": "2025-12-26T16:01:27",
+        "name": "XFDFoH24 top right rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 11
+      }
+    },
+    "scenes": {
+      "6iRmvqtMVxR3TXHK": {
+        "appdata": {
+          "data": "NhACE_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "28bbfeff-1a0c-444e-bb4b-0b74b88e0c95",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Nightlight",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "7edoU39uhUrkFn9D": {
+        "appdata": {
+          "data": "AyyL-_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "e101a77f-9984-4f61-aac8-15741983c656",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": true,
+        "name": "Read",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "9Xhd5DDpVISuxGl": {
+        "appdata": {
+          "data": "4ECC8168:DA00000",
+          "version": 1
+        },
+        "lastupdated": "2025-12-21T17:01:19",
+        "lights": [
+          "32"
+        ],
+        "locked": true,
+        "name": "1 lights-off--Switch",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "picture": "",
+        "recycle": false,
+        "type": "LightScene",
+        "version": 2
+      },
+      "BvBlP8dVDUym4hyB": {
+        "appdata": {
+          "data": "V32ri_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "a1f7da49-d181-4328-abea-68c9dc4b5416",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Relax",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "CZ4iZeTdTaM0yn2O": {
+        "appdata": {
+          "data": "09tR4_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "7fd2ccc5-5749-4142-b7a5-66405a676f03",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": true,
+        "name": "Energize",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "CsfrjTO1VycCT0oL": {
+        "appdata": {
+          "data": "RGW0P_r81",
+          "version": 1
+        },
+        "group": "81",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "spots",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "ISfeWlo97IFipkdI": {
+        "appdata": {
+          "data": "YCq1X_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "b90c8900-a6b7-422c-a5d3-e170187dbf8c",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Concentrate",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "K5HTeMXSIEP3xKsB": {
+        "appdata": {
+          "data": "rMGAZ_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "7fd2ccc5-5749-4142-b7a5-66405a676f03",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Energize",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "ZaRQzXSEBXmfY5Px": {
+        "appdata": {
+          "data": "O4PIh_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "b90c8900-a6b7-422c-a5d3-e170187dbf8c",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Concentrate",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "bWVyM6JJ1DjppeZ": {
+        "appdata": {
+          "data": "6DD0FC12:DA00000",
+          "version": 1
+        },
+        "lastupdated": "2025-12-21T16:59:07",
+        "lights": [
+          "32"
+        ],
+        "locked": true,
+        "name": "1 lights-off--Switch",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "picture": "",
+        "recycle": false,
+        "type": "LightScene",
+        "version": 2
+      },
+      "pou1SflcA8CFfvEZ": {
+        "appdata": {
+          "data": "2Ok3m_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "a1f7da49-d181-4328-abea-68c9dc4b5416",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Relax",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "ppbPpSPlkVqDAUj": {
+        "appdata": {
+          "data": "1AC2F16E:DA00000",
+          "version": 1
+        },
+        "lastupdated": "2025-12-27T10:48:45",
+        "lights": [
+          "32"
+        ],
+        "locked": true,
+        "name": "1 lights-off--Switch",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "picture": "",
+        "recycle": false,
+        "type": "LightScene",
+        "version": 2
+      },
+      "uec-BMX03pS-F8Od": {
+        "appdata": {
+          "data": "VVn9o_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "28bbfeff-1a0c-444e-bb4b-0b74b88e0c95",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Nightlight",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "yWGbAxkRnzDwFjMe": {
+        "appdata": {
+          "data": "7h4rv_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "e101a77f-9984-4f61-aac8-15741983c656",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Read",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      }
+    },
+    "schedules": {},
+    "sensors": {
+      "1": {
+        "config": {
+          "configured": true,
+          "on": true,
+          "sunriseoffset": 30,
+          "sunsetoffset": -30
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "PHDL00",
+        "name": "Daylight",
+        "state": {
+          "daylight": true,
+          "lastupdated": "2025-12-27T07:38:00"
+        },
+        "swversion": "1.0",
+        "type": "Daylight"
+      },
+      "24": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 16,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 20,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 17,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 21,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 19,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 23,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 18,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 22,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "on": true
+        },
+        "diversityid": "ded6468f-6b26-4a75-9582-f2b52d36a5a3",
+        "manufacturername": "PhilipsFoH",
+        "modelid": "FOHSWITCH",
+        "name": "Guestbath FoH top",
+        "productname": "Works with Hue Switch",
+        "state": {
+          "buttonevent": 21,
+          "lastupdated": "2025-12-27T10:50:02"
+        },
+        "swupdate": {
+          "lastinstall": null,
+          "state": "notupdatable"
+        },
+        "type": "ZGPSwitch",
+        "uniqueid": "00:00:00:00:01:78:30:db-f2"
+      },
+      "29": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 1000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 1001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 1002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 1003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 1004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 2000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 2001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 2002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 2003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 2004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 3000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 3001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 3002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 3003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 3004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 4000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 4001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 4002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 4003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 4004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "battery": 100,
+          "on": true,
+          "pending": [],
+          "reachable": true
+        },
+        "diversityid": "6426c751-c093-499e-afb6-9f0c863ec819",
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "RWL022",
+        "name": "Elia dimmer",
+        "productname": "Hue dimmer switch",
+        "state": {
+          "buttonevent": 1002,
+          "lastupdated": "2025-12-25T14:48:52"
+        },
+        "swupdate": {
+          "lastinstall": "2025-12-13T13:50:47",
+          "state": "noupdates"
+        },
+        "swversion": "2.77.39",
+        "type": "ZLLSwitch",
+        "uniqueid": "00:17:88:01:0e:8e:21:a6-01-fc00"
+      },
+      "30": {
+        "config": {
+          "on": true,
+          "reachable": true
+        },
+        "manufacturername": "xfiredesigns",
+        "modelid": "Longpress state",
+        "name": "Rocker 24 left longpress",
+        "recycle": false,
+        "state": {
+          "lastupdated": "2025-12-27T10:50:02",
+          "status": 0
+        },
+        "swversion": "1.0",
+        "type": "CLIPGenericStatus",
+        "uniqueid": "B6A3B2C3-7683-4238-A175-C270B064"
+      },
+      "33": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 16,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 20,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 17,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 21,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 19,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 23,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 18,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 22,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "on": true
+        },
+        "diversityid": "ded6468f-6b26-4a75-9582-f2b52d36a5a3",
+        "manufacturername": "PhilipsFoH",
+        "modelid": "FOHSWITCH",
+        "name": "Guestbath FoH bottom",
+        "productname": "Works with Hue Switch",
+        "state": {
+          "buttonevent": 20,
+          "lastupdated": "2025-12-27T10:50:07"
+        },
+        "swupdate": {
+          "lastinstall": null,
+          "state": "notupdatable"
+        },
+        "type": "ZGPSwitch",
+        "uniqueid": "00:00:00:00:01:78:3a:5e-f2"
+      },
+      "34": {
+        "config": {
+          "on": true,
+          "reachable": true
+        },
+        "manufacturername": "xfiredesigns",
+        "modelid": "Longpress state",
+        "name": "Rocker 33 left longpress",
+        "recycle": false,
+        "state": {
+          "lastupdated": "2025-12-27T10:50:07",
+          "status": 0
+        },
+        "swversion": "1.0",
+        "type": "CLIPGenericStatus",
+        "uniqueid": "016263FC-585E-4BB3-BC3A-8E7D5FFF"
+      },
+      "6": {
+        "capabilities": {
+          "certified": true,
+          "primary": true
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "sensitivity": 1,
+          "sensitivitymax": 2,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue motion sensor balcony",
+        "productname": "Hue motion sensor",
+        "state": {
+          "lastupdated": "2025-12-27T10:41:41",
+          "presence": false
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLPresence",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0406"
+      },
+      "7": {
+        "capabilities": {
+          "certified": true,
+          "primary": false
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "tholddark": 16000,
+          "tholdoffset": 7000,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue ambient light sensor 1",
+        "productname": "Hue ambient light sensor",
+        "state": {
+          "dark": false,
+          "daylight": true,
+          "lastupdated": "2025-12-27T10:55:19",
+          "lightlevel": 29775
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLLightLevel",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0400"
+      },
+      "8": {
+        "capabilities": {
+          "certified": true,
+          "primary": false
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue temperature sensor 1",
+        "productname": "Hue temperature sensor",
+        "state": {
+          "lastupdated": "2025-12-27T10:54:51",
+          "temperature": -184
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLTemperature",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0402"
+      }
+    }
+  },
+  "before": {
+    "config": {
+      "UTC": "2025-12-27T09:25:55",
+      "analyticsconsent": true,
+      "apiversion": "1.74.0",
+      "backup": {
+        "errorcode": 0,
+        "status": "idle"
+      },
+      "bridgeid": "001788FFFE4A2F81",
+      "datastoreversion": "180",
+      "dhcp": true,
+      "factorynew": false,
+      "gateway": "192.168.2.1",
+      "internetservices": {
+        "internet": "connected",
+        "remoteaccess": "connected",
+        "swupdate": "connected",
+        "time": "connected"
+      },
+      "ipaddress": "192.168.2.50",
+      "linkbutton": false,
+      "localtime": "2025-12-27T10:25:55",
+      "mac": "00:17:88:4a:2f:81",
+      "modelid": "BSB002",
+      "name": "Philips hue",
+      "netmask": "255.255.255.0",
+      "portalconnection": "disconnected",
+      "portalservices": true,
+      "portalstate": {
+        "communication": "disconnected",
+        "incoming": false,
+        "outgoing": false,
+        "signedon": false
+      },
+      "proxyaddress": "none",
+      "proxyport": 0,
+      "replacesbridgeid": "001788FFFE1592EB",
+      "starterkitid": "",
+      "swupdate2": {
+        "autoinstall": {
+          "on": true,
+          "updatetime": "T14:00:00"
+        },
+        "bridge": {
+          "lastinstall": "2025-12-12T13:16:02",
+          "state": "noupdates"
+        },
+        "checkforupdate": false,
+        "lastchange": "2025-12-13T13:50:50",
+        "state": "transferring"
+      },
+      "swversion": "1974142030",
+      "timezone": "Europe/Berlin",
+      "whitelist": {
+        "-QDCpNFF325668OPaDCg4Pj1iugKIZ0K2tZ1VUc7": {
+          "create date": "2025-12-25T10:04:43",
+          "last use date": "2025-12-25T13:01:35",
+          "name": "super-tester#23452345"
+        },
+        "7OrkuLAnZBf2uhKM1VpQ5U1Y8N-nA4HIWy2IOTlj": {
+          "create date": "2025-11-16T16:08:49",
+          "last use date": "2025-12-25T13:01:31",
+          "name": "my-entertainment-app#mac"
+        },
+        "9488bi-Yz78HLg9HuEWOoQjTAqM8iWmG90VixLpk": {
+          "create date": "2025-11-24T17:27:21",
+          "last use date": "2025-12-25T13:01:31",
+          "name": "my-ent-app#pc"
+        },
+        "DM4MP20qNk6Obh7QfN-NGslfNPNAjLdVnxM7w5QE": {
+          "create date": "2025-12-21T15:00:35",
+          "last use date": "2025-12-25T13:01:32",
+          "name": "tcl-test#macbookpro.fritz.box"
+        },
+        "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB": {
+          "create date": "2025-10-09T20:22:52",
+          "last use date": "2025-12-27T09:24:31",
+          "name": "Philips hue"
+        },
+        "OEXrr3YNd-LGQr65G6ygktBxFzqRfiTRvWCpSh-Y": {
+          "create date": "2025-11-24T15:04:47",
+          "last use date": "2025-12-25T13:01:32",
+          "name": "guestbath#hue"
+        },
+        "aFP5jbliw4WE8aWfO-Vlbk6unO8E2r2h5LiwiaHr": {
+          "create date": "2022-05-06T07:22:48",
+          "last use date": "2025-12-26T10:12:44",
+          "name": "plug-switcher#MacBookPro"
+        },
+        "dCP8nsTWpBTcv936PIJUhLjRPyG2wqyPqpGQ5ExA": {
+          "create date": "2025-12-18T22:40:59",
+          "last use date": "2025-12-27T08:39:01",
+          "name": "tcl#remote-admin"
+        },
+        "dT78X893rEvqvArk6BDUeEdL2ikBtJj7BiZb4r6w": {
+          "create date": "2024-11-11T19:04:22",
+          "last use date": "2025-12-25T14:49:22",
+          "name": "Hue#iPhone"
+        },
+        "pZX8l9YarDHAmOLceotPB5ZMtIdUOZMoAcH3EMY-": {
+          "create date": "2025-11-24T15:09:34",
+          "last use date": "2025-12-25T13:01:34",
+          "name": "guestbath#hue"
+        },
+        "r8esxgQuJ7Fkoy1N2EjhuMBdRcK1EKLOWvP7zU31": {
+          "create date": "2025-12-21T15:01:05",
+          "last use date": "2025-12-25T13:01:34",
+          "name": "tcl-test#macbookpro.fritz.box"
+        },
+        "vYC6DJuteSFBdtnvZ5xFM9qPtO3bfAuWRD0phk9w": {
+          "create date": "2025-11-24T17:18:38",
+          "last use date": "2025-12-25T13:01:35",
+          "name": "guestbath#hue"
+        }
+      },
+      "zigbeechannel": 11
+    },
+    "groups": {
+      "1": {
+        "action": {
+          "alert": "none",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 444,
+          "effect": "none",
+          "hue": 7706,
+          "on": false,
+          "sat": 198,
+          "xy": [
+            0.5003,
+            0.4152
+          ]
+        },
+        "class": "Bedroom",
+        "lights": [
+          "7",
+          "5",
+          "4",
+          "8"
+        ],
+        "name": "Sleep",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "10": {
+        "action": {
+          "alert": "select",
+          "bri": 1,
+          "colormode": "xy",
+          "ct": 304,
+          "effect": "none",
+          "hue": 8998,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.4181,
+            0.3972
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "12"
+        ],
+        "name": "Béla",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "12": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Bathroom",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "13": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Kitchen",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "17": {
+        "action": {
+          "alert": "select",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [
+          "29",
+          "19"
+        ],
+        "name": "Balcony",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "18": {
+        "action": {
+          "alert": "none",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [],
+        "name": "Garden",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "19": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 454,
+          "effect": "none",
+          "hue": 8998,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.3127,
+            0.329
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "23",
+          "24",
+          "30",
+          "31",
+          "32"
+        ],
+        "name": "Guestbath",
+        "recycle": false,
+        "sensors": [
+          "33",
+          "29",
+          "24"
+        ],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "2": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 454,
+          "effect": "none",
+          "hue": 7247,
+          "on": false,
+          "sat": 222,
+          "xy": [
+            0.5231,
+            0.4137
+          ]
+        },
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "32"
+        ],
+        "name": "spots",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "LightGroup"
+      },
+      "200": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 492,
+          "effect": "none",
+          "hue": 7247,
+          "on": false,
+          "sat": 222,
+          "xy": [
+            0.5231,
+            0.4137
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25",
+          "27"
+        ],
+        "locations": {
+          "20": [
+            -0.32,
+            -0.66,
+            0
+          ],
+          "21": [
+            0.11,
+            -0.78,
+            0
+          ],
+          "22": [
+            0.36,
+            -0.68,
+            0
+          ],
+          "25": [
+            0.7,
+            -0.67,
+            0
+          ],
+          "26": [
+            1,
+            -0.62,
+            0
+          ],
+          "27": [
+            1,
+            -0.27,
+            0
+          ],
+          "28": [
+            -0.44,
+            -0.65,
+            0
+          ]
+        },
+        "name": "Guestbath TV",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "201": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 167,
+          "effect": "none",
+          "hue": 42354,
+          "on": false,
+          "sat": 66,
+          "xy": [
+            0.3223,
+            0.3287
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "11",
+          "13"
+        ],
+        "locations": {
+          "11": [
+            0.08,
+            -0.3,
+            0
+          ],
+          "13": [
+            0.1,
+            0.48,
+            0
+          ]
+        },
+        "name": "Elia",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "202": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 156,
+          "effect": "none",
+          "hue": 41440,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.3146,
+            0.3303
+          ]
+        },
+        "class": "TV",
+        "lights": [
+          "6",
+          "1",
+          "10"
+        ],
+        "locations": {
+          "1": [
+            -0.76,
+            0.73,
+            -0.66
+          ],
+          "10": [
+            -1,
+            1,
+            0.72
+          ],
+          "6": [
+            -0.38,
+            -1,
+            0.59
+          ]
+        },
+        "name": "TV room",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "stream": {
+          "active": false,
+          "owner": null,
+          "proxymode": "auto",
+          "proxynode": "/bridge"
+        },
+        "type": "Entertainment"
+      },
+      "3": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 153,
+          "effect": "none",
+          "hue": 39649,
+          "on": false,
+          "sat": 112,
+          "xy": [
+            0.3104,
+            0.3301
+          ]
+        },
+        "class": "Living room",
+        "lights": [
+          "10",
+          "18",
+          "1",
+          "6"
+        ],
+        "name": "TV",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": true
+        },
+        "type": "Room"
+      },
+      "4": {
+        "action": {
+          "alert": "select",
+          "bri": 191,
+          "colormode": "xy",
+          "ct": 233,
+          "effect": "none",
+          "hue": 8998,
+          "on": false,
+          "sat": 75,
+          "xy": [
+            0.3127,
+            0.329
+          ]
+        },
+        "lights": [
+          "23",
+          "24"
+        ],
+        "name": "newstrips",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "LightGroup"
+      },
+      "6": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "xy",
+          "ct": 477,
+          "effect": "none",
+          "hue": 8401,
+          "on": false,
+          "sat": 247,
+          "xy": [
+            0.5165,
+            0.4352
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "2",
+          "3",
+          "9"
+        ],
+        "name": "Hall",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": true
+        },
+        "type": "Room"
+      },
+      "7": {
+        "action": {
+          "alert": "select",
+          "on": false
+        },
+        "class": "Other",
+        "lights": [
+          "14"
+        ],
+        "name": "Living Room",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      },
+      "8": {
+        "action": {
+          "alert": "select",
+          "on": true
+        },
+        "class": "Computer",
+        "lights": [
+          "18"
+        ],
+        "name": "PC-Switches",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": true,
+          "any_on": true
+        },
+        "type": "Zone"
+      },
+      "81": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 492,
+          "effect": "none",
+          "hue": 7247,
+          "on": false,
+          "sat": 222,
+          "xy": [
+            0.5231,
+            0.4137
+          ]
+        },
+        "class": "Living room",
+        "lights": [
+          "27",
+          "20",
+          "22",
+          "28",
+          "21",
+          "26",
+          "25"
+        ],
+        "name": "spots",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Zone"
+      },
+      "9": {
+        "action": {
+          "alert": "select",
+          "bri": 254,
+          "colormode": "ct",
+          "ct": 442,
+          "effect": "none",
+          "hue": 7726,
+          "on": false,
+          "sat": 197,
+          "xy": [
+            0.4993,
+            0.4152
+          ]
+        },
+        "class": "Other",
+        "lights": [
+          "13",
+          "15",
+          "11"
+        ],
+        "name": "Elia",
+        "recycle": false,
+        "sensors": [],
+        "state": {
+          "all_on": false,
+          "any_on": false
+        },
+        "type": "Room"
+      }
+    },
+    "meta": {
+      "mode": "remote",
+      "time_iso": "2025-12-27T10:25:55"
+    },
+    "resourcelinks": {
+      "65035": {
+        "classid": 10050,
+        "description": "Resources of Friends of Hue Switch Elia",
+        "links": [
+          "/sensors/24",
+          "/sensors/30",
+          "/rules/4",
+          "/rules/3",
+          "/rules/9",
+          "/rules/2",
+          "/rules/8",
+          "/rules/1",
+          "/rules/7",
+          "/rules/10",
+          "/rules/6",
+          "/rules/5",
+          "/scenes/9Xhd5DDpVISuxGl",
+          "/scenes/bWVyM6JJ1DjppeZ"
+        ],
+        "name": "Friends of Hue Switch Elia",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "type": "Link"
+      },
+      "9298": {
+        "classid": 10050,
+        "description": "Resources of Guestbath FoH bottom",
+        "links": [
+          "/sensors/33",
+          "/sensors/34",
+          "/rules/16",
+          "/rules/12",
+          "/rules/14"
+        ],
+        "name": "Guestbath FoH bottom",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "type": "Link"
+      }
+    },
+    "rules": {
+      "1": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "ct": 156,
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri": 254,
+              "ct": 388,
+              "on": true
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-21T16:20:50",
+        "lasttriggered": "2025-12-26T10:22:02",
+        "name": "XFDFoH24 top left rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 14
+      },
+      "10": {
+        "actions": [
+          {
+            "address": "/groups/0/action",
+            "body": {
+              "scene": "bWVyM6JJ1DjppeZ"
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "on": true,
+              "xy": [
+                0.1621,
+                0.0805
+              ]
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "22"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:52:10",
+        "lasttriggered": "2025-12-26T16:01:08",
+        "name": "XFDFoH24 bottom right rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 28
+      },
+      "12": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-26T10:22:15",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 2
+      },
+      "14": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "2025-12-26T10:22:12",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 1
+      },
+      "16": {
+        "actions": [
+          {
+            "address": "/sensors/34/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/33/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/33/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/34/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-26T10:10:47",
+        "lasttriggered": "none",
+        "name": "XFDFoH33 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 0
+      },
+      "2": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 1
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:20:50",
+        "lasttriggered": "2025-12-26T10:22:02",
+        "name": "Rocker support press Top",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 24
+      },
+      "3": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 3
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "17"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-26T23:06:59",
+        "name": "Rocker support press Bottom",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 35
+      },
+      "4": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "20"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "2"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-25T13:56:50",
+        "name": "Long press finish top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 6
+      },
+      "5": {
+        "actions": [
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 0,
+              "transitiontime": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "21"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "4"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-26T10:22:07",
+        "name": "Long press finish bottom left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 7
+      },
+      "6": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": 254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 2
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "16"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "1"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-25T13:56:48",
+        "name": "XFDFoH24 top left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 5
+      },
+      "7": {
+        "actions": [
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "bri_inc": -254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/lights/32/state",
+            "body": {
+              "bri_inc": -254,
+              "transitiontime": 30
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 4
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "17"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "ddx",
+            "value": "PT00:00:01"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "3"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-26T10:22:05",
+        "name": "XFDFoH24 bottom left",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 6
+      },
+      "8": {
+        "actions": [
+          {
+            "address": "/groups/0/action",
+            "body": {
+              "scene": "9Xhd5DDpVISuxGl"
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/groups/81/action",
+            "body": {
+              "on": false
+            },
+            "method": "PUT"
+          },
+          {
+            "address": "/sensors/30/state",
+            "body": {
+              "status": 0
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "21"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          },
+          {
+            "address": "/sensors/30/state/status",
+            "operator": "eq",
+            "value": "3"
+          }
+        ],
+        "created": "2025-12-21T16:20:51",
+        "lasttriggered": "2025-12-26T23:06:59",
+        "name": "XFDFoH24 bottom left rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 24
+      },
+      "9": {
+        "actions": [
+          {
+            "address": "/groups/2/action",
+            "body": {
+              "bri": 254,
+              "ct": 492,
+              "on": true
+            },
+            "method": "PUT"
+          }
+        ],
+        "conditions": [
+          {
+            "address": "/sensors/24/state/buttonevent",
+            "operator": "eq",
+            "value": "23"
+          },
+          {
+            "address": "/sensors/24/state/lastupdated",
+            "operator": "dx"
+          }
+        ],
+        "created": "2025-12-21T16:24:58",
+        "lasttriggered": "2025-12-26T16:01:27",
+        "name": "XFDFoH24 top right rl",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "recycle": false,
+        "status": "enabled",
+        "timestriggered": 11
+      }
+    },
+    "scenes": {
+      "6iRmvqtMVxR3TXHK": {
+        "appdata": {
+          "data": "NhACE_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "28bbfeff-1a0c-444e-bb4b-0b74b88e0c95",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Nightlight",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "7edoU39uhUrkFn9D": {
+        "appdata": {
+          "data": "AyyL-_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "e101a77f-9984-4f61-aac8-15741983c656",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": true,
+        "name": "Read",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "9Xhd5DDpVISuxGl": {
+        "appdata": {
+          "data": "4ECC8168:DA00000",
+          "version": 1
+        },
+        "lastupdated": "2025-12-21T17:01:19",
+        "lights": [
+          "32"
+        ],
+        "locked": true,
+        "name": "1 lights-off--Switch",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "picture": "",
+        "recycle": false,
+        "type": "LightScene",
+        "version": 2
+      },
+      "BvBlP8dVDUym4hyB": {
+        "appdata": {
+          "data": "V32ri_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "a1f7da49-d181-4328-abea-68c9dc4b5416",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Relax",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "CZ4iZeTdTaM0yn2O": {
+        "appdata": {
+          "data": "09tR4_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "7fd2ccc5-5749-4142-b7a5-66405a676f03",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": true,
+        "name": "Energize",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "CsfrjTO1VycCT0oL": {
+        "appdata": {
+          "data": "RGW0P_r81",
+          "version": 1
+        },
+        "group": "81",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "spots",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "ISfeWlo97IFipkdI": {
+        "appdata": {
+          "data": "YCq1X_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "b90c8900-a6b7-422c-a5d3-e170187dbf8c",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Concentrate",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "K5HTeMXSIEP3xKsB": {
+        "appdata": {
+          "data": "rMGAZ_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "7fd2ccc5-5749-4142-b7a5-66405a676f03",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Energize",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "ZaRQzXSEBXmfY5Px": {
+        "appdata": {
+          "data": "O4PIh_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "b90c8900-a6b7-422c-a5d3-e170187dbf8c",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Concentrate",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "bWVyM6JJ1DjppeZ": {
+        "appdata": {
+          "data": "6DD0FC12:DA00000",
+          "version": 1
+        },
+        "lastupdated": "2025-12-21T16:59:07",
+        "lights": [
+          "32"
+        ],
+        "locked": true,
+        "name": "1 lights-off--Switch",
+        "owner": "GVj803X8rN5x0Khh4UuX0Zx9uOxmTE-qW6RRvGNB",
+        "picture": "",
+        "recycle": false,
+        "type": "LightScene",
+        "version": 2
+      },
+      "pou1SflcA8CFfvEZ": {
+        "appdata": {
+          "data": "2Ok3m_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "a1f7da49-d181-4328-abea-68c9dc4b5416",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Relax",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "uec-BMX03pS-F8Od": {
+        "appdata": {
+          "data": "VVn9o_r19",
+          "version": 1
+        },
+        "group": "19",
+        "image": "28bbfeff-1a0c-444e-bb4b-0b74b88e0c95",
+        "lastupdated": "2025-12-10T18:29:13",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32"
+        ],
+        "locked": false,
+        "name": "Nightlight",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      },
+      "yWGbAxkRnzDwFjMe": {
+        "appdata": {
+          "data": "7h4rv_r81",
+          "version": 1
+        },
+        "group": "81",
+        "image": "e101a77f-9984-4f61-aac8-15741983c656",
+        "lastupdated": "2025-12-21T16:56:48",
+        "lights": [
+          "20",
+          "21",
+          "22",
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "locked": false,
+        "name": "Read",
+        "owner": "none",
+        "picture": "",
+        "recycle": false,
+        "type": "GroupScene",
+        "version": 2
+      }
+    },
+    "schedules": {},
+    "sensors": {
+      "1": {
+        "config": {
+          "configured": true,
+          "on": true,
+          "sunriseoffset": 30,
+          "sunsetoffset": -30
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "PHDL00",
+        "name": "Daylight",
+        "state": {
+          "daylight": true,
+          "lastupdated": "2025-12-27T07:38:00"
+        },
+        "swversion": "1.0",
+        "type": "Daylight"
+      },
+      "24": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 16,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 20,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 17,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 21,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 19,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 23,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 18,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 22,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "on": true
+        },
+        "diversityid": "ded6468f-6b26-4a75-9582-f2b52d36a5a3",
+        "manufacturername": "PhilipsFoH",
+        "modelid": "FOHSWITCH",
+        "name": "Guestbath FoH top",
+        "productname": "Works with Hue Switch",
+        "state": {
+          "buttonevent": 21,
+          "lastupdated": "2025-12-26T23:06:59"
+        },
+        "swupdate": {
+          "lastinstall": null,
+          "state": "notupdatable"
+        },
+        "type": "ZGPSwitch",
+        "uniqueid": "00:00:00:00:01:78:30:db-f2"
+      },
+      "29": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 1000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 1001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 1002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 1003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 1004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 2000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 2001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 2002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 2003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 2004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 3000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 3001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 3002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 3003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 3004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 4000,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 4001,
+                  "eventtype": "repeat"
+                },
+                {
+                  "buttonevent": 4002,
+                  "eventtype": "short_release"
+                },
+                {
+                  "buttonevent": 4003,
+                  "eventtype": "long_release"
+                },
+                {
+                  "buttonevent": 4004,
+                  "eventtype": "long_press"
+                }
+              ],
+              "repeatintervals": [
+                800
+              ]
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "battery": 100,
+          "on": true,
+          "pending": [],
+          "reachable": true
+        },
+        "diversityid": "6426c751-c093-499e-afb6-9f0c863ec819",
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "RWL022",
+        "name": "Elia dimmer",
+        "productname": "Hue dimmer switch",
+        "state": {
+          "buttonevent": 1002,
+          "lastupdated": "2025-12-25T14:48:52"
+        },
+        "swupdate": {
+          "lastinstall": "2025-12-13T13:50:47",
+          "state": "noupdates"
+        },
+        "swversion": "2.77.39",
+        "type": "ZLLSwitch",
+        "uniqueid": "00:17:88:01:0e:8e:21:a6-01-fc00"
+      },
+      "30": {
+        "config": {
+          "on": true,
+          "reachable": true
+        },
+        "manufacturername": "xfiredesigns",
+        "modelid": "Longpress state",
+        "name": "Rocker 24 left longpress",
+        "recycle": false,
+        "state": {
+          "lastupdated": "2025-12-26T23:07:00",
+          "status": 0
+        },
+        "swversion": "1.0",
+        "type": "CLIPGenericStatus",
+        "uniqueid": "B6A3B2C3-7683-4238-A175-C270B064"
+      },
+      "33": {
+        "capabilities": {
+          "certified": true,
+          "inputs": [
+            {
+              "events": [
+                {
+                  "buttonevent": 16,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 20,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 17,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 21,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 19,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 23,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            },
+            {
+              "events": [
+                {
+                  "buttonevent": 18,
+                  "eventtype": "initial_press"
+                },
+                {
+                  "buttonevent": 22,
+                  "eventtype": "short_release"
+                }
+              ],
+              "repeatintervals": []
+            }
+          ],
+          "primary": true
+        },
+        "config": {
+          "on": true
+        },
+        "diversityid": "ded6468f-6b26-4a75-9582-f2b52d36a5a3",
+        "manufacturername": "PhilipsFoH",
+        "modelid": "FOHSWITCH",
+        "name": "Guestbath FoH bottom",
+        "productname": "Works with Hue Switch",
+        "state": {
+          "buttonevent": 20,
+          "lastupdated": "2025-12-26T10:22:16"
+        },
+        "swupdate": {
+          "lastinstall": null,
+          "state": "notupdatable"
+        },
+        "type": "ZGPSwitch",
+        "uniqueid": "00:00:00:00:01:78:3a:5e-f2"
+      },
+      "34": {
+        "config": {
+          "on": true,
+          "reachable": true
+        },
+        "manufacturername": "xfiredesigns",
+        "modelid": "Longpress state",
+        "name": "Rocker 33 left longpress",
+        "recycle": false,
+        "state": {
+          "lastupdated": "2025-12-26T10:22:16",
+          "status": 0
+        },
+        "swversion": "1.0",
+        "type": "CLIPGenericStatus",
+        "uniqueid": "016263FC-585E-4BB3-BC3A-8E7D5FFF"
+      },
+      "6": {
+        "capabilities": {
+          "certified": true,
+          "primary": true
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "sensitivity": 1,
+          "sensitivitymax": 2,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue motion sensor balcony",
+        "productname": "Hue motion sensor",
+        "state": {
+          "lastupdated": "2025-12-27T08:40:33",
+          "presence": false
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLPresence",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0406"
+      },
+      "7": {
+        "capabilities": {
+          "certified": true,
+          "primary": false
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "tholddark": 16000,
+          "tholdoffset": 7000,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue ambient light sensor 1",
+        "productname": "Hue ambient light sensor",
+        "state": {
+          "dark": false,
+          "daylight": true,
+          "lastupdated": "2025-12-27T09:25:29",
+          "lightlevel": 30394
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLLightLevel",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0400"
+      },
+      "8": {
+        "capabilities": {
+          "certified": true,
+          "primary": false
+        },
+        "config": {
+          "alert": "none",
+          "battery": 100,
+          "ledindication": false,
+          "on": true,
+          "pending": [],
+          "reachable": true,
+          "usertest": false
+        },
+        "manufacturername": "Signify Netherlands B.V.",
+        "modelid": "SML001",
+        "name": "Hue temperature sensor 1",
+        "productname": "Hue temperature sensor",
+        "state": {
+          "lastupdated": "2025-12-27T09:25:01",
+          "temperature": -368
+        },
+        "swupdate": {
+          "lastinstall": "2025-10-15T15:26:40",
+          "state": "noupdates"
+        },
+        "swversion": "67.115.5",
+        "type": "ZLLTemperature",
+        "uniqueid": "00:17:88:01:06:f6:c7:3d-02-0402"
+      }
+    }
+  }
+}

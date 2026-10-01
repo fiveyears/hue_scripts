@@ -1,0 +1,29 @@
+{
+  "sensor": 33,
+  "rocker": 34,
+  "button": "trl",
+  "mapping": {
+    "short": { "press": 100, "release": 101 },
+    "long":  { "press": 100, "release": 101, "threshold_ms": 700 }
+  },
+  "short": {
+    "name": "TRL short - light99 on",
+    "actions": [
+      { "address": "/lights/99/state", "method": "PUT", "body": { "on": true } }
+    ]
+  },
+  "long": {
+    "start": {
+      "name": "TRL long - warmer",
+      "actions": [
+        { "address": "/lights/99/state", "method": "PUT", "body": { "ct_inc": 254, "transitiontime": 30 } }
+      ]
+    },
+    "end": {
+      "name": "TRL long end - stop ct",
+      "actions": [
+        { "address": "/lights/99/state", "method": "PUT", "body": { "ct_inc": 0, "transitiontime": 0 } }
+      ]
+    }
+  }
+}

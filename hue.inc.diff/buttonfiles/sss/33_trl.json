@@ -1,0 +1,19 @@
+{
+  "sensor": 33,
+  "button": "trl",
+  "short": {
+    "name": "trl short",
+    "actions": []
+  },
+  "long": {
+    "threshold_ms": 700,
+    "start": {
+      "name": "trl long start",
+      "actions": []
+    },
+    "end": {
+      "name": "trl long end",
+      "actions": []
+    }
+  }
+}
